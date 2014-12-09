@@ -1,0 +1,47 @@
+LOCUS       968bp_PCR_prod           968 bp    DNA     linear   UNK 09-DEC-2014
+DEFINITION  Product_pfw955_prv955_prd
+ACCESSION   968bp O6UM/DQ8jXKmusWjmblGDu9Pub8
+VERSION     968bp O6UM/DQ8jXKmusWjmblGDu9Pub8
+DBLINK      BioProject:PRJNA43747
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     source          7..961
+                     /strain="S288c"
+                     /mol_type="genomic DNA"
+                     /organism="Saccharomyces cerevisiae S288c"
+                     /chromosome="XII"
+                     /db_xref="taxon:559292"
+     primer_bind     7..22
+                     /note="pfw955"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     primer_bind     complement(944..961)
+                     /note="prv955"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            1..22
+                     /label="pfw955"
+     misc            complement(944..968)
+                     /label="prv955"
+ORIGIN
+        1 ttaaataggg tagcctcccc ataacataaa ctcaataaaa tatatagtct tcaacttgaa
+       61 aaaggaacaa gctcatgcaa agaggtggta cccgcacgcc gaaatgcatg caagtaacct
+      121 attcaaagta atatctcata catgtttcat gagggtaaca acatgcgact gggtgagcat
+      181 atgttccgct gatgtgatgt gcaagataaa caagcaaggc agaaactaac ttcttcttca
+      241 tgtaataaac acaccccgcg tttatttacc tatctctaaa cttcaacacc ttatatcata
+      301 actaatattt cttgagataa gcacactgca cccatacctt ccttaaaaac gtagcttcca
+      361 gtttttggtg gttccggctt ccttcccgat tccgcccgct aaacgcatat ttttgttgcc
+      421 tggtggcatt tgcaaaatgc ataacctatg catttaaaag attatgtatg ctcttctgac
+      481 ttttcgtgtg atgaggctcg tggaaaaaat gaataattta tgaatttgag aacaattttg
+      541 tgttgttacg gtattttact atggaataat caatcaattg aggattttat gcaaatatcg
+      601 tttgaatatt tttccgaccc tttgagtact tttcttcata attgcataat attgtccgct
+      661 gccccttttt ctgttagacg gtgtcttgat ctacttgcta tcgttcaaca ccaccttatt
+      721 ttctaactat ttttttttta gctcatttga atcagcttat ggtgatggca catttttgca
+      781 taaacctagc tgtcctcgtt gaacatagga aaaaaaaata tataaacaag gctctttcac
+      841 tctccttgca atcagatttg ggtttgttcc ctttattttc atatttcttg tcatattcct
+      901 ttctcaatta ttattttcta ctcataacct cacgcaaaat aacacagtca aatcaatcaa
+      961 attaatta
+//

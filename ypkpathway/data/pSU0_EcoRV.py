@@ -1,0 +1,1 @@
+/home/bjorn/Dropbox/pydna-DNA-assembly/constructs/pSU0_EcoRV.py

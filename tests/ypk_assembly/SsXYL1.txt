@@ -1,0 +1,39 @@
+LOCUS       959bp_PCR_prod           959 bp    DNA     linear   UNK 09-DEC-2014
+DEFINITION  Product_pfw957_prv957_prd
+ACCESSION   959bp ta42SsjawfDinU7eUcRzn7vIUp8
+VERSION     959bp ta42SsjawfDinU7eUcRzn7vIUp8
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     primer_bind     3..22
+                     /note="pfw957"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     primer_bind     complement(939..959)
+                     /note="prv957"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            1..22
+                     /label="pfw957"
+     misc            complement(939..959)
+                     /label="prv957"
+ORIGIN
+        1 aaatgccttc tattaagttg aactctggtt acgacatgcc agccgtcggt ttcggctgtt
+       61 ggaaagtcga cgtcgacacc tgttctgaac agatctaccg tgctatcaag accggttaca
+      121 gattgttcga cggtgccgaa gattacgcca acgaaaagtt agttggtgcc ggtgtcaaga
+      181 aggccattga cgaaggtatc gtcaagcgtg aagacttgtt ccttacctcc aagttgtgga
+      241 acaactacca ccacccagac aacgtcgaaa aggccttgaa cagaaccctt tctgacttgc
+      301 aagttgacta cgttgacttg ttcttgatcc acttcccagt caccttcaag ttcgttccat
+      361 tagaagaaaa gtacccacca ggattctact gtggtaaggg tgacaacttc gactacgaag
+      421 atgttccaat tttagagacc tggaaggctc ttgaaaagtt ggtcaaggcc ggtaagatca
+      481 gatctatcgg tgtttctaac ttcccaggtg ctttgctctt ggacttgttg agaggtgcta
+      541 ccatcaagcc atctgtcttg caagttgaac accacccata cttgcaacaa ccaagattga
+      601 tcgaattcgc tcaatcccgt ggtattgctg tcaccgctta ctcttcgttc ggtcctcaat
+      661 ctttcgttga attgaaccaa ggtagagctt tgaacacttc tccattgttc gagaacgaaa
+      721 ctatcaaggc tatcgctgct aagcacggta agtctccagc tcaagtcttg ttgagatggt
+      781 cttcccaaag aggcattgcc atcattccaa agtccaacac tgtcccaaga ttgttggaaa
+      841 acaaggacgt caacagcttc gacttggacg aacaagattt cgctgacatt gccaagttgg
+      901 acatcaactt gagattcaac gacccatggg actgggacaa gattcctatc ttcgtctaa
+//

@@ -1,0 +1,15 @@
+# MANIFEST.in
+# This tells distutils what files to distribute.
+
+include LICENSE.txt
+include README.txt
+include MANIFEST.in
+include setup.py
+include run_tests.py
+
+recursive-include tests *
+recursive-include docs *
+recursive-include ypkpathway/data *
+global-exclude *.pyc
+global-exclude *~
+

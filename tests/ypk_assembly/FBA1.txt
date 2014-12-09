@@ -1,0 +1,34 @@
+LOCUS       643bp_PCR_prod           643 bp    DNA     linear   UNK 09-DEC-2014
+DEFINITION  Product_pfw630_prv630_prd
+ACCESSION   643bp LguU8dRFkWzvN1ThWQ2wlLfsn08
+VERSION     643bp LguU8dRFkWzvN1ThWQ2wlLfsn08
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     primer_bind     7..29
+                     /note="pfw630"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     primer_bind     complement(616..636)
+                     /note="prv630"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            1..29
+                     /label="pfw630"
+     misc            complement(616..643)
+                     /label="prv630"
+ORIGIN
+        1 ttaaatataa caatactgac agtactaaat aattgcctac ttggcttcac atacgttgca
+       61 tacgtcgata tagataataa tgataatgac agcaggatta tcgtaatacg taatagttga
+      121 aaatctcaaa aatgtgtggg tcattacgta aataatgata ggaatgggat tcttctattt
+      181 ttcctttttc cattctagca gccgtcggga aaacgtggca tcctctcttt cgggctcaat
+      241 tggagtcacg ctgccgtgag catcctctct ttccatatct aacaactgag cacgtaacca
+      301 atggaaaagc atgagcttag cgttgctcca aaaaagtatt ggatggttaa taccatttgt
+      361 ctgttctctt ctgactttga ctcctcaaaa aaaaaaaatc tacaatcaac agatcgcttc
+      421 aattacgccc tcacaaaaac ttttttcctt cttcttcgcc cacgttaaat tttatccctc
+      481 atgttgtcta acggatttct gcacttgatt tattataaaa agacaaagac ataatacttc
+      541 tctatcaatt tcagttattg ttcttccttg cgttattctt ctgttcttct ttttcttttg
+      601 tcatatataa ccataaccaa gtaatacata ttcaaattaa tta
+//

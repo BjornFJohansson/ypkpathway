@@ -1,0 +1,63 @@
+LOCUS       1037bp_PCR_prod         1037 bp    DNA     linear   UNK 09-DEC-2014
+DEFINITION  Product_568_578
+ACCESSION   1037bp ORxQxUq+9mZ/OB2BOyfB6GXMeWQ
+VERSION     1037bp ORxQxUq+9mZ/OB2BOyfB6GXMeWQ
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     primer_bind     1..22
+                     /note="568"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            1..22
+                     /label="568"
+     overlap         1..37
+                     /note="olp_+ALddA7RDRqA4MsR6S2vDiSMYD0"
+                     /ApEinfo_revcolor="#B4D2DF"
+                     /ApEinfo_fwdcolor="#C2B0C5"
+                     /chksum="+ALddA7RDRqA4MsR6S2vDiSMYD0"
+     misc            32..56
+                     /label="pfw698"
+     primer_bind     38..56
+                     /note="pfw698"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     primer_bind     complement(716..735)
+                     /note="prv698"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            complement(716..742)
+                     /label="prv698"
+     overlap         796..1037
+                     /note="olp_WozPxSoJjWK29v8yQeT4MATRraA"
+                     /ApEinfo_revcolor="#D3ECC0"
+                     /ApEinfo_fwdcolor="#FCC6D2"
+                     /chksum="WozPxSoJjWK29v8yQeT4MATRraA"
+     primer_bind     complement(1009..1037)
+                     /note="578"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            complement(1009..1037)
+                     /label="578"
+ORIGIN
+        1 gtgccatctg tgcagacaaa cgcatcagga tttaaatata aaaaacacgc tttttcagtt
+       61 cgagtttatc attatcaata ctgccatttc aaagaatacg taaataatta atagtagtga
+      121 ttttcctaac tttatttagt caaaaaatta gccttttaat tctgctgtaa cccgtacatg
+      181 cccaaaatag ggggcgggtt acacagaata tataacatcg taggtgtctg ggtgaacagt
+      241 ttattcctgg catccactaa atataatgga gcccgctttt taagctggca tccagaaaaa
+      301 aaaagaatcc cagcaccaaa atattgtttt cttcaccaac catcagttca taggtccatt
+      361 ctcttagcgc aactacagag aacaggggca caaacaggca aaaaacgggc acaacctcaa
+      421 tggagtgatg caacctgcct ggagtaaatg atgacacaag gcaattgacc cacgcatgta
+      481 tctatctcat tttcttacac cttctattac cttctgctct ctctgatttg gaaaaagctg
+      541 aaaaaaaagg ttgaaaccag ttccctgaaa ttattcccct acttgactaa taagtatata
+      601 aagacggtag gtattgattg taattctgta aatctatttc ttaaacttct taaattctac
+      661 ttttatagtt agtctttttt ttagttttaa aacaccaaga acttagtttc gaataaacac
+      721 acataaacaa acaaattaat taatccggat ttacctgaat caattggcga aattttttgt
+      781 acgaaatttc agccacttca caggcggttt tcgcacgtac ccatgcgcta cgttcctggc
+      841 cctcttcaaa caggcccagt tcgccaataa aatcaccctg attcagatag gagaggatca
+      901 tttctttacc ctcttcgtct ttgatcagca ctgccacaga gcctttaacg atgtagtaca
+      961 gcgtttccgc tttttcaccc tggtgaataa gcgtgctctt ggatgggtac ttatgaatgt
+     1021 ggcaatgaga caagaac
+//

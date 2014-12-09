@@ -1,0 +1,60 @@
+LOCUS       861bp_PCR_prod           861 bp    DNA     linear   UNK 09-DEC-2014
+DEFINITION  Product_577_567
+ACCESSION   861bp j8K0MwgqOMTHbkIu68D/WPk3E34
+VERSION     861bp j8K0MwgqOMTHbkIu68D/WPk3E34
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     primer_bind     1..29
+                     /note="577"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            1..29
+                     /label="577"
+     overlap         1..124
+                     /note="olp_GqXRnFdj0bUssSD9FyJPEMLnbh0"
+                     /ApEinfo_revcolor="#B1B7D9"
+                     /ApEinfo_fwdcolor="#F2FEF6"
+                     /chksum="GqXRnFdj0bUssSD9FyJPEMLnbh0"
+     misc            169..197
+                     /label="pfw630"
+     primer_bind     175..197
+                     /note="pfw630"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     primer_bind     complement(784..804)
+                     /note="prv630"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            complement(784..811)
+                     /label="prv630"
+     overlap         812..861
+                     /note="olp_8ro7GZnjXs9RDyEisndJYyFeLIU"
+                     /ApEinfo_revcolor="#D8D4E2"
+                     /ApEinfo_fwdcolor="#BDE8B9"
+                     /chksum="8ro7GZnjXs9RDyEisndJYyFeLIU"
+     primer_bind     complement(839..861)
+                     /note="567"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            complement(839..861)
+                     /label="567"
+ORIGIN
+        1 gttctgatcc tcgagcatct taagaattcg tcccacggtt tgtctagagc agccgacaat
+       61 ctggccaatt tcctgacggg taattttgat ttgcatgccg tccgggtgag tcatagcgtc
+      121 tggttgtttt gccagattca gcagagtctg tgcaatgcgg ccgctgactt aaatataaca
+      181 atactgacag tactaaataa ttgcctactt ggcttcacat acgttgcata cgtcgatata
+      241 gataataatg ataatgacag caggattatc gtaatacgta atagttgaaa atctcaaaaa
+      301 tgtgtgggtc attacgtaaa taatgatagg aatgggattc ttctattttt cctttttcca
+      361 ttctagcagc cgtcgggaaa acgtggcatc ctctctttcg ggctcaattg gagtcacgct
+      421 gccgtgagca tcctctcttt ccatatctaa caactgagca cgtaaccaat ggaaaagcat
+      481 gagcttagcg ttgctccaaa aaagtattgg atggttaata ccatttgtct gttctcttct
+      541 gactttgact cctcaaaaaa aaaaaatcta caatcaacag atcgcttcaa ttacgccctc
+      601 acaaaaactt ttttccttct tcttcgccca cgttaaattt tatccctcat gttgtctaac
+      661 ggatttctgc acttgattta ttataaaaag acaaagacat aatacttctc tatcaatttc
+      721 agttattgtt cttccttgcg ttattcttct gttcttcttt ttcttttgtc atatataacc
+      781 ataaccaagt aatacatatt caaattaatt agtcgaggaa cgccaggttg cccactttct
+      841 cactagtgac ctgcagccga c
+//

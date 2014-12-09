@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
+    
+from pydna import Dseqrecord, read, pcr
+
+from pYPKa import pYPKa
+
+from Bio.Restriction import {enz}
+
+ins = read("{tp}.txt")
+
+fp = read('''
+{f}''', ds=False)
+
+rp = read('''
+{r}''', ds=False)
+
+pYPKa_cut = pYPKa.linearize({enz})
+
+ins = pcr(fp, rp, ins)
+
+{vn} = (pYPKa_cut + ins).looped().synced(pYPKa)

@@ -1,0 +1,74 @@
+LOCUS       1294bp_PCR_prod         1294 bp    DNA     linear   UNK 09-DEC-2014
+DEFINITION  Product_568_578
+ACCESSION   1294bp ZY1wIN/7SAv6raOMnfB1AQKZA2k
+VERSION     1294bp ZY1wIN/7SAv6raOMnfB1AQKZA2k
+DBLINK      BioProject:PRJNA43747
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     primer_bind     1..22
+                     /note="568"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            1..22
+                     /label="568"
+     overlap         1..37
+                     /note="olp_+ALddA7RDRqA4MsR6S2vDiSMYD0"
+                     /ApEinfo_revcolor="#E0D4F3"
+                     /ApEinfo_fwdcolor="#B7C0BF"
+                     /chksum="+ALddA7RDRqA4MsR6S2vDiSMYD0"
+     misc            32..53
+                     /label="pfw955"
+     source          38..992
+                     /strain="S288c"
+                     /mol_type="genomic DNA"
+                     /organism="Saccharomyces cerevisiae S288c"
+                     /chromosome="XII"
+                     /db_xref="taxon:559292"
+     primer_bind     38..53
+                     /note="pfw955"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     primer_bind     complement(975..992)
+                     /note="prv955"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            complement(975..999)
+                     /label="prv955"
+     overlap         1053..1294
+                     /note="olp_WozPxSoJjWK29v8yQeT4MATRraA"
+                     /ApEinfo_revcolor="#DBF6DD"
+                     /ApEinfo_fwdcolor="#E9EDD4"
+                     /chksum="WozPxSoJjWK29v8yQeT4MATRraA"
+     primer_bind     complement(1266..1294)
+                     /note="578"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            complement(1266..1294)
+                     /label="578"
+ORIGIN
+        1 gtgccatctg tgcagacaaa cgcatcagga tttaaatagg gtagcctccc cataacataa
+       61 actcaataaa atatatagtc ttcaacttga aaaaggaaca agctcatgca aagaggtggt
+      121 acccgcacgc cgaaatgcat gcaagtaacc tattcaaagt aatatctcat acatgtttca
+      181 tgagggtaac aacatgcgac tgggtgagca tatgttccgc tgatgtgatg tgcaagataa
+      241 acaagcaagg cagaaactaa cttcttcttc atgtaataaa cacaccccgc gtttatttac
+      301 ctatctctaa acttcaacac cttatatcat aactaatatt tcttgagata agcacactgc
+      361 acccatacct tccttaaaaa cgtagcttcc agtttttggt ggttccggct tccttcccga
+      421 ttccgcccgc taaacgcata tttttgttgc ctggtggcat ttgcaaaatg cataacctat
+      481 gcatttaaaa gattatgtat gctcttctga cttttcgtgt gatgaggctc gtggaaaaaa
+      541 tgaataattt atgaatttga gaacaatttt gtgttgttac ggtattttac tatggaataa
+      601 tcaatcaatt gaggatttta tgcaaatatc gtttgaatat ttttccgacc ctttgagtac
+      661 ttttcttcat aattgcataa tattgtccgc tgcccctttt tctgttagac ggtgtcttga
+      721 tctacttgct atcgttcaac accaccttat tttctaacta tttttttttt agctcatttg
+      781 aatcagctta tggtgatggc acatttttgc ataaacctag ctgtcctcgt tgaacatagg
+      841 aaaaaaaaat atataaacaa ggctctttca ctctccttgc aatcagattt gggtttgttc
+      901 cctttatttt catatttctt gtcatattcc tttctcaatt attattttct actcataacc
+      961 tcacgcaaaa taacacagtc aaatcaatca aattaattaa tccggattta cctgaatcaa
+     1021 ttggcgaaat tttttgtacg aaatttcagc cacttcacag gcggttttcg cacgtaccca
+     1081 tgcgctacgt tcctggccct cttcaaacag gcccagttcg ccaataaaat caccctgatt
+     1141 cagataggag aggatcattt ctttaccctc ttcgtctttg atcagcactg ccacagagcc
+     1201 tttaacgatg tagtacagcg tttccgcttt ttcaccctgg tgaataagcg tgctcttgga
+     1261 tgggtactta tgaatgtggc aatgagacaa gaac
+//

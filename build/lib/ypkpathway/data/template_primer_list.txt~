@@ -1,0 +1,29 @@
+{primer_list}
+
+General primers:
+
+577_crp585-557          gttctgatcctcgagcatcttaagaattc
+578_crp42-70            gttcttgtctcattgccacattcataagt
+468_pCAPs_release_fw    gtcgaggaacgccaggttgcccact
+467_pCAPs_release_re    ATTTAAatcctgatgcgtttgtctgcacaga
+567_pCAPsAjiIF          GTcggctgcaggtcactagtgag
+568_pCAPsAjiIR          GTGCcatctgtgcagacaaacg
+775_tp_ZraI_fwd         gcggccgctgacTTAAAT
+778_tp_Eco32I_rev       ggtaaatccggatTAATTAA
+342_ORIR-1              CCTTTTTACGGTTCCTGGCCT
+
+
+                             >-gene-->
+            >-TP-->           \     /           >-TP-->                     
+             \   /             \   /             \   /
+              \ /               \ /               \ /
+               |                 |                 |
+ 577>      775>| 468>       <567 | 568>       <467 |<778     <578    <342
+ |||       ||| | |||         ||| | |||         ||| | |||      |||     |||
+ --------------Z-----------------A-----------------E---------------------
+|              r                 j                 c                     |
+|              a                 i                 o                     |
+|              I                 I                 R                     |
+|                                                  V                     |
+|                                                                        |
+ --------------------- pYPKa tp gene tp ---------------------------------

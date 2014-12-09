@@ -1,0 +1,33 @@
+LOCUS       592bp_PCR_prod           592 bp    DNA     linear   UNK 09-DEC-2014
+DEFINITION  Product_pfw579_prv579_prd
+ACCESSION   592bp qKXsglxmShqLbvsFKNBkTZu22ic
+VERSION     592bp qKXsglxmShqLbvsFKNBkTZu22ic
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     primer_bind     7..24
+                     /note="pfw579"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     primer_bind     complement(564..585)
+                     /note="prv579"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            1..24
+                     /label="pfw579"
+     misc            complement(564..592)
+                     /label="prv579"
+ORIGIN
+        1 ttaaatacaa tgcatacttt gtacgttcaa aatacaatgc agtagatata tttatgcata
+       61 ttacatataa tacatatcac ataggaagca acaggcgcgt tggactttta attttcgagg
+      121 accgcgaatc cttacatcac acccaatccc ccacaagtga tcccccacac accatagctt
+      181 caaaatgttt ctactccttt tttactcttc cagattttct cggactccgc gcatcgccgt
+      241 accacttcaa aacacccaag cacagcatac taaatttccc ctctttcttc ctctagggtg
+      301 tcgttaatta cccgtactaa aggtttggaa aagaaaaaag agaccgcctc gtttcttttt
+      361 cttcgtcgaa aaaggcaata aaaattttta tcacgtttct ttttcttgaa aatttttttt
+      421 tttgattttt ttctctttcg atgacctccc attgatattt aagttaataa acggtcttca
+      481 atttctcaag tttcagtttc atttttcttg ttctattaca acttttttta cttcttgctc
+      541 attagaaaga aagcatagca atctaatcta agttttaatt acaaattaat ta
+//

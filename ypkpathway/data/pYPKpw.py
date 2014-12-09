@@ -1,0 +1,1 @@
+/home/bjorn/Dropbox/pydna-DNA-assembly/constructs/pYPK0/pYPKpw.py

@@ -1,0 +1,46 @@
+{line}
+{name}
+{line}
+
+Plan for the construction of E. coli vector `{rec} <./{rec}.txt>`_
+
+Step 1 PCR of the insert
+........................
+
+PCR with primers {fwd} & {rev} and template `{template} <./{template}.txt>`_ results in 
+a {length}bp `PCR product <./{pcr_product}.txt>`_
+
+
+Primers annealing on template:
+::
+
+{figure}
+
+Suggested PCR programs for Taq polymerase and for Polymerases with DNA binding domain:
+::
+
+{program}
+
+Step 2 Vector digestion and cloning
+...................................
+
+Clone the `PCR product <./{pcr_product}.txt>`_ in `pYPKa <./pYPKa.txt>`_ digested 
+with `{enz} <http://rebase.neb.com/rebase/enz/{enz}.html>`_ resulting in `{rec} <./{rec}.txt>`_
+
+
+Step 3 Diagnostic PCR confirmation
+..................................
+
+Confirm the structure of the `{rec} <./{rec}.txt>`_ using primers {fp}, {rp} and {f} 
+in a multiplex PCR reaction.
+
+Expected PCR products sizes from {fp}, {rp} and {f} (bp):
+
+pYPKa with insert in correct orientation: {correct_products} |br|
+pYPKa with insert in reverse orientation: {reversed_products} |br|
+Empty pYPKa clone                       : {clone_empty} 
+
+
+.. |br| raw:: html
+
+   <br />

@@ -1,0 +1,114 @@
+LOCUS       1231bp_PCR_prod         1231 bp    DNA     linear   UNK 09-DEC-2014
+DEFINITION  Product_577_567
+ACCESSION   1231bp NCoFPhCGKbY1uH2IrpW5q/NQZ3k
+VERSION     1231bp NCoFPhCGKbY1uH2IrpW5q/NQZ3k
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     primer_bind     1..29
+                     /note="577"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            1..29
+                     /label="577"
+     overlap         1..124
+                     /note="olp_GqXRnFdj0bUssSD9FyJPEMLnbh0"
+                     /ApEinfo_revcolor="#E9C7D5"
+                     /ApEinfo_fwdcolor="#DED5C9"
+                     /chksum="GqXRnFdj0bUssSD9FyJPEMLnbh0"
+     misc            169..195
+                     /label="549_ScPGI1tpf"
+     primer_bind     175..195
+                     /note="549_ScPGI1tpf"
+                     /ApEinfo_revcolor="red"
+                     /ApEinfo_fwdcolor="green"
+     gene            445..549
+                     /locus_tag="YBR196C-B"
+     mRNA            445..549
+                     /locus_tag="YBR196C-B"
+                     /product="hypothetical protein"
+     CDS             445..549
+                     /product="hypothetical protein"
+                     /GO_component="GO:0005575 - cellular_component [Evidence
+                     ND]"
+                     /GO_function="GO:0003674 - molecular_function [Evidence
+                     ND]"
+                     /codon_start=1
+                     /locus_tag="YBR196C-B"
+                     /note="hypothetical protein; identified by expression
+                     profiling and mass spectrometry"
+                     /db_xref="SGD:S000028816"
+                     /GO_process="GO:0008150 - biological_process [Evidence ND]"
+                     /translation="MWVVLSKEKILLKKAYYAKTILFSALVLRGVRGE"
+                     /protein_id="DAA07312.1"
+     gene            902..1051
+                     /locus_tag="YBR196C-A"
+     mRNA            902..1051
+                     /locus_tag="YBR196C-A"
+                     /product="hypothetical protein"
+     CDS             902..1051
+                     /product="hypothetical protein"
+                     /GO_component="GO:0005575 - cellular_component [Evidence
+                     ND]"
+                     /GO_component="GO:0016021 - integral to membrane [Evidence
+                     IEA]"
+                     /GO_component="GO:0016020 - membrane [Evidence IEA,IEA]"
+                     /GO_function="GO:0003674 - molecular_function [Evidence
+                     ND]"
+                     /codon_start=1
+                     /locus_tag="YBR196C-A"
+                     /note="hypothetical protein; identified by fungal homology
+                     and RT-PCR"
+                     /db_xref="SGD:S000028534"
+                     /GO_process="GO:0008150 - biological_process [Evidence ND]"
+                     /translation="MSRVYIYPLTVFYFFAIEMSVFCYYNWFYRRNFPYLFRPIFPFLI
+                     VLIS"
+                     /protein_id="DAA07311.1"
+     primer_bind     complement(1154..1174)
+                     /note="622_ScPGI1tpr_PacI"
+                     /ApEinfo_revcolor="red"
+                     /ApEinfo_fwdcolor="green"
+     misc            complement(1154..1181)
+                     /label="622_ScPGI1tpr_PacI"
+     overlap         1182..1231
+                     /note="olp_8ro7GZnjXs9RDyEisndJYyFeLIU"
+                     /ApEinfo_revcolor="#E0F8C2"
+                     /ApEinfo_fwdcolor="#FACBC6"
+                     /chksum="8ro7GZnjXs9RDyEisndJYyFeLIU"
+     primer_bind     complement(1209..1229)
+                     /note="567_pCAPsAjiIF"
+                     /ApEinfo_revcolor="red"
+                     /ApEinfo_fwdcolor="green"
+     misc            complement(1209..1231)
+                     /label="567_pCAPsAjiIF"
+     primer_bind     complement(1209..1231)
+                     /note="567"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            complement(1209..1231)
+                     /label="567"
+ORIGIN
+        1 gttctgatcc tcgagcatct taagaattcg tcccacggtt tgtctagagc agccgacaat
+       61 ctggccaatt tcctgacggg taattttgat ttgcatgccg tccgggtgag tcatagcgtc
+      121 tggttgtttt gccagattca gcagagtctg tgcaatgcgg ccgctgactt aaataattca
+      181 gttttctgac tgagttaaaa actaatgtag cgacaccact tccattggtg cctccgttat
+      241 tttttttttg tatgttaatg ctaaataata caccgctatg tatttcaggg cactacttct
+      301 acacatcaac ggtactaaac atttcgctca agatcggtcc gctttcacgt atttggatgc
+      361 tatgcaatgt tgactattct tagtggataa catgcggcat ttcctggcgg ctatttgcat
+      421 cgctatgtaa gtggcaatgt tcggatgtgg gtagtacttt caaaagaaaa aatattactg
+      481 aagaaggcat actacgccaa gactatttta ttctcagcac ttgtcctacg tggggttaga
+      541 ggcgagtaag actttggccc cgctgcggaa gcaaagagaa ttttgccatc ggacatgcta
+      601 ccttacgctt atatctctca ttggaatatc gttttctgat taaaacacgg aagtaagaac
+      661 ttaattcgtt tttcgttgaa ctatgttgtg ccagcgtaac attaaaaaag agtgtacaag
+      721 gccacgttct gtcaccgtca gaaaaatatg tcaatgaggc aagaaccggg atggtaacaa
+      781 aaatcacgat ctgggtgggt gtgggtgtat tggattatag gaagccacgc gctcaacctg
+      841 gaattacagg aagctggtaa ttttttgggt ttgcaatcat caccatctgc acgttgttat
+      901 aatgtcccgt gtctatatat atccattgac ggtattctat ttttttgcta ttgaaatgag
+      961 cgttttttgt tactacaatt ggttttacag acggaatttt ccctatttgt ttcgtcccat
+     1021 ttttcctttt ctcattgttc tcatatctta aaaaggtcct ttcttcataa tcaatgcttt
+     1081 cttttactta atattttact tgcattcagt gaattttaat acatattcct ctagtcttgc
+     1141 aaaatcgatt tagaatcaag ataccagcct aaaattaatt agtcgaggaa cgccaggttg
+     1201 cccactttct cactagtgac ctgcagccga c
+//

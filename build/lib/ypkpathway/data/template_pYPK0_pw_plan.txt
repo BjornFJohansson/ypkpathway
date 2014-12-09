@@ -1,0 +1,33 @@
+{line}
+{name}
+{line}
+
+Step 1 Prepare vector
+.....................
+
+Linearize `pYPKpw <./pYPKpw.txt>`_ with `EcoRV <http://rebase.neb.com/rebase/enz/EcoRV.html>`_
+resulting in the `linearized vector <./pYPKpw_lin.txt>`_.
+
+Step 2 tp-gene-tp PCR reactions
+...............................
+
+Perform the following {number} PCR reactions:
+
+{pcrs}
+
+
+Step 3 Transformation and Assembly
+..................................
+
+Mix the DNA fragments and transform a S. cerevisiae ura3 mutant. The DNA fragments 
+will be assembled by in-vivo homologous recombination:
+::
+
+{figure}
+
+
+
+.. |br| raw:: html
+
+   <br />
+

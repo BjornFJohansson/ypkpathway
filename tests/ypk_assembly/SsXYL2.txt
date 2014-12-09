@@ -1,0 +1,42 @@
+LOCUS       1094bp_PCR_prod         1094 bp    DNA     linear   UNK 09-DEC-2014
+DEFINITION  Product_pfw1092_prv1092_prd
+ACCESSION   1094bp 7RVMK2dKG0U2zsHjvNR0MuwTBIc
+VERSION     1094bp 7RVMK2dKG0U2zsHjvNR0MuwTBIc
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     primer_bind     3..19
+                     /note="pfw1092"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     primer_bind     complement(1079..1094)
+                     /note="prv1092"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            1..19
+                     /label="pfw1092"
+     misc            complement(1079..1094)
+                     /label="prv1092"
+ORIGIN
+        1 aaatgactgc taacccttcc ttggtgttga acaagatcga cgacatttcg ttcgaaactt
+       61 acgatgcccc agaaatctct gaacctaccg atgtcctcgt ccaggtcaag aaaaccggta
+      121 tctgtggttc cgacatccac ttctacgccc atggtagaat cggtaacttc gttttgacca
+      181 agccaatggt cttgggtcac gaatccgccg gtactgttgt ccaggttggt aagggtgtca
+      241 cctctcttaa ggttggtgac aacgtcgcta tcgaaccagg tattccatcc agattctccg
+      301 acgaatacaa gagcggtcac tacaacttgt gtcctcacat ggccttcgcc gctactccta
+      361 actccaagga aggcgaacca aacccaccag gtaccttatg taagtacttc aagtcgccag
+      421 aagacttctt ggtcaagttg ccagaccacg tcagcttgga actcggtgct cttgttgagc
+      481 cattgtctgt tggtgtccac gcctccaagt tgggttccgt tgctttcggc gactacgttg
+      541 ccgtctttgg tgctggtcct gttggtcttt tggctgctgc tgtcgccaag accttcggtg
+      601 ctaagggtgt catcgtcgtt gacattttcg acaacaagtt gaagatggcc aaggacattg
+      661 gtgctgctac tcacaccttc aactccaaga ccggtggttc tgaagaattg atcaaggctt
+      721 tcggtggtaa cgtgccaaac gtcgttttgg aatgtactgg tgctgaacct tgtatcaagt
+      781 tgggtgttga cgccattgcc ccaggtggtc gtttcgttca agttggtaac gctgctggtc
+      841 cagtcagctt cccaatcacc gttttcgcca tgaaggaatt gactttgttc ggttctttca
+      901 gatacggatt caacgactac aagactgctg ttggaatctt tgacactaac taccaaaacg
+      961 gtagagaaaa tgctccaatt gactttgaac aattgatcac ccacagatac aagttcaagg
+     1021 acgctattga agcctacgac ttggtcagag ccggtaaggg tgctgtcaag tgtctcattg
+     1081 acggccctga gtaa
+//

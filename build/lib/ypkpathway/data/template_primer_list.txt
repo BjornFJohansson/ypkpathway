@@ -1,0 +1,29 @@
+{primer_list}
+
+General primers:
+
+577 gttctgatcctcgagcatcttaagaattc
+578 gttcttgtctcattgccacattcataagt
+468 gtcgaggaacgccaggttgcccact
+467 ATTTAAatcctgatgcgtttgtctgcacaga
+567 GTcggctgcaggtcactagtgag
+568 GTGCcatctgtgcagacaaacg
+775 gcggccgctgacTTAAAT
+778 ggtaaatccggatTAATTAA
+342 CCTTTTTACGGTTCCTGGCCT
+
+
+                             >-gene-->
+            >-TP-->           \     /           >-TP-->                     
+             \   /             \   /             \   /
+              \ /               \ /               \ /
+               |                 |                 |
+ 577>      775>| 468>       <567 | 568>       <467 |<778     <578    <342
+ |||       ||| | |||         ||| | |||         ||| | |||      |||     |||
+ --------------Z-----------------A-----------------E---------------------
+|              r                 j                 c                     |
+|              a                 i                 o                     |
+|              I                 I                 R                     |
+|                                                  V                     |
+|                                                                        |
+ --------------------- pYPKa tp gene tp ---------------------------------
