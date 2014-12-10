@@ -5,7 +5,7 @@
 __version__ = "Undefined"
 for line in open('./ypkpathway/__init__.py'):
     if line.startswith('__'):
-        exec(line.strip())  
+        exec(line.strip())
 
 from setuptools import setup
 import os
@@ -15,18 +15,18 @@ setup(  name='ypkpathway',
         author          =__author__,
         author_email    =__email__,
         packages=['ypkpathway'],
-        
+
         package_data={'ypkpathway': [os.path.join('data','*')]},
-        
+
         #package_data={'ypkpathway': [os.path.join('ypkpathway','data','*')]},
-        
+
         entry_points = { 'console_scripts': [ 'ypkpathway = ypkpathway.ypkpathway:main' ]},
-        
+
         url='http://pypi.python.org/pypi/py-genome/',
         license='LICENSE.txt',
         description='''Assemble metabolic pathways from the command line''',
         long_description=open('README.txt').read(),
-        install_requires =[ "pydna>=0.6.1", "docutils>=0.11", "docopt>=0.6.1" ],
+        install_requires =[ "pydna>=0.6.1", "docutils>=0.12", "docopt>=0.6.1" ],
         test_suite="run_tests.load_my_tests",
         zip_safe = False,
         keywords = "bioinformatics",

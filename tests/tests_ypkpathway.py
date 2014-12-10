@@ -20,7 +20,8 @@ class test_ypkpathway(unittest.TestCase):
 
         print "pydna version", pydna.__version__
 
-
+        import os
+        #print 123, os.getcwd()
         for line in datafiles:
             file_, name, code = line.split("|")
 

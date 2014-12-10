@@ -534,15 +534,19 @@ class PathWay(object):
         #print type(self.files["report.rst"]);import sys;sys.exit()
 
         args = {'output_encoding' : 'unicode',
-                'input_encoding'  : 'unicode',
-                'stylesheet_path' : resource_filename('ypkpathway', os.path.join('data','voidspace.css'))}
+                'input_encoding'  : 'unicode'}#,
+                #'stylesheet_path' : resource_filename('ypkpathway', os.path.join('data','voidspace.css'))
+
+
+        #print 345, os.getcwd()
 
         for f, c in self.files.items():
             if f.endswith(".rst"):
                 html = publish_string(c,
                                       writer=HisWriter(),
-                                      settings=None,
-                                      settings_overrides=args)
+                                      settings=None)#,
+                                      #settings_overrides=args)
+
                 self.files[f.split(".")[0]+".html"] = html
 
 

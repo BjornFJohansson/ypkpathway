@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=unicode" />
 <meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
-<title>Yeast Pathway Kit Assembly Report</title>
+<title>pYPK0_RPL12Btp_CiGXF1_TDH3tp_PsXYL2_PGI1tp_pw</title>
 <style type="text/css">
 
 /*
@@ -146,15 +146,39 @@ code, tt {
 </style>
 </head>
 <body>
-<div class="document" id="yeast-pathway-kit-assembly-report">
-<h1 class="title">Yeast Pathway Kit Assembly Report</h1>
+<div class="document" id="pypk0-rpl12btp-cigxf1-tdh3tp-psxyl2-pgi1tp-pw">
+<h1 class="title">pYPK0_RPL12Btp_CiGXF1_TDH3tp_PsXYL2_PGI1tp_pw</h1>
 
-<p>Yeast pathway kit assembly 2014-12-10 04:41:42:</p>
-<p><a class="reference external" href="./pYPK0_RPL12Btp_CiGXF1_TDH3tp_PsXYL2_PGI1tp_pw.txt">pYPK0_RPL12Btp_CiGXF1_TDH3tp_PsXYL2_PGI1tp_pw</a>
-(<a class="reference external" href="./pYPK0_RPL12Btp_CiGXF1_TDH3tp_PsXYL2_PGI1tp_pw_plan.html">plan</a>)</p>
-<p>List of all <a class="reference external" href="./primer_list.txt">PCR primers</a> needed</p>
-<p><a class="reference external" href="./pYPK0_RPL12Btp_CiGXF1_TDH3tp.txt">pYPK0_RPL12Btp_CiGXF1_TDH3tp</a> (<a class="reference external" href="./pYPK0_RPL12Btp_CiGXF1_TDH3tp_plan.html">plan</a>)</p>
-<p><a class="reference external" href="./pYPK0_TDH3tp_PsXYL2_PGI1tp.txt">pYPK0_TDH3tp_PsXYL2_PGI1tp</a> (<a class="reference external" href="./pYPK0_TDH3tp_PsXYL2_PGI1tp_plan.html">plan</a>)</p>
+<div class="section" id="step-1-prepare-vector">
+<h1>Step 1 Prepare vector</h1>
+<p>Linearize <a class="reference external" href="./pYPKpw.txt">pYPKpw</a> with <a class="reference external" href="http://rebase.neb.com/rebase/enz/EcoRV.html">EcoRV</a>
+resulting in the <a class="reference external" href="./pYPKpw_lin.txt">linearized vector</a>.</p>
+</div>
+<div class="section" id="step-2-tp-gene-tp-pcr-reactions">
+<h1>Step 2 tp-gene-tp PCR reactions</h1>
+<p>Perform the following 2 PCR reactions:</p>
+<p>primers 577, 778 and <a class="reference external" href="./pYPK0_RPL12Btp_CiGXF1_TDH3tp.txt">pYPK0_RPL12Btp_CiGXF1_TDH3tp</a> =&gt; <a class="reference external" href="./3246bp_PCR_prod.txt">3246bp_PCR_prod</a> <br /> <br />
+primers 775, 578 and <a class="reference external" href="./pYPK0_TDH3tp_PsXYL2_PGI1tp.txt">pYPK0_TDH3tp_PsXYL2_PGI1tp</a> =&gt; <a class="reference external" href="./3196bp_PCR_prod.txt">3196bp_PCR_prod</a> <br /> <br /></p>
+</div>
+<div class="section" id="step-3-transformation-and-assembly">
+<h1>Step 3 Transformation and Assembly</h1>
+<p>Mix the DNA fragments and transform a S. cerevisiae ura3 mutant. The DNA fragments
+will be assembled by in-vivo homologous recombination:</p>
+<pre class="literal-block">
+ -|pYPKpw|124
+|         \/
+|         /\
+|         124|3246bp_PCR_prod|712
+|                             \/
+|                             /\
+|                             712|3196bp_PCR_prod|242
+|                                                 \/
+|                                                 /\
+|                                                 242-
+|                                                    |
+ ----------------------------------------------------
+</pre>
+</div>
 </div>
 </body>
 </html>
