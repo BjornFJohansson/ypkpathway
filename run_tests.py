@@ -32,13 +32,14 @@ def main():
     abspath = os.path.abspath(__file__)
     dname = os.path.dirname(abspath)
     os.chdir(os.path.join(dname,"tests"))
+
     print "Python version:", sys.version
     print "Operating system:", os.name, sys.platform
     print "running unit tests and doctests"
-    print
-    runner = unittest.TextTestRunner(verbosity = 3)
+
+    runner = unittest.TextTestRunner( verbosity = 3 )
     unittest.main(testRunner=runner)
-    #os.chdir(cwd)
+    os.chdir(cwd)
 
 if __name__ == '__main__':
     main()

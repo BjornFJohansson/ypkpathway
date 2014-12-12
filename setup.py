@@ -22,11 +22,11 @@ setup(  name='ypkpathway',
 
         entry_points = { 'console_scripts': [ 'ypkpathway = ypkpathway.ypkpathway:main' ]},
 
-        url='http://pypi.python.org/pypi/py-genome/',
+        url='http://pypi.python.org/pypi/ypkpathway/',
         license='LICENSE.txt',
         description='''Assemble metabolic pathways from the command line''',
         long_description=open('README.txt').read(),
-        install_requires =[ "pydna>=0.6.1", "docutils>=0.12", "docopt>=0.6.1" ],
+        install_requires =[ "pydna>=0.7.2", "docutils>=0.12", "docopt>=0.6.1" ],
         test_suite="run_tests.load_my_tests",
         zip_safe = False,
         keywords = "bioinformatics",

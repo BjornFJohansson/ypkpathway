@@ -2,7 +2,7 @@ Metadata-Version: 1.1
 Name: ypkpathway
 Version: 0.5.0
 Summary: Assemble metabolic pathways from the command line
-Home-page: http://pypi.python.org/pypi/py-genome/
+Home-page: http://pypi.python.org/pypi/ypkpathway/
 Author: Björn Johansson
 Author-email: bjorn_johansson@bio.uminho.pt
 License: LICENSE.txt
