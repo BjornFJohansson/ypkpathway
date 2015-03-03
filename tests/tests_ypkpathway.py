@@ -28,7 +28,6 @@ class test_ypkpathway(unittest.TestCase):
             with open(file_, "r") as f:
                 text = f.read()
 
-
             pw = PathWay( text )
             pw.generate_files()
             s = pydna.read(pw.files[name])

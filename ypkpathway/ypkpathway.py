@@ -251,7 +251,7 @@ class pYPK0_tp_gene_tp(object):
             self.pYPKa_clones = []
 
             self.seq.description = self.seq.description.replace(" ","_")
-
+            #print self.seq.description, self.seq[279]
             self.files = {  "{}.txt".format(self.seq.description) : self.seq.format("gb").decode("utf-8"),
                             "{}_plan.rst".format(self.seq.description) :  u"This vector was given!"}
             self.code =  "{i} = read('{f}')".format(f= "{}.txt".format(self.seq.description), i= "{}")
@@ -267,10 +267,7 @@ class pYPK0_tp_gene_tp(object):
             middle = pydna.pcr( p468, p467, self.pYPKa_clones[1].rec)
             last   = pydna.pcr( p568, p578, self.pYPKa_clones[2].rec)
 
-            self.assembly = pydna.Assembly([pYPK0_tp_gene_tp.pYPKpw_lin, first, middle, last])
-            self.assembly.analyze_overlaps(limit=31)
-            self.assembly.create_graph()
-            self.assembly.assemble_hr_circular()
+            self.assembly = pydna.Assembly([pYPK0_tp_gene_tp.pYPKpw_lin, first, middle, last], limit=31)
             self.seq = self.assembly.circular_products[0]
 
             self.tp1_description  = self.pYPKa_clones[0].insert_description
@@ -408,10 +405,7 @@ class PathWay(object):
         pw.extend([c.assembly_product() for c in self.tp_gene_tp[1:-1]])
         pw.append(self.tp_gene_tp[-1].right_product())
 
-        self.assembly = pydna.Assembly(pw)
-        self.assembly.analyze_overlaps(limit=167-47-10)
-        self.assembly.create_graph()
-        self.assembly.assemble_hr_circular()
+        self.assembly = pydna.Assembly(pw, limit=167-47-10)
         self.seq = self.assembly.circular_products[0]
         self.seq.id = "pYPK0_pathway"
         self.seq.description = self.seq.id

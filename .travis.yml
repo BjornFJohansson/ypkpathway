@@ -1,0 +1,33 @@
+language: python
+python:
+  - "2.7"
+install:
+  - pip install -e .
+before_script:
+  - pip install -r requirements.txt
+  - pip install coveralls
+script:
+   - nosetests -w tests -v --with-coverage --with-doctest
+
+deploy:
+  provider: pypi
+  distributions: "sdist --formats=gztar,zip bdist_wheel"
+  user: bjorn
+  password:
+    secure: "B74QgzwNFATntWfDeIIGQjC49QN2sm17TQnidsOeh4UddC6i0DHjeyqC8BnNyvIZeGcEBfE7rAcK3Q74TAH8PUZnjP3FnK2L1BzqqVeCJU4+RhVUkd2koBPv3Un+zdyKoRI9dPr7TmyTjEEVPyy9esmQYnerXZr5vHjacQy7L10="
+  on:
+    tags: true
+    all_branches: true
+    repo: BjornFJohansson/ypkpathway
+
+after_success:
+  - coveralls
+
+notifications:
+  email:
+    recipients:
+      - pydna@googlegroups.com
+    on_success: change # default: change
+    on_failure: change # default: always
+  
+#condition: "$TRAVIS_TAG == ^[0-9][.][0-9][.][0-9]"
