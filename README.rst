@@ -2,6 +2,28 @@
 ypkpathway
 ==========
 
+.. image:: https://travis-ci.org/BjornFJohansson/ypkpathway.svg 
+    :target: https://travis-ci.org/BjornFJohansson/ypkpathway
+    
+.. image:: https://coveralls.io/repos/BjornFJohansson/ypkpathway/badge.svg?branch=master 
+    :target: https://coveralls.io/r/BjornFJohansson/ypkpathway?branch=master
+  
+.. image:: https://readthedocs.org/projects/ypkpathway/badge/?version=latest
+    :target: https://readthedocs.org/projects/ypkpathway/?badge=latest
+    :alt: Documentation Status
+
+.. image:: https://pypip.in/download/ypkpathway/badge.svg
+    :target: https://pypi.python.org/pypi/ypkpathway/
+    :alt: Downloads
+    
+.. image:: https://pypip.in/version/ypkpathway/badge.svg
+    :target: https://pypi.python.org/ypkpathway/pydna/
+    :alt: Latest Version
+
+.. image:: https://pypip.in/wheel/ypkpathway/badge.svg
+    :target: https://pypi.python.org/pypi/ypkpathway/
+    :alt: Wheel Status
+    
 Ypkpatwhay provides a command line application for planning DNA assembly projects 
 using the Yeast Pathway Kit protocol. 
 
