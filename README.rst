@@ -17,7 +17,7 @@ ypkpathway
     :alt: Downloads
     
 .. image:: https://pypip.in/version/ypkpathway/badge.svg
-    :target: https://pypi.python.org/ypkpathway/pydna/
+    :target: https://pypi.python.org/ypkpathway/
     :alt: Latest Version
 
 .. image:: https://pypip.in/wheel/ypkpathway/badge.svg
