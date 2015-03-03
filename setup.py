@@ -15,18 +15,13 @@ setup(  name='ypkpathway',
         author          =__author__,
         author_email    =__email__,
         packages=['ypkpathway'],
-
         package_data={'ypkpathway': [os.path.join('data','*')]},
-
-        #package_data={'ypkpathway': [os.path.join('ypkpathway','data','*')]},
-
         entry_points = { 'console_scripts': [ 'ypkpathway = ypkpathway.ypkpathway:main' ]},
-
         url='http://pypi.python.org/pypi/ypkpathway/',
         license='LICENSE.txt',
         description='''Assemble metabolic pathways from the command line''',
         long_description=open('README.txt').read(),
-        install_requires =[ "pydna>=0.7.2", "docutils>=0.12", "docopt>=0.6.1" ],
+        install_requires =[ "pydna>=0.8.8", "docutils>=0.12", "docopt>=0.6.2" ],
         test_suite="run_tests.load_my_tests",
         zip_safe = False,
         keywords = "bioinformatics",

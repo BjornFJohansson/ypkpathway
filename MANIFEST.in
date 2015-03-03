@@ -2,10 +2,10 @@
 # This tells distutils what files to distribute.
 
 include LICENSE.txt
-include README.txt
+include README.rst
 include MANIFEST.in
 include setup.py
-include run_tests.py
+include requirements.txt
 
 recursive-include tests *
 recursive-include docs *
