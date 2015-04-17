@@ -1,6 +1,9 @@
 # MANIFEST.in
 # This tells distutils what files to distribute.
 
+global-exclude *.pyc
+global-exclude *~
+
 include LICENSE.txt
 include README.rst
 include MANIFEST.in
@@ -10,6 +13,6 @@ include requirements.txt
 recursive-include tests *
 recursive-include docs *
 recursive-include ypkpathway/data *
-global-exclude *.pyc
-global-exclude *~
 
+include versioneer.py
+include ypkpathway/_version.py

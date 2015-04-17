@@ -559,10 +559,9 @@ def main():
         print e.message
 
     if arguments['--version']:
-        path, _ = os.path.split(os.path.abspath(__file__))
-        for line in open(os.path.join(path,'__init__.py')):
-            if line.startswith('__'):
-                exec(line.strip())
+        from ._version import get_versions
+        __version__      = get_versions()['version'][:5]
+        del get_versions
         print "ypkpathway version:",__version__
 
     if arguments['<path>']:

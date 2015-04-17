@@ -9,7 +9,7 @@ versioneer.tag_prefix = '' # tags are like 1.2.0
 versioneer.parentdir_prefix = '' # dirname like 'myproject-1.2.0'
 
 # Read author etc..
-for line in open('seguid_calculator/__init__.py'):
+for line in open('ypkpathway/__init__.py'):
     if line.startswith('__') and not line.startswith('__version') and not line.startswith('__long'):
         exec(line.strip())
 

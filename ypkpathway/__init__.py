@@ -14,4 +14,3 @@ __long_version__ = get_versions()['version']
 del get_versions
 
 from ypkpathway import PathWay
-
