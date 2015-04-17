@@ -1,3 +1,0 @@
-pydna
-docutils
-docopt
