@@ -1,0 +1,6 @@
+http://www.utf8-chartable.de/unicode-utf8-table.pl?start=128&number=128&names=-&utf8=string-literal
+
+Unicode
+code point	character	UTF-8 (in literal)
+                        
+U+00B5	    µ	        \xc2\xb5 

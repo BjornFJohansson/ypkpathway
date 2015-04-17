@@ -251,8 +251,8 @@ class pYPK0_tp_gene_tp(object):
             self.pYPKa_clones = []
 
             self.seq.description = self.seq.description.replace(" ","_")
-
-            self.files = {  "{}.txt".format(self.seq.description) : self.seq.format("gb"),
+            #print self.seq.description, self.seq[279]
+            self.files = {  "{}.txt".format(self.seq.description) : self.seq.format("gb").decode("utf-8"),
                             "{}_plan.rst".format(self.seq.description) :  u"This vector was given!"}
             self.code =  "{i} = read('{f}')".format(f= "{}.txt".format(self.seq.description), i= "{}")
 
@@ -376,7 +376,6 @@ class PathWay(object):
 
         self.pw = pw
         self.pth = pydna.parse( pw )
-
         self.files = None
         self.tp_gene_tp = []
 
@@ -557,6 +556,7 @@ def main():
         arguments = docopt.docopt(__doc__)
     except docopt.DocoptExit as e:
         print e.message
+        sys.exit(1)
 
     if arguments['--version']:
         path, _ = os.path.split(os.path.abspath(__file__))
@@ -568,7 +568,8 @@ def main():
     if arguments['<path>']:
         file_ = arguments['<path>']
         try:
-            with open(file_, "rU") as f: text=f.read()
+            with codecs.open(file_, "r", "utf8") as f:
+                text=f.read()
         except IOError:
             print arguments['<path>'], 'could not be opened!'
             sys.exit(1)
@@ -585,15 +586,13 @@ def main():
                 raise
 
         for name, content in pw.files.items():
-            with open(os.path.join('ypk_assembly',name),'w') as f:
+            with codecs.open(os.path.join('ypk_assembly',name),'w', "utf-8") as f:
                 f.write(content)
 
 if __name__ == "__main__":
-
     cwd = os.getcwd()
     abspath = os.path.abspath(__file__)
     dname = os.path.dirname(abspath)
     os.chdir(dname)
     main()
     os.chdir(cwd)
-

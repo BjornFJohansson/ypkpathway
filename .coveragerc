@@ -6,4 +6,5 @@ omit =
     */site-packages/networkx/*
     *__init__*
     #*/tests/*
+    */pydna/*
 

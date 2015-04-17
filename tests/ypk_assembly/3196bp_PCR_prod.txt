@@ -1,0 +1,170 @@
+LOCUS       3196bp_PCR_prod         3196 bp    DNA     linear   UNK 03-MAR-2015
+DEFINITION  Product_775_578
+ACCESSION   3196bp CnmV4IyrtwWBeFKbnEjd/ZW/kyY
+VERSION     3196bp CnmV4IyrtwWBeFKbnEjd/ZW/kyY
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     primer_bind     1..18
+                     /note="775"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            1..18
+                     /label="775"
+     overlap         13..724
+                     /note="olp_t+5ztakvUkuGtUKBpYQWSwQAfDU"
+                     /ApEinfo_revcolor="#D1F5C6"
+                     /chksum="t+5ztakvUkuGtUKBpYQWSwQAfDU"
+                     /ApEinfo_fwdcolor="#F9F2C5"
+     promoter        20..717
+                     /note="tp YGR193C YGR192C"
+                     /ApEinfo_revcolor="#b1e681"
+                     /ApEinfo_fwdcolor="#b1e6cc"
+     primer_bind     20..41
+                     /note="415_ScTDH3tpf"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     primer_bind     complement(692..717)
+                     /note="623_ScTDH3tpr_PacI"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     CDS             765..1856
+                     /product="xylitol dehydrogenase"
+                     /codon_start=1
+                     /transl_table=12
+                     /db_xref="GI:640922"
+                     /translation="MTANPSLVLNKIDDISFETYDAPEISEPTDVLVQVKKTGICGSDI
+                     HFYAHGRIGNFVLTKPMVLGHESAGTVVQVGKGVTSLKVGDNVAIEPGIPSRFSDEYKS
+                     GHYNLCPHMAFAATPNSKEGEPNPPGTLCKYFKSPEDFLVKLPDHVSLELGALVEPLSV
+                     GVHASKLGSVAFGDYVAVFGAGPVGLLAAAVAKTFGAKGVIVVDIFDNKLKMAKDIGAA
+                     THTFNSKTGGSEELIKAFGGNVPNVVLECTGAEPCIKLGVDAIAPGGRFVQVGNAAGPV
+                     SFPITVFAMKELTLFGSFRYGFNDYKTAVGIFDTNYQNGRENAPIDFEQLITHRYKFKD
+                     AIEAYDLVRAGKGAVKCLIDGPE"
+                     /protein_id="CAA01269.1"
+     primer_bind     complement(1833..1856)
+                     /note="XDH_YPK_rec_rev"
+                     /ApEinfo_revcolor="red"
+                     /ApEinfo_fwdcolor="green"
+     primer_bind     1895..1915
+                     /note="549_ScPGI1tpf"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     gene            2165..2269
+                     /locus_tag="YBR196C-B"
+     mRNA            2165..2269
+                     /locus_tag="YBR196C-B"
+                     /product="hypothetical protein"
+     CDS             2165..2269
+                     /product="hypothetical protein"
+                     /GO_component="GO:0005575 - cellular_component [Evidence
+                     ND]"
+                     /GO_function="GO:0003674 - molecular_function [Evidence
+                     ND]"
+                     /codon_start=1
+                     /locus_tag="YBR196C-B"
+                     /note="hypothetical protein; identified by expression
+                     profiling and mass spectrometry"
+                     /db_xref="SGD:S000028816"
+                     /GO_process="GO:0008150 - biological_process [Evidence ND]"
+                     /translation="MWVVLSKEKILLKKAYYAKTILFSALVLRGVRGE"
+                     /protein_id="DAA07312.1"
+     gene            2622..2771
+                     /locus_tag="YBR196C-A"
+     mRNA            2622..2771
+                     /locus_tag="YBR196C-A"
+                     /product="hypothetical protein"
+     CDS             2622..2771
+                     /product="hypothetical protein"
+                     /GO_component="GO:0005575 - cellular_component [Evidence
+                     ND]"
+                     /GO_component="GO:0016021 - integral to membrane [Evidence
+                     IEA]"
+                     /GO_component="GO:0016020 - membrane [Evidence IEA,IEA]"
+                     /GO_function="GO:0003674 - molecular_function [Evidence
+                     ND]"
+                     /codon_start=1
+                     /locus_tag="YBR196C-A"
+                     /note="hypothetical protein; identified by fungal homology
+                     and RT-PCR"
+                     /db_xref="SGD:S000028534"
+                     /GO_process="GO:0008150 - biological_process [Evidence ND]"
+                     /translation="MSRVYIYPLTVFYFFAIEMSVFCYYNWFYRRNFPYLFRPIFPFLI
+                     VLIS"
+                     /protein_id="DAA07311.1"
+     primer_bind     complement(2874..2894)
+                     /note="622_ScPGI1tpr_PacI"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     primer_bind     complement(2939..2962)
+                     /note="166_pCAPSrv"
+                     /ApEinfo_revcolor="red"
+                     /ApEinfo_fwdcolor="green"
+     overlap         2955..3196
+                     /note="olp_WozPxSoJjWK29v8yQeT4MATRraA"
+                     /ApEinfo_revcolor="#F7BCF3"
+                     /chksum="WozPxSoJjWK29v8yQeT4MATRraA"
+                     /ApEinfo_fwdcolor="#FEF5E0"
+     primer_bind     complement(3168..3196)
+                     /note="578"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            complement(3168..3196)
+                     /label="578"
+ORIGIN
+        1 gcggccgctg acttaaataa taaaaaacac gctttttcag ttcgagttta tcattatcaa
+       61 tactgccatt tcaaagaata cgtaaataat taatagtagt gattttccta actttattta
+      121 gtcaaaaaat tagcctttta attctgctgt aacccgtaca tgcccaaaat agggggcggg
+      181 ttacacagaa tatataacat cgtaggtgtc tgggtgaaca gtttattcct ggcatccact
+      241 aaatataatg gagcccgctt tttaagctgg catccagaaa aaaaaagaat cccagcacca
+      301 aaatattgtt ttcttcacca accatcagtt cataggtcca ttctcttagc gcaactacag
+      361 agaacagggg cacaaacagg caaaaaacgg gcacaacctc aatggagtga tgcaacctgc
+      421 ctggagtaaa tgatgacaca aggcaattga cccacgcatg tatctatctc attttcttac
+      481 accttctatt accttctgct ctctctgatt tggaaaaagc tgaaaaaaaa ggttgaaacc
+      541 agttccctga aattattccc ctacttgact aataagtata taaagacggt aggtattgat
+      601 tgtaattctg taaatctatt tcttaaactt cttaaattct acttttatag ttagtctttt
+      661 ttttagtttt aaaacaccaa gaacttagtt tcgaataaac acacataaac aaacaaatta
+      721 attagtcgag gaacgccagg ttgcccactt tctcactagt gaaaatgact gctaaccctt
+      781 ccttggtgtt gaacaagatc gacgacattt cgttcgaaac ttacgatgcc ccagaaatct
+      841 ctgaacctac cgatgtcctc gtccaggtca agaaaaccgg tatctgtggt tccgacatcc
+      901 acttctacgc ccatggtaga atcggtaact tcgttttgac caagccaatg gtcttgggtc
+      961 acgaatccgc cggtactgtt gtccaggttg gtaagggtgt cacctctctt aaggttggtg
+     1021 acaacgtcgc tatcgaacca ggtattccat ccagattctc cgacgaatac aagagcggtc
+     1081 actacaactt gtgtcctcac atggccttcg ccgctactcc taactccaag gaaggcgaac
+     1141 caaacccacc aggtacctta tgtaagtact tcaagtcgcc agaagacttc ttggtcaagt
+     1201 tgccagacca cgtcagcttg gaactcggtg ctcttgttga gccattgtct gttggtgtcc
+     1261 acgcctccaa gttgggttcc gttgctttcg gcgactacgt tgccgtcttt ggtgctggtc
+     1321 ctgttggtct tttggctgct gctgtcgcca agaccttcgg tgctaagggt gtcatcgtcg
+     1381 ttgacatttt cgacaacaag ttgaagatgg ccaaggacat tggtgctgct actcacacct
+     1441 tcaactccaa gaccggtggt tctgaagaat tgatcaaggc tttcggtggt aacgtgccaa
+     1501 acgtcgtttt ggaatgtact ggtgctgaac cttgtatcaa gttgggtgtt gacgccattg
+     1561 ccccaggtgg tcgtttcgtt caagttggta acgctgctgg tccagtcagc ttcccaatca
+     1621 ccgttttcgc catgaaggaa ttgactttgt tcggttcttt cagatacgga ttcaacgact
+     1681 acaagactgc tgttggaatc tttgacacta actaccaaaa cggtagagaa aatgctccaa
+     1741 ttgactttga acaattgatc acccacagat acaagttcaa ggacgctatt gaagcctacg
+     1801 acttggtcag agccggtaag ggtgctgtca agtgtctcat tgacggccct gagtaacgcg
+     1861 ccatctgtgc agacaaacgc atcaggattt aaataattca gttttctgac tgagttaaaa
+     1921 actaatgtag cgacaccact tccattggtg cctccgttat tttttttttg tatgttaatg
+     1981 ctaaataata caccgctatg tatttcaggg cactacttct acacatcaac ggtactaaac
+     2041 atttcgctca agatcggtcc gctttcacgt atttggatgc tatgcaatgt tgactattct
+     2101 tagtggataa catgcggcat ttcctggcgg ctatttgcat cgctatgtaa gtggcaatgt
+     2161 tcggatgtgg gtagtacttt caaaagaaaa aatattactg aagaaggcat actacgccaa
+     2221 gactatttta ttctcagcac ttgtcctacg tggggttaga ggcgagtaag actttggccc
+     2281 cgctgcggaa gcaaagagaa ttttgccatc ggacatgcta ccttacgctt atatctctca
+     2341 ttggaatatc gttttctgat taaaacacgg aagtaagaac ttaattcgtt tttcgttgaa
+     2401 ctatgttgtg ccagcgtaac attaaaaaag agtgtacaag gccacgttct gtcaccgtca
+     2461 gaaaaatatg tcaatgaggc aagaaccggg atggtaacaa aaatcacgat ctgggtgggt
+     2521 gtgggtgtat tggattatag gaagccacgc gctcaacctg gaattacagg aagctggtaa
+     2581 ttttttgggt ttgcaatcat caccatctgc acgttgttat aatgtcccgt gtctatatat
+     2641 atccattgac ggtattctat ttttttgcta ttgaaatgag cgttttttgt tactacaatt
+     2701 ggttttacag acggaatttt ccctatttgt ttcgtcccat ttttcctttt ctcattgttc
+     2761 tcatatctta aaaaggtcct ttcttcataa tcaatgcttt cttttactta atattttact
+     2821 tgcattcagt gaattttaat acatattcct ctagtcttgc aaaatcgatt tagaatcaag
+     2881 ataccagcct aaaattaatt aatccggatt tacctgaatc aattggcgaa attttttgta
+     2941 cgaaatttca gccacttcac aggcggtttt cgcacgtacc catgcgctac gttcctggcc
+     3001 ctcttcaaac aggcccagtt cgccaataaa atcaccctga ttcagatagg agaggatcat
+     3061 ttctttaccc tcttcgtctt tgatcagcac tgccacagag cctttaacga tgtagtacag
+     3121 cgtttccgct ttttcaccct ggtgaataag cgtgctcttg gatgggtact tatgaatgtg
+     3181 gcaatgagac aagaac
+//
