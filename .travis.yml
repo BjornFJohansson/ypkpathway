@@ -1,14 +1,16 @@
 language: python
 python:
   - "2.7"
+before_install:
+  - pip install --upgrade pip
+  - pip install -r requirements.txt
 install:
   - pip install -e .
 before_script:
-  - pip install -r requirements.txt
   - pip install coveralls
 script:
-   - nosetests -v -w tests      --with-coverage --with-doctest
-   - nosetests -v -w ypkpathway --with-coverage --with-doctest
+  - nosetests -v -w tests      --with-coverage --with-doctest
+  - nosetests -v -w ypkpathway --with-coverage --with-doctest
 
 deploy:
   provider: pypi
