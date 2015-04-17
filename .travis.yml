@@ -7,11 +7,11 @@ before_install:
 install:
   - pip install -e .
   - ls 
-#python ypkpathway/setup.py version
+  - python setup.py version
 before_script:
   - pip install coveralls
 script:
-  - python ypkpathway/setup.py version
+  - python setup.py version
 #  - nosetests -v -w tests      --with-coverage --with-doctest
 #  - nosetests -v -w ypkpathway --with-coverage --with-doctest
 
