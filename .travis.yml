@@ -5,6 +5,7 @@ before_install:
   - pip install --upgrade pip
   - pip install -r requirements.txt
 install:
+  - git tag
   - pip install -e .
   - ls 
   - python setup.py version
@@ -12,8 +13,8 @@ before_script:
   - pip install coveralls
 script:
   - python setup.py version
-#  - nosetests -v -w tests      --with-coverage --with-doctest
-#  - nosetests -v -w ypkpathway --with-coverage --with-doctest
+  - nosetests -v -w tests      --with-coverage --with-doctest
+  - nosetests -v -w ypkpathway --with-coverage --with-doctest
 
 deploy:
   provider: pypi
