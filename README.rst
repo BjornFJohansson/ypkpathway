@@ -56,6 +56,8 @@ NEWS
 =======   ========== =============================================================
 version   date       comment
 =======   ========== =============================================================
+0.6.0     2015-04-17 Added nosetests
+
 0.5.0	  2014-12-09 Changed to work with new caching version of pydna. Fixed 
 				     unicode errors.
 

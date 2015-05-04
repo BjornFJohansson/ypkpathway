@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 # Backup files
 *~
 
+=======
+>>>>>>> 93210e73eb434967e14240a9a0159c7b8358593f
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -16,6 +19,10 @@ develop-eggs/
 dist/
 downloads/
 eggs/
+<<<<<<< HEAD
+=======
+.eggs/
+>>>>>>> 93210e73eb434967e14240a9a0159c7b8358593f
 lib/
 lib64/
 parts/
@@ -39,9 +46,17 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 .coverage
+<<<<<<< HEAD
 .cache
 nosetests.xml
 coverage.xml
+=======
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+>>>>>>> 93210e73eb434967e14240a9a0159c7b8358593f
 
 # Translations
 *.mo

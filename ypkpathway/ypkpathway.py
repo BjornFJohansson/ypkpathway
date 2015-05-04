@@ -372,10 +372,9 @@ class PathWay(object):
     with codecs.open(resource_filename('ypkpathway',os.path.join('data','template_pYPK0_pw_plan.txt')), "r", "utf-8" ) as f:
         plantempl = f.read()
 
-    def __init__(self, pw, email =  ""):
+    def __init__(self, pth, email =  ""):
 
-        self.pw = pw
-        self.pth = pydna.parse( pw )
+        self.pth = pth
 
         self.files = None
         self.tp_gene_tp = []
@@ -574,7 +573,7 @@ def main():
 
         print "Assembly started! (This might take a while...)"
 
-        pw = PathWay( text )
+        pw = PathWay( pydna.parse( text ) )
         pw.generate_files()
 
         try:
@@ -584,7 +583,7 @@ def main():
                 raise
 
         for name, content in pw.files.items():
-            with open(os.path.join('ypk_assembly',name),'w') as f:
+            with codecs.open(os.path.join('ypk_assembly',name),'w', "utf8") as f:
                 f.write(content)
 
 if __name__ == "__main__":

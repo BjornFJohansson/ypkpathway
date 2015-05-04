@@ -1,15 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
-from pydna import read, pcr, parse, Assembly2, Dseqrecord
+from pydna import read, pcr, parse, Assembly, Dseqrecord
 
-(p577, p578, p775, p778) = parse('''  >577          
-                                      gttctgatcctcgagcatcttaagaattc                                                                           
-                                      >578            
-                                      gttcttgtctcattgccacattcataagt
-                                      >775 
-                                      gcggccgctgacTTAAAT
-                                      >778 
-                                      ggtaaatccggatTAATTAA''', ds=False)
+(p577, 
+ p578, 
+ p775, 
+ p778) = parse('''>577          
+                  gttctgatcctcgagcatcttaagaattc                                                                           
+                  >578            
+                  gttcttgtctcattgccacattcataagt
+                  >775 
+                  gcggccgctgacTTAAAT
+                  >778 
+                  ggtaaatccggatTAATTAA''', ds=False)
 
 from Bio.Restriction import EcoRV
 
@@ -19,7 +22,7 @@ pYPKpw_lin = pYPKpw.linearize(EcoRV)
 
 {code}    
 
-asm = Assembly2((pYPKpw_lin, {cassettes}), limit=167-47-10)
+asm = Assembly((pYPKpw_lin, {cassettes}), limit=167-47-10)
 
 seq = asm.circular_products[0]
         

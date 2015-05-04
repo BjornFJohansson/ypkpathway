@@ -1,0 +1,12 @@
+package:
+  name: conda_build_test
+  version: 0.0.1
+build: 
+  number: 1
+  script: 
+    - echo "This is my binstar build with conda"
+requirements:
+  run:
+    - python
+about:
+  summary: This is a binstar build test! 
