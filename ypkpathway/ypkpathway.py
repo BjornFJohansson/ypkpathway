@@ -24,7 +24,7 @@ import errno
 import codecs
 
 from docutils.core 				import publish_string
-from docutils.writers.html4css1 import Writer as HisWriter
+from docutils.writers.html4css1    import Writer as HisWriter
 from pkg_resources 				import resource_filename
 from Bio.Restriction 			import ZraI, AjiI, EcoRV
 
@@ -154,7 +154,7 @@ class pYPKa_clone(object):
             self.insert.description+= "_prd"
 
             self.name = u"pYPKa_{}_{}{}".format(self.letter,
-                                                data.name,
+                                                data.name.split("tp")[0],
                                                 {ZraI : "tp",
                                                  AjiI : "",
                                                  EcoRV: "tp" }[enzyme])
@@ -280,9 +280,9 @@ class pYPK0_tp_gene_tp(object):
             #self.seq.annotations['organism'] = "123"       # ORGANISM
             #self.seq.annotations['comment']  = "123"       # COMMENT
 
-            self.seq.description =  "pYPK0_{}tp_{}_{}tp".format(self.pYPKa_clones[0].insert_description,
+            self.seq.description =  "pYPK0_{}tp_{}_{}tp".format(self.pYPKa_clones[0].insert_description.split("tp")[0],
                                                                 self.pYPKa_clones[1].insert_description,
-                                                                self.pYPKa_clones[2].insert_description)
+                                                                self.pYPKa_clones[2].insert_description.split("tp")[0])
 
 
 
@@ -467,7 +467,7 @@ class PathWay(object):
 
         for c in self.tp_gene_tp:
             self.files.update(c.files)
-            pathway_name+="{}tp_{}_".format(c.tp1_description, c.gene_description)
+            pathway_name+="{}tp_{}_".format(c.tp1_description.split("tp")[0], c.gene_description)
 
             self.files["report.rst"]+=  "`{0} <./{0}.txt>`_ (`plan <./{0}_plan.html>`__)\n\n".format(c.seq.description)
             for p in c.pYPKa_clones:
@@ -480,7 +480,7 @@ class PathWay(object):
                         seguids.append(p.insert.seguid())
             self.files["report.rst"]+= "\n"
 
-        pathway_name+="{}tp_pw".format(self.tp_gene_tp[-1].tp2_description)
+        pathway_name+="{}tp_pw".format(self.tp_gene_tp[-1].tp2_description.split("tp")[0])
 
         self.files["{}.txt".format(pathway_name)] = self.seq.synced("tcgcgcgtttcggtgatgacggtgaaaacctctg").format("gb").decode("utf-8")
 
@@ -585,6 +585,7 @@ def main():
         for name, content in pw.files.items():
             with codecs.open(os.path.join('ypk_assembly',name),'w', "utf8") as f:
                 f.write(content)
+        print "Assembly finished! files written to folder ypkpathway"
 
 if __name__ == "__main__":
 
