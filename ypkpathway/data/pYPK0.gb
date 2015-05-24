@@ -1,5 +1,5 @@
-LOCUS       pYKP0                   5762 bp    DNA     circular UNK 22-AUG-2014
-DEFINITION  .
+LOCUS       pYKP0                   5762 bp    DNA     circular UNK 09-MAY-2015
+DEFINITION  pYPK0 cSEGUID_qSJ95NM815X60yBy4l6iI69a_Dw_2015-05-09T06:06:22.550085
 ACCESSION   <unknown id>
 VERSION     <unknown id>
 KEYWORDS    .
@@ -8,39 +8,60 @@ SOURCE      .
             .
 FEATURES             Location/Qualifiers
      gene            complement(315..947)
+                     /ApEinfo_revcolor="red"
+                     /ApEinfo_fwdcolor="cyan"
                      /gene="crp"
+                     /label="feat633"
      CDS             complement(315..947)
                      /product="catabolite gene activator protein"
                      /codon_start=1
+                     /label="artificially mutated crp; cyclic AMP receptor
+                     protein"
                      /transl_table=11
                      /note="artificially mutated crp; cyclic AMP receptor
                      protein"
                      /db_xref="GI:2769262"
                      /experiment="experimental evidence, no additional details
                      recorded"
+                     /ApEinfo_revcolor="red"
                      /translation="MVLGKPQTDPTLEWFLSHCHIHKYPSKSTLIHQGEKAETLYYIVK
                      GSVAVLIKDEEGKEMILSYLNQGDFIGELGLFEEGQERSAWVRAKTACEVAEISYKKFR
                      QLIQVNPDILMRLSAQMARRLQVTSEKVGNLAFLDVSGRIAQTLLNLAKQPDAMTHPDG
                      MQIKITRQEIGQIVGCSRQTVGRILKMLEDQNLISAHGKTIVVYGTR"
                      /gene="crp"
                      /protein_id="CAA04867.1"
+                     /ApEinfo_fwdcolor="cyan"
      overlap         1279..1978
                      /note="olp_lQPmXhrpcJP0VhkB1gXCrZVyjqA"
-                     /ApEinfo_revcolor="#EEB2EB"
+                     /ApEinfo_fwdcolor="#C1F3B1"
                      /chksum="lQPmXhrpcJP0VhkB1gXCrZVyjqA"
-                     /ApEinfo_fwdcolor="#EBC1DD"
+                     /label="olp_lQPmXhrpcJP0VhkB1gXCrZVyjqA"
+                     /ApEinfo_revcolor="#FED2EA"
      rep_origin      1313
+                     /ApEinfo_revcolor="red"
                      /direction=BOTH
+                     /ApEinfo_fwdcolor="cyan"
+                     /label="feat1"
+     misc            complement(2057..2860)
+                     /ApEinfo_revcolor="red"
+                     /ApEinfo_fwdcolor="cyan"
+                     /label="URA3"
+     CDS             complement(4709..5367)
+                     /ApEinfo_revcolor="red"
+                     /ApEinfo_fwdcolor="cyan"
+                     /label="AmpR"
      overlap         4810..5013
-                     /note="olp_KFRCKsb+YIAV0bzDHHxIssmW6qY"
-                     /ApEinfo_revcolor="#B0C9EA"
-                     /chksum="KFRCKsb+YIAV0bzDHHxIssmW6qY"
-                     /ApEinfo_fwdcolor="#F6DEC7"
+                     /note="olp_KFRCKsb-YIAV0bzDHHxIssmW6qY"
+                     /ApEinfo_fwdcolor="#E0E3B5"
+                     /chksum="KFRCKsb-YIAV0bzDHHxIssmW6qY"
+                     /label="olp_KFRCKsb-YIAV0bzDHHxIssmW6qY"
+                     /ApEinfo_revcolor="#E9B4CC"
      overlap         5341..5585
-                     /note="olp_PrH6fFQ/Xlj09X/ymVtJGXI9hx0"
-                     /ApEinfo_revcolor="#D7D8E2"
-                     /chksum="PrH6fFQ/Xlj09X/ymVtJGXI9hx0"
-                     /ApEinfo_fwdcolor="#C3D9B2"
+                     /note="olp_PrH6fFQ_Xlj09X_ymVtJGXI9hx0"
+                     /ApEinfo_fwdcolor="#D3D0D8"
+                     /chksum="PrH6fFQ_Xlj09X_ymVtJGXI9hx0"
+                     /label="olp_PrH6fFQ_Xlj09X_ymVtJGXI9hx0"
+                     /ApEinfo_revcolor="#E7F7D0"
 ORIGIN
         1 tcgcgcgttt cggtgatgac ggtgaaaacc tctgacacat gcagctcccg gagacggtca
        61 cagcttgtct gtaagcggat gccgggagca gacaagcccg tcagggcgcg tcagcgggtg

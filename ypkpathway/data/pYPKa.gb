@@ -1,49 +1,25 @@
-LOCUS       AJ001614                3128 bp    DNA     circular BCT 14-NOV-2006
-DEFINITION  Escherichia coli plasmid pCAPs.
-ACCESSION   AJ001614
-VERSION     AJ001614.1  GI:2769261
-KEYWORDS    ampicillin resistance; beta-lactamase; bla gene; catabolite gene
-            activator protein; crp gene; cyclic amp receptor protein.
-SOURCE      Escherichia coli
-  ORGANISM  Escherichia coli
-            Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales;
-            Enterobacteriaceae; Escherichia.
-REFERENCE   1
-  AUTHORS   Schlieper,D., von Wilcken-Bergmann,B., Schmidt,M., Sobek,H. and
-            Muller-Hill,B.
-  TITLE     A positive selection vector for cloning of long polymerase chain
-            reaction fragments based on a lethal mutant of the crp gene of
-            Escherichia coli
-  JOURNAL   Anal. Biochem. 257 (2), 203-209 (1998)
-   PUBMED   9514792
-REFERENCE   2  (bases 1 to 3128)
-  AUTHORS   Schlieper,D.
-  TITLE     Direct Submission
-  JOURNAL   Submitted (15-SEP-1997) Schlieper D., Institute of Genetics,
-            University of Cologne, Weyertal 121, Cologne, 50931, GERMANY
+LOCUS       pYPKa                   3128 bp    DNA     circular UNK 08-MAY-2015
+DEFINITION  Product_568_pCAPsAjiIR (22-mer)_567_pCAPsAjiIF (23-mer)
+            cSEGUID_aV1eIrzOiCjvw01yvKkxDXHKLMk_2015-05-08T16:41:28.034624
+ACCESSION   3128bp TmU_6uVdgKq5aQhTpHux7dVk9J8
+VERSION     3128bp TmU_6uVdgKq5aQhTpHux7dVk9J8
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
 FEATURES             Location/Qualifiers
-     source          1..3128
-                     /db_xref="taxon:562"
-                     /mol_type="genomic DNA"
-                     /organism="Escherichia coli"
-                     /plasmid="pCAPs"
-     gene            complement(315..947)
-                     /gene="crp"
-     CDS             complement(315..947)
-                     /product="catabolite gene activator protein"
-                     /codon_start=1
-                     /transl_table=11
-                     /note="artificially mutated crp; cyclic AMP receptor
-                     protein"
-                     /db_xref="GI:2769262"
-                     /experiment="experimental evidence, no additional details
-                     recorded"
-                     /translation="MVLGKPQTDPTLEWFLSHCHIHKYPSKSTLIHQGEKAETLYYIVK
-                     GSVAVLIKDEEGKEMILSYLNQGDFIGELGLFEEGQERSAWVRAKTACEVAEISYKKFR
-                     QLIQVNPDILMRLSAQMARRLQVTSEKVGNLAFLDVSGRIAQTLLNLAKQPDAMTHPDG
-                     MQIKITRQEIGQIVGCSRQTVGRILKMLEDQNLISAHGKTIVVYGTR"
-                     /gene="crp"
-                     /protein_id="CAA04867.1"
+     primer_bind     complement(558..578)
+                     /note="567_pCAPsAjiIF"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            complement(558..580)
+                     /label="567_pCAPsAjiIF"
+     misc            581..602
+                     /label="568_pCAPsAjiIR"
+     primer_bind     583..602
+                     /note="568_pCAPsAjiIR"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
      rep_origin      1313
                      /direction=BOTH
      gene            complement(2072..2932)
@@ -77,7 +53,7 @@ ORIGIN
       361 aggttctgat cctcgagcat cttaagaatt cgtcccacgg tttgtctaga gcagccgaca
       421 atctggccaa tttcctgacg ggtaattttg atttgcatgc cgtccgggtg agtcatagcg
       481 tctggttgtt ttgccagatt cagcagagtc tgtgcaatgc ggccgctgac gtcgaggaac
-      541 gccaggttgc ccactttctc actagtgacc tgcagccggc gcgccatctg tgcagacaaa
+      541 gccaggttgc ccactttctc actagtgacc tgcagccgac gtgccatctg tgcagacaaa
       601 cgcatcagga tatccggatt tacctgaatc aattggcgaa attttttgta cgaaatttca
       661 gccacttcac aggcggtttt cgcacgtacc catgcgctac gttcctggcc ctcttcaaac
       721 aggcccagtt cgccaataaa atcaccctga ttcagatagg agaggatcat ttctttaccc
