@@ -40,10 +40,6 @@ The report will include:
 * Diagnostic PCR product fragment lengths indicating correct and incorrect clonings
 
 
-ypkpathway depends on the `pydna <https://pypi.python.org/pypi/pydna/>`_ package.
-
-
-
 NEWS
 ====
 
