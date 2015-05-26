@@ -46,6 +46,8 @@ NEWS
 =======   ========== =============================================================
 version   date       comment
 =======   ========== =============================================================
+0.8.1     2015-05-26 pydna dependency 0.9.1
+
 0.8.0     2015-05-26 Complete change in functionality. IPython notebook files are
                      generated and executed instead of rst and html files.
 
@@ -65,7 +67,7 @@ System Requirements
 
 - `Python 2.7 <http://www.python.org>`_.
 
-- `pydna>=0.9.0 <https://pypi.python.org/pypi/pydna/>`_.
+- `pydna>=0.9.1 <https://pypi.python.org/pypi/pydna/>`_.
 
 - `ipython>=3.1.0 <https://pypi.python.org/pypi/ipython/>`_.
 
