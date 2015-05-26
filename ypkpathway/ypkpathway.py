@@ -8,13 +8,14 @@ Usage: ypkpathway <path> [<dir>]
 
 Arguments:
     <path>  path to data file containing sequences to be assembled
+
     <dir>   Directory to put generated sequence files,defaults to
-            ypk_assembly in the current working directory.
+            <ypk_assembly> in the current working directory.
 
 Options:
     -h, --help      Show this screen.
     -v, --version   Show version.
-    -t, --tests     Run tests
+    -t, --test      Run tests.
 """
 
 import io
@@ -241,6 +242,7 @@ def main():
         arguments = docopt.docopt(__doc__)
     except docopt.DocoptExit as e:
         print e.message
+        sys.exit(0)
 
     dir_ = "ypk_assembly"
 
@@ -252,6 +254,10 @@ def main():
         __version__ = get_versions()["version"][:5]
         del get_versions
         print u"ypkpathway version:",__version__
+
+    if arguments["--test"]:
+        import nose
+        nose.run()
 
     if arguments["<path>"]:
         file_ = arguments["<path>"]
