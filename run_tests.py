@@ -18,10 +18,10 @@ def main():
     print "Operating system:", os.name, sys.platform
     print "running tests"
     print
-    nose.run( ["verbosity=3", "--nocapture"] )
-    os.chdir(os.path.join(dname, "ypkpathway"))
-    print "doctests"
-    nose.run( ["verbosity=3","--nocapture", "with-doctest=1"])
+    nose.run(argv=[__file__, "--all-modules", "--verbosity=3", "--nocapture", "--with-doctest", "--doctest-options=+ELLIPSIS"])
+    #os.chdir(os.path.join(dname, "ypkpathway"))
+    #print "doctests"
+    #nose.run(argv=[__file__, "--all-modules", "--verbosity=3", "--nocapture", "--with-doctest", "--doctest-options=+ELLIPSIS"])
     os.chdir(cwd)
 
 if __name__ == '__main__':

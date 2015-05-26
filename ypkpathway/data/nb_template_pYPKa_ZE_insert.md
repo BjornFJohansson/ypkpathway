@@ -30,6 +30,11 @@ Design primers for the terminator promoter. The primers has specific tails.
 
 	fp, rp = pydna.cloning_primers(ins, fp_tail=fp_tail, rp_tail=rp_tail)
 
+Primers are given the following names:
+
+	fp.id = "{tp}fw"
+	rp.id = "{tp}rv"
+
 	print fp.format("fasta")
 
 	print rp.format("fasta")
@@ -109,8 +114,8 @@ Calculate cseguid checksum for the resulting plasmids for future reference.
 
 The sequences are named.
 
-	pYPKa_Z_{tp}.locus = "pYPKa_Z_{tp}"
-	pYPKa_E_{tp}.locus = "pYPKa_Z_{tp}"
+	pYPKa_Z_{tp}.locus = "pYPKa_Z_{tp}"[:16]
+	pYPKa_E_{tp}.locus = "pYPKa_Z_{tp}"[:16]
 
 Stamp sequence with cSEGUID checksum.
 
@@ -131,6 +136,6 @@ Write sequence to a local file.
 #[Download](pYPKa_Z_{tp}.gb)
 
 	import pydna
-	reloaded = pydna.read(("pYPKa_E_{tp}.gb")
+	reloaded = pydna.read("pYPKa_E_{tp}.gb")
 	reloaded.verify_stamp()
 

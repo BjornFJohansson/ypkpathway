@@ -1,1 +1,0 @@
-# xylose-metabolic-pathways

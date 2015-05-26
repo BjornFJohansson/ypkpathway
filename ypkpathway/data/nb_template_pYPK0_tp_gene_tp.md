@@ -1,7 +1,7 @@
-# pYPK0_{tpz}tp_{gene}_{tpe}tp
+# pYPK0_{tpz}_{gene}_{tpe}
 
 This notebook describes the construction of the E. coli/S. cerevisiae
-expression vector pYPK0_{tpz}tp_{gene}_{tpe}tp.
+expression vector pYPK0_{tpz}_{gene}_{tpe}.
 
 It is made by _in-vivo_ homologous recombination between
 four linear DNA fragments in a Saccharomyces ura3 mutant. 
@@ -83,7 +83,7 @@ Calculate cseguid checksum for the resulting plasmid for future reference.
 The file is named.
 
 	result.locus = "pYPK0_tp_g_tp"
-    result.definition = "pYPK0_{tpz}tp_{gene}_{tpe}tp"
+    result.definition = "pYPK0_{tpz}_{gene}_{tpe}"
 
 Stamp sequence with cSEGUID checksum.
 
@@ -91,12 +91,12 @@ Stamp sequence with cSEGUID checksum.
 
 Write sequence to a local file.
 
-    result.write("pYPK0_{tpz}tp_{gene}_{tpe}tp.gb")
+    result.write("pYPK0_{tpz}_{gene}_{tpe}.gb")
 
-#[Download](pYPK0_{tpz}tp_{gene}_{tpe}tp.gb)
+#[Download](pYPK0_{tpz}_{gene}_{tpe}.gb)
 
     import pydna
-    reloaded = pydna.read("pYPK0_{tpz}tp_{gene}_{tpe}tp.gb")
+    reloaded = pydna.read("pYPK0_{tpz}_{gene}_{tpe}.gb")
     reloaded.verify_stamp()
 
 

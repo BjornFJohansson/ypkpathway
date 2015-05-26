@@ -28,6 +28,11 @@ transcription.
 
 	fp, rp = pydna.cloning_primers(ins, fp_tail=fp_tail)
 
+Primers are given the following names:
+
+	fp.id = "{insert}fw"
+	rp.id = "{insert}rv"
+
 	print fp.format("fasta")
 
 	print rp.format("fasta")
@@ -84,7 +89,7 @@ Calculate cseguid checksum for the resulting plasmids for future reference.
 
 The file is named
 
-	pYPKa_A_{insert}.locus = "pYPKa_A_{insert}"
+	pYPKa_A_{insert}.locus = "pYPKa_A_{insert}"[:16]
 
 Stamp sequence with cSEGUID checksum.
 

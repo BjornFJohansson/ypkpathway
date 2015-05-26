@@ -20,13 +20,11 @@ The backbone vector is linearized with EcoRV.
     assembly_fragments = [ pYPKpw.linearize(EcoRV) ]
 
 The expression cassettes comes from a series of single gene expression vectors.
-{tp_gene_tp_links}
 
     cas_vectors ='''
-{cas_vectors}
-                 '''.split()
+{cas_vectors}'''.splitlines()
 
-    template_vectors = [pydna.read(v.strip()) for v in cas_vectors]
+    template_vectors = [pydna.read(v.strip()) for v in cas_vectors if v.strip()]
 
     template_vectors
 
@@ -83,3 +81,17 @@ Write sequence to a local file.
     reloaded = pydna.read("{name}.gb")
 
     reloaded.verify_stamp()
+
+###New Primers needed for assembly.
+
+{primer_list}
+
+###New pYPKa clones needed for assembly.
+
+{pYPKa_clones}
+
+###New pYPK0_tp_gene_tp clones needed for assembly.
+
+{tp_gene_tp_links}
+	
+

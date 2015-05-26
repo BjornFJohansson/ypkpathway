@@ -4,25 +4,19 @@ ypkpathway
 
 .. image:: https://travis-ci.org/BjornFJohansson/ypkpathway.svg 
     :target: https://travis-ci.org/BjornFJohansson/ypkpathway
-    
-.. image:: https://coveralls.io/repos/BjornFJohansson/ypkpathway/badge.svg?branch=master 
-    :target: https://coveralls.io/r/BjornFJohansson/ypkpathway?branch=master
-  
-.. image:: https://readthedocs.org/projects/ypkpathway/badge/?version=latest
-    :target: https://readthedocs.org/projects/ypkpathway/?badge=latest
-    :alt: Documentation Status
 
-.. image:: https://pypip.in/download/ypkpathway/badge.svg
-    :target: https://pypi.python.org/pypi/ypkpathway/
+.. image:: https://img.shields.io/pypi/v/ypkpathway.png
+    :target: https://pypi.python.org/pypi//pydna/
     :alt: Downloads
     
-.. image:: https://pypip.in/version/ypkpathway/badge.svg
-    :target: https://pypi.python.org/ypkpathway/
+.. image:: https://img.shields.io/pypi/dm/ypkpathway.png
+    :target: https://pypi.python.org/pypi/pydna/
     :alt: Latest Version
 
-.. image:: https://pypip.in/wheel/ypkpathway/badge.svg
-    :target: https://pypi.python.org/pypi/ypkpathway/
-    :alt: Wheel Status
+.. image:: https://www.versioneye.com/user/projects/55645b646361300021ae0200/badge.svg?style=flat(Dependency Status)!
+    :target: https://www.versioneye.com/user/projects/55645b646361300021ae0200
+    :alt: versioneye
+
     
 Ypkpatwhay provides a command line application for planning DNA assembly projects 
 using the Yeast Pathway Kit protocol. 
@@ -56,6 +50,9 @@ NEWS
 =======   ========== =============================================================
 version   date       comment
 =======   ========== =============================================================
+0.8.0     2015-05-26 Complete change in functionality. IPython notebook files are
+                     generated and executed instead of rst and html files.
+
 0.6.0     2015-04-17 Added nosetests
 
 0.5.0	  2014-12-09 Changed to work with new caching version of pydna. Fixed 
@@ -72,11 +69,14 @@ System Requirements
 
 - `Python 2.7 <http://www.python.org>`_.
 
-- `pydna>=0.7.2 <https://pypi.python.org/pypi/pydna/>`_.
+- `pydna>=0.9.0 <https://pypi.python.org/pypi/pydna/>`_.
 
-- `docutils>=0.11 <https://pypi.python.org/pypi/docutils/>`_.
+- `ipython>=3.1.0 <https://pypi.python.org/pypi/ipython/>`_.
 
-- `docopt>=0.6.1 <https://pypi.python.org/pypi/docopt/>`_.
+- `docopt>=0.6.2 <https://pypi.python.org/pypi/docopt/>`_.
+
+- `notedown>=1.4.4 <https://pypi.python.org/pypi/notedown/>`_.
+
 
 
 Python 2.x
