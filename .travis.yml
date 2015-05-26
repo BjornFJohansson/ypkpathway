@@ -13,8 +13,7 @@ before_script:
   - pip install coveralls
 script:
   - python setup.py version
-  - nosetests -v -w tests      --with-coverage --with-doctest
-  - nosetests -v -w ypkpathway --with-coverage --with-doctest
+  - python run_tests.py
 
 deploy:
   provider: pypi
