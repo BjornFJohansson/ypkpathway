@@ -2,35 +2,35 @@
 ypkpathway
 ==========
 
-.. image:: https://travis-ci.org/BjornFJohansson/ypkpathway.svg 
+.. image:: https://travis-ci.org/BjornFJohansson/ypkpathway.svg
     :target: https://travis-ci.org/BjornFJohansson/ypkpathway
 
 .. image:: https://img.shields.io/pypi/v/ypkpathway.png
-    :target: https://pypi.python.org/pypi//pydna/
+    :target: https://pypi.python.org/pypi/ypkpathway/
     :alt: Downloads
-    
+
 .. image:: https://img.shields.io/pypi/dm/ypkpathway.png
-    :target: https://pypi.python.org/pypi/pydna/
+    :target: https://pypi.python.org/pypi/ypkpathway/
     :alt: Latest Version
 
 .. image:: https://www.versioneye.com/user/projects/55645b646361300021ae0200/badge.svg?style=flat(Dependency Status)!
     :target: https://www.versioneye.com/user/projects/55645b646361300021ae0200
     :alt: versioneye
 
-    
-Ypkpatwhay provides a command line application for planning DNA assembly projects 
-using the Yeast Pathway Kit protocol. 
+
+Ypkpatwhay provides a command line application for planning DNA assembly projects
+using the Yeast Pathway Kit protocol.
 
 Typical usage at the command line could look like this::
 
     bjorn@bjorn-UL30A:/$ ypkpathway four_gene_xylose_pathway.txt
-    
+
 Where four_gene_xylose_pathway1.txt is a text file containing DNA sequences to be assembled
 in FASTA or Genbank format. See documentation for file format.
 
 The ypkpathway creates a subdirectory called generates a sub directory called "ypk_assembly".
-This subdirectory will contain a file summary of the DNA assembly project called report.html 
-which can be opened in a web browser. 
+This subdirectory will contain a file summary of the DNA assembly project called report.html
+which can be opened in a web browser.
 
 The report will include:
 
@@ -51,12 +51,12 @@ version   date       comment
 
 0.6.0     2015-04-17 Added nosetests
 
-0.5.0	  2014-12-09 Changed to work with new caching version of pydna. Fixed 
+0.5.0	  2014-12-09 Changed to work with new caching version of pydna. Fixed
 				     unicode errors.
 
 0.0.9     2014-06-14 bugfix
                      changed errors in automatically generated pydna source files
-                     
+
 0.0.8     2014-05-14 first release
 =======   ========== =============================================================
 
@@ -92,13 +92,13 @@ Installation
 The best way of installing ypkpathway is with `pip <https://pypi.python.org/pypi/pip/>`_::
 
     sudo pip install ypkpathway <enter>
-    
+
 Pip will take care of the installation of any missing dependencies.
 
 Source
 ------
 
-Make sure all dependencies are intalled. Open the pydna source code 
+Make sure all dependencies are intalled. Open the pydna source code
 directory (containing the setup.py file) in terminal and type::
 
     sudo python setup.py install <enter>
