@@ -1,8 +1,6 @@
 package:
-  name: conda_build_test
-  version: 0.0.1
+  name: ypkpathway
 build: 
-  number: 1
   script: 
     - echo "This is my binstar build with conda"
 requirements:
