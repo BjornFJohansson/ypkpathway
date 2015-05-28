@@ -23,6 +23,7 @@ import re
 #from time import gmtime, strftime
 import sys
 import os
+import webbrowser
 import errno
 import codecs
 import docopt
@@ -231,6 +232,8 @@ def pathway(pth, dir_="ypkassembly"):
     with io.open("pw.ipynb", 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
     nb_executed, resources = pp.preprocess(nb, resources={})
     nbformat.write(nb, "pw.ipynb")
+
+    webbrowser.open("pw.ipynb")
 
     os.chdir(cwd)
 
