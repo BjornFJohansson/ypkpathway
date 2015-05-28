@@ -46,6 +46,8 @@ NEWS
 =======   ========== =============================================================
 version   date       comment
 =======   ========== =============================================================
+0.8.2     2015-05-28 pydna dependency 0.9.2, fix a unicode env variable.
+
 0.8.1     2015-05-26 pydna dependency 0.9.1
 
 0.8.0     2015-05-26 Complete change in functionality. IPython notebook files are
