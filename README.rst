@@ -34,10 +34,10 @@ which can be opened in a web browser.
 
 The report will include:
 
-* The sequence of the final pathway
-* Sequences of all generated intermediate vectors
-* All PCR primers needed for the amplification of pathway components
-* Diagnostic PCR product fragment lengths indicating correct and incorrect clonings
+* The sequence of the final pathway.
+* Sequences of all generated intermediate vectors.
+* All PCR primers needed for the amplification of pathway components.
+* Diagnostic PCR product fragment lengths indicating correct and incorrect clonings.
 
 
 NEWS
@@ -46,6 +46,8 @@ NEWS
 =======   ========== =============================================================
 version   date       comment
 =======   ========== =============================================================
+0.8.3     2015-05-29 windows fix for opening final pathway notebook.
+
 0.8.2     2015-05-28 pydna dependency 0.9.2, fix a unicode env variable.
 
 0.8.1     2015-05-26 pydna dependency 0.9.1
