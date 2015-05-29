@@ -34,6 +34,7 @@ from IPython.core.interactiveshell import InteractiveShell
 import notedown
 import pydna
 from pkg_resources import resource_filename
+import appdirs
 
 re_cas  = re.compile("pYPK0_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})")
 re_cas  = re.compile("pYPK0_([^_]{2,15})_([^_]{2,15})_([^_]{2,15})")
@@ -185,13 +186,16 @@ def pathway(pth, dir_="ypkassembly"):
 
 
     print
-    print "executing pYPKa notebooks.."
+    print "executing pYPKa notebooks"
+    print
 
     shell = InteractiveShell.instance()
     new_primers = []
 
     for name in (f for f in os.listdir(".") if re.match("pYPKa.+\.ipynb", f)):
-        print name
+        print
+        print "###", name
+        print
         with io.open(name, 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
         nb_executed, resources = pp.preprocess(nb, resources={})
         nbformat.write(nb, name)
@@ -203,7 +207,7 @@ def pathway(pth, dir_="ypkassembly"):
         new_primers.extend( (d["fp"], d["rp"]) )
 
     print
-    print "executing pYPK0 notebooks.."
+    print "executing pYPK0 notebooks"
 
     for name in (f for f in os.listdir(".") if re.match("pYPK0.+\.ipynb", f)):
         print name
@@ -225,14 +229,15 @@ def pathway(pth, dir_="ypkassembly"):
     with open("pw.ipynb", "w") as f: f.write(nb)
 
     print "executing final pathway notebook"
-    print "pw.ipynb"
     with io.open("pw.ipynb", 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
     nb_executed, resources = pp.preprocess(nb, resources={})
     nbformat.write(nb, "pw.ipynb")
 
+    #webbrowser.open("pw.ipynb")
+
     os.chdir(cwd)
 
-    return u"Assembly finished! files written to folder ypkpathway"
+    return u"Finished! see pw.ipynb in folder {}".format(dir_)
 
 def main():
 
@@ -268,8 +273,13 @@ def main():
         print u"Assembly started! (This might take a while...)"
 
         print pathway( pydna.parse(text), dir_ )
-
+        
         subprocess.Popen(["ipython", "notebook", os.path.join(dir_, "pw.ipynb")])
 
 if __name__ == "__main__":
     pass
+
+#pass folder to pathway function
+#use tempfolder for tests
+#test ypkpathway from command line
+#write new manual
