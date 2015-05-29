@@ -37,7 +37,7 @@ install:
   - "%CMD_IN_ENV% pip install -r requirements.txt"
   - "%CMD_IN_ENV% pip install -e ."
   - "%CMD_IN_ENV% python setup.py version"
-  - "%CMD_IN_ENV% python run_tests.pys"
+  - "%CMD_IN_ENV% python run_tests.py"
 
 
 
