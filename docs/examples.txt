@@ -1,14 +1,19 @@
+
 >TEF1tp
 ACAATGC...AAA
+
 >gene1
 atgatc...taa
+
 >TDH3tp
 ATAAAAA...AAA
 
 >TDH3tp
 ATAAAAA...AAA
+
 >gene2
 atgcac...tag
+
 >TPI1tp
 TGTTTAA...AAA
 

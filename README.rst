@@ -22,25 +22,40 @@ ypkpathway
 
 
 Ypkpatwhay provides a command line application for planning DNA assembly projects
-using the Yeast Pathway Kit protocol.
+using the Yeast Pathway Kit protocol. 
 
 Typical usage at the command line could look like this::
 
     bjorn@bjorn-UL30A:/$ ypkpathway four_gene_xylose_pathway.txt
 
-Where four_gene_xylose_pathway1.txt is a text file containing DNA sequences to be assembled
-in FASTA or Genbank format. See documentation for file format.
+Where four_gene_xylose_pathway1.txt is a text file containing DNA sequences in FASTA or Genbank format 
+to be assembled. The ypkpathway command above creates a folder with a series of
+IPython notebooks describing the assembly process simulated with pydna. Help is available by the -h option:
 
-The ypkpathway creates a subdirectory called generates a sub directory called "ypk_assembly".
-This subdirectory will contain a file summary of the DNA assembly project called report.html
-which can be opened in a web browser.
+    bjorn@bjorn-UL30A:/$ ypkpathway -h
+    Usage: ypkpathway <path> [<dir>]
+           ypkpathway -h|--help
+           ypkpathway -v|--version
+           ypkpathway -t|--test
 
-The report will include:
+    Arguments:
+        <path>  path to data file containing sequences to be assembled
 
-* The sequence of the final pathway.
-* Sequences of all generated intermediate vectors.
+        <dir>   Directory to put generated sequence files,defaults to
+                <ypk_assembly> in the current working directory.
+
+    Options:
+        -h, --help      Show this screen.
+        -v, --version   Show version.
+        -t, --test      Run tests.
+
+
+The results folder will include:
+
+* The sequence of the final pathway and all intermediate vectors in Genbank format
+* IPython notebooks file describing the final assembly and intermediate assemblies.
 * All PCR primers needed for the amplification of pathway components.
-* Diagnostic PCR product fragment lengths indicating correct and incorrect clonings.
+* Expected diagnostic PCR product fragment lengths indicating correct and incorrect clonings.
 
 
 NEWS
@@ -49,6 +64,9 @@ NEWS
 =======   ========== =============================================================
 version   date       comment
 =======   ========== =============================================================
+0.8.4     2015-05-30 An IPython.display.FileLink object is now returned from the 
+                     ypkpathway function.
+
 0.8.3     2015-05-29 windows fix for opening final pathway notebook.
 
 0.8.2     2015-05-28 pydna dependency 0.9.2, fix a unicode env variable.
@@ -83,7 +101,6 @@ System Requirements
 - `notedown>=1.4.4 <https://pypi.python.org/pypi/notedown/>`_.
 
 
-
 Python 2.x
 ----------
 
@@ -107,7 +124,7 @@ Pip will take care of the installation of any missing dependencies.
 Source
 ------
 
-Make sure all dependencies are intalled. Open the pydna source code
+Make sure all dependencies are installed. Open the pydna source code
 directory (containing the setup.py file) in terminal and type::
 
     sudo python setup.py install <enter>
@@ -116,10 +133,21 @@ If you need to do additional configuration, e.g. changing the base
 directory, please type `python setup.py`, or see the documentation for
 Setuptools.
 
+Testing
+-------
+
+Nose is needed to run the test suit.
+
+    sudo pip install nose <enter>
+
+Then from the source directory do:
+
+    python run_tests.py
+
 Distribution Structure
 ======================
 
-README.txt          -- This file.
+README.rst          -- This file.
 
 LICENSE.txt         -- What you can do with the code.
 
@@ -127,7 +155,7 @@ MANIFEST.in         -- Tells distutils what files to distribute
 
 setup.py            -- Installation file.
 
-run_tests.py        -- run tests by "python run_tests.py"<enter> (Currently empty)
+run_tests.py        -- run tests by "python run_tests.py"<enter>
 
 ypkpathway/         -- The actual code.
 

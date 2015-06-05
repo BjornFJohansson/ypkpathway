@@ -4,18 +4,16 @@ u"""
 Usage: ypkpathway <path> [<dir>]
        ypkpathway -h|--help
        ypkpathway -v|--version
-       ypkpathway -t|--test
 
 Arguments:
     <path>  path to data file containing sequences to be assembled
 
-    <dir>   Directory to put generated sequence files,defaults to
+    <dir>   Directory to put generated sequence files, defaults to
             <ypk_assembly> in the current working directory.
 
 Options:
     -h, --help      Show this screen.
     -v, --version   Show version.
-    -t, --test      Run tests.
 """
 
 import io
@@ -30,6 +28,7 @@ import docopt
 from IPython import nbformat
 from IPython.nbconvert.preprocessors.execute import ExecutePreprocessor
 from IPython.core.interactiveshell import InteractiveShell
+from IPython.display import FileLink
 
 import notedown
 import pydna
@@ -201,8 +200,9 @@ def pathway(pth, dir_="ypkassembly"):
                 code = shell.input_transformer_manager.transform_cell(cell.source)
                 exec( code, d)
         new_primers.extend( (d["fp"], d["rp"]) )
+    else:
+        print "No pYPKa notebooks found."
 
-    print
     print "executing pYPK0 notebooks.."
 
     for name in (f for f in os.listdir(".") if re.match("pYPK0.+\.ipynb", f)):
@@ -210,6 +210,8 @@ def pathway(pth, dir_="ypkassembly"):
         with io.open(name, 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
         nb_executed, resources = pp.preprocess(nb, resources={})
         nbformat.write(nb, name)
+    else:
+        print "No pYPK0 notebooks found."
 
     nbtemp = read_data_file("nb_template_pYPK0_pw.md")
 
@@ -232,7 +234,9 @@ def pathway(pth, dir_="ypkassembly"):
 
     os.chdir(cwd)
 
-    return u"Assembly finished! files written to folder ypkpathway"
+    fl = FileLink("mypathway/pw.ipynb")
+
+    return fl
 
 def main():
 
@@ -253,10 +257,6 @@ def main():
         del get_versions
         print u"ypkpathway version:",__version__
 
-    if arguments["--test"]:
-        import nose
-        nose.run()
-
     if arguments["<path>"]:
         file_ = arguments["<path>"]
         try:
@@ -267,7 +267,9 @@ def main():
 
         print u"Assembly started! (This might take a while...)"
 
-        print pathway( pydna.parse(text), dir_ )
+        fl = pathway( pydna.parse(text), dir_ )
+
+        print u"opening IPython notebook {}".format(fl.path)
 
         subprocess.Popen(["ipython", "notebook", os.path.join(dir_, "pw.ipynb")])
 
