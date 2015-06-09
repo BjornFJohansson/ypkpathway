@@ -41,6 +41,10 @@ def test_ypk():
 
         assert( s.seguid() == code )
 
+    try:
+        shutil.rmtree(tmp)
+    except OSError:
+        pass
 
 if __name__ == '__main__':
     nose.runmodule()
