@@ -255,6 +255,7 @@ def main():
         __version__ = get_versions()["version"][:5]
         del get_versions
         print u"ypkpathway version:",__version__
+        print u"     pydna version:",pydna.__version__
 
     if arguments["<path>"]:
         file_ = arguments["<path>"]

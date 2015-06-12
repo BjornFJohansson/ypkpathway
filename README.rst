@@ -47,8 +47,6 @@ IPython notebooks describing the assembly process simulated with pydna. Help is 
     Options:
         -h, --help      Show this screen.
         -v, --version   Show version.
-        -t, --test      Run tests.
-
 
 The results folder will include:
 
