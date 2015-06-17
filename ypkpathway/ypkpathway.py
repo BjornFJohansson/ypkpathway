@@ -188,7 +188,8 @@ def pathway(pth, dir_="ypkassembly"):
 
     shell = InteractiveShell.instance()
     new_primers = []
-    d={}
+    g={}
+    l={}
     for name in (f for f in os.listdir(".") if re.match("pYPKa.+\.ipynb", f)):
         print name
         with io.open(name, 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
@@ -197,8 +198,10 @@ def pathway(pth, dir_="ypkassembly"):
         for cell in nb.cells:
             if cell.cell_type == 'code':
                 code = shell.input_transformer_manager.transform_cell(cell.source)
-                exec( code, d )
-        new_primers.extend( (d["fp"], d["rp"]) )
+                exec code in g, l
+        new_primers.extend( (l["fp"], l["rp"]) )
+        g={}
+        l={}
     else:
         print "No pYPKa notebooks found."
 

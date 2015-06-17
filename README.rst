@@ -30,7 +30,7 @@ Typical usage at the command line could look like this::
 
 Where four_gene_xylose_pathway1.txt is a text file containing DNA sequences in FASTA or Genbank format 
 to be assembled. The ypkpathway command above creates a folder with a series of
-IPython notebooks describing the assembly process simulated with pydna. Help is available by the -h option:
+IPython notebooks describing the assembly process simulated with pydna. Help is available by the -h option::
 
     bjorn@bjorn-UL30A:/$ ypkpathway -h
     Usage: ypkpathway <path> [<dir>]
