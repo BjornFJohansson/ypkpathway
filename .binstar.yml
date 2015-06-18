@@ -1,4 +1,4 @@
 package: ypkpathway
+build_targets: conda
 script:
   - conda build .
-build_targets: conda

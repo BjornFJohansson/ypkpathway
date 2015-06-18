@@ -8,6 +8,15 @@ ypkpathway
 .. image:: https://ci.appveyor.com/api/projects/status/ol5ru8po7fx5cimj?svg=true
     :target: https://ci.appveyor.com/project/BjornFJohansson/ypkpathway
 
+.. image:: https://binstar.org/bjornfjohansson/ypkpathway/badges/downloads.svg   
+    :target: https://binstar.org/bjornfjohansson/ypkpathway
+
+.. image:: https://binstar.org/bjornfjohansson/ypkpathway/badges/build.svg   
+    :target: https://binstar.org/bjornfjohansson/ypkpathway/builds
+
+.. image:: https://binstar.org/bjornfjohansson/ypkpathway/badges/downloads.svg   
+    :target: https://binstar.org/bjornfjohansson/ypkpathway
+
 .. image:: https://img.shields.io/pypi/v/ypkpathway.png
     :target: https://pypi.python.org/pypi/ypkpathway/
     :alt: Downloads

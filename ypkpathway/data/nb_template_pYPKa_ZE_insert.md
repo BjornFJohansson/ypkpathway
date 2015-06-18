@@ -2,28 +2,31 @@
 
 Plan for the construction of E. coli vectors [pYPKa_Z_{tp}](pYPKa_Z_{tp}.gb) and [pYPKa_E_{tp}](pYPKa_E_{tp}.gb)
 
-In short, the insert defined below is cloned in pYPKa using the blunt restriction enzymes ZraI or EcoRV
+The insert defined below is cloned in pYPKa using the blunt restriction enzymes ZraI or EcoRV
+
+The pydna functionality is imported in the code cell below.
 
 	import pydna
 
-load the vector backbone from a local file.
+The vector backbone is read from a local file.
 
 	pYPKa = pydna.read("pYPKa.gb")
 
-import the restriction enzymes from [Biopython](http://biopython.org/wiki/Main_Page)
+Both restriction enzymes are imported from [Biopython](http://biopython.org/wiki/Main_Page)
 
 	from Bio.Restriction import ZraI, EcoRV
 
-Linearize the vector with both enzymes.
+The vector is cut with both enzymes.
 
 	pYPKa_ZraI  = pYPKa.linearize(ZraI)
 	pYPKa_EcoRV = pYPKa.linearize(EcoRV)
 
-Read the insert from a local file.
+The insert sequence is read from a local file.
 
 	ins = pydna.read("{tp}.gb")
 
-Design primers for the terminator promoter. The primers has specific tails.
+Design primers for the terminator promoter. The primers has specific tails in order to produce a SmiI and a PacI restriction site
+in the EcoRV cloning position.
 
 	fp_tail = "ttaaat"
 	rp_tail = "taattaa"
