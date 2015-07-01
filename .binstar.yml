@@ -1,4 +1,12 @@
 package: ypkpathway
+
+before_script:
+  - conda update -n root conda
+  - conda install binstar binstar-build
+  - conda update -n root conda-build
+  - conda config --add channels BjornFJohansson
+
 build_targets: conda
+
 script:
   - conda build .
