@@ -10,3 +10,14 @@ build_targets: conda
 
 script:
   - conda build .
+
+
+
+build_targets:
+    files: /opt/miniconda/conda-bld/*/*.tar.bz2
+    channels: 'main'
+
+after_success:
+  - conda convert /opt/miniconda/conda-bld/linux-64/*.tar.bz2 -p all --output-dir /opt/miniconda/conda-bld/
+after_failure:
+  - echo Oops?
