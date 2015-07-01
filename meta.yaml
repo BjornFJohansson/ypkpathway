@@ -1,63 +1,50 @@
 package:
-  name: ypkpathway    # lower case name of package, may contain '-' but no spaces
-  version: {{ environ.get('GIT_DESCRIBE_TAG', '')[1:]+environ.get('GIT_DESCRIBE_NUMBER', '')   # version of package. Should use the PEP-386 verlib (hope this will be set by versioneer)
-                      # conventions. Note that YAML will interpret
-                      # versions like 1.0 as floats, meaning that 1.0 will
-                      # be the same as 1. To avoid this, always put the
-                      # version in quotes, so that it will be interpreted
-                      # as a string.
+  name: ypkpathway
+  version: {{ environ.get('GIT_DESCRIBE_TAG', '') }}
 
-                      # The version cannot contain a dash '-' character.
+build:
+  number: {{environ.get('BINSTAR_BUILD', 1)}}
+  entry_points:
+    - ypkpathway = ypkpathway.ypkpathway:main
 
 source:
-  path: .
-
-
-  binary_relocation: false # (defaults to true)
-
-  
-  detect_binary_files_with_prefix: true # (defaults to false)
+  path:
 
 requirements:
 
   build:
     - python
+    - pydna
+    - docopt
+    - notedown
 
   run:
     - python
-#    - argparse # [py26]
-#    - six >=1.8.0
+    - pydna
+    - docopt
+    - notedown
 
 test:
-  # files which are copied from the recipe into the (temporary) test
-  # directory which are needed during testing
-  files:
-#    - test-data.txt
-  # in addition to the run-time requirements, you can specify requirements
-  # needed during testing. The run time requirements specified above are
-  # included automatically.
   requires:
     - nose
-  # commands we want to make sure they work, which are expected to get
-  # installed by the package
   commands:
     - ypkpathway -h
     - ypkpathway -v
-  # Python imports
 
 about:
-  home: https://github.com/ilanschnell/bsdiff4
+  home: https://github.com/BjornFJohansson/ypkpathway
   license: BSD
-  summary: binary diff and patch using the BSDIFF4-format
+  summary: Assemble metabolic pathways from the command line using the ypkpathway protocol
 
 # If the app key is present, the package will be an app, meaning it will
 # appear in the Anaconda launcher.
 app:
   # The command that is called to launch the app
-  entry: ipython notebook
+  entry: ypkpathway
   # Icon file contained in the recipe
-  icon: icon_64x64.png
+  icon: ypkpathway.png
   summary: Summary of the package
   # If own_environment is true, installing the app through the launcher
   # will install into its own environment. The default is false.
-  # own_environment: true
+  own_environment: false
+
