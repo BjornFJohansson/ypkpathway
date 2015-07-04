@@ -9,6 +9,7 @@ include README.rst
 include MANIFEST.in
 include setup.py
 include requirements.txt
+include ypkpathway.png
 
 recursive-include tests *
 recursive-include docs *
