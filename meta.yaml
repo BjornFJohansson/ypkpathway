@@ -18,7 +18,6 @@ requirements:
     - pydna
     - docopt
     - notedown
-    - pyqt
 
   run:
     - python
@@ -29,6 +28,7 @@ requirements:
 
 test:
   requires:
+    - pyqt
     - nose
   commands:
     - ypkpathway -h

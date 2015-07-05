@@ -1,6 +1,4 @@
 package: ypkpathway
-#install:
-#  - sudo yum install -q libxtst6
 
 before_script:
   - conda update -n root conda
@@ -14,8 +12,6 @@ build_targets: conda
 
 script:
   - conda build .
-
-
 
 build_targets:
     files: /opt/miniconda/conda-bld/*/*.tar.bz2
