@@ -31,8 +31,8 @@ test:
     - pyqt
     - nose
   commands:
-    - ypkpathway -h
-    - ypkpathway -v
+    #- ypkpathway -h
+    #- ypkpathway -v
 
 about:
   home: https://github.com/BjornFJohansson/ypkpathway
