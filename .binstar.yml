@@ -1,6 +1,6 @@
 package: ypkpathway
-install:
-  - sudo yum install -q libxtst6
+#install:
+#  - sudo yum install -q libxtst6
 
 before_script:
   - conda update -n root conda
