@@ -18,12 +18,14 @@ requirements:
     - pydna
     - docopt
     - notedown
+    - pyqt4
 
   run:
     - python
     - pydna
     - docopt
     - notedown
+    - pyqt4
 
 test:
   requires:
