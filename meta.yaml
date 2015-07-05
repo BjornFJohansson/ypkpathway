@@ -46,7 +46,7 @@ app:
   entry: ypkpathway-gui
   # Icon file contained in the recipe
   icon: ypkpathway.png
-  summary: Summary of the package
+  summary: Planning of metabolic pathway assembly using the ypkpathway protocol.
   # If own_environment is true, installing the app through the launcher
   # will install into its own environment. The default is false.
   own_environment: true
