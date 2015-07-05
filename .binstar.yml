@@ -1,6 +1,7 @@
 package: ypkpathway
 
 before_script:
+  - sudo yum install -q libxtst6
   - conda update -n root conda
   - conda install binstar binstar-build
   - conda update -n root conda-build
