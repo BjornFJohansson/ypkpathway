@@ -15,7 +15,7 @@ Options:
     -h, --help      Show this screen.
     -v, --version   Show version.
 """
-
+from __future__ import print_function
 import io
 import re
 #from time import gmtime, strftime
@@ -56,7 +56,7 @@ def read_data_file(name):
     with codecs.open( resource_filename("ypkpathway", os.path.join("data", name)), "r", "utf-8") as f: data = f.read()
     return data
 
-def pathway(pth, dir_="ypkassembly"):
+def pathway(pth, dir_="ypkassembly", print = print):
 
     pYPK0 = pydna.read(read_data_file("pYPK0.gb"))
     pYPKa = pydna.read(read_data_file("pYPKa.gb"))
@@ -160,21 +160,20 @@ def pathway(pth, dir_="ypkassembly"):
         if exception.errno != errno.EEXIST:
             raise
 
-    print "created subdirectory", dir_
-    print
+    print("created subdirectory {}\n".format(dir_))
 
     os.chdir(dir_)
 
-    print "saving files.."
+    print("saving files..")
 
     for name, content in ((n, c) for n, c in files.items() if not n.endswith(".md")):
-        print name
+        print(name)
         with open(name,"w") as f: f.write(content)
 
     for name, content in ((n, c) for n, c in files.items() if n.endswith(".md")):
         newname = os.path.splitext(name)[0]+".ipynb"
         nb = nbformat.writes(obj.to_notebook(content))
-        print newname
+        print(newname)
         with open(newname,"w") as f: f.write(nb)
 
 
@@ -183,15 +182,14 @@ def pathway(pth, dir_="ypkassembly"):
     pp.interrupt_on_timeout = True
 
 
-    print
-    print "executing pYPKa notebooks.."
+    print("\nexecuting pYPKa notebooks..")
 
     shell = InteractiveShell.instance()
     new_primers = []
     g={}
     l={}
     for name in (f for f in os.listdir(".") if re.match("pYPKa.+\.ipynb", f)):
-        print name
+        print(name)
         with io.open(name, 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
         nb_executed, resources = pp.preprocess(nb, resources={})
         nbformat.write(nb, name)
@@ -203,17 +201,17 @@ def pathway(pth, dir_="ypkassembly"):
         g={}
         l={}
     else:
-        print "No pYPKa notebooks found."
+        print("No pYPKa notebooks found.")
 
-    print "executing pYPK0 notebooks.."
+    print("executing pYPK0 notebooks..")
 
     for name in (f for f in os.listdir(".") if re.match("pYPK0.+\.ipynb", f)):
-        print name
+        print(name)
         with io.open(name, 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
         nb_executed, resources = pp.preprocess(nb, resources={})
         nbformat.write(nb, name)
     else:
-        print "No pYPK0 notebooks found."
+        print("No pYPK0 notebooks found.")
 
     nbtemp = read_data_file("nb_template_pYPK0_pw.md")
 
@@ -228,15 +226,15 @@ def pathway(pth, dir_="ypkassembly"):
     nb = nbformat.writes(obj.to_notebook(pwnb))
     with open("pw.ipynb", "w") as f: f.write(nb)
 
-    print "executing final pathway notebook"
-    print "pw.ipynb"
+    print("executing final pathway notebook")
+    print("pw.ipynb")
     with io.open("pw.ipynb", 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
     nb_executed, resources = pp.preprocess(nb, resources={})
     nbformat.write(nb, "pw.ipynb")
 
     os.chdir(cwd)
 
-    fl = FileLink("mypathway/pw.ipynb")
+    fl = FileLink(os.path.join(dir_, "pw.ipynb"))
 
     return fl
 
@@ -245,7 +243,7 @@ def main():
     try:
         arguments = docopt.docopt(__doc__)
     except docopt.DocoptExit as e:
-        print e.message
+        print(e.message)
         sys.exit(0)
 
     dir_ = "ypk_assembly"
@@ -257,24 +255,31 @@ def main():
         from ._version import get_versions
         __version__ = get_versions()["version"][:5]
         del get_versions
-        print u"ypkpathway version:",__version__
-        print u"     pydna version:",pydna.__version__
+        print(u"ypkpathway version:",__version__)
+        print(u"     pydna version:",pydna.__version__)
 
     if arguments["<path>"]:
         file_ = arguments["<path>"]
         try:
             with open(file_, "rU") as f: text=f.read()
         except IOError:
-            print arguments["<path>"], "could not be opened!"
+            print(arguments["<path>"], "could not be opened!")
             sys.exit(1)
 
-        print u"Assembly started! (This might take a while...)"
+        print(u"Assembly started! (This might take a while...)")
 
         fl = pathway( pydna.parse(text), dir_ )
 
-        print u"opening IPython notebook {}".format(fl.path)
+        print(u"opening IPython notebook {}".format(fl.path))
 
         subprocess.Popen(["ipython", "notebook", os.path.join(dir_, "pw.ipynb")])
+
+def pathway_(x,y, print=print):
+    print("abc")
+    fl = FileLink(os.path.join("dir", "pw.ipynb"))
+
+    return fl
+
 
 if __name__ == "__main__":
     pass

@@ -60,21 +60,21 @@ PCR using primers primer 577 and 467 to amplify promoter and gene.
 
     product = pydna.pcr( p['577'], p['467'], result)
 
-    print len(product)
+    print(len(product))
 
-    print len(product) - len(prom)
+    print(len(product) - len(prom))
 
-    print len(product) - len(gene)
+    print(len(product) - len(gene))
 
 PCR using primers primer 468 and 578 to amplify gene and terminator.
 
     product2 = pydna.pcr( p['468'], p['578'], result)
 
-    print len(product2)
+    print(len(product2))
 
-    print len(product2) - len(gene)
+    print(len(product2) - len(gene))
 
-    print len(product2) - len(term)
+    print(len(product2) - len(term))
 
 Calculate cseguid checksum for the resulting plasmid for future reference.
 

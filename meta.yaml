@@ -6,6 +6,7 @@ build:
   number: {{environ.get('BINSTAR_BUILD', 1)}}
   entry_points:
     - ypkpathway = ypkpathway.ypkpathway:main
+    - ypkpathway = ypkpathway.gui:main
 
 source:
   path:
@@ -40,11 +41,11 @@ about:
 # appear in the Anaconda launcher.
 app:
   # The command that is called to launch the app
-  entry: ypkpathway
+  entry: ypkpathway-gui
   # Icon file contained in the recipe
   icon: ypkpathway.png
   summary: Summary of the package
   # If own_environment is true, installing the app through the launcher
   # will install into its own environment. The default is false.
-  own_environment: false
+  own_environment: true
 

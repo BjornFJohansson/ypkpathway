@@ -38,9 +38,9 @@ Primers are given the following names:
 	fp.id = "{tp}fw"
 	rp.id = "{tp}rv"
 
-	print fp.format("fasta")
+	print(fp.format("fasta"))
 
-	print rp.format("fasta")
+	print(rp.format("fasta"))
 
 PCR to create the insert.
 
@@ -112,8 +112,8 @@ Empty pYPKa clone
 
 Calculate cseguid checksum for the resulting plasmids for future reference.
 
-	print pYPKa_Z_{tp}.cseguid()
-	print pYPKa_E_{tp}.cseguid()
+	print(pYPKa_Z_{tp}.cseguid())
+	print(pYPKa_E_{tp}.cseguid())
 
 The sequences are named.
 

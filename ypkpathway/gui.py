@@ -1,182 +1,388 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from __future__ import print_function
 import sys
-from PyQt4 import QtGui #, QtCore
-#from PyQt4.QtCore import Qt
+import os
+import platform
+import subprocess
+
+from PyQt4.QtCore import QRect, QMetaObject, QObject
+from PyQt4.QtGui  import (QApplication, QMainWindow, QWidget,
+                           QGridLayout, QTabWidget, QPlainTextEdit,
+                           QMenuBar, QMenu, QStatusBar, QAction,
+                           QIcon, QFileDialog, QMessageBox, QFont)
+
+import qrc
+import pydna
+import ypkpathway
 
 from pkg_resources import resource_filename
 
-class Main(QtGui.QMainWindow):
-
-    def __init__(self, parent = None):
-        QtGui.QMainWindow.__init__(self,parent)
-
-        self.filename = ""
-
-        self.initUI()
-
-    def assemble(self):
-        print self.text.toPlainText()
-
-    def initToolbar(self):
-
-        self.openAction = QtGui.QAction(QtGui.QIcon( resource_filename("ypkpathway","icons/open.png")),"Open file",self)
-        self.openAction.setStatusTip("Open existing document")
-        self.openAction.setShortcut("Ctrl+O")
-        self.openAction.triggered.connect(self.open)
-
-        self.saveAction = QtGui.QAction(QtGui.QIcon( resource_filename("ypkpathway","icons/save.png")),"Save",self)
-        self.saveAction.setStatusTip("Save document")
-        self.saveAction.setShortcut("Ctrl+S")
-        self.saveAction.triggered.connect(self.save)
-
-        self.cutAction = QtGui.QAction(QtGui.QIcon( resource_filename("ypkpathway","icons/cut.png")),"Cut to clipboard",self)
-        self.cutAction.setStatusTip("Delete and copy text to clipboard")
-        self.cutAction.setShortcut("Ctrl+X")
-        self.cutAction.triggered.connect(self.text.cut)
-
-        self.copyAction = QtGui.QAction(QtGui.QIcon( resource_filename("ypkpathway","icons/copy.png")),"Copy to clipboard",self)
-        self.copyAction.setStatusTip("Copy text to clipboard")
-        self.copyAction.setShortcut("Ctrl+C")
-        self.copyAction.triggered.connect(self.text.copy)
-
-        self.pasteAction = QtGui.QAction(QtGui.QIcon( resource_filename("ypkpathway","icons/paste.png")),"Paste from clipboard",self)
-        self.pasteAction.setStatusTip("Paste text from clipboard")
-        self.pasteAction.setShortcut("Ctrl+V")
-        self.pasteAction.triggered.connect(self.text.paste)
-
-        self.undoAction = QtGui.QAction(QtGui.QIcon( resource_filename("ypkpathway","icons/undo.png")),"Undo last action",self)
-        self.undoAction.setStatusTip("Undo last action")
-        self.undoAction.setShortcut("Ctrl+Z")
-        self.undoAction.triggered.connect(self.text.undo)
-
-        self.redoAction = QtGui.QAction(QtGui.QIcon( resource_filename("ypkpathway","icons/redo.png")),"Redo last undone thing",self)
-        self.redoAction.setStatusTip("Redo last undone thing")
-        self.redoAction.setShortcut("Ctrl+Y")
-        self.redoAction.triggered.connect(self.text.redo)
-
-        self.assembleAction = QtGui.QAction(QtGui.QIcon( resource_filename("ypkpathway","icons/assemble.png")),"Start Assembly",self)
-        self.assembleAction.setStatusTip("Start Assembly")
-        self.assembleAction.triggered.connect(self.assemble)
-
-        self.toolbar = self.addToolBar("Options")
-
-        self.toolbar.addAction(self.openAction)
-        self.toolbar.addAction(self.saveAction)
-
-        self.toolbar.addSeparator()
-
-        self.toolbar.addAction(self.cutAction)
-        self.toolbar.addAction(self.copyAction)
-        self.toolbar.addAction(self.pasteAction)
-        self.toolbar.addAction(self.undoAction)
-        self.toolbar.addAction(self.redoAction)
-
-        self.toolbar.addSeparator()
-        self.toolbar.addAction(self.assembleAction)
-
-
-        # Makes the next toolbar appear underneath this one
-        self.addToolBarBreak()
 
 
 
-    def initFormatbar(self):
+class Assembler(QMainWindow):
+    def __init__(self, parent=None):
+        super(Assembler, self).__init__(parent)
+        self.resize(800, 600)
+        self.filename  = None
+        self.filetuple = None
+        self.dirty = False  # Refers to Data Page only.
+        self.nb = None
+        centralwidget = QWidget(self)
+        gridLayout = QGridLayout(centralwidget)
+        self.tabWidget = QTabWidget(centralwidget)
+        self.tab = QWidget()
+        font = QFont()
+        font.setFamily("Inconsolata")
+        font.setPointSize(14)
+        self.tab.setFont(font)
+        gridLayout_3 = QGridLayout(self.tab)
+        self.plainTextEdit = QPlainTextEdit(self.tab)
+        gridLayout_3.addWidget(self.plainTextEdit, 0, 0, 1, 1)
+        self.tabWidget.addTab(self.tab, "")
+        self.tab_2 = QWidget()
+        self.tab_2.setFont(font)
+        gridLayout_2 = QGridLayout(self.tab_2)
+        self.plainTextEdit_2 = QPlainTextEdit(self.tab_2)
+        gridLayout_2.addWidget(self.plainTextEdit_2, 0, 0, 1, 1)
+        self.tabWidget.addTab(self.tab_2, "")
+        gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
+        self.setCentralWidget(centralwidget)
+        menubar = QMenuBar(self)
+        menubar.setGeometry(QRect(0, 0, 800, 29))
+        menu_File = QMenu(menubar)
+        self.menu_Solve = QMenu(menubar)
+        self.menu_Help = QMenu(menubar)
+        self.setMenuBar(menubar)
+        self.statusbar = QStatusBar(self)
+        self.setStatusBar(self.statusbar)
+        self.action_New = QAction(self)
+        self.actionSave_As = QAction(self)
+        self.action_Save = QAction(self)
+        self.action_Open = QAction(self)
+        self.action_Quit = QAction(self)
+        self.action_About = QAction(self)
+        self.actionShow_CCPL = QAction(self)
+        self.action_Solve  = QAction(self)
+        self.action_OpenNB = QAction(self)
+        self.action_CCPL = QAction(self)
+        self.action_Help = QAction(self)
+        menu_File.addAction(self.action_New)
+        menu_File.addAction(self.action_Open)
+        menu_File.addAction(self.actionSave_As)
+        menu_File.addAction(self.action_Save)
+        menu_File.addSeparator()
+        menu_File.addAction(self.action_Quit)
+        self.menu_Solve.addAction(self.action_Solve)
+        self.menu_Solve.addAction(self.action_OpenNB)
+        self.menu_Help.addAction(self.action_About)
+        self.menu_Help.addAction(self.action_CCPL)
+        self.menu_Help.addAction(self.action_Help)
+        menubar.addAction(menu_File.menuAction())
+        menubar.addAction(self.menu_Solve.menuAction())
+        menubar.addAction(self.menu_Help.menuAction())
 
-      self.formatbar = self.addToolBar("Format")
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab),\
+                                   "Data Page")
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2),\
+                                   "Assembly log")
+        menu_File.setTitle("&File")
+        self.menu_Solve.setTitle("&Assemble")
+        self.menu_Help.setTitle("&Help")
+        self.tabWidget.setCurrentIndex(0)
+        self.action_New.setText("&New")
+        self.action_Open.setText("&Open")
+        self.actionSave_As.setText("Save &As")
+        self.action_Save.setText("&Save")
+        self.action_Quit.setText("&Quit")
+        self.action_Solve.setText("&Assemble")
+        self.action_OpenNB.setText("&Open &pathway")
+        self.action_About.setText("&About")
+        self.action_CCPL.setText("&CCPL")
+        self.action_Help.setText("&Help")
+        self.action_Quit.triggered.connect(self.close)
+        allToolBar = self.addToolBar("AllToolBar")
+        allToolBar.setObjectName("AllToolBar")
+        self.addActions(allToolBar, (self.action_Open,
+                                     self.actionSave_As,
+                                     self.action_Save,
+                                     self.action_Solve,
+                                     self.action_OpenNB,
+                                     self.action_Quit ))
+        self.action_New.triggered.connect(self.fileNew)
+        self.action_Open.triggered.connect(self.fileOpen)
+        self.actionSave_As.triggered.connect(self.fileSaveAs)
+        self.action_Save.triggered.connect(self.fileSave)
+        self.action_Solve.triggered.connect(self.solveAssembly)
+        self.action_OpenNB.triggered.connect(self.openNB)
+        self.action_About.triggered.connect(self.aboutBox)
+        self.action_CCPL.triggered.connect(self.displayCCPL)
+        self.action_Help.triggered.connect(self.help)
+        self.plainTextEdit.textChanged.connect(self.setDirty)
+        self.action_New = self.editAction(self.action_New, None,\
+                            'ctrl+N', 'filenew', 'New File.')
+        self.action_Open = self.editAction(self.action_Open, None,
+                            'ctrl+O', 'fileopen', 'Open File.')
+        self.actionSave_As = self.editAction(self.actionSave_As,\
+                            None, 'ctrl+A', 'filesaveas',\
+                            'Save and Name File.')
+        self.action_Save = self.editAction(self.action_Save, None,
+                            'ctrl+S', 'filesave', 'Save File.')
+        self.action_Solve = self.editAction(self.action_Solve, None,
+                            '', 'solve', 'Assemble.')
+        self.action_OpenNB = self.editAction(self.action_OpenNB, None,
+                            '', 'ipynb', 'Open pathway.')
+        self.action_About = self.editAction(self.action_About, None,
+                            'ctrl+B', 'about','Pop About Box.')
+        self.action_CCPL = self.editAction(self.action_CCPL, None,
+                            'ctrl+G', 'licence', 'Show Licence')
+        self.action_Help = self.editAction(self.action_Help, None,
+                            'ctrl+H', 'help', 'Show Help Page.')
+        self.action_Quit =  self.editAction(self.action_Quit, None,
+                            'ctrl+Q', 'quit', 'Quit the program.')
+        self.plainTextEdit_2.setReadOnly(True)
+
+        self.setWindowTitle("ypkpathway-gui")
+        self.setWindowIcon(QIcon( resource_filename("ypkpathway","icons/ypkpathway.png")))
+
+    def setDirty(self):
+        '''On change of text in textEdit window, set the flag
+        "dirty" to True'''
+        index = self.tabWidget.currentIndex()
+        if index is not 0:
+            return
+        if self.dirty:
+            return True
+        self.dirty = True
+        self.updateStatus('self.dirty set to True')
+
+    def clearDirty(self):
+        'Clear dirty flag'
+        self.dirty = False
+
+    def fileNew(self):
+        '''Clear both Data Page and Solution Page.'''
+        self.plainTextEdit.setPlainText(' ')
+        self.plainTextEdit_2.setPlainText(' ')
+        self.clearDirty()
+        self.filename = None
+
+    def okToContinue(self):
+        if self.dirty:
+            reply = QMessageBox.question(self,
+                    "Data Loader - Unsaved Changes",
+                    "Save unsaved changes?",
+                    QMessageBox.Yes|QMessageBox.No|QMessageBox.Cancel)
+            if reply == QMessageBox.Cancel:
+                return False
+            elif reply == QMessageBox.Yes:
+                self.clearDirty()
+                return self.fileSave()
+        return True
+
+    def okRead(self):
+        'Pop-up a warning message.'
+        reply = QMessageBox.warning(self,
+                "Warning",
+                '''\nFile Open and Save only in Data Page
+\n\(Use SaveAs for the Assembly log)''', QMessageBox.Ok)
+        return True
+
+    def fileOpen(self):
+        '''Open a file in Data Page (with index == 0)'''
+        if self.tabWidget.currentIndex():
+            self.okRead()
+            return
+        if not self.okToContinue():
+            return
+        dir_ = (os.path.dirname(unicode(self.filename)) if self.filename is not None else ".")
+        self.filename = QFileDialog.getOpenFileName(self,"Open File", dir_,)
+        print(unicode(self.filename))
+        #self.filename = self.filetuple[0]
+        fname = self.filename
+        #  QFileDialog returns a tuple x with x[0] = file name and
+        #  x[1] = type of filter.
+        if fname:
+            self.loadFile(fname)
+            self.updateStatus('New file opened.')
+
+    def loadFile(self, fname=None):
+        fl = open(fname)
+        text = fl.read()
+        self.plainTextEdit.setPlainText(text)
+        self.dirty = False
+
+    def fileSave(self):
+        '''Save file with current file name.'''
+        if self.tabWidget.currentIndex():
+            self.okRead()
+            return
+        if self.filename is None:
+            return self.fileSaveAs()
+        else:
+            flname = self.filename
+            if flname:
+                tempText = self.plainTextEdit.toPlainText()
+                with open(flname, 'w') as fl:
+                    fl.write(tempText)
+                self.dirty = False
+                self.updateStatus('File saved.')
+                return True
+            else:
+                self.updateStatus('Failed to save... ')
+                return False
+        self.filename = None
+        self.dirty = False
+
+    def fileSaveAs(self):
+        '''Save file with a new name.'''
+        qpr = self.qprintline
+        fname = self.filename or "NoName.txt"
+        self.filename = QFileDialog.getSaveFileName(self,"ypkpathway-gui - Save File", fname)
 
 
-    def initMenubar(self):
+        flname = self.filename
+        index = self.tabWidget.currentIndex()
+        if index == 0:
+            self.filename = flname
+            if flname:
+                fl = open(flname, 'w')
+                tempText = self.plainTextEdit.toPlainText()
+                fl.write(tempText)
+                fl.close()
+                self.dirty = False
+                self.updateStatus('File saved.')
+        elif index == 1:
+            if flname:
+                fl = open(flname, 'w')
+                tempText = self.plainTextEdit_2.toPlainText()
+                fl.write(tempText)
+                fl.close()
 
-      menubar = self.menuBar()
+    def solveAssembly(self):
+        printline = self.qprintline
+        self.plainTextEdit_2.clear()
+        self.tabWidget.setCurrentIndex(1)
+        flbase = os.path.basename(unicode(self.filename))
 
-      file = menubar.addMenu("File")
-      edit = menubar.addMenu("Edit")
-      assemble = menubar.addMenu("Start Assembly")
+        title = 'Assembly log for ' + flbase
 
-      file.addAction(self.openAction)
-      file.addAction(self.saveAction)
+        printline('='*len(title))
+        printline(title)
+        printline('='*len(title))
 
-      edit.addAction(self.undoAction)
-      edit.addAction(self.redoAction)
-      edit.addAction(self.cutAction)
-      edit.addAction(self.copyAction)
-      edit.addAction(self.pasteAction)
+        dir_ = os.path.splitext( unicode(self.filename) )[0]
+        rawtext = self.plainTextEdit.toPlainText()
+        pth = pydna.parse(unicode(rawtext))
+        number_of_sequences = len(pth)
+        if number_of_sequences%3 or number_of_sequences==0:
+            printline("Number of sequences found in Data window {}".format(len(pth)))
+            return
+        fl = ypkpathway.pathway( pth, dir_, print = printline)
 
-      assemble.addAction(self.assembleAction)
+        printline('Assembly finished ')
+        printline('click on the Open pathway button above to open')
+        printline('the pathway in the default web browser')
+        self.nb =  fl.path
 
-    def initUI(self):
-
-        self.text = QtGui.QTextEdit(self)
-
-        self.text.setFontFamily("inconsolata")
-        self.text.setFontPointSize(12.0)
-
-        self.initToolbar()
-        self.initFormatbar()
-        self.initMenubar()
-
-        # Set the tab stop width to around 33 pixels which is
-        # about 8 spaces
-        self.text.setTabStopWidth(33)
-
-        self.setCentralWidget(self.text)
-
-        # Initialize a statusbar for the window
-        self.statusbar = self.statusBar()
-
-        # If the cursor position changes, call the function that displays
-        # the line and column number
-        self.text.cursorPositionChanged.connect(self.cursorPosition)
-
-        # x and y coordinates on the screen, width, height
-        self.setGeometry(0,0,1500,800)
-
-        self.setWindowTitle("ypkpathway GUI")
-
-        self.setWindowIcon(QtGui.QIcon( resource_filename("ypkpathway","icons/ypkpathway.png")))
-
-    def open(self):
-
-        # Get filename and show only .writer files
-        self.filename = QtGui.QFileDialog.getOpenFileName(self, 'Open File',".")
-
-        if self.filename:
-            with open(self.filename,"rt") as file:
-                self.text.setText(file.read())
-
-    def save(self):
-
-        # Only open dialog if there is no filename yet
-        if not self.filename:
-          self.filename = QtGui.QFileDialog.getSaveFileName(self, 'Save File')
-
-        # Append extension if not there yet
-        if not self.filename.endswith(".writer"):
-          self.filename += ".writer"
-
-        # We just store the contents of the text file along with the
-        # format in html, which Qt does in a very nice way for us
-        with open(self.filename,"wt") as file:
-            file.write(self.text.toHtml())
+    def openNB(self):
+        if self.nb:
+            subprocess.Popen(["ipython", "notebook", self.nb])
 
 
-    def cursorPosition(self):
 
-        cursor = self.text.textCursor()
+    def aboutBox(self):
 
-        # Mortals like 1-indexed things
-        line = cursor.blockNumber() + 1
-        col = cursor.columnNumber()
+        from PyQt4.QtCore import QT_VERSION_STR
+        from PyQt4.Qt import PYQT_VERSION_STR
+        from sip import SIP_VERSION_STR
+        from ._version import get_versions
 
-        self.statusbar.showMessage("Line: {} | Column: {}".format(line,col))
+        QMessageBox.about(self, "About ypkassembler-gui",
+                             u"""<b>Planning yeast pathway kit constructions.</b>
+                                 <p>Copyright 2015 Björn Johansson.
+                                 This software is released under a BSD style license.
+                                 This software comes with no warranties
+                                 expressed or implied.<br><br>
+                                 Python version: {}<br>
+                                 Qt version: {}<br>
+                                 SIP version: {}<br>
+                                 PyQt version: {}<br>
+                                 pydna version: {}<br>
+                                 ypkpathway version: {}<br>
+                                 """.format(sys.version,
+                                            QT_VERSION_STR,
+                                            SIP_VERSION_STR,
+                                            PYQT_VERSION_STR,
+                                            pydna.__version__,
+                                            get_versions()["version"][:5]))
+
+
+
+
+    def displayCCPL(self):
+        '''Read and display CCPL licence.'''
+        self.plainTextEdit.setPlainText(open('CCPL.txt').read())
+        self.dirty = False
+        self.filename = 'COPYING.txt'
+        self.updateStatus('CCPL displayed.')
+
+    def help(self):
+        '''Read and display a help file- currently the README.txt.'''
+        self.plainTextEdit.setPlainText(open('README.md').read())
+        self.dirty = False
+        self.filename = 'README.txt'
+        self.updateStatus('README displayed.')
+
+    def addActions(self, target, actions):
+        '''Actions are added to Tool Bar.'''
+        for action in actions:
+            if action is None:
+                target.addSeparator()
+            else:
+                target.addAction(action)
+
+    def editAction(self, action, slot=None, shortcut=None, icon=None,
+                     tip=None):
+        '''This method adds to action: icon, shortcut, ToolTip,\
+        StatusTip and can connect triggered action to slot '''
+        if icon is not None:
+            action.setIcon(QIcon(":/%s.png" % (icon)))
+        if shortcut is not None:
+            action.setShortcut(shortcut)
+        if tip is not None:
+            action.setToolTip(tip)
+            action.setStatusTip(tip)
+        if slot is not None:
+            action.triggered.connect(slot)
+        return action
+
+    def qreadline(self, lineNo):
+        '''Read one line from Data Page (lineNo starts with 0)'''
+        return unicode(self.plainTextEdit.document().\
+            findBlockByLineNumber(lineNo).text()).rstrip()
+
+    def qprintline(self, line):
+        '''Append one line to Solution Page.'''
+        self.plainTextEdit_2.appendPlainText(line.rstrip())
+        QApplication.processEvents()
+
+    def updateStatus(self, message):
+        '''Keep status current.'''
+        if self.filename is not None:
+            flbase = os.path.basename(unicode(self.filename))
+            self.setWindowTitle(unicode("ypkpathway - " +\
+                                         flbase + "[*]") )
+            self.statusBar().showMessage(message, 5000)
+            self.setWindowModified(self.dirty)
 
 
 def main():
-
-    app = QtGui.QApplication(sys.argv)
-
-    main = Main()
-    main.show()
-
+    app = QApplication(sys.argv)
+    frame = Assembler()
+    frame.show()
     sys.exit(app.exec_())
 
 if __name__ == "__main__":

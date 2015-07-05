@@ -1,0 +1,14 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+<file alias="filenew.png"   >icons/document-new.png</file>
+<file alias="fileopen.png"  >icons/document-open.png</file>
+<file alias="filesave.png"  >icons/media-floppy.png</file>
+<file alias="filesaveas.png">icons/document-save-as.png</file>
+<file alias="solve.png"     >icons/edit-find-replace.png</file>
+<file alias="quit.png"      >icons/system-log-out.png</file>
+<file alias="licence.png"   >icons/address-book-new.png</file>
+<file alias="about.png"     >icons/preferences-system-session.png</file>
+<file alias="help.png"      >icons/help-browser.png</file>
+<file alias="ipynb.png"     >icons/ipynb_icon_32x32.png</file>
+</qresource>
+</RCC>

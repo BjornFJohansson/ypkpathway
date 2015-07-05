@@ -33,9 +33,9 @@ Primers are given the following names:
 	fp.id = "{insert}fw"
 	rp.id = "{insert}rv"
 
-	print fp.format("fasta")
+	print(fp.format("fasta"))
 
-	print rp.format("fasta")
+	print(rp.format("fasta"))
 
 PCR to create the insert.
 
