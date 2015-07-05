@@ -6,6 +6,8 @@ before_script:
   - conda update -n root conda-build
   - conda config --add channels BjornFJohansson
 
+iotimeout: 300
+
 build_targets: conda
 
 script:
