@@ -3,10 +3,11 @@ package:
   version: {{ environ.get('GIT_DESCRIBE_TAG', '') }}
 
 build:
+  preserve_egg_dir: True
   number: {{environ.get('BINSTAR_BUILD', 1)}}
   entry_points:
-    - ypkpathway = ypkpathway.ypkpathway:main
-    - ypkpathway = ypkpathway.gui:main
+    - ypkpathway     = ypkpathway.ypkpathway:main
+    - ypkpathway-gui = ypkpathway.gui:main
 
 source:
   path:
@@ -33,6 +34,7 @@ test:
   commands:
     #- ypkpathway -h
     #- ypkpathway -v
+
 
 about:
   home: https://github.com/BjornFJohansson/ypkpathway
