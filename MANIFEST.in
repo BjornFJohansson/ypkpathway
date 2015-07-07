@@ -10,6 +10,7 @@ include MANIFEST.in
 include setup.py
 include requirements.txt
 include ypkpathway.png
+include icon.png
 
 recursive-include tests *
 recursive-include docs *
