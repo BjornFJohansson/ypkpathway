@@ -39,15 +39,10 @@ about:
   license: BSD
   summary: Assemble metabolic pathways from the command line using the ypkpathway protocol
 
-# If the app key is present, the package will be an app, meaning it will
-# appear in the Anaconda launcher.
 app:
-  # The command that is called to launch the app
   entry: ypkpathway-gui
-  # Icon file contained in the recipe
+  type: desk
   icon: ypkpathway.png
   summary: Planning of metabolic pathway assembly using the ypkpathway protocol.
-  # If own_environment is true, installing the app through the launcher
-  # will install into its own environment. The default is false.
-  own_environment: true
+  #own_environment: true
 
