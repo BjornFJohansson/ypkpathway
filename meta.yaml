@@ -43,5 +43,6 @@ app:
   entry: ypkpathway
   icon: icon.png
   summary: Planning of metabolic pathway assembly using the ypkpathway protocol.
+  type: desk
   #own_environment: true
 
