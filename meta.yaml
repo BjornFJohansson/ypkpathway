@@ -6,8 +6,7 @@ build:
   preserve_egg_dir: True
   number: {{environ.get('BINSTAR_BUILD', 1)}}
   entry_points:
-    - ypkpathway = ypkpathway.ypkpathway:main
-    - ypkpathwaygui = ypkpathway.gui:main
+    - ypkpathway = ypkpathway.gui:main
 
 source:
   path: .
@@ -41,7 +40,7 @@ about:
   summary: Assemble metabolic pathways from the command line using the ypkpathway protocol
 
 app:
-  entry: ypkpathwaygui
+  entry: ypkpathway
   icon: icon.png
   summary: Planning of metabolic pathway assembly using the ypkpathway protocol.
   #own_environment: true
