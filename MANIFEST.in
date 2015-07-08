@@ -15,6 +15,7 @@ include icon.png
 recursive-include tests *
 recursive-include docs *
 recursive-include ypkpathway/data *
+recursive-include ypkpathway/icons *
 recursive-include scripts *
 
 include run_tests.py

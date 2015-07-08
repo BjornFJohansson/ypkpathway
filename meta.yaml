@@ -6,11 +6,11 @@ build:
   preserve_egg_dir: True
   number: {{environ.get('BINSTAR_BUILD', 1)}}
   entry_points:
-    - ypkpathway     = ypkpathway.ypkpathway:main
-    - ypkpathway-gui = ypkpathway.gui:main
+    - ypkpathway = ypkpathway.ypkpathway:main
+    - ypkpathwaygui = ypkpathway.gui:main
 
 source:
-  path:
+  path: .
 
 requirements:
 
@@ -35,15 +35,13 @@ test:
     #- ypkpathway -h
     #- ypkpathway -v
 
-
 about:
   home: https://github.com/BjornFJohansson/ypkpathway
   license: BSD
   summary: Assemble metabolic pathways from the command line using the ypkpathway protocol
 
 app:
-  entry: ypkpathway-gui
-  type: desk
+  entry: ypkpathwaygui
   icon: icon.png
   summary: Planning of metabolic pathway assembly using the ypkpathway protocol.
   #own_environment: true
