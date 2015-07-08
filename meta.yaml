@@ -15,12 +15,14 @@ requirements:
 
   build:
     - python
+    - ipython
     - pydna
     - docopt
     - notedown
 
   run:
     - python
+    - ipython
     - pydna
     - docopt
     - notedown
@@ -41,7 +43,7 @@ about:
 
 app:
   entry: ypkpathway
-  icon: icon.png
+  #icon: icon.png
   summary: Planning of metabolic pathway assembly using the ypkpathway protocol.
   type: desk
   own_environment: true
