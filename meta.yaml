@@ -16,6 +16,7 @@ requirements:
   build:
     - python
     - ipython
+    - pyzmq
     - pydna
     - docopt
     - notedown
@@ -23,6 +24,7 @@ requirements:
   run:
     - python
     - ipython
+    - pyzmq
     - pydna
     - docopt
     - notedown
