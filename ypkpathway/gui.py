@@ -209,7 +209,8 @@ class Assembler(QMainWindow):
             self.updateStatus('New file opened.')
 
     def loadFile(self, fname=None):
-        fl = open(fname)
+        import codecs
+        fl = codecs.open(fname, "U", "utf8")
         text = fl.read()
         self.plainTextEdit.setPlainText(text)
         self.dirty = False
@@ -274,18 +275,31 @@ class Assembler(QMainWindow):
         printline('='*len(title))
 
         dir_ = os.path.splitext( unicode(self.filename) )[0]
-        rawtext = self.plainTextEdit.toPlainText()
-        pth = pydna.parse(unicode(rawtext))
-        number_of_sequences = len(pth)
-        if number_of_sequences%3 or number_of_sequences==0:
-            printline("Number of sequences found in Data window {}".format(len(pth)))
+        qstringobj = self.plainTextEdit.toPlainText()
+        #print(type(qstringobj)) #<class 'PyQt4.QtCore.QString'>
+        #print(qstringobj.toUtf8()[3268:3279])
+        #print(str(qstringobj.toUtf8()[3268:3279]))
+        #print(type(rawtext), "rawtext")
+        #codec0 = .QTextCodec.codecForName("UTF-16");
+        #rawtext = unicode(codec0.fromUnicode(tmp), 'UTF-16')
+        #unicode(qstringobj.toUtf8(), encoding="UTF-8").decode()
+        pth = pydna.parse(str(qstringobj.toUtf8()))
+
+        if len(pth)==0:
+            printline("No of sequences found in Data window")
             return
+
         fl = ypkpathway.pathway( pth, dir_, print = printline)
 
         printline('Assembly finished ')
         printline('click on the Open pathway button above to open')
         printline('the pathway in the default web browser')
         self.nb =  fl.path
+
+    def qprintline(self, line):
+        '''Append one line to Solution Page.'''
+        self.plainTextEdit_2.appendPlainText(line.rstrip().decode("utf8"))
+        QApplication.processEvents()
 
     def openNB(self):
         if self.nb:
@@ -364,10 +378,7 @@ class Assembler(QMainWindow):
         return unicode(self.plainTextEdit.document().\
             findBlockByLineNumber(lineNo).text()).rstrip()
 
-    def qprintline(self, line):
-        '''Append one line to Solution Page.'''
-        self.plainTextEdit_2.appendPlainText(line.rstrip())
-        QApplication.processEvents()
+
 
     def updateStatus(self, message):
         '''Keep status current.'''

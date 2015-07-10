@@ -39,7 +39,9 @@ def test_ypk():
 
         s = pydna.read( os.path.join(tmp, name) )
 
-        assert( s.seguid() == code )
+        with open(code+".txt") as f: c = f.read()
+
+        assert "".join( x for x in c.lower() if not x.isspace())[:20] == str(s.seq).lower()[:20]
 
     try:
         shutil.rmtree(tmp)
