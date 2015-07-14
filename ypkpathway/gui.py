@@ -6,10 +6,12 @@ import sys
 import os
 import platform
 import subprocess
+import shutil
+import codecs
 
 from PyQt4.QtCore import QRect, QMetaObject, QObject
 from PyQt4.QtGui  import (QApplication, QMainWindow, QWidget,
-                           QGridLayout, QTabWidget, QPlainTextEdit,
+                           QGridLayout, QTabWidget, QPlainTextEdit, QCheckBox,
                            QMenuBar, QMenu, QStatusBar, QAction,
                            QIcon, QFileDialog, QMessageBox, QFont)
 
@@ -33,6 +35,7 @@ class Assembler(QMainWindow):
         centralwidget = QWidget(self)
         gridLayout = QGridLayout(centralwidget)
         self.tabWidget = QTabWidget(centralwidget)
+
         self.tab = QWidget()
         font = QFont()
         font.setFamily("Inconsolata")
@@ -41,13 +44,24 @@ class Assembler(QMainWindow):
         gridLayout_3 = QGridLayout(self.tab)
         self.plainTextEdit = QPlainTextEdit(self.tab)
         gridLayout_3.addWidget(self.plainTextEdit, 0, 0, 1, 1)
+
         self.tabWidget.addTab(self.tab, "")
+
         self.tab_2 = QWidget()
         self.tab_2.setFont(font)
         gridLayout_2 = QGridLayout(self.tab_2)
         self.plainTextEdit_2 = QPlainTextEdit(self.tab_2)
         gridLayout_2.addWidget(self.plainTextEdit_2, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tab_2, "")
+
+        self.tab_3 = QWidget()
+        self.tab_3.setFont(font)
+        gridLayout_3 = QGridLayout(self.tab_3)
+        self.checkbox = QCheckBox("Cloning genes by tailed primers (no pYPKa_A vectors constructed)")
+        self.checkbox.setChecked(True)
+        gridLayout_3.addWidget(self.checkbox, 0, 0, 0, 0)
+        self.tabWidget.addTab(self.tab_3, "")
+
         gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
         self.setCentralWidget(centralwidget)
         menubar = QMenuBar(self)
@@ -88,6 +102,8 @@ class Assembler(QMainWindow):
                                    "Data Page")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2),\
                                    "Assembly log")
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3),\
+                                   "Settings")
         menu_File.setTitle("&File")
         self.menu_Solve.setTitle("&Assemble")
         self.menu_Help.setTitle("&About")
@@ -146,6 +162,7 @@ class Assembler(QMainWindow):
 
         self.setWindowTitle("ypkpathway-gui")
         self.setWindowIcon(QIcon( resource_filename("ypkpathway","icons/ypkpathway.png")))
+        self.plainTextEdit.setFocus()
 
     def setDirty(self):
         '''On change of text in textEdit window, set the flag
@@ -198,8 +215,8 @@ class Assembler(QMainWindow):
         if not self.okToContinue():
             return
         dir_ = (os.path.dirname(unicode(self.filename)) if self.filename is not None else ".")
-        self.filename = QFileDialog.getOpenFileName(self,"Open File", dir_,)
-        print(unicode(self.filename))
+        self.filename = unicode(QFileDialog.getOpenFileName(self,"Open File", dir_,))
+        #print(unicode(self.filename))
         #self.filename = self.filetuple[0]
         fname = self.filename
         #  QFileDialog returns a tuple x with x[0] = file name and
@@ -209,7 +226,6 @@ class Assembler(QMainWindow):
             self.updateStatus('New file opened.')
 
     def loadFile(self, fname=None):
-        import codecs
         fl = codecs.open(fname, "U", "utf8")
         text = fl.read()
         self.plainTextEdit.setPlainText(text)
@@ -226,8 +242,7 @@ class Assembler(QMainWindow):
             flname = self.filename
             if flname:
                 tempText = self.plainTextEdit.toPlainText()
-                with open(flname, 'w') as fl:
-                    fl.write(tempText)
+                with codecs.open(flname, 'w', 'utf8') as fl: fl.write(tempText)
                 self.dirty = False
                 self.updateStatus('File saved.')
                 return True
@@ -241,23 +256,21 @@ class Assembler(QMainWindow):
         '''Save file with a new name.'''
         qpr = self.qprintline
         fname = self.filename or "NoName.txt"
-        self.filename = QFileDialog.getSaveFileName(self,"ypkpathway-gui - Save File", fname)
-
-
+        self.filename = unicode(QFileDialog.getSaveFileName(self,"ypkpathway-gui - Save File", fname))
         flname = self.filename
         index = self.tabWidget.currentIndex()
         if index == 0:
             self.filename = flname
             if flname:
-                fl = open(flname, 'w')
-                tempText = self.plainTextEdit.toPlainText()
+                fl = codecs.open(flname, 'wU', 'utf8')
+                tempText = unicode(self.plainTextEdit.toPlainText())
                 fl.write(tempText)
                 fl.close()
                 self.dirty = False
                 self.updateStatus('File saved.')
         elif index == 1:
             if flname:
-                fl = open(flname, 'w')
+                fl = codecs.open(flname, 'wU', 'utf8')
                 tempText = self.plainTextEdit_2.toPlainText()
                 fl.write(tempText)
                 fl.close()
@@ -274,7 +287,7 @@ class Assembler(QMainWindow):
         printline(title)
         printline('='*len(title))
 
-        dir_ = os.path.splitext( unicode(self.filename) )[0]
+        dir_, ext = os.path.splitext( unicode(self.filename))
         qstringobj = self.plainTextEdit.toPlainText()
         #print(type(qstringobj)) #<class 'PyQt4.QtCore.QString'>
         #print(qstringobj.toUtf8()[3268:3279])
@@ -283,22 +296,28 @@ class Assembler(QMainWindow):
         #codec0 = .QTextCodec.codecForName("UTF-16");
         #rawtext = unicode(codec0.fromUnicode(tmp), 'UTF-16')
         #unicode(qstringobj.toUtf8(), encoding="UTF-8").decode()
+
         pth = pydna.parse(str(qstringobj.toUtf8()))
 
         if len(pth)==0:
             printline("No of sequences found in Data window")
             return
 
-        fl = ypkpathway.pathway( pth, dir_, print = printline)
 
-        printline('Assembly finished ')
-        printline('click on the Open pathway button above to open')
-        printline('the pathway in the default web browser')
+        fl, log = ypkpathway.pathway( pth, dir_, pYPKa_A = not self.checkbox.isChecked(), print = printline)
+
+        with codecs.open(os.path.join(dir_, u"log.txt"),"wU","utf8") as f: f.write(log)
+
+        shutil.copy2( unicode(self.filename), os.path.join(dir_, u"INDATA_"+os.path.basename(unicode(self.filename))))
+
+        printline('')
+        printline('\n\nAssembly finished.')
+        printline('click on the Open pathway button above to open the pathway in the default web browser')
         self.nb =  fl.path
 
     def qprintline(self, line):
         '''Append one line to Solution Page.'''
-        self.plainTextEdit_2.appendPlainText(line.rstrip().decode("utf8"))
+        self.plainTextEdit_2.appendPlainText(line.rstrip()) #.decode("utf8"))
         QApplication.processEvents()
 
     def openNB(self):

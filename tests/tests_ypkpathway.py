@@ -20,28 +20,30 @@ def test_ypk():
                    pth6.txt|pYPK0_SsXYL1_SsXYL2_ScXKS1_ScTAL1.gb|K8z4ijkYa0hA0KEOhv7-6PNJgBM
                    pth7.txt|pYPK0_SsXYL1_SsXYL2_ScXKS1_ScTAL1.gb|K8z4ijkYa0hA0KEOhv7-6PNJgBM'''
 
-    for datafile in textwrap.dedent(datafiles).split():
+    for pYPKa_A in (False, True):
+        for datafile in textwrap.dedent(datafiles).split():
 
-        try:
-            shutil.rmtree(tmp)
-        except OSError:
-            pass
+            try:
+                shutil.rmtree(tmp)
+            except OSError:
+                pass
 
-        file_, name, code = datafile.split("|")
-        print
-        print "############################"
-        print file_
-        print "############################"
+            file_, name, code = datafile.split("|")
+            print
+            print "############################"
+            print "datafile = ", file_
+            print "pYPKa_A  = ", pYPKa_A
+            print "############################"
 
-        with open(file_, "rU",) as f: text = f.read()
+            with open(file_, "rU",) as f: text = f.read()
 
-        pw = pathway( pydna.parse(text), tmp)
+            pw = pathway( pydna.parse(text), tmp, pYPKa_A=pYPKa_A)
 
-        s = pydna.read( os.path.join(tmp, name) )
+            s = pydna.read( os.path.join(tmp, name) )
 
-        with open(code+".txt") as f: c = f.read()
+            with open(code+".txt") as f: c = f.read()
 
-        assert "".join( x for x in c.lower() if not x.isspace())[:20] == str(s.seq).lower()[:20]
+            assert "".join( x for x in c.lower() if not x.isspace()) == str(s.seq).lower()
 
     try:
         shutil.rmtree(tmp)

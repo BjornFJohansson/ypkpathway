@@ -9,7 +9,10 @@ describing pYPKa promoter, gene and terminator vectors. Specific primers needed 
 The [pydna](https://pypi.python.org/pypi/pydna/) package is imported in the code cell below. 
 There is a [publication](http://www.biomedcentral.com/1471-2105/16/142) describing pydna as well as
 [documentation](http://pydna.readthedocs.org/en/latest/) available online. 
-Pydna is developed on [Github](https://github.com/BjornFJohansson/pydna). 
+Pydna is developed on [Github](https://github.com/BjornFJohansson/pydna).
+
+The assembly performed here is based on content of the [INDATA_{filename}.txt](INDATA_{filename}.txt) text file.
+The assembly log can be viewed [here](log.txt).
 
     import pydna
 
@@ -107,7 +110,7 @@ Write sequence to a local file.
 
 ###New Primers needed for assembly.
 
-This list contains all needed primers that are not in the standard primer list above.
+This list contains all needed primers that are not in the standard primer [list](primers.fasta) above.
 
 {primer_list}
 
