@@ -121,7 +121,7 @@ The sequence is written to a local file.
 
 	pYPKa_A_{insert}.write("pYPKa_A_{insert}.gb")
 
-#[Download](pYPKa_A_{insert}.gb)
+# Download [pYPKa_A_{insert}](pYPKa_A_{insert}.gb)
 
 	import pydna
 	reloaded = pydna.read("pYPKa_A_{insert}.gb")

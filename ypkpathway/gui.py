@@ -257,23 +257,15 @@ class Assembler(QMainWindow):
         qpr = self.qprintline
         fname = self.filename or "NoName.txt"
         self.filename = unicode(QFileDialog.getSaveFileName(self,"ypkpathway-gui - Save File", fname))
-        flname = self.filename
-        index = self.tabWidget.currentIndex()
-        if index == 0:
-            self.filename = flname
-            if flname:
-                fl = codecs.open(flname, 'wU', 'utf8')
-                tempText = unicode(self.plainTextEdit.toPlainText())
-                fl.write(tempText)
-                fl.close()
-                self.dirty = False
-                self.updateStatus('File saved.')
-        elif index == 1:
-            if flname:
-                fl = codecs.open(flname, 'wU', 'utf8')
-                tempText = self.plainTextEdit_2.toPlainText()
-                fl.write(tempText)
-                fl.close()
+        flname = self.filename or "NoName.txt"
+        self.filename = flname
+        fl = codecs.open(flname, 'wU', 'utf8')
+        tempText = unicode(self.plainTextEdit.toPlainText())
+        fl.write(tempText)
+        fl.close()
+        self.dirty = False
+        self.updateStatus('File saved.')
+
 
     def solveAssembly(self):
         printline = self.qprintline
@@ -287,7 +279,7 @@ class Assembler(QMainWindow):
         printline(title)
         printline('='*len(title))
 
-        dir_, ext = os.path.splitext( unicode(self.filename))
+
         qstringobj = self.plainTextEdit.toPlainText()
         #print(type(qstringobj)) #<class 'PyQt4.QtCore.QString'>
         #print(qstringobj.toUtf8()[3268:3279])
@@ -303,6 +295,9 @@ class Assembler(QMainWindow):
             printline("No of sequences found in Data window")
             return
 
+        if self.filename is None:
+            self.fileSaveAs()
+        dir_, ext = os.path.splitext( unicode(self.filename))
 
         fl, log = ypkpathway.pathway( pth, dir_, pYPKa_A = not self.checkbox.isChecked(), print = printline)
 

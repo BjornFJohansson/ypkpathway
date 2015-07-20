@@ -100,7 +100,7 @@ Write sequence to a local file.
 
     pw.write("{name}.gb")
 
-#[Download]({name}.gb)
+#DOWNLOAD [{name}]({name}.gb)
 
     import pydna
 
@@ -108,19 +108,19 @@ Write sequence to a local file.
 
     reloaded.verify_stamp()
 
-###New Primers needed for assembly.
+### New Primers needed for assembly.
 
 This list contains all needed primers that are not in the standard primer [list](primers.fasta) above.
 
 {primer_list}
 
-###New pYPK0_tp_gene_tp clones needed for assembly.
+### New single gene expression vectors (pYPK0_prom_gene_term) needed for assembly.
 
 Hyperlinks to notebook files describing the singlke gene expression plasmids needed for the assembly.
 
 {tp_gene_tp_links}
 
-###New pYPKa clones needed for assembly.
+### New pYPKa vectors needed for assembly of the single gene expression vectors above.
 
 Hyperlinks to notebook files describing the pYPKa plasmids needed for the assembly of the single gene clones listed above.
 

@@ -129,7 +129,7 @@ Write sequence to a local file.
 
     result.write("pYPK0_{tpz}_{gene}_{tpe}.gb")
 
-#[Download](pYPK0_{tpz}_{gene}_{tpe}.gb)
+# Download [pYPK0_{tpz}_{gene}_{tpe}](pYPK0_{tpz}_{gene}_{tpe}.gb)
 
     import pydna
     reloaded = pydna.read("pYPK0_{tpz}_{gene}_{tpe}.gb")
