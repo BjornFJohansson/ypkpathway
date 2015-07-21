@@ -1,9 +1,9 @@
 package: ypkpathway
 
 before_script:
-  - conda update -n root conda
+  #- conda update -n root conda
   - conda install binstar binstar-build
-  - conda update -n root conda-build
+  #- conda update -n root conda-build
   - cat $CONDARC
   - conda config --add channels BjornFJohansson --file $CONDARC
   - cat $CONDARC
