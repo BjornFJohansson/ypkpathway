@@ -5,7 +5,7 @@ before_script:
   - conda install binstar binstar-build
   #- conda update -n root conda-build
   - cat $CONDARC
-  - conda config --add channels BjornFJohansson --file $CONDARC
+  - conda config --add channels https://conda.binstar.org/BjornFJohansson --file $CONDARC
   - cat $CONDARC
   - cat ~/.condarc
 
@@ -14,7 +14,7 @@ iotimeout: 300
 build_targets: conda
 
 script:
-  - conda build --channel https://anaconda.org/BjornFJohansson .
+  - conda build .
 
 build_targets:
     files: /opt/miniconda/conda-bld/*/*.tar.bz2
