@@ -327,8 +327,10 @@ class Assembler(QMainWindow):
         from PyQt4.Qt import PYQT_VERSION_STR
         from sip import SIP_VERSION_STR
         from ._version import get_versions
+        __version__ = get_versions()["version"][:5]
+        del get_versions
 
-        QMessageBox.about(self, "About ypkassembler-gui",
+        QMessageBox.about(self, "About ypkassembler-gui version {}".format(__version__),
                              u"""<b>Planning yeast pathway kit constructions.</b>
                                  <p>Copyright 2015 Björn Johansson.
                                  This software is released under a BSD style license.
@@ -339,13 +341,11 @@ class Assembler(QMainWindow):
                                  SIP version: {}<br>
                                  PyQt version: {}<br>
                                  pydna version: {}<br>
-                                 ypkpathway version: {}<br>
                                  """.format(sys.version,
                                             QT_VERSION_STR,
                                             SIP_VERSION_STR,
                                             PYQT_VERSION_STR,
-                                            pydna.__version__,
-                                            get_versions()["version"][:5]))
+                                            pydna.__version__))
 
 
 

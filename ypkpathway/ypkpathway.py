@@ -17,6 +17,7 @@ Options:
     -h, --help      Show this screen.
     -v, --version   Show version.
 """
+
 from __future__ import print_function
 import io
 import re
@@ -347,7 +348,7 @@ def main():
         pYPKa_A = True
 
     if arguments["--version"]:
-        from ._version import get_versions
+        from _version import get_versions
         __version__ = get_versions()["version"][:5]
         del get_versions
         print(u"ypkpathway version:",__version__)
