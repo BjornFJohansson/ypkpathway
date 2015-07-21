@@ -7,7 +7,7 @@ before_script:
   - cat $CONDARC
   - conda config --add channels BjornFJohansson --file $CONDARC
   - cat $CONDARC
-#- cat ~/.condarc
+  - cat ~/.condarc
 
 iotimeout: 300
 
