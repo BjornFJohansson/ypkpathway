@@ -14,7 +14,7 @@ iotimeout: 300
 build_targets: conda
 
 script:
-  - conda build .
+  - conda build --channel https://anaconda.org/BjornFJohansson .
 
 build_targets:
     files: /opt/miniconda/conda-bld/*/*.tar.bz2
