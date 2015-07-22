@@ -1,5 +1,5 @@
-<img src="https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/icon.png" alt="Drawing" style="width: 50px;"/>ypkpathway
-===========================
+[![icon](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/icon.resized.png)](https://pypi.python.org/pypi/ypkpathway/)ypkpathway
+===================================================================================================================================================
 
 Ypkpathway is a simulator and documentation generator for _in-vivo_ pathway assembly using the Yeast Pathway Kit protocol. It takes as argument a series of
 sequences in a text file and produces a self contained folder containing sequences of assembly and intermediary vectors, sequences of PCR primers and PCR conditions.
