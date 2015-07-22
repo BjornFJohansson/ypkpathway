@@ -11,7 +11,6 @@ environment:
       PYTHON_ARCH: "64"
 
 install:
-  - "%CMD_IN_ENV% choco install pandoc -y"
   - ECHO "Filesystem root:"
   - ps: "ls \"C:/\""
 
@@ -36,6 +35,7 @@ install:
   # pip will build them from source using the MSVC compiler matching the
   # target Python version and architecture
   - "%CMD_IN_ENV% pip install -r requirements.txt"
+  - "%CMD_IN_ENV% choco install pandoc -y"
   - "%CMD_IN_ENV% pip install -e ."
   - "%CMD_IN_ENV% python setup.py version"
 
