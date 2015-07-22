@@ -5,7 +5,7 @@ Ypkpathway is a simulator and documentation generator for _in-vivo_ pathway asse
 sequences in a text file and produces a self contained folder containing sequences of assembly and intermediary vectors, sequences of PCR primers and PCR conditions.
 The assembly process is simulated using [pydna](https://github.com/BjornFJohansson/pydna) in [IPython notebooks](http://ipython.org/notebook.html) which are automatically generated and executed. 
 
-[![screenshot](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/screenshot.png)](https://github.com/BjornFJohansson/ypkpathway)
+[![screenshot](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/screenshot.resized.png)](https://github.com/BjornFJohansson/ypkpathway)
 
 A wheel and setuptools pypi [![pypi](https://img.shields.io/pypi/v/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/)
  source distributions are built and tested on on travis-ci using a linux back end [![travis](https://travis-ci.org/BjornFJohansson/ypkpathway.svg)](https://travis-ci.org/BjornFJohansson/ypkpathway). A 64 bit Windows binary executable and a Windows binary wheel are built on Appveyor CI 
