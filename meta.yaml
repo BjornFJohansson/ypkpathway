@@ -21,6 +21,7 @@ requirements:
     - docopt
     - notedown
     - pyzmq
+    - setuptools-markdown
 
   run:
     - python
