@@ -5,7 +5,7 @@ global-exclude *.pyc
 global-exclude *~
 
 include LICENSE.txt
-include README.rst
+include README.md
 include MANIFEST.in
 include setup.py
 include requirements.txt

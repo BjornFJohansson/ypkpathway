@@ -1,11 +1,11 @@
-ypkpathway
-==========
+<img src="https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/icon.png" alt="Drawing" style="width: 100px;"/>ypkpathway
+===========================
 
-Ypkpathway is a simulator and documentation generator for in-vivo pathway assembly using the Yeast Pathway Kit protocol. It takes as argument a series of
+Ypkpathway is a simulator and documentation generator for _in-vivo_ pathway assembly using the Yeast Pathway Kit protocol. It takes as argument a series of
 sequences in a text file and produces a self contained folder containing sequences of assembly and intermediary vectors, sequences of PCR primers and PCR conditions.
 The assembly process is simulated using [pydna](https://github.com/BjornFJohansson/pydna) in [IPython notebooks](http://ipython.org/notebook.html) which are automatically generated and executed. 
 
-![screenshot](screenshot.png)
+[![screenshot](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/screenshot.png)](https://github.com/BjornFJohansson/ypkpathway)
 
 A wheel and setuptools pypi [![pypi](https://img.shields.io/pypi/v/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/)
  source distributions are built and tested on on travis-ci using a linux back end [![travis](https://travis-ci.org/BjornFJohansson/ypkpathway.svg)](https://travis-ci.org/BjornFJohansson/ypkpathway). A 64 bit Windows binary executable and a Windows binary wheel are built on Appveyor CI 
@@ -14,8 +14,10 @@ A wheel and setuptools pypi [![pypi](https://img.shields.io/pypi/v/ypkpathway.pn
 Pypi downloads [![pypi dl](https://img.shields.io/pypi/dm/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/). Dependencies are tracked at versioneye 
 [![dependencies](https://www.versioneye.com/user/projects/55645b646361300021ae0200/badge.svg?style=flat(Dependency%20Status)!)](https://www.versioneye.com/user/projects/55645b646361300021ae0200).
 
+
 The ypkpatwhay package provides a graphical point and click interface and a command line application for planning DNA assembly projects 
-using the Yeast Pathway Kit protocol. 
+using the Yeast Pathway Kit protocol.
+
 
 Please refer to the [manual](https://github.com/BjornFJohansson/ypkpathway/blob/master/docs/manual.pdf) for details on how to use the software.
 
@@ -77,8 +79,6 @@ The application is written in PyQt4 and can be started from the command line by 
 
 It can also be started from the Anaconda Launcher if installed using conda on the Anaconda Python distribution.
 
-![screenshot](screenshot.png)
-
 
 Command line interface
 ======================
@@ -112,8 +112,10 @@ the assembly process simulated with pydna. Help is available by the -h option:
 Results
 =======
 
+
 The ypkpathway and ypkpathway_cli both produce the same result, which is a results folder containing a selection of files.
 The folder will contain:
+
 
 -   The sequence of the final pathway and all intermediate vectors in Genbank format
 -   IPython notebooks file describing the final assembly and intermediate assemblies.
