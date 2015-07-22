@@ -160,7 +160,7 @@ class Assembler(QMainWindow):
                             'ctrl+Q', 'quit', 'Quit the program.')
         self.plainTextEdit_2.setReadOnly(True)
 
-        self.setWindowTitle("ypkpathway-gui")
+        self.setWindowTitle("ypkpathway")
         self.setWindowIcon(QIcon( resource_filename("ypkpathway","icons/ypkpathway.png")))
         self.plainTextEdit.setFocus()
 
@@ -256,7 +256,7 @@ class Assembler(QMainWindow):
         '''Save file with a new name.'''
         qpr = self.qprintline
         fname = self.filename or "NoName.txt"
-        self.filename = unicode(QFileDialog.getSaveFileName(self,"ypkpathway-gui - Save File", fname))
+        self.filename = unicode(QFileDialog.getSaveFileName(self,"ypkpathway - Save File", fname))
         flname = self.filename or "NoName.txt"
         self.filename = flname
         fl = codecs.open(flname, 'wU', 'utf8')
@@ -330,7 +330,7 @@ class Assembler(QMainWindow):
         __version__ = get_versions()["version"][:5]
         del get_versions
 
-        QMessageBox.about(self, "About ypkassembler-gui version {}".format(__version__),
+        QMessageBox.about(self, "About ypkassembler version {}".format(__version__),
                              u"""<b>Planning yeast pathway kit constructions.</b>
                                  <p>Copyright 2015 Björn Johansson.
                                  This software is released under a BSD style license.

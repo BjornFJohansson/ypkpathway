@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 u"""
-ypkpathway
+ypkpathway_cli
 
-Usage: ypkpathway <path> [<dir>] [--no_pYPKa_A]
-       ypkpathway -h|--help
-       ypkpathway -v|--version
+Usage: ypkpathway_cli <path> [<dir>] [--no_pYPKa_A]
+       ypkpathway_cli -h|--help
+       ypkpathway_cli -v|--version
 
 Arguments:
     <path>  path to data file containing sequences to be assembled

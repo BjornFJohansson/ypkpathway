@@ -62,15 +62,8 @@ Dependencies:
 #pyzmq>=14.6.0
 
 
-
-
-
-
-Usage
-.....
-
 Graphical user interface:
--------------------------
+.........................
 
 The application is written in PyQt4 and can be started from the command line by typing ypkpathway and pressing <enter>:
 
@@ -82,7 +75,7 @@ It can also be started from the Anaconda Launcher if installed using conda on th
 
 
 Command line interface:
------------------------
+.......................
 
 Typical usage at the command line could look like this:
 
@@ -110,19 +103,22 @@ the assembly process simulated with pydna. Help is available by the -h option:
         -v, --version   Show version.
 
 
-Results
-.......
+Results:
+........
 
-
-The results folder will include:
+The ypkpathway and ypkpathway_cli both produce the same result, which is a results folder containing a selection of files.
+The folder will contain:
 
 -   The sequence of the final pathway and all intermediate vectors in Genbank format
 -   IPython notebooks file describing the final assembly and intermediate assemblies.
 -   All PCR primers needed for the amplification of pathway components.
 -   Expected diagnostic PCR product fragment lengths indicating correct and incorrect clonings.
 
+The IPython notebook files in the results folder can be viewed with a web browser with oly IPython is installed on the computer.
+There are static versions of the notebook files that can be viewed with only a web browser (not eve Python is required).
 
 
-
+ 
+s
 
 
