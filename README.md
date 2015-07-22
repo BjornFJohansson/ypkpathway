@@ -3,6 +3,7 @@ ypkpathway
 
 Ypkpathway is a simulator and 
 
+![screenshot](screenshot.png)
 
 The a wheel and setuptools pypi [![pypi](https://img.shields.io/pypi/v/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/)
  source distributions are built and tested on on travis-ci using a linux back end [![travis](https://travis-ci.org/BjornFJohansson/ypkpathway.svg)](https://travis-ci.org/BjornFJohansson/ypkpathway). A 64 bit windows binary executable and a windows binary wheel are built on Appveyor CI 
@@ -16,7 +17,6 @@ using the Yeast Pathway Kit protocol.
 
 Please refer to the [manual](https://github.com/BjornFJohansson/ypkpathway/blob/master/docs/manual.pdf) for details on how to use the software.
 
-![screenshot](screenshot.png)
 
 Installation
 ............
@@ -33,7 +33,7 @@ Alternatively, ypkpathway can be installed using [pip](https://pypi.python.org/p
 
     bjorn@bjorn-UL30A:/$ pip install ypkpathway
 
-Pip may have trouble to install two dependecies [biopython](https://pypi.python.org/pypi/biopython/1.65) and [PyQt4](https://pypi.python.org/pypi/PyQt4/4.11.4) which have binary extensions. 
+Pip may have trouble to install two dependecies [biopython](https://pypi.python.org/pypi/biopython/1.65) which is a dependency of pydna and [PyQt4](https://pypi.python.org/pypi/PyQt4/4.11.4) which have binary extensions. 
 These can be separately installed. Binary installers of PyQt4 can be found [here](http://www.riverbankcomputing.com/software/pyqt/download). Instructions for how to install Biopython can 
 be found [here](http://biopython.org/wiki/Download).
 
@@ -56,6 +56,10 @@ Dependencies
 [notedown](https://pypi.python.org/pypi/notedown)
 
 [PyQt4](https://pypi.python.org/pypi/PyQt4)
+
+
+There are binary windows installers for IPython, Bioppython, docopt [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/) 
+
 
 #tornado>=4.1
 #terminado>=0.5
