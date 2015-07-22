@@ -1,7 +1,9 @@
 ypkpathway
 ==========
 
-Ypkpathway is a simulator and 
+Ypkpathway is a simulator and documentation generator for in-vivo pathway assembly using the Yeast Pathway Kit protocol. It takes as argument a series of
+sequences in a text file and produces a self contained folder containing sequences of assembly and intermediary vectors, sequences of PCR primers and PCR conditions.
+The assembly process is simulated using [pydna](https://github.com/BjornFJohansson/pydna) in [IPython notebooks](http://ipython.org/notebook.html) which are automatically generated and executed. 
 
 ![screenshot](screenshot.png)
 
@@ -61,9 +63,9 @@ Dependencies
 There are binary Windows installers for IPython, Bioppython, docopt [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/) 
 
 
-#tornado>=4.1
-#terminado>=0.5
-#pyzmq>=14.6.0
+tornado>=4.1
+terminado>=0.5
+pyzmq>=14.6.0
 
 
 Graphical user interface
