@@ -102,7 +102,7 @@ Write sequence to a local file.
 
 The pathway can be extended by digestion with either NotI or PacI or both provided that the enzymes cut once in the final pathway sequence.
 
-    print("NotI cuts {} time(s) and PacI cuts {} time(s) in the final pathway.".format(len(pw.cut(NotI)), len(pw.cut(PacI))))
+    print("NotI cuts {{}} time(s) and PacI cuts {{}} time(s) in the final pathway.".format(len(pw.cut(NotI)), len(pw.cut(PacI))))
 
 ##DOWNLOAD [{name}]({name}.gb)
 
