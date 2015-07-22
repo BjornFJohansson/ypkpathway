@@ -77,11 +77,13 @@ to be installed using a binary installer or a c-compiler has to be present.
 
 [PyQt4](https://pypi.python.org/pypi/PyQt4)
 
-There are binary Windows installers for IPython, Bioppython, docopt [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/) 
+[tornado](https://pypi.python.org/pypi/tornado)
 
-tornado>=4.1
-terminado>=0.5
-pyzmq>=14.6.0
+[terminado](https://pypi.python.org/pypi/terminado)
+
+[pyzmq](https://pypi.python.org/pypi/pyzmq)
+
+There are binary Windows installers for IPython, Bioppython, docopt [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/) 
 
 
 ##Graphical user interface
