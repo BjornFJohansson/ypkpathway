@@ -17,28 +17,27 @@ requirements:
   build:
     - python
     - ipython
-    - pyzmq
     - pydna
     - docopt
     - notedown
+    - pyzmq
 
   run:
     - python
     - ipython
-    - pyzmq
     - pydna
     - docopt
     - notedown
     - pyqt
     - bsddb
-
+    - pyzmq
 test:
   requires:
     - pyqt
     - nose
   commands:
-    #- ypkpathway -h
-    #- ypkpathway -v
+    - ypkpathway_cli -h
+    - ypkpathway_cli -v
 
 about:
   home: https://github.com/BjornFJohansson/ypkpathway

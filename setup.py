@@ -16,6 +16,7 @@ for line in open('ypkpathway/__init__.py'):
 from setuptools import setup
 import os
 
+
 setup(  name='ypkpathway',
         version=versioneer.get_version()[:5],
         cmdclass=versioneer.get_cmdclass(),
@@ -28,6 +29,8 @@ setup(  name='ypkpathway',
         license='LICENSE.txt',
         description='''Assemble metabolic pathways from the command line using the ypkpathway protocol.''',
         long_description=open('README.rst').read(),
+        setup_requires=['setuptools-markdown'],
+        long_description_markdown_filename='README.md',
         install_requires =[ "pydna", "ipython", "docopt", "notedown"],
         test_suite="run_tests.load_my_tests",
         zip_safe = False,
