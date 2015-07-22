@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/icon.png" alt="Drawing" style="width: 100px;"/>ypkpathway
+<img src="https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/icon.png" alt="Drawing" style="width: 50px;"/>ypkpathway
 ===========================
 
 Ypkpathway is a simulator and documentation generator for _in-vivo_ pathway assembly using the Yeast Pathway Kit protocol. It takes as argument a series of
