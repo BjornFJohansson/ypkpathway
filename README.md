@@ -1,7 +1,11 @@
-#[![icon](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/icon.resized.png)](https://pypi.python.org/pypi/ypkpathway/)ypkpathway
+#[![icon](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/icon.resized.png)](https://pypi.python.org/pypi/ypkpathway/) ypkpathway 
+
 
 Ypkpathway is a simulator and documentation generator for _in-vivo_ pathway assembly using the Yeast Pathway Kit protocol. It takes as argument a series of
-sequences in a text file and produces a self contained folder containing sequences of assembly and intermediary vectors, sequences of PCR primers and PCR conditions.
+sequences in a text file and produces a self contained folder containing assembled sequences of intermediary vectors, final assembly and PCR primers. 
+Other useful information such as PCR conditions and PCR product sizes are also included. The documantation of the assembly is given in the narrative 
+IPython notebook format which can be executed independently of ypkpathway.
+
 The assembly process is simulated using [pydna](https://github.com/BjornFJohansson/pydna) in [IPython notebooks](http://ipython.org/notebook.html) which are automatically generated and executed. 
 
 [![screenshot](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/screenshot.resized.png)](https://github.com/BjornFJohansson/ypkpathway)
