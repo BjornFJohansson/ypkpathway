@@ -1,6 +1,5 @@
 #[![icon](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/icon.resized.png)](https://pypi.python.org/pypi/ypkpathway/) ypkpathway 
 
-
 Ypkpathway is a simulator and documentation generator for _in-vivo_ pathway assembly using the Yeast Pathway Kit protocol. It takes as argument a series of
 sequences in a text file and produces a self contained folder containing assembled sequences of intermediary vectors, final assembly and PCR primers. 
 Other useful information such as PCR conditions and PCR product sizes are also included. The documantation of the assembly is given in the narrative 
@@ -8,15 +7,28 @@ IPython notebook format which can be executed independently of ypkpathway.
 
 The assembly process is simulated using [pydna](https://github.com/BjornFJohansson/pydna) in [IPython notebooks](http://ipython.org/notebook.html) which are automatically generated and executed. 
 
-[![screenshot](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/screenshot.resized.png)](https://github.com/BjornFJohansson/ypkpathway)
+See an example of an four gene assembly [here](http://nbviewer.ipython.org/urls/dl.dropboxusercontent.com/u/1263722/pth6/pw.ipynb). The notebooks are 
+visualized through [nbviewer](http://nbviewer.ipython.org/).
 
-A wheel and setuptools pypi [![pypi](https://img.shields.io/pypi/v/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/)
- source distributions are built and tested on on travis-ci using a linux back end [![travis](https://travis-ci.org/BjornFJohansson/ypkpathway.svg)](https://travis-ci.org/BjornFJohansson/ypkpathway). A 64 bit Windows binary executable and a Windows binary wheel are built on Appveyor CI 
-[![appveyor](https://ci.appveyor.com/api/projects/status/ol5ru8po7fx5cimj?svg=true)](https://ci.appveyor.com/project/BjornFJohansson/ypkpathway) on a Windows back end. Binstar builds [![anaconda build](https://anaconda.org/bjornfjohansson/ypkpathway/badges/build.svg)](https://anaconda.org/bjornfjohansson/ypkpathway/builds) Anaconda packages for Windows, Linux and MacOSX on a Linux back end [![anaconda](https://anaconda.org/bjornfjohansson/ypkpathway/badges/downloads.svg)](https://anaconda.org/bjornfjohansson/ypkpathway).
 
-Pypi downloads [![pypi dl](https://img.shields.io/pypi/dm/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/). Dependencies are tracked at versioneye 
-[![dependencies](https://www.versioneye.com/user/projects/55645b646361300021ae0200/badge.svg?style=flat(Dependency%20Status)!)](https://www.versioneye.com/user/projects/55645b646361300021ae0200).
+[![screenshot](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/screenshot.resized.png)](https://github.com/BjornFJohansson/ypkpathway) 
 
+
+[![pypi](https://img.shields.io/pypi/v/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/) Python wheel and source distributions on Pypi.
+
+[![travis](https://travis-ci.org/BjornFJohansson/ypkpathway.svg)](https://travis-ci.org/BjornFJohansson/ypkpathway) Python wheel and source distributions on Pypi are built and tested on on travis-ci using a linux back end. 
+
+[![appveyor](https://ci.appveyor.com/api/projects/status/ol5ru8po7fx5cimj?svg=true)](https://ci.appveyor.com/project/BjornFJohansson/ypkpathway) 64 bit Windows binary executable and a Windows binary wheel are built on Appveyor-CI
+
+[![anaconda build](https://anaconda.org/bjornfjohansson/ypkpathway/badges/build.svg)](https://anaconda.org/bjornfjohansson/ypkpathway/builds) Anaconda packages for Windows, Linux and MacOSX are built at anaconda.org on a Linux back end.
+
+[![dependencies](https://www.versioneye.com/user/projects/55645b646361300021ae0200/badge.svg?style=flat(Dependency%20Status)!)](https://www.versioneye.com/user/projects/55645b646361300021ae0200) Dependencies are tracked at versioneye.
+
+[![pypi dl](https://img.shields.io/pypi/dm/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/) Pypi download count.
+
+[![anaconda](https://anaconda.org/bjornfjohansson/ypkpathway/badges/downloads.svg)](https://anaconda.org/bjornfjohansson/ypkpathway). Anaconda download count.
+
+[![GitHub tag](https://img.shields.io/github/tag/BjornFJohansson/ypkpathway.svg)](https://github.com/BjornFJohansson/ypkpathway) Github repository.
 
 The ypkpatwhay package provides a graphical point and click interface and a command line application for planning DNA assembly projects 
 using the Yeast Pathway Kit protocol.
@@ -27,7 +39,7 @@ Please refer to the [manual](https://github.com/BjornFJohansson/ypkpathway/blob/
 
 ##Installation
 
-The best way of installing ypkpathway is by first installing the free [Anaconda distribution](https://store.continuum.io/cshop/anaconda/) which comes with
+The best way of installing ypkpathway is by first installing the free [Anaconda Python distribution](https://store.continuum.io/cshop/anaconda/) which comes with
 many packages and dependencies out of the box. Using the conda package manages simply type:
 
     bjorn@bjorn-UL30A:/$ conda install ypkpathway
@@ -39,7 +51,7 @@ Alternatively, ypkpathway can be installed using [pip](https://pypi.python.org/p
 
     bjorn@bjorn-UL30A:/$ pip install ypkpathway
 
-Pip may have trouble to install two dependecies [biopython](https://pypi.python.org/pypi/biopython/1.65) which is a dependency of pydna and [PyQt4](https://pypi.python.org/pypi/PyQt4/4.11.4) which have binary extensions. 
+Pip may have trouble to install two dependecies [biopython](https://pypi.python.org/pypi/biopython) which is a dependency of pydna and [PyQt4](https://pypi.python.org/pypi/PyQt4/4.11.4) which have binary extensions. 
 These can be separately installed. Binary installers of PyQt4 can be found [here](http://www.riverbankcomputing.com/software/pyqt/download). Instructions for how to install Biopython can 
 be found [here](http://biopython.org/wiki/Download).
 
@@ -52,6 +64,9 @@ These do not install the dependencies either.
 
 ##Dependencies
 
+The ypkpathway dependencies are pure Python modules except for PyQt. Pydna depends on [biopython](https://pypi.python.org/pypi/biopython) which has 
+to be installed using a binary installer or a c-compiler has to be present. 
+
 [pydna](https://pypi.python.org/pypi/pydna)
 
 [ipython](https://pypi.python.org/pypi/ipython)
@@ -62,9 +77,7 @@ These do not install the dependencies either.
 
 [PyQt4](https://pypi.python.org/pypi/PyQt4)
 
-
 There are binary Windows installers for IPython, Bioppython, docopt [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/) 
-
 
 tornado>=4.1
 terminado>=0.5
@@ -113,9 +126,8 @@ the assembly process simulated with pydna. Help is available by the -h option:
 The ypkpathway and ypkpathway_cli both produce the same result, which is a results folder containing a selection of files.
 The folder will contain:
 
-
--   The sequence of the final pathway and all intermediate vectors in Genbank format
--   IPython notebooks file describing the final assembly and intermediate assemblies.
+-   The sequence of the final pathway and all intermediate vectors in [Genbank](http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html) format
+-   IPython notebooks files describing the final assembly and intermediate assemblies.
 -   All PCR primers needed for the amplification of pathway components.
 -   Expected diagnostic PCR product fragment lengths indicating correct and incorrect clonings.
 

@@ -26,7 +26,7 @@ Standard primers are listed [here](primers.fasta).
 
 The backbone vector is linearized with [EcoRV](http://rebase.neb.com/rebase/enz/EcoRV.html).
 
-    from Bio.Restriction import EcoRV
+    from Bio.Restriction import EcoRV, NotI, PacI
 
     pYPKpw = pydna.read("pYPKpw.gb")
 
@@ -100,7 +100,11 @@ Write sequence to a local file.
 
     pw.write("{name}.gb")
 
-#DOWNLOAD [{name}]({name}.gb)
+The pathway can be extended by digestion with either NotI or PacI or both provided that the enzymes cut once in the final pathway sequence.
+
+    print("NotI cuts {} time(s) and PacI cuts {} time(s) in the final pathway.".format(len(pw.cut(NotI)), len(pw.cut(PacI))))
+
+##DOWNLOAD [{name}]({name}.gb)
 
     import pydna
 

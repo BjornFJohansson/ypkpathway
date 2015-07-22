@@ -30,7 +30,7 @@ import codecs
 import shutil
 
 import docopt
-from IPython import nbformat
+from IPython import nbformat, nbconvert
 from IPython.nbconvert.preprocessors.execute import ExecutePreprocessor
 from IPython.core.interactiveshell import InteractiveShell
 from IPython.display import FileLink
@@ -220,11 +220,10 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
 
     for name, content in sorted((n, c) for n, c in files.items() if n.endswith(".md")):
         newname = os.path.splitext(name)[0]+".ipynb"
-        nb = nbformat.writes(obj.to_notebook(content))
         msg = u"\nsaving: "+newname
         print(msg)
         log+=msg
-        with open(newname,"w") as f: f.write(nb)
+        nb = nbformat.write(obj.to_notebook(content), newname)
 
     pp = ExecutePreprocessor()
     pp.timeout = 120 # seconds
@@ -252,12 +251,12 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
             log+=msg
             with io.open(name, 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
             nb_executed, resources = pp.preprocess(nb, resources={})
-            nbformat.write(nb, name)
             for cell in nb.cells:
                 if cell.cell_type == 'code':
                     code = shell.input_transformer_manager.transform_cell(cell.source)
                     exec code in g, l
             new_primers.extend( (l["fp"], l["rp"]) )
+            nbformat.write(nb, name)
             g={}
             l={}
     else:
@@ -310,8 +309,10 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
                          pYPKa_clones=pYPKa_clones,
                          length=genes)
 
-    nb = nbformat.writes(obj.to_notebook(pwnb))
-    with open("pw.ipynb", "w") as f: f.write(nb)
+    nb = nbformat.write(obj.to_notebook(pwnb), "pw.ipynb")
+
+    #nb = nbformat.writes("pw.ipynb", obj.to_notebook(pwnb))
+    #with open("pw.ipynb", "w") as f: f.write(nb)
 
     msg = u"\n\nexecuting final pathway notebook..\n"
     print(msg)
@@ -322,6 +323,9 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
     with io.open("pw.ipynb", 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
     nb_executed, resources = pp.preprocess(nb, resources={})
     nbformat.write(nb, "pw.ipynb")
+
+    #for nb_ in [f for f in os.listdir(".") if f.endswith(".ipynb")]:
+    #    subprocess.Popen(["ipython", "nbconvert", os.path.join(dir_, nb_)])
 
     os.chdir(cwd)
 
@@ -381,6 +385,8 @@ def main():
         filename = os.path.basename(file_)
 
         shutil.copy2( filename, os.path.join(dir_, u"INDATA_"+os.path.basename((dir_)+u".txt")))
+
+
 
         print(u"opening IPython notebook {}".format(fl.path))
 
