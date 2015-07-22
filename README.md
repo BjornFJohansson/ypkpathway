@@ -1,5 +1,4 @@
-[![icon](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/icon.resized.png)](https://pypi.python.org/pypi/ypkpathway/)ypkpathway
-===================================================================================================================================================
+#[![icon](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/icon.resized.png)](https://pypi.python.org/pypi/ypkpathway/)ypkpathway
 
 Ypkpathway is a simulator and documentation generator for _in-vivo_ pathway assembly using the Yeast Pathway Kit protocol. It takes as argument a series of
 sequences in a text file and produces a self contained folder containing sequences of assembly and intermediary vectors, sequences of PCR primers and PCR conditions.
@@ -22,8 +21,7 @@ using the Yeast Pathway Kit protocol.
 Please refer to the [manual](https://github.com/BjornFJohansson/ypkpathway/blob/master/docs/manual.pdf) for details on how to use the software.
 
 
-Installation
-============
+##Installation
 
 The best way of installing ypkpathway is by first installing the free [Anaconda distribution](https://store.continuum.io/cshop/anaconda/) which comes with
 many packages and dependencies out of the box. Using the conda package manages simply type:
@@ -48,8 +46,7 @@ Ypkpathway can also be installed from source by downloading one of the source di
 Dependencies has to be manually installed in this case. There are also .exe installers for ypkpathway that can be installed by double clicking.
 These do not install the dependencies either.
 
-Dependencies
-============
+##Dependencies
 
 [pydna](https://pypi.python.org/pypi/pydna)
 
@@ -70,8 +67,7 @@ terminado>=0.5
 pyzmq>=14.6.0
 
 
-Graphical user interface
-========================
+##Graphical user interface
 
 The application is written in PyQt4 and can be started from the command line by typing ypkpathway and pressing <enter>:
 
@@ -80,8 +76,7 @@ The application is written in PyQt4 and can be started from the command line by 
 It can also be started from the Anaconda Launcher if installed using conda on the Anaconda Python distribution.
 
 
-Command line interface
-======================
+##Command line interface
 
 Typical usage at the command line could look like this:
 
@@ -109,9 +104,7 @@ the assembly process simulated with pydna. Help is available by the -h option:
         -v, --version   Show version.
 
 
-Results
-=======
-
+##Results
 
 The ypkpathway and ypkpathway_cli both produce the same result, which is a results folder containing a selection of files.
 The folder will contain:
@@ -125,10 +118,10 @@ The folder will contain:
 The IPython notebook files in the results folder can be viewed with a web browser with oly IPython is installed on the computer.
 There are static versions of the notebook files that can be viewed with only a web browser (not eve Python is required).
 
-Development
-===========
+##Development
 
-Ypkpathway is open source software and developen on Github [![GitHub tag](https://img.shields.io/github/tag/BjornFJohansson/ypkpathway.svg)](https://github.com/BjornFJohansson/ypkpathway).
+Ypkpathway is open source software and developen on 
+Github [![GitHub tag](https://img.shields.io/github/tag/BjornFJohansson/ypkpathway.svg)](https://github.com/BjornFJohansson/ypkpathway).
 
 
 
