@@ -5,9 +5,9 @@ Ypkpathway is a simulator and
 
 ![screenshot](screenshot.png)
 
-The a wheel and setuptools pypi [![pypi](https://img.shields.io/pypi/v/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/)
- source distributions are built and tested on on travis-ci using a linux back end [![travis](https://travis-ci.org/BjornFJohansson/ypkpathway.svg)](https://travis-ci.org/BjornFJohansson/ypkpathway). A 64 bit windows binary executable and a windows binary wheel are built on Appveyor CI 
-[![appveyor](https://ci.appveyor.com/api/projects/status/ol5ru8po7fx5cimj?svg=true)](https://ci.appveyor.com/project/BjornFJohansson/ypkpathway) on a windows back end. Binstar builds [![anaconda build](https://anaconda.org/bjornfjohansson/ypkpathway/badges/build.svg)](https://anaconda.org/bjornfjohansson/ypkpathway/builds) Anaconda packages for Windows, Linux and MacOSX on a Linux back end [![anaconda](https://anaconda.org/bjornfjohansson/ypkpathway/badges/downloads.svg)](https://anaconda.org/bjornfjohansson/ypkpathway).
+A wheel and setuptools pypi [![pypi](https://img.shields.io/pypi/v/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/)
+ source distributions are built and tested on on travis-ci using a linux back end [![travis](https://travis-ci.org/BjornFJohansson/ypkpathway.svg)](https://travis-ci.org/BjornFJohansson/ypkpathway). A 64 bit Windows binary executable and a Windows binary wheel are built on Appveyor CI 
+[![appveyor](https://ci.appveyor.com/api/projects/status/ol5ru8po7fx5cimj?svg=true)](https://ci.appveyor.com/project/BjornFJohansson/ypkpathway) on a Windows back end. Binstar builds [![anaconda build](https://anaconda.org/bjornfjohansson/ypkpathway/badges/build.svg)](https://anaconda.org/bjornfjohansson/ypkpathway/builds) Anaconda packages for Windows, Linux and MacOSX on a Linux back end [![anaconda](https://anaconda.org/bjornfjohansson/ypkpathway/badges/downloads.svg)](https://anaconda.org/bjornfjohansson/ypkpathway).
 
 Pypi downloads [![pypi dl](https://img.shields.io/pypi/dm/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/). Dependencies are tracked at versioneye 
 [![dependencies](https://www.versioneye.com/user/projects/55645b646361300021ae0200/badge.svg?style=flat(Dependency%20Status)!)](https://www.versioneye.com/user/projects/55645b646361300021ae0200).
@@ -19,7 +19,7 @@ Please refer to the [manual](https://github.com/BjornFJohansson/ypkpathway/blob/
 
 
 Installation
-............
+============
 
 The best way of installing ypkpathway is by first installing the free [Anaconda distribution](https://store.continuum.io/cshop/anaconda/) which comes with
 many packages and dependencies out of the box. Using the conda package manages simply type:
@@ -45,7 +45,7 @@ Dependencies has to be manually installed in this case. There are also .exe inst
 These do not install the dependencies either.
 
 Dependencies
-............
+============
 
 [pydna](https://pypi.python.org/pypi/pydna)
 
@@ -58,7 +58,7 @@ Dependencies
 [PyQt4](https://pypi.python.org/pypi/PyQt4)
 
 
-There are binary windows installers for IPython, Bioppython, docopt [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/) 
+There are binary Windows installers for IPython, Bioppython, docopt [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/) 
 
 
 #tornado>=4.1
@@ -67,7 +67,7 @@ There are binary windows installers for IPython, Bioppython, docopt [here](http:
 
 
 Graphical user interface
-........................
+========================
 
 The application is written in PyQt4 and can be started from the command line by typing ypkpathway and pressing <enter>:
 
@@ -79,7 +79,7 @@ It can also be started from the Anaconda Launcher if installed using conda on th
 
 
 Command line interface
-......................
+======================
 
 Typical usage at the command line could look like this:
 
@@ -108,7 +108,7 @@ the assembly process simulated with pydna. Help is available by the -h option:
 
 
 Results
-.......
+=======
 
 The ypkpathway and ypkpathway_cli both produce the same result, which is a results folder containing a selection of files.
 The folder will contain:
@@ -122,7 +122,7 @@ The IPython notebook files in the results folder can be viewed with a web browse
 There are static versions of the notebook files that can be viewed with only a web browser (not eve Python is required).
 
 Development
-...........
+===========
 
 Ypkpathway is open source software and developen on Github [![GitHub tag](https://img.shields.io/github/tag/BjornFJohansson/ypkpathway.svg)](https://github.com/BjornFJohansson/ypkpathway).
 
