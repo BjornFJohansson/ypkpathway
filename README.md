@@ -26,7 +26,7 @@ visualized through [nbviewer](http://nbviewer.ipython.org/).
 
 [![pypi dl](https://img.shields.io/pypi/dm/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/) Pypi download count.
 
-[![anaconda](https://anaconda.org/bjornfjohansson/ypkpathway/badges/downloads.svg)](https://anaconda.org/bjornfjohansson/ypkpathway). Anaconda download count.
+[![anaconda](https://anaconda.org/bjornfjohansson/ypkpathway/badges/downloads.svg)](https://anaconda.org/bjornfjohansson/ypkpathway) Anaconda download count.
 
 [![GitHub tag](https://img.shields.io/github/tag/BjornFJohansson/ypkpathway.svg)](https://github.com/BjornFJohansson/ypkpathway) Github repository.
 
