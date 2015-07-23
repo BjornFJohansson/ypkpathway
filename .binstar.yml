@@ -1,7 +1,7 @@
 package: ypkpathway
 
 before_script:
-  - python setup.py version
+  - sudo yum install pandoc
   - conda update -n root conda
   - conda install binstar binstar-build
   - conda update -n root conda-build
@@ -16,6 +16,7 @@ iotimeout: 300
 build_targets: conda
 
 script:
+  - echo python setup.py version
   - conda build .
 
 build_targets:
