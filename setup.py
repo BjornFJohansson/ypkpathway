@@ -14,7 +14,7 @@ for line in open('ypkpathway/__init__.py'):
         exec(line.strip())
 
 from setuptools import setup
-import os
+import os, codecs
 
 
 setup(  name='ypkpathway',
@@ -28,7 +28,7 @@ setup(  name='ypkpathway',
         url='http://pypi.python.org/pypi/ypkpathway/',
         license='LICENSE.txt',
         description='''Simulation and documentation of metabolic pathway assembly using the Yeast Pathway Kit.''',
-        long_description=open('README.md').read(),
+        long_description=codecs.open('README.md', "r", "utf8").read(),
         setup_requires=['setuptools-markdown'],
         long_description_markdown_filename='README.md',
         install_requires =[ "pydna", "ipython", "docopt", "notedown"],
