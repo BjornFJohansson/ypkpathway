@@ -11,9 +11,6 @@ build:
     - ypkpathway = ypkpathway.gui:main
     - ypkpathway_cli = ypkpathway.ypkpathway:main
 
-source:
-  git_url: .
-
 requirements:
   build:
     - python
