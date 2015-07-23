@@ -1,7 +1,6 @@
 package: ypkpathway
 
 before_script:
-  - sudo yum install pandoc
   - conda update -n root conda
   - conda install binstar binstar-build
   - conda update -n root conda-build
