@@ -7,7 +7,6 @@ before_script:
   - conda update -n root conda-build
   - cat $CONDARC
   - conda config --add channels https://conda.binstar.org/BjornFJohansson --file $CONDARC
-  #- conda config --add channels https://anaconda.org/BjornFJohansson --file $CONDARC  
   - cat $CONDARC
   - cat ~/.condarc
 
@@ -17,6 +16,8 @@ build_targets: conda
 
 script:
   - python setup.py version
+  - echo $GIT_DESCRIBE_TAG
+  - echo $GIT_FULL_HASH
   - conda build .
 
 build_targets:
@@ -27,3 +28,6 @@ after_success:
   - conda convert /opt/miniconda/conda-bld/linux-64/*.tar.bz2 -p all --output-dir /opt/miniconda/conda-bld/
 after_failure:
   - echo Oops?
+
+source:
+  git_url: ../
