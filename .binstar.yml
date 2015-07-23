@@ -16,8 +16,6 @@ build_targets: conda
 
 script:
   - python setup.py version
-  - echo $GIT_DESCRIBE_TAG
-  - echo $GIT_FULL_HASH
   - conda build .
 
 build_targets:
@@ -28,6 +26,3 @@ after_success:
   - conda convert /opt/miniconda/conda-bld/linux-64/*.tar.bz2 -p all --output-dir /opt/miniconda/conda-bld/
 after_failure:
   - echo Oops?
-
-source:
-  git_url: ../
