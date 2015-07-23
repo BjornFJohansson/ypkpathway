@@ -5,9 +5,9 @@ before_script:
   - conda update -n root conda
   - conda install binstar binstar-build
   - conda update -n root conda-build
-  - cat $CONDARC
+  #- cat $CONDARC
   - conda config --add channels https://conda.binstar.org/BjornFJohansson --file $CONDARC
-  - cat $CONDARC
+  #- cat $CONDARC
   - cat ~/.condarc
 
 iotimeout: 300
