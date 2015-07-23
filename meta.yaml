@@ -37,8 +37,8 @@ test:
     - pyqt
     - nose
   commands:
-    - ypkpathway_cli -h
-    - ypkpathway_cli -v
+    #- ypkpathway_cli -h
+    #- ypkpathway_cli -v
 
 about:
   home: https://github.com/BjornFJohansson/ypkpathway
