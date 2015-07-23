@@ -5,6 +5,7 @@ package:
 build:
   preserve_egg_dir: True
   number: {{environ.get('BINSTAR_BUILD', 1)}}
+  string: {{ environ.get('GIT_BUILD_STR', '') }}
   entry_points:
     - ypkpathway = ypkpathway.gui:main
     - ypkpathway_cli = ypkpathway.ypkpathway:main
@@ -21,7 +22,6 @@ requirements:
     - docopt
     - notedown
     - pyzmq
-    - setuptools-markdown
 
   run:
     - python

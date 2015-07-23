@@ -16,7 +16,7 @@ iotimeout: 300
 build_targets: conda
 
 script:
-  - python setup.py version
+  - echo python setup.py version
   - conda build .
 
 build_targets:
