@@ -5,8 +5,8 @@ before_script:
   - conda install binstar binstar-build
   - conda update -n root conda-build
   - cat $CONDARC
-  #- conda config --add channels https://conda.binstar.org/BjornFJohansson --file $CONDARC
-  - conda config --add channels https://anaconda.org/BjornFJohansson --file $CONDARC  
+  - conda config --add channels https://conda.binstar.org/BjornFJohansson --file $CONDARC
+  #- conda config --add channels https://anaconda.org/BjornFJohansson --file $CONDARC  
   - cat $CONDARC
   - cat ~/.condarc
 
