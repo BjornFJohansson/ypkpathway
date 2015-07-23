@@ -12,7 +12,7 @@ build:
     - ypkpathway_cli = ypkpathway.ypkpathway:main
 
 source:
-  git_url: ../
+  git_url: .
 
 requirements:
   build:
