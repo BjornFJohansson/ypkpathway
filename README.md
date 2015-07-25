@@ -7,12 +7,19 @@ IPython notebook format which can be executed independently of ypkpathway.
 
 The assembly process is simulated using [pydna](https://github.com/BjornFJohansson/pydna) in [IPython notebooks](http://ipython.org/notebook.html) which are automatically generated and executed. 
 
-See an example of an four gene assembly [here](http://nbviewer.ipython.org/urls/dl.dropboxusercontent.com/u/1263722/pth6/pw.ipynb). The notebooks are 
-visualized through [nbviewer](http://nbviewer.ipython.org/).
+See an example of an four gene assembly [here](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/docs/pth6/pw.ipynb). 
+The notebooks in the example are located in the docs folder in this repository and visualized through [nbviewer](http://nbviewer.ipython.org/).
+The example above was made with the [pth6](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth6.txt) indata.
 
+There are five more example indata example files that are a part of the automatic test suit: 
+[pth1](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth1.txt)
+[pth2](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth2.txt)
+[pth3](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth3.txt)
+[pth4](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth4.txt)
+[pth5](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth5.txt)
+[pth7](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth7.txt)
 
 [![screenshot](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/screenshot.resized.png)](https://github.com/BjornFJohansson/ypkpathway) 
-
 
 [![pypi](https://img.shields.io/pypi/v/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/) Python wheel and source distributions on Pypi.
 

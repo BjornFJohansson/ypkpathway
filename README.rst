@@ -16,9 +16,22 @@ notebooks <http://ipython.org/notebook.html>`__ which are automatically
 generated and executed.
 
 See an example of an four gene assembly
-`here <http://nbviewer.ipython.org/urls/dl.dropboxusercontent.com/u/1263722/pth6/pw.ipynb>`__.
-The notebooks are visualized through
-`nbviewer <http://nbviewer.ipython.org/>`__.
+`here <http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/docs/pth6/pw.ipynb>`__.
+The notebooks in the example are located in the docs folder in this
+repository and visualized through
+`nbviewer <http://nbviewer.ipython.org/>`__. The example above was made
+with the
+`pth6 <http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth6.txt>`__
+indata.
+
+There are five more example indata example files that are a part of the
+automatic test suit:
+`pth1 <http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth1.txt>`__
+`pth2 <http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth2.txt>`__
+`pth3 <http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth3.txt>`__
+`pth4 <http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth4.txt>`__
+`pth5 <http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth5.txt>`__
+`pth7 <http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth7.txt>`__
 
 |screenshot|
 
