@@ -209,7 +209,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
         msg = u"\nsaving: "+name
         print(msg)
         log+=msg
-        with open(name,"w") as f: f.write(content)
+        with open(name,"wb") as f: f.write(content)
 
     print("\n")
     log+="\n"
