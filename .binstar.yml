@@ -3,14 +3,12 @@ package: ypkpathway
 before_script:
   - git describe --tags
   - conda update -n root conda
-  - conda install binstar binstar-build
-  - conda update -n root conda-build
+  - conda install anaconda-client anaconda-build
+  - conda update -n root anaconda-build
   #- cat $CONDARC
   - conda config --add channels https://conda.binstar.org/BjornFJohansson --file $CONDARC
-
-  #- cat $CONDARC
+  - cat $CONDARC
   - cat ~/.condarc
-
 iotimeout: 300
 
 build_targets: conda

@@ -16,7 +16,6 @@ for line in open('ypkpathway/__init__.py'):
 from setuptools import setup
 import os#, codecs
 
-
 setup(  name='ypkpathway',
         version=versioneer.get_version()[:5],
         cmdclass=versioneer.get_cmdclass(),
@@ -44,3 +43,10 @@ setup(  name='ypkpathway',
                        u'Programming Language :: Python :: 2.7',
                        u'Topic :: Education',
                        u'Topic :: Scientific/Engineering :: Bio-Informatics',])
+
+
+
+
+
+
+
