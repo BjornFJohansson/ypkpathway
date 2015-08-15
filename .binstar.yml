@@ -5,6 +5,7 @@ before_script:
   - conda update -n root conda
   - conda install anaconda-client anaconda-build
   #- conda update -n root anaconda-build
+  - conda update -n root conda-build
   #- cat $CONDARC
   - conda config --add channels https://conda.binstar.org/BjornFJohansson --file $CONDARC
   - cat $CONDARC
