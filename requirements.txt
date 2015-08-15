@@ -1,7 +1,7 @@
 pydna>=0.9.8
 docopt>=0.6.2
 notedown>=1.4.4
-ipython=3.2.1
+ipython==3.2.1
 tornado>=4.1
 terminado>=0.5
 pyzmq>=14.6.0
