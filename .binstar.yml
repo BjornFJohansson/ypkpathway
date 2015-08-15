@@ -4,7 +4,7 @@ before_script:
   - git describe --tags
   - conda update -n root conda
   - conda install anaconda-client anaconda-build
-  - conda update -n root anaconda-build
+  #- conda update -n root anaconda-build
   #- cat $CONDARC
   - conda config --add channels https://conda.binstar.org/BjornFJohansson --file $CONDARC
   - cat $CONDARC
