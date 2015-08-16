@@ -345,7 +345,7 @@ class Assembler(QMainWindow):
                                             QT_VERSION_STR,
                                             SIP_VERSION_STR,
                                             PYQT_VERSION_STR,
-                                            pydna.__version__))
+                                            pydna.__version__[:5]))
 
 
 
