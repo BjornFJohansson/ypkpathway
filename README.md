@@ -148,5 +148,18 @@ There are static versions of the notebook files that can be viewed with only a w
 Ypkpathway is open source software and developen on 
 Github [![GitHub tag](https://img.shields.io/github/tag/BjornFJohansson/ypkpathway.svg)](https://github.com/BjornFJohansson/ypkpathway).
 
+##How it works
+
+Ypkpathway generates a series of text documents in [markdown](http://daringfireball.net/projects/markdown/) format that are formatted with 
+the given data. There is one document per vector generated in in the assembly process. These documents contain comments and links as 
+well as Python code. The python code describe the cloning and assembly steps using pydna. The markdown documents are turned into JSON format
+using the [notedown](https://github.com/aaren/notedown) package. The notebooks are then executed using the IPython functionality. All files and
+raw data are saved in a self contained result folder.
+
+
+
+
+ 
+
 
 
