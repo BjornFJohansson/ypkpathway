@@ -13,22 +13,23 @@ build:
 requirements:
   build:
     - python
-    - ipython
-    - pydna
-    - docopt
-    - notedown
-    - pyzmq
+    - ipython ==3.2.1
+    - pydna ==0.9.8
+    - docopt ==0.6.2
+    - notedown ==1.4.5
+    - pyzmq ==14.6.0
+    - pyqt ==4.11.3
     #- bsddb
 
   run:
     - python
-    - ipython
-    - pydna
-    - docopt
-    - notedown
-    - pyqt
+    - ipython ==3.2.1
+    - pydna ==0.9.8
+    - docopt ==0.6.2
+    - notedown ==1.4.5
+    - pyzmq ==14.6.0
+    - pyqt ==4.11.3
     #- bsddb
-    - pyzmq
 test:
   requires:
     - pyqt
