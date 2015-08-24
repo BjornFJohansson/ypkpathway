@@ -32,7 +32,7 @@ requirements:
     #- bsddb
 test:
   requires:
-    - pyqt
+    - pyqt pyqt ==4.11.3
     - nose
   commands:
     - echo test
