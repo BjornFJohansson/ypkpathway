@@ -19,9 +19,11 @@ script:
   - python setup.py version
   - conda build .
 
-build_targets:
-    files: /opt/miniconda/conda-bld/*/*.tar.bz2
-    channels: 'main'
+#build_targets:
+#    files: /opt/miniconda/conda-bld/*/*.tar.bz2
+#    channels: 'main'
+
+build_targets: /opt/miniconda/conda-bld/*/*.tar.bz2
 
 after_success:
   - conda convert /opt/miniconda/conda-bld/linux-64/*.tar.bz2 -p all --output-dir /opt/miniconda/conda-bld/
