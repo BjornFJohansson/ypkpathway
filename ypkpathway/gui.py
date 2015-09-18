@@ -9,7 +9,7 @@ import subprocess
 import shutil
 import codecs
 
-from PyQt4.QtCore import QRect, QMetaObject, QObject
+from PyQt4.QtCore import QRect, QMetaObject, QObject, QEvent
 from PyQt4.QtGui  import (QApplication, QMainWindow, QWidget,
                            QGridLayout, QTabWidget, QPlainTextEdit, QCheckBox,
                            QMenuBar, QMenu, QStatusBar, QAction,
@@ -36,6 +36,9 @@ class Assembler(QMainWindow):
         gridLayout = QGridLayout(centralwidget)
         self.tabWidget = QTabWidget(centralwidget)
 
+
+        # textbox
+
         self.tab = QWidget()
         font = QFont()
         font.setFamily("Inconsolata")
@@ -43,9 +46,14 @@ class Assembler(QMainWindow):
         self.tab.setFont(font)
         gridLayout_3 = QGridLayout(self.tab)
         self.plainTextEdit = QPlainTextEdit(self.tab)
+        self.plainTextEdit.installEventFilter(self)
+        self.plainTextEdit.setAcceptDrops(True)
         gridLayout_3.addWidget(self.plainTextEdit, 0, 0, 1, 1)
-
         self.tabWidget.addTab(self.tab, "")
+
+
+
+
 
         self.tab_2 = QWidget()
         self.tab_2.setFont(font)
@@ -163,6 +171,27 @@ class Assembler(QMainWindow):
         self.setWindowTitle("ypkpathway")
         self.setWindowIcon(QIcon( resource_filename("ypkpathway","icons/ypkpathway.png")))
         self.plainTextEdit.setFocus()
+
+    def eventFilter(self, object, event):
+        #print(event.type(), QEvent.DragEnter, object, self.plainTextEdit)
+        if (object is self.plainTextEdit):
+            if (event.type() == QEvent.DragEnter):
+                if event.mimeData().hasUrls():
+                    event.accept()   # must accept the dragEnterEvent or else the dropEvent can't occur !!!
+                    print("accept")
+                else:
+                    event.ignore()
+                    print("ignore")
+            if (event.type() == QEvent.Drop):
+                if event.mimeData().hasUrls():   # if file or link is dropped
+                    urlcount = len(event.mimeData().urls())  # count number of drops
+                    url = event.mimeData().urls()[0]   # get first url
+                    object.setPlainText('abc')   # assign first url to editline
+                    event.accept()  # doesnt appear to be needed
+                    print(456)
+                    return True
+            return False # lets the event continue to the edit
+        return False
 
     def setDirty(self):
         '''On change of text in textEdit window, set the flag
@@ -297,9 +326,13 @@ class Assembler(QMainWindow):
 
         if self.filename is None:
             self.fileSaveAs()
+
         dir_, ext = os.path.splitext( unicode(self.filename))
 
         fl, log = ypkpathway.pathway( pth, dir_, pYPKa_A = not self.checkbox.isChecked(), print = printline)
+
+        if not fl:
+            return
 
         with codecs.open(os.path.join(dir_, u"log.txt"),"wU","utf8") as f: f.write(log)
 

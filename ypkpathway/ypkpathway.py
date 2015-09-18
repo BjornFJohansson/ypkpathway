@@ -67,6 +67,19 @@ def read_bin_file(name):
 
 def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
 
+    if len(pth)==0: # pth has to contain some sequences
+        print("No of sequences found.")
+        return None, None
+
+    names = [s.name for s in pth] # sequence names has to be unique
+
+    #if len(names)>len(set(names)):
+    #    print("Gene names are not unique. Please rename sequences so that each sequence has a unique name.\n")
+    #    print("Gene names parsed from Data page:\n\n")
+    #    for name in names:
+    #        print(name)
+    #    return None, None
+
     log=u""
 
     pYPK0 = pydna.read(read_data_file("pYPK0.gb"))
@@ -164,6 +177,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
                 term_description = term.id
 
             x = "pYPK0_{}_{}_{}".format(prom_description, gene_description, term_description)
+
             if pYPKa_A or nbflag:
                 nbtemp = read_data_file("nb_template_pYPK0_tp_gene_tp.md")
                 files[x+u".md"] = nbtemp.format(tpz=prom_description,
@@ -178,6 +192,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
 
             cas_vectors+=u"\n"+x+u".gb\n"
             tp_gene_tp_links+=u"[{}]({}.ipynb)  \n".format(x, x)
+
 
 
 
@@ -386,8 +401,6 @@ def main():
 
         shutil.copy2( filename, os.path.join(dir_, u"INDATA_"+os.path.basename((dir_)+u".txt")))
 
-
-
         print(u"opening IPython notebook {}".format(fl.path))
 
         #subprocess.Popen(["ipython", "notebook", os.path.join(dir_, "pw.ipynb")])
@@ -395,7 +408,6 @@ def main():
 def pathway_(x,y, print=print):
     print("abc")
     fl = FileLink(os.path.join("dir", "pw.ipynb"))
-
     return fl
 
 

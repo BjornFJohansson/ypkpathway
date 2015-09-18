@@ -1,0 +1,33 @@
+created subdirectory /home/bjorn/python_packages/ypkpathway/ypkpathway/NoName
+
+saving files sequence files and images..
+
+saving: SsXYL1.gb
+saving: TDH3.gb
+saving: TEF1.gb
+saving: pYPK_A.png
+saving: pYPK_ZE.png
+saving: pYPKa.gb
+saving: pYPKpw.gb
+saving: primers.fasta
+saving: pw.png
+saving: tp_g_tp.png
+
+saving notebook files ..
+
+saving: pYPK0_TEF1_SsXYL1_TDH3.ipynb
+saving: pYPKa_ZE_TDH3.ipynb
+saving: pYPKa_ZE_TEF1.ipynb
+
+executing pYPKa notebooks..
+
+executing: pYPKa_ZE_TDH3.ipynb
+executing: pYPKa_ZE_TEF1.ipynb
+
+executing pYPK0 notebooks..
+
+executing: pYPK0_TEF1_SsXYL1_TDH3.ipynb
+
+executing final pathway notebook..
+
+executing: pw.ipynb
