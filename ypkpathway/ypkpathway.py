@@ -93,7 +93,10 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
              "tp_g_tp.png"   : read_bin_file("tp_g_tp.png"),
              "pYPK_ZE.png"   : read_bin_file("pYPK_ZE.png"),
              "pYPK_A.png"    : read_bin_file("pYPK_A.png"),
-             "pw.png"        : read_bin_file("pw.png"), }
+             "pw.png"        : read_bin_file("pw.png"), 
+             "start.bat"     : read_data_file("start.bat"),
+             "start.sh"      : read_data_file("start.sh"),}
+
     cas_vectors = u""
     tp_gene_tp_links = u""
     pYPKa_clones=u""
@@ -315,6 +318,10 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
     nbtemp = read_data_file("nb_template_pYPK0_pw.md")
 
     primer_list = "\n".join( p.format("tab") for p in new_primers )
+
+    if new_primers:
+        msg = u"\n\nsaving new_primers.txt..\n"
+    with open("new_primers.txt","wb") as f: f.write("\n".join( p.format("fasta") for p in new_primers ))
 
     pwnb = nbtemp.format(name=pwname,
                          filename=os.path.basename(dir_),

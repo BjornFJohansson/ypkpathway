@@ -19,7 +19,7 @@ requirements:
     - notedown ==1.4.4
     - pyzmq ==14.6.0
     - pyqt
-    - bsddb
+    #- bsddb
 
   run:
     - python
@@ -29,7 +29,7 @@ requirements:
     - notedown ==1.4.4
     - pyzmq ==14.6.0
     - pyqt
-    - bsddb
+    #- bsddb
 test:
   requires:
     - pyqt

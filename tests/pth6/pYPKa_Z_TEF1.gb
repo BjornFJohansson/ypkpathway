@@ -1,5 +1,5 @@
 LOCUS       pYPKa_Z_TEF1            3720 bp    DNA     circular UNK 14-JUL-2015
-DEFINITION  cSEGUID_AJXtr6m2hFB9TWlbAgnFlGedTi8_2015-09-16T05:51:48.734722
+DEFINITION  cSEGUID_0s47KRvklrl6IzfaACskS5ZBWPM_2015-09-22T09:08:36.085175
 ACCESSION   -
 VERSION     -
 KEYWORDS    .
@@ -7,30 +7,30 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     primer_bind     complement(558..578)
+     misc            531..554
+                     /label="TEF1fw"
+     primer_bind     537..554
+                     /note="pfw579"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     primer_bind     complement(1094..1115)
+                     /note="prv579"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+     misc            complement(1094..1122)
+                     /label="TEF1rv"
+     primer_bind     complement(1150..1170)
                      /note="567_pCAPsAjiIF"
                      /ApEinfo_revcolor="red"
                      /ApEinfo_fwdcolor="green"
-     misc            complement(558..580)
+     misc            complement(1150..1172)
                      /label="567_pCAPsAjiIF"
-     misc            581..602
+     misc            1173..1194
                      /label="568_pCAPsAjiIR"
-     primer_bind     583..602
+     primer_bind     1175..1194
                      /note="568_pCAPsAjiIR"
                      /ApEinfo_revcolor="red"
                      /ApEinfo_fwdcolor="green"
-     misc            612..635
-                     /label="TEF1fw"
-     primer_bind     618..635
-                     /note="pfw579"
-                     /ApEinfo_revcolor="red"
-                     /ApEinfo_fwdcolor="green"
-     primer_bind     complement(1175..1196)
-                     /note="prv579"
-                     /ApEinfo_revcolor="red"
-                     /ApEinfo_fwdcolor="green"
-     misc            complement(1175..1203)
-                     /label="TEF1rv"
      rep_origin      1905
                      /direction=BOTH
      gene            complement(2664..3524)
@@ -63,19 +63,19 @@ ORIGIN
       301 ccactccgac gggattaacg agtgccgtaa acgacgatgg ttttaccgtg tgcggagatc
       361 aggttctgat cctcgagcat cttaagaatt cgtcccacgg tttgtctaga gcagccgaca
       421 atctggccaa tttcctgacg ggtaattttg atttgcatgc cgtccgggtg agtcatagcg
-      481 tctggttgtt ttgccagatt cagcagagtc tgtgcaatgc ggccgctgac gtcgaggaac
-      541 gccaggttgc ccactttctc actagtgacc tgcagccgac gtgccatctg tgcagacaaa
-      601 cgcatcagga tttaaataca atgcatactt tgtacgttca aaatacaatg cagtagatat
-      661 atttatgcat attacatata atacatatca cataggaagc aacaggcgcg ttggactttt
-      721 aattttcgag gaccgcgaat ccttacatca cacccaatcc cccacaagtg atcccccaca
-      781 caccatagct tcaaaatgtt tctactcctt ttttactctt ccagattttc tcggactccg
-      841 cgcatcgccg taccacttca aaacacccaa gcacagcata ctaaatttcc cctctttctt
-      901 cctctagggt gtcgttaatt acccgtacta aaggtttgga aaagaaaaaa gagaccgcct
-      961 cgtttctttt tcttcgtcga aaaaggcaat aaaaattttt atcacgtttc tttttcttga
-     1021 aaattttttt ttttgatttt tttctctttc gatgacctcc cattgatatt taagttaata
-     1081 aacggtcttc aatttctcaa gtttcagttt catttttctt gttctattac aacttttttt
-     1141 acttcttgct cattagaaag aaagcatagc aatctaatct aagttttaat tacaaattaa
-     1201 ttaatccgga tttacctgaa tcaattggcg aaattttttg tacgaaattt cagccacttc
+      481 tctggttgtt ttgccagatt cagcagagtc tgtgcaatgc ggccgctgac ttaaatacaa
+      541 tgcatacttt gtacgttcaa aatacaatgc agtagatata tttatgcata ttacatataa
+      601 tacatatcac ataggaagca acaggcgcgt tggactttta attttcgagg accgcgaatc
+      661 cttacatcac acccaatccc ccacaagtga tcccccacac accatagctt caaaatgttt
+      721 ctactccttt tttactcttc cagattttct cggactccgc gcatcgccgt accacttcaa
+      781 aacacccaag cacagcatac taaatttccc ctctttcttc ctctagggtg tcgttaatta
+      841 cccgtactaa aggtttggaa aagaaaaaag agaccgcctc gtttcttttt cttcgtcgaa
+      901 aaaggcaata aaaattttta tcacgtttct ttttcttgaa aatttttttt tttgattttt
+      961 ttctctttcg atgacctccc attgatattt aagttaataa acggtcttca atttctcaag
+     1021 tttcagtttc atttttcttg ttctattaca acttttttta cttcttgctc attagaaaga
+     1081 aagcatagca atctaatcta agttttaatt acaaattaat tagtcgagga acgccaggtt
+     1141 gcccactttc tcactagtga cctgcagccg acgtgccatc tgtgcagaca aacgcatcag
+     1201 gatatccgga tttacctgaa tcaattggcg aaattttttg tacgaaattt cagccacttc
      1261 acaggcggtt ttcgcacgta cccatgcgct acgttcctgg ccctcttcaa acaggcccag
      1321 ttcgccaata aaatcaccct gattcagata ggagaggatc atttctttac cctcttcgtc
      1381 tttgatcagc actgccacag agcctttaac gatgtagtac agcgtttccg ctttttcacc

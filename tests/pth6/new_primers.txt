@@ -1,0 +1,53 @@
+>FBA1fw pfw630
+ttaaatATAACAATACTGACAGTACTAAA
+
+>FBA1rv prv630
+taattaaTTTGAATATGTATTACTTGGT
+
+>PDC1fw pfw955
+ttaaatAGGGTAGCCTCCCCAT
+
+>PDC1rv prv955
+taattaaTTTGATTGATTTGACTGT
+
+>PGIfw pfw1000
+ttaaatAATTCAGTTTTCTGACTGA
+
+>PGIrv prv1000
+taattaaTTTTAGGCTGGTATCTTG
+
+>TDH3fw pfw698
+ttaaatATAAAAAACACGCTTTTTC
+
+>TDH3rv prv698
+taattaaTTTGTTTGTTTATGTGTGTT
+
+>TEF1fw pfw579
+ttaaatACAATGCATACTTTGTAC
+
+>TEF1rv prv579
+taattaaTTTGTAATTAAAACTTAGATTA
+
+>ScTAL1fw pfw1008
+tgcccactttctcactagtgacctgcagccgacAAATGTCTGAACCAGCTC
+
+>ScTAL1rv prv1008
+AAatcctgatgcgtttgtctgcacagatggCACTTAAGCGGTAACTTTCTT
+
+>ScXKS1fw pfw1803
+tgcccactttctcactagtgacctgcagccgacAAATGTTGTGTTCAGTAATTC
+
+>ScXKS1rv prv1803
+AAatcctgatgcgtttgtctgcacagatggCACTTAGATGAGAGTCTTTTCC
+
+>SsXYL2fw pfw1092
+tgcccactttctcactagtgacctgcagccgacAAATGACTGCTAACCCTTCCTT
+
+>SsXYL2rv prv1092
+AAatcctgatgcgtttgtctgcacagatggCACTTACTCAGGGCCGTCA
+
+>SsXYL1fw pfw957
+tgcccactttctcactagtgacctgcagccgacAAATGCCTTCTATTAAGTTGAAC
+
+>SsXYL1rv prv957
+AAatcctgatgcgtttgtctgcacagatggCACTTAGACGAAGATAGGAATCT
