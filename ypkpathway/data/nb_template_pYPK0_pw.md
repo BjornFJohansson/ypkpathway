@@ -1,4 +1,4 @@
-#Pathway {name}
+# Pathway {name}
 
 This notebook describes the assembly of {length} single gene expression cassettes into a single pathway. 
 Notebooks describing the single gene expression vectors are linked at the end of this document as are notebooks 
@@ -20,9 +20,9 @@ Initiate the standard primers needed to amplify each cassette.
 The first cassette in the pathway is amplified with standard
 primers 577 and 778, the last with
 775 and 578 and all others with 775 and 778.
-Standard primers are listed [here](primers.fasta).
+Standard primers are listed [here](standard_primers.txt).
 
-    p = {{ x.id: x for x in pydna.parse("primers.fasta") }}
+    p = {{ x.id: x for x in pydna.parse("standard_primers.txt") }}
 
 The backbone vector is linearized with [EcoRV](http://rebase.neb.com/rebase/enz/EcoRV.html).
 
@@ -30,37 +30,37 @@ The backbone vector is linearized with [EcoRV](http://rebase.neb.com/rebase/enz/
 
     pYPKpw = pydna.read("pYPKpw.gb")
 
-The assembly_fragments variable holds the list of DNA fragments to
+The cassette_products variable holds the list of expression cassette PCR products fragments to
 be assembled.
 
-    assembly_fragments = [ pYPKpw.linearize(EcoRV) ]
+	cassette_products = []
 
 The expression cassettes comes from a series of single gene expression vectors 
 held in the template_vectors list.
 
-    cas_vectors ='''
+    cassette_vectors ='''
 {cas_vectors}'''.splitlines()
 
-    template_vectors = [pydna.read(v.strip()) for v in cas_vectors if v.strip()]
+    template_vectors = [pydna.read(v.strip()) for v in cassette_vectors if v.strip()]
 
     template_vectors
 
-The first cassette in the pathway is amplified with standard primers 577 and 778
+The first cassette in the pathway is amplified with standard primers 577 and 778. Suggested PCR conditions can be found at the end of this document.
 
-    assembly_fragments.append( pydna.pcr( p['577'], p['778'],  template_vectors[0] ) )
+    cassette_products.append( pydna.pcr( p['577'], p['778'],  template_vectors[0] ) )
 
-Cassettes in the middle cassettes are amplified with standard primers 775 and 778.
+Cassettes in the middle cassettes are amplified with standard primers 775 and 778. Suggested PCR conditions can be found at the end of this document.
 
-    assembly_fragments.extend( pydna.pcr( p['775'], p['778'], v) for v in template_vectors[1:-1] ) 
+    cassette_products.extend( pydna.pcr( p['775'], p['778'], v) for v in template_vectors[1:-1] ) 
 
-The last cassette in the pathway is amplified with standard primers 775 and 578
+The last cassette in the pathway is amplified with standard primers 775 and 578. Suggested PCR conditions can be found at the end of this document.
 
-    assembly_fragments.append( pydna.pcr( p['775'], p['578'], template_vectors[-1] ) )
+    cassette_products.append( pydna.pcr( p['775'], p['578'], template_vectors[-1] ) )
 
 Cassettes and plasmid backbone are joined by homologous recombination in a Saccharomyces cerevisiae ura3 host
 which selects for the URA3 gene in pYPKpw.
 
-    asm = pydna.Assembly( assembly_fragments, limit=167-47-10)
+    asm = pydna.Assembly( [pYPKpw.linearize(EcoRV)] + cassette_products, limit=167-47-10)
     asm
 
 Normally, only one circular product should be formed since the 
@@ -80,9 +80,9 @@ the plasmid origin is shifted so that it matches the original.
 
     pw = candidate.synced(pYPKpw)
 
-Calculate cseguid checksum for the resulting plasmid for future reference.
-This is a seguid checksum that uniquely describes a circular double stranded 
-sequence.
+The cseguid checksum for the resulting plasmid is calculated for future reference.
+The [cseguid checksum](http://pydna.readthedocs.org/en/latest/pydna.html#pydna.utils.cseguid) 
+uniquely identifies a circular double stranded sequence.
 
     pw.cseguid()
 
@@ -104,7 +104,7 @@ The pathway can be extended by digestion with either NotI or PacI or both provid
 
     print("NotI cuts {{}} time(s) and PacI cuts {{}} time(s) in the final pathway.".format(len(pw.cut(NotI)), len(pw.cut(PacI))))
 
-##DOWNLOAD [{name}]({name}.gb)
+## DOWNLOAD [{name}]({name}.gb)
 
     import pydna
 
@@ -114,9 +114,13 @@ The pathway can be extended by digestion with either NotI or PacI or both provid
 
 ### New Primers needed for assembly.
 
-This list contains all needed primers that are not in the standard primer [list](primers.fasta) above.
+This list contains all needed primers that are not in the standard primer [list](standard_primers.txt) above.
 
-{primer_list}
+	try:
+		with open("new_primers.txt") as f: text = f.read()
+	except IOError:
+		text = "no new primers needed."
+	print text
 
 ### New single gene expression vectors (pYPK0_prom_gene_term) needed for assembly.
 
@@ -129,5 +133,16 @@ Hyperlinks to notebook files describing the singlke gene expression plasmids nee
 Hyperlinks to notebook files describing the pYPKa plasmids needed for the assembly of the single gene clones listed above.
 
 {pYPKa_clones}
+
+### Suggested PCR conditions
+
+	for prd in cassette_products:
+		print
+		print
+		print
+		print
+		print "product name:", prd.name
+		print "template:", prd.template.name
+		print prd.program()
 	
 

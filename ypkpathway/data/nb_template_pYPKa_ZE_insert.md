@@ -1,31 +1,32 @@
-#Construction of promoter vector pYPKa_Z_{tp} and terminator vector pYPKa_E_{tp}
+# Construction of promoter vector pYPKa_Z_{tp} and terminator vector pYPKa_E_{tp}
 
-This notebook describe the construction of E. coli vectors [pYPKa_Z_{tp}](pYPKa_Z_{tp}.gb) and [pYPKa_E_{tp}](pYPKa_E_{tp}.gb)
-with an insert for which PCR primers are also designed.
+This notebook describe the construction of _E. coli_ vectors [pYPKa_Z_{tp}](pYPKa_Z_{tp}.gb) and [pYPKa_E_{tp}](pYPKa_E_{tp}.gb)
+with the same insert for which PCR primers are also designed.
 
-The insert defined below is cloned in pYPKa using the blunt restriction 
-enzymes [ZraI](http://rebase.neb.com/rebase/enz/ZraI.html) and [EcoRV](http://rebase.neb.com/rebase/enz/EcoRV.html) in 
-two different plasmids. The insert cloned in ZraI will be used as a promoter, while in the EcoRV site it will be used as a 
+The insert defined below is cloned in pYPKa using the blunt restriction
+enzymes [ZraI](http://rebase.neb.com/rebase/enz/ZraI.html) and [EcoRV](http://rebase.neb.com/rebase/enz/EcoRV.html) in
+two different plasmids. The insert cloned in [ZraI](http://rebase.neb.com/rebase/enz/ZraI.html)
+will be used as a promoter, while in the [EcoRV](http://rebase.neb.com/rebase/enz/EcoRV.html) site the insert will be used as a
 terminator.
 
 ![pYPKa_Z and pYPKa_E plasmids](pYPK_ZE.png "pYPKa_Z and pYPKa_E plasmids")
 
-The [pydna](https://pypi.python.org/pypi/pydna/) package is imported in the code cell below. 
+The [pydna](https://pypi.python.org/pypi/pydna/) package is imported in the code cell below.
 There is a [publication](http://www.biomedcentral.com/1471-2105/16/142) describing pydna as well as
-[documentation](http://pydna.readthedocs.org/en/latest/) available online. 
-Pydna is developed on [Github](https://github.com/BjornFJohansson/pydna). 
+[documentation](http://pydna.readthedocs.org/en/latest/) available online.
+Pydna is developed on [Github](https://github.com/BjornFJohansson/pydna).
 
 	import pydna
 
-The vector backbone pYPKa is read from a local [file](pYPKa.gb).
+The vector backbone [pYPKa](pYPKa.gb) is read from a local file.
 
 	pYPKa = pydna.read("pYPKa.gb")
 
-Both restriction enzymes are imported from [Biopython](http://biopython.org/wiki/Main_Page)
+Both restriction enzymes are imported from [Biopython](http://biopython.org)
 
 	from Bio.Restriction import ZraI, EcoRV
 
-The vector is cut with both enzymes.
+The vector is linearized with both enzymes.
 
 	pYPKa_ZraI  = pYPKa.linearize(ZraI)
 	pYPKa_EcoRV = pYPKa.linearize(EcoRV)
@@ -34,24 +35,22 @@ The insert sequence is read from a local file. This sequence was parsed from the
 
 	ins = pydna.read("{tp}.gb")
 
-The insert sequence is read from a local file]. This sequence was parsed from the ypkpathway data file.
+Primers for the terminator promoter need specific tails in order to produce
+a [SmiI](http://rebase.neb.com/rebase/enz/SmiI.html) and a [PacI](http://rebase.neb.com/rebase/enz/PacI.html) 
+when cloned in pYPKa in the EcoRV cloning position.
 
 	fp_tail = "ttaaat"
 	rp_tail = "taattaa"
 
-Design primers for the terminator promoter. The primers has specific tails in order to produce 
-a [SmiI](http://rebase.neb.com/rebase/enz/SmiI.html) and a [PacI](http://rebase.neb.com/rebase/enz/PacI.html) restriction site in the EcoRV cloning position.
+Primers with the tails above are designed in the code cell below.
 
-	fp, rp = pydna.cloning_primers(ins, fp_tail=fp_tail, rp_tail=rp_tail)
+	fp, rp = pydna.cloning_primers(ins, fp_tail=fp_tail, rp_tail=rp_tail, path="new_primers.txt")
 
-Primers are given the names below. These primers are included in the primer list in the end of the [pathway notebook](pw.ipynb) file.
+The primers are included in the [new_primer.txt](new_primers.txt) list and in the end of the [pathway notebook](pw.ipynb) file.
 
-	fp.id = "{tp}fw"
-	rp.id = "{tp}rv"
+	print(fp.format("fasta"))
 
-	print(fp.format("tab"))
-
-	print(rp.format("tab"))
+	print(rp.format("fasta"))
 
 PCR to create the insert using the newly designed primers.
 
@@ -80,51 +79,51 @@ fifty percent of the clones. The PCR strategy below is used to identify the corr
 	pYPKa_Z_{tp}b = (pYPKa_ZraI  + prd.rc()).looped().synced(pYPKa)
 	pYPKa_E_{tp}b = (pYPKa_EcoRV + prd.rc()).looped().synced(pYPKa)
 
-A combination of standard primers and the newly designed primers are 
+A combination of standard primers and the newly designed primers are
 used for the strategy to identify correct clones.
-Standard primers are listed [here](primers.fasta).
+Standard primers are listed [here](standard_primers.txt).
 
-	p = {{ x.id: x for x in pydna.parse("primers.fasta") }}
+	p = {{ x.id: x for x in pydna.parse("standard_primers.txt") }}
 
-##Diagnostic PCR confirmation
+## Diagnostic PCR confirmation
 
 The correct structure of pYPKa_Z_{tp} is confirmed by PCR using standard primers
-577 and 342 that are vector specific together with the {tp}fw primer specific for the insert 
-in a multiplex PCR reaction with 
+577 and 342 that are vector specific together with the {tp}fw primer specific for the insert
+in a multiplex PCR reaction with
 all three primers present.
 
-Two PCR products are expected if the insert was cloned, the sizes depend 
+Two PCR products are expected if the insert was cloned, the sizes depend
 on the orientation. If the vector is empty or contains another insert, only one
 product is formed.
 
-####Expected PCR products sizes from pYPKa_Z_{tp}:
+#### Expected PCR products sizes from pYPKa_Z_{tp}:
 
 pYPKa_Z_{tp} with insert in correct orientation.
 
-    pydna.Anneal( (p['577'], p['342'], fp), pYPKa_Z_{tp}).products
+	pydna.Anneal( (p['577'], p['342'], fp), pYPKa_Z_{tp}).products
 
 pYPKa_Z_{tp} with insert in reverse orientation.
 
-    pydna.Anneal( (p['577'], p['342'], fp), pYPKa_Z_{tp}b).products
+	pydna.Anneal( (p['577'], p['342'], fp), pYPKa_Z_{tp}b).products
 
 Empty pYPKa clone.
 
-    pydna.Anneal( (p['577'], p['342'], fp), pYPKa).products
+pydna.Anneal( (p['577'], p['342'], fp), pYPKa).products
 
-####Expected PCR products sizes pYPKa_E_{tp}:
+#### Expected PCR products sizes pYPKa_E_{tp}:
 
 pYPKa_E_{tp} with insert in correct orientation.
 
-    pydna.Anneal( (p['577'], p['342'], fp), pYPKa_E_{tp}).products
+	pydna.Anneal( (p['577'], p['342'], fp), pYPKa_E_{tp}).products
 
 pYPKa_E_{tp} with insert in reverse orientation.
 
-    pydna.Anneal( (p['577'], p['342'], fp), pYPKa_E_{tp}b).products
+	pydna.Anneal( (p['577'], p['342'], fp), pYPKa_E_{tp}b).products
 
 
-Calculate cseguid checksums for the resulting plasmids for future reference.
-Cseguid is a checksum that uniquely describes a circular double stranded 
-sequence.
+The cseguid checksum for the resulting plasmids are calculated for future reference.
+The [cseguid checksum](http://pydna.readthedocs.org/en/latest/pydna.html#pydna.utils.cseguid)
+uniquely identifies a circular double stranded sequence.
 
 	print(pYPKa_Z_{tp}.cseguid())
 	print(pYPKa_E_{tp}.cseguid())
@@ -134,8 +133,8 @@ The sequences are named based on the name of the cloned insert.
 	pYPKa_Z_{tp}.locus = "pYPKa_Z_{tp}"[:16]
 	pYPKa_E_{tp}.locus = "pYPKa_Z_{tp}"[:16]
 
-Stamp sequence with cseguid checksum. This can be used to verify the 
-integrity of the sequence file.
+Sequences are stamped with the cseguid checksum.
+This can be used to verify the integrity of the sequence file.
 
 	pYPKa_Z_{tp}.stamp()
 	pYPKa_E_{tp}.stamp()

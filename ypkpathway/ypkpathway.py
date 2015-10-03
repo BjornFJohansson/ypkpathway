@@ -30,7 +30,7 @@ import codecs
 import shutil
 
 import docopt
-from IPython import nbformat, nbconvert
+from IPython import nbformat   #, nbconvert
 from IPython.nbconvert.preprocessors.execute import ExecutePreprocessor
 from IPython.core.interactiveshell import InteractiveShell
 from IPython.display import FileLink
@@ -87,15 +87,15 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
 
     from Bio.Restriction import ZraI, AjiI, EcoRV
 
-    files = {"primers.fasta" : read_data_file("primers.fasta"),
-             "pYPKa.gb"      : read_data_file("pYPKa.gb"),
-             "pYPKpw.gb"     : read_data_file("pYPKpw.gb"),
-             "tp_g_tp.png"   : read_bin_file("tp_g_tp.png"),
-             "pYPK_ZE.png"   : read_bin_file("pYPK_ZE.png"),
-             "pYPK_A.png"    : read_bin_file("pYPK_A.png"),
-             "pw.png"        : read_bin_file("pw.png"), 
-             "start.bat"     : read_data_file("start.bat"),
-             "start.sh"      : read_data_file("start.sh"),}
+    files = {"standard_primers.txt"     : read_data_file("standard_primers.txt"),
+             "pYPKa.gb"                 : read_data_file("pYPKa.gb"),
+             "pYPKpw.gb"                : read_data_file("pYPKpw.gb"),
+             "tp_g_tp.png"              : read_bin_file("tp_g_tp.png"),
+             "pYPK_ZE.png"              : read_bin_file("pYPK_ZE.png"),
+             "pYPK_A.png"               : read_bin_file("pYPK_A.png"),
+             "pw.png"                   : read_bin_file("pw.png"),
+             "start.bat"                : read_data_file("start.bat"),
+             "start.sh"                 : read_data_file("start.sh"),}
 
     cas_vectors = u""
     tp_gene_tp_links = u""
@@ -255,7 +255,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
     log+=msg
 
     shell = InteractiveShell.instance()
-    new_primers = []
+    #new_primers = []
 
     g={}
     l={}
@@ -273,7 +273,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
                 if cell.cell_type == 'code':
                     code = shell.input_transformer_manager.transform_cell(cell.source)
                     exec code in g, l
-            new_primers.extend( (l["fp"], l["rp"]) )
+            #new_primers.extend( (l["fp"], l["rp"]) )
             nbformat.write(nb, name)
             g={}
             l={}
@@ -305,10 +305,10 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
                 if cell.cell_type == 'code':
                     code = shell.input_transformer_manager.transform_cell(cell.source)
                     exec code in g, l
-            try:
-                new_primers.extend( (l["fp"], l["rp"]) )
-            except KeyError:
-                pass
+            #try:
+                #new_primers.extend( (l["fp"], l["rp"]) )
+            #except KeyError:
+            #    pass
             g={}
             l={}
     else:
@@ -317,17 +317,16 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
         log+=msg
     nbtemp = read_data_file("nb_template_pYPK0_pw.md")
 
-    primer_list = "\n".join( p.format("tab") for p in new_primers )
+    #primer_list = "\n".join( p.format("tab") for p in new_primers )
 
-    if new_primers:
-        msg = u"\n\nsaving new_primers.txt..\n"
-    with open("new_primers.txt","wb") as f: f.write("\n".join( p.format("fasta") for p in new_primers ))
+    #if new_primers:
+    #    msg = u"\n\nsaving new_primers.txt..\n"
+    #with open("new_primers.txt","wb") as f: f.write("\n".join( p.format("fasta") for p in new_primers ))
 
     pwnb = nbtemp.format(name=pwname,
                          filename=os.path.basename(dir_),
                          tp_gene_tp_links = tp_gene_tp_links,
                          cas_vectors=add_space(cas_vectors, 17),
-                         primer_list=primer_list,
                          pYPKa_clones=pYPKa_clones,
                          length=genes)
 
@@ -352,6 +351,8 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
     os.chdir(cwd)
 
     fl = FileLink(os.path.join(dir_, u"pw.ipynb"))
+
+    #   pp = None
 
     return fl, log
 
