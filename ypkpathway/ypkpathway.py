@@ -210,8 +210,11 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
     try:
         os.makedirs(dir_)
     except OSError as exception:
-        if exception.errno != errno.EEXIST:
-            raise
+        if exception.errno == errno.EEXIST:
+            print("The {} directory already exsists! Please delete or choose another name.".format(dir_))
+        else:
+            print("The {} directory could not be created".format(dir_))
+        return None, None
 
     msg = u"created subdirectory {}\n".format(dir_)
     print(msg)
