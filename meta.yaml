@@ -1,6 +1,6 @@
 package:
   name: ypkpathway
-  version: {{ environ.get('GIT_DESCRIBE_TAG', '0.9.0') }}
+  version: {{ environ.get('GIT_DESCRIBE_TAG', '0.9.1') }}
 
 build:
   #preserve_egg_dir: True
@@ -28,7 +28,7 @@ requirements:
     - docopt ==0.6.2
     - notedown ==1.4.4
     - pyzmq ==14.6.0
-    - pyqt == 4.11.3
+    - pyqt ==4.11.3
     #- bsddb
 test:
   requires:
