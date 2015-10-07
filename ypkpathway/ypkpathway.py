@@ -326,6 +326,15 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
     #    msg = u"\n\nsaving new_primers.txt..\n"
     #with open("new_primers.txt","wb") as f: f.write("\n".join( p.format("fasta") for p in new_primers ))
 
+    #print("qwerty")
+    #print(pwname)
+    #print(os.path.basename(dir_))
+    #print(tp_gene_tp_links)
+    #print(add_space(cas_vectors, 17))
+    #print(pYPKa_clones)
+    #print(str(genes))
+    #print("123456789")
+
     pwnb = nbtemp.format(name=pwname,
                          filename=os.path.basename(dir_),
                          tp_gene_tp_links = tp_gene_tp_links,

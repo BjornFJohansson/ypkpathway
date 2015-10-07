@@ -33,7 +33,7 @@ The backbone vector is linearized with [EcoRV](http://rebase.neb.com/rebase/enz/
 The cassette_products variable holds the list of expression cassette PCR products fragments to
 be assembled.
 
-	cassette_products = []
+    cassette_products = []
 
 The expression cassettes comes from a series of single gene expression vectors 
 held in the template_vectors list.
@@ -56,6 +56,12 @@ Cassettes in the middle cassettes are amplified with standard primers 775 and 77
 The last cassette in the pathway is amplified with standard primers 775 and 578. Suggested PCR conditions can be found at the end of this document.
 
     cassette_products.append( pydna.pcr( p['775'], p['578'], template_vectors[-1] ) )
+
+The cassettes are given names based on their order in the final construct in the code cell below.
+
+    for i, cp in enumerate(cassette_products):
+        cp.name = "Cassette {{}}".format(i+1)
+        print(cp.name)
 
 Cassettes and plasmid backbone are joined by homologous recombination in a Saccharomyces cerevisiae ura3 host
 which selects for the URA3 gene in pYPKpw.
@@ -116,11 +122,11 @@ The pathway can be extended by digestion with either NotI or PacI or both provid
 
 This list contains all needed primers that are not in the standard primer [list](standard_primers.txt) above.
 
-	try:
-		with open("new_primers.txt") as f: text = f.read()
-	except IOError:
-		text = "no new primers needed."
-	print text
+    try:
+        with open("new_primers.txt") as f: text = f.read()
+    except IOError:
+        text = "no new primers needed."
+    print text
 
 ### New single gene expression vectors (pYPK0_prom_gene_term) needed for assembly.
 
@@ -136,13 +142,14 @@ Hyperlinks to notebook files describing the pYPKa plasmids needed for the assemb
 
 ### Suggested PCR conditions
 
-	for prd in cassette_products:
-		print
-		print
-		print
-		print
-		print "product name:", prd.name
-		print "template:", prd.template.name
-		print prd.program()
-	
+    for prd in cassette_products:
+        print
+        print
+        print
+        print
+        print "product name:", prd.name
+        print "forward primer", prd.forward_primer.name
+        print "reverse primer", prd.reverse_primer.name
+        print prd.program()
+    
 
