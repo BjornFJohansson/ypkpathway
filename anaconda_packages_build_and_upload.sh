@@ -4,15 +4,25 @@ echo "Building anaconda packages"
 
 conda build .
 
-conda convert ~/anaconda/conda-bld/linux-64/ypkpathway*.tar.bz2 -p all --output-dir ~/anaconda/conda-bld/
+OUTPUT="$(conda build . --output)"
+echo "${OUTPUT}"
 
-anaconda upload ~/anaconda/conda-bld/linux-64/ypkpathway* ~/anaconda/conda-bld/
-anaconda upload ~/anaconda/conda-bld/linux-32/ypkpathway* ~/anaconda/conda-bld/
-anaconda upload ~/anaconda/conda-bld/win-32/ypkpathway* ~/anaconda/conda-bld/
-anaconda upload ~/anaconda/conda-bld/win-64/ypkpathway* ~/anaconda/conda-bld/
-anaconda upload ~/anaconda/conda-bld/osx-64/ypkpathway* ~/anaconda/conda-bld/
+conda convert $OUTPUT -p linux-32 --output-dir ~/anaconda/conda-bld/
+conda convert $OUTPUT -p win-32   --output-dir ~/anaconda/conda-bld/
+conda convert $OUTPUT -p win-64   --output-dir ~/anaconda/conda-bld/
+conda convert $OUTPUT -p osx-64   --output-dir ~/anaconda/conda-bld/
 
-$SHELL
+
+anaconda upload $OUTPUT
+
+name=$(basename $OUTPUT)
+
+anaconda upload ~/anaconda/conda-bld/linux-32/$name
+anaconda upload ~/anaconda/conda-bld/win-32/$name
+anaconda upload ~/anaconda/conda-bld/win-64/$name
+anaconda upload ~/anaconda/conda-bld/osx-64/$name
+
+# $SHELL
 
 
 
