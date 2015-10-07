@@ -20,7 +20,7 @@ requirements:
     - docopt ==0.6.2
     - notedown ==1.4.4
     - pyzmq ==14.6.0
-    - pyqt ==4.11
+    - pyqt ==4.11*
     #- bsddb
 
   run:
@@ -30,7 +30,7 @@ requirements:
     - docopt ==0.6.2
     - notedown ==1.4.4
     - pyzmq ==14.6.0
-    - pyqt ==4.11
+    - pyqt ==4.11*
     #- bsddb
 test:
   requires:
