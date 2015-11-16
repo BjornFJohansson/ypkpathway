@@ -1,0 +1,42 @@
+created subdirectory /home/bjorn/Desktop/python_packages/ypkpathway/tests/pth3
+
+saving files sequence files and images..
+
+saving: NC_006038.gb
+saving: RPL12A.gb
+saving: RPL12B.gb
+saving: pYPK0_TDH3tp_PsXYL2_PGI1tp.gb
+saving: pYPK_A.png
+saving: pYPK_ZE.png
+saving: pYPKa.gb
+saving: pYPKa_A_CiGXF1.gb
+saving: pYPKa_E_TDH3tp.gb
+saving: pYPKpw.gb
+saving: pw.png
+saving: standard_primers.txt
+saving: start.bat
+saving: start.sh
+saving: tp_g_tp.png
+
+saving notebook files ..
+
+saving: pYPK0_RPL12A_NC_006038_RPL12B.ipynb
+saving: pYPK0_RPL12B_CiGXF1_TDH3tp.ipynb
+saving: pYPKa_A_NC_006038.ipynb
+saving: pYPKa_ZE_RPL12A.ipynb
+saving: pYPKa_ZE_RPL12B.ipynb
+
+executing pYPKa notebooks..
+
+executing: pYPKa_A_NC_006038.ipynb
+executing: pYPKa_ZE_RPL12A.ipynb
+executing: pYPKa_ZE_RPL12B.ipynb
+
+executing pYPK0 notebooks..
+
+executing: pYPK0_RPL12A_NC_006038_RPL12B.ipynb
+executing: pYPK0_RPL12B_CiGXF1_TDH3tp.ipynb
+
+executing final pathway notebook..
+
+executing: pw.ipynb

@@ -1,0 +1,34 @@
+created subdirectory /home/bjorn/Desktop/python_packages/ypkpathway/tests/pth5
+
+saving files sequence files and images..
+
+saving: pYPK0_FBA1tp_ScTAL1_PDC1tp_shifted ori 4856.gb
+saving: pYPK0_PGItp_ScXKS1_FBA1tp_shifted ori 4856.gb
+saving: pYPK0_TDH3tp_SsXYL2_PGItp_shifted ori 4856.gb
+saving: pYPK0_TEF1tp_SsXYL1_TDH3tp_shifted ori 4856.gb
+saving: pYPK_A.png
+saving: pYPK_ZE.png
+saving: pYPKa.gb
+saving: pYPKpw.gb
+saving: pw.png
+saving: standard_primers.txt
+saving: start.bat
+saving: start.sh
+saving: tp_g_tp.png
+
+saving notebook files ..
+
+
+executing pYPKa notebooks..
+
+No pYPKa notebooks found.
+
+
+executing pYPK0 notebooks..
+
+No pYPK0 notebooks found.
+
+
+executing final pathway notebook..
+
+executing: pw.ipynb

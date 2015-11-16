@@ -1,0 +1,23 @@
+LOCUS       RPL12A                   682 bp    DNA     linear   UNK 01-JAN-1980
+DEFINITION  RPL12A
+ACCESSION   RPL12A
+VERSION     RPL12A
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+ORIGIN
+        1 tctggaattt accctaactg tacaaaatat atttagcatt atatacccgc tatttaatta
+       61 ttataaagga gacctttata ctcaaacaaa tgaagccacc ttatgccatt atcccattcg
+      121 taccagtcta aaacaagata aataccctgt ttaacatccg aacaccaaat atgtgtgggt
+      181 gtcaaacaaa gagacaatgt aatgagacaa tgtactgctt gtaaactata acagtatcag
+      241 ctcaatttca atgccatcta ctccagatat cgttgcgatt gtacctacaa gccgcctaca
+      301 acggcgttat tgttgtaagc tggtaaaatg cagtgcgttc ccccgttgtg agttcgggcc
+      361 aaacttactt ggctgggagt tccgtccgta cagttgtggc ttgctgccta gacttaggcg
+      421 gacgcggcgg caattactcc tgggctctcc ctagagctgg agagacactc ttggtaaccg
+      481 aagggaaaat cccggaagaa aatttggaat ccgttaacac tgctggaaat ggacatctcc
+      541 taatactgaa aaaattattc aaagtctaga attttggtaa atttcaaggc ttctttgagt
+      601 tacagttcgt tactattaca ccttaaagga actttctttt ggggtctaga aagtcgacaa
+      661 caagaacaaa ggatatacaa aa
+//

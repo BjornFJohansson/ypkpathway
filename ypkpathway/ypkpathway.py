@@ -21,23 +21,22 @@ Options:
 from __future__ import print_function
 import io
 import re
-#from time import gmtime, strftime
 import sys
 import os
-#import subprocess
 import errno
 import codecs
 import shutil
-
 import docopt
-from IPython import nbformat   #, nbconvert
-from IPython.nbconvert.preprocessors.execute import ExecutePreprocessor
+from pkg_resources import resource_filename
+import pydna
+
+import nbformat
+from nbconvert.preprocessors.execute import ExecutePreprocessor
 from IPython.core.interactiveshell import InteractiveShell
 from IPython.display import FileLink
-
 import notedown
-import pydna
-from pkg_resources import resource_filename
+
+
 
 re_cas  = re.compile("pYPK0_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})")
 re_cas  = re.compile("pYPK0_([^_]{2,15})_([^_]{2,15})_([^_]{2,15})")
@@ -430,6 +429,57 @@ def pathway_(x,y, print=print):
     fl = FileLink(os.path.join("dir", "pw.ipynb"))
     return fl
 
+def pYPKa_ZE_ipynb_generator(tp, dir_="pYPKa_ZE_vectors"):
+
+    try:
+        os.makedirs(dir_)
+    except OSError as exception:
+        if exception.errno == errno.EEXIST:
+            print("The {} directory already exsists! Please delete or choose another name.".format(dir_))
+        else:
+            print("The {} directory could not be created".format(dir_))
+        return None, None
+
+    os.chdir(dir_)
+
+    with open("standard_primers.txt","wb") as f: f.write(read_data_file("standard_primers.txt"))
+    with open("pYPKa.gb","wb") as f: f.write(read_data_file("pYPKa.gb"))
+    with open("pYPK_ZE.png","wb") as f: f.write(read_bin_file("pYPK_ZE.png"))
+    with open(tp.id+u".gb","wb") as f: f.write(tp.format("gb"))
+
+    nbtemp = read_data_file("nb_template_pYPKa_ZE_insert.md")
+
+    name = u"pYPKa_ZE_{}.ipynb".format(tp.id)
+
+    obj = notedown.MarkdownReader()
+
+    nb = obj.to_notebook(nbtemp.format(tp=tp.id))
+
+    pp = ExecutePreprocessor()
+    pp.timeout = 120 # seconds
+    pp.interrupt_on_timeout = True
+
+    shell = InteractiveShell.instance()
+
+    nb_executed, resources = pp.preprocess(nb, resources={})
+
+    g={}
+    l={}
+
+    for cell in nb.cells:
+        if cell.cell_type == 'code':
+            code = shell.input_transformer_manager.transform_cell(cell.source)
+            exec code in g, l
+
+    nbformat.write(nb, name)
+
+    return name
 
 if __name__ == "__main__":
-    main()
+    #main()
+
+    import pydna
+
+    tp = pydna.Dseqrecord("acgtatgtcgtcagtcagtcagtcagtcaattatcgtaagtcgtcaagtccagtacgt")
+    tp.id = "XYZ1"
+    pYPKa_ZE_ipynb_generator(tp)
