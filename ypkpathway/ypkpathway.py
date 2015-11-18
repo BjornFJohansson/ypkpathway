@@ -434,9 +434,11 @@ def pYPKa_ZE_ipynb_generator(tp, dir_="pYPKa_ZE_vectors"):
     try:
         os.makedirs(dir_)
     except OSError as exception:
-        if exception.errno != errno.EEXIST:
+        if exception.errno == errno.EEXIST:
+            pass
+        else:
             print("The {} directory could not be created".format(dir_))
-        return None
+            return None
 
     os.chdir(dir_)
 
