@@ -33,7 +33,7 @@ import pydna
 import nbformat
 from nbconvert.preprocessors.execute import ExecutePreprocessor
 from IPython.core.interactiveshell import InteractiveShell
-from IPython.display import FileLink
+from IPython.display import FileLink, FileLinks
 import notedown
 
 re_cas  = re.compile("pYPK0_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})")
@@ -473,7 +473,7 @@ def pYPKa_ZE_ipynb_generator(tp, dir_="pYPKa_ZE_vectors"):
 
     os.chdir(cwd)
 
-    return FileLink(os.path.join(dir_, name))
+    return FileLinks(dir_)
 
 if __name__ == "__main__":
     #main()
@@ -484,4 +484,4 @@ if __name__ == "__main__":
     tp.id = "XYZ1"
     lnk = pYPKa_ZE_ipynb_generator(tp)
 
-    print(lnk)
+

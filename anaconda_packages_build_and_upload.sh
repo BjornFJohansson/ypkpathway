@@ -13,6 +13,9 @@ conda convert $OUTPUT -p win-64   --output-dir ~/anaconda/conda-bld/
 conda convert $OUTPUT -p osx-64   --output-dir ~/anaconda/conda-bld/
 
 
+exit 42
+
+
 anaconda upload $OUTPUT
 
 name=$(basename $OUTPUT)
