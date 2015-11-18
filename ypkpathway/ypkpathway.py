@@ -36,8 +36,6 @@ from IPython.core.interactiveshell import InteractiveShell
 from IPython.display import FileLink
 import notedown
 
-
-
 re_cas  = re.compile("pYPK0_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})")
 re_cas  = re.compile("pYPK0_([^_]{2,15})_([^_]{2,15})_([^_]{2,15})")
 re_Z    = re.compile("pYPKa_Z_([^\d\W]\w{2,15})")
@@ -431,14 +429,14 @@ def pathway_(x,y, print=print):
 
 def pYPKa_ZE_ipynb_generator(tp, dir_="pYPKa_ZE_vectors"):
 
+    cwd = os.getcwd()
+
     try:
         os.makedirs(dir_)
     except OSError as exception:
-        if exception.errno == errno.EEXIST:
-            print("The {} directory already exsists! Please delete or choose another name.".format(dir_))
-        else:
+        if exception.errno != errno.EEXIST:
             print("The {} directory could not be created".format(dir_))
-        return None, None
+        return None
 
     os.chdir(dir_)
 
@@ -473,7 +471,9 @@ def pYPKa_ZE_ipynb_generator(tp, dir_="pYPKa_ZE_vectors"):
 
     nbformat.write(nb, name)
 
-    return name
+    os.chdir(cwd)
+
+    return FileLink(os.path.join(dir_, name))
 
 if __name__ == "__main__":
     #main()
@@ -482,4 +482,6 @@ if __name__ == "__main__":
 
     tp = pydna.Dseqrecord("acgtatgtcgtcagtcagtcagtcagtcaattatcgtaagtcgtcaagtccagtacgt")
     tp.id = "XYZ1"
-    pYPKa_ZE_ipynb_generator(tp)
+    lnk = pYPKa_ZE_ipynb_generator(tp)
+
+    print(lnk)

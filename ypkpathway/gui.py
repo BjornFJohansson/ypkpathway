@@ -364,14 +364,14 @@ class Assembler(QMainWindow):
         del get_versions
         from IPython import __version__ as IPython_version
 
-        QMessageBox.about(self, "About ypkassembler",
+        QMessageBox.about(self, "About ypkpathway",
                              u"""<b>Planning yeast pathway kit constructions.</b>
                                  <p>Copyright 2015 Björn Johansson.
                                  This software is released under a BSD style license.
                                  This software comes with no warranties
                                  expressed or implied.<br><br>
                                  Python version: {}<br><br>
-                                 ypkassembler version: {}<br>
+                                 ypkpathway version: {}<br>
                                  IPython version: {}<br>
                                  Qt version: {}<br>
                                  SIP version: {}<br>
