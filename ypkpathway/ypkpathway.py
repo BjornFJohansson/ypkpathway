@@ -466,10 +466,19 @@ def pYPKa_ZE_ipynb_generator(tp, dir_="pYPKa_ZE_vectors"):
     g={}
     l={}
 
+
+    from cStringIO import StringIO
+    old_stdout = sys.stdout
+    redirected_output = sys.stdout = StringIO()
+
     for cell in nb.cells:
         if cell.cell_type == 'code':
             code = shell.input_transformer_manager.transform_cell(cell.source)
             exec code in g, l
+
+    sys.stdout = old_stdout
+
+    #print redirected_output.getvalue()
 
     nbformat.write(nb, name)
 
