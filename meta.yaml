@@ -16,6 +16,7 @@ requirements:
   build:
     - python
     - versioneer
+    - pypandoc
   run:
     - python
     - ipython
