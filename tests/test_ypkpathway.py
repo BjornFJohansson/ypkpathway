@@ -2,9 +2,12 @@
 # -*- coding: utf-8 -*-
 import os
 import shutil
-import nose
+import pytest
 import textwrap
-import pydna
+
+from pydna.parsers import parse
+from pydna.readers import read
+
 import tempfile
 from ypkpathway import pathway
 
@@ -25,11 +28,11 @@ def test_ypk():
 
             file_, name, code = datafile.split("|")
 
-            print
-            print "############################"
-            print "datafile = ", file_
-            print "pYPKa_A  = ", pYPKa_A
-            print "############################"
+            print()
+            print("############################")
+            print("datafile = ", file_)
+            print("pYPKa_A  = ", pYPKa_A)
+            print("############################")
 
             with open(file_, "rU",) as f: text = f.read()
 
@@ -38,14 +41,14 @@ def test_ypk():
             except OSError:
                 pass
 
-            pw = pathway( pydna.parse(text), tmp, pYPKa_A=pYPKa_A)
+            pw = pathway( parse(text), tmp, pYPKa_A=pYPKa_A)
 
-            s = pydna.read( os.path.join(tmp, name) )
+            s = read( os.path.join(tmp, name) )
 
             with open(code+".txt") as f: c = f.read()
 
             assert "".join( x for x in c.lower() if not x.isspace()) == str(s.seq).lower()
 
 if __name__ == '__main__':
-    nose.runmodule()
+    pytest.cmdline.main([__file__, "-v", "-s"])
 

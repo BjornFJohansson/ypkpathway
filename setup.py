@@ -36,10 +36,3 @@ setup(  name='ypkpathway',
                        u'Programming Language :: Python :: 2.7',
                        u'Topic :: Education',
                        u'Topic :: Scientific/Engineering :: Bio-Informatics',])
-
-
-
-
-
-
-

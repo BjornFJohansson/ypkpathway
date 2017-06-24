@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-u"""
+"""
 ypkpathway_cli
 
 Usage: ypkpathway_cli <path> [<dir>] [--no_pYPKa_A]
@@ -18,17 +18,21 @@ Options:
     -v, --version   Show version.
 """
 
-from __future__ import print_function
+
 import io
 import re
 import sys
 import os
 import errno
-import codecs
+#import codecs
 import shutil
 import docopt
 from pkg_resources import resource_filename
+
 import pydna
+from pydna.readers import read
+from pydna.parsers import parse
+from pydna.dseqrecord import Dseqrecord
 
 import nbformat
 from nbconvert.preprocessors.execute import ExecutePreprocessor
@@ -43,7 +47,7 @@ re_A    = re.compile("pYPKa_A_([^\d\W]\w{2,15})")
 re_E    = re.compile("pYPKa_E_([^\d\W]\w{2,15})")
 
 def add_space(s, n):
-    return  u"\n".join(u"{}{}".format(u" "*n, line) for line in s.splitlines())
+    return  "\n".join("{}{}".format(" "*n, line) for line in s.splitlines())
 
 def cloned(vector, enzyme, candidate):
     if len(candidate) <= len(vector):
@@ -55,7 +59,7 @@ def cloned(vector, enzyme, candidate):
     return 0
 
 def read_data_file(name):
-    with codecs.open( resource_filename("ypkpathway", os.path.join("data", name)), "r", "utf-8") as f: data = f.read()
+    with open( resource_filename("ypkpathway", os.path.join("data", name)), "r") as f: data = f.read()
     return data
 
 def read_bin_file(name):
@@ -77,10 +81,10 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
     #        print(name)
     #    return None, None
 
-    log=u""
+    log=""
 
-    pYPK0 = pydna.read(read_data_file("pYPK0.gb"))
-    pYPKa = pydna.read(read_data_file("pYPKa.gb"))
+    pYPK0 = read(read_data_file("pYPK0.gb"))
+    pYPKa = read(read_data_file("pYPKa.gb"))
 
     from Bio.Restriction import ZraI, AjiI, EcoRV
 
@@ -94,10 +98,10 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
              "start.bat"                : read_data_file("start.bat"),
              "start.sh"                 : read_data_file("start.sh"),}
 
-    cas_vectors = u""
-    tp_gene_tp_links = u""
-    pYPKa_clones=u""
-    pwname = u"pYPK0"
+    cas_vectors = ""
+    tp_gene_tp_links = ""
+    pYPKa_clones=""
+    pwname = "pYPK0"
     genes = 0
     nbflag=False
 
@@ -109,10 +113,10 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
             m = re_cas.search(first.description)
             if not m:
                 raise Exception( "{} is a pYPK0 tp-gene_tp sequence but was not correctly named.".format(last.description))
-            fn = first.description+u".gb"
+            fn = first.description+".gb"
             files[fn] = first.format("gb")
-            cas_vectors+= fn+u"\n"
-            tp_gene_tp_links+= u"\n[{}]({})\n".format( first.description, fn )
+            cas_vectors+= fn+"\n"
+            tp_gene_tp_links+= "\n[{}]({})\n".format( first.description, fn )
             tp1_description  = m.group(1)
             gene_description = m.group(2)
             tp2_description  = m.group(3)
@@ -122,7 +126,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
                 middle = pth.pop(0)
                 last   = pth.pop(0)
             except IndexError:
-                raise Exception(u"not enough sequences")
+                raise Exception("not enough sequences")
 
             prom, gene, term = first, middle, last
 
@@ -131,14 +135,14 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
                 if not m:
                     raise Exception( "{} is a pYPKa_A_gene sequence but was incorrectly named.".format(gene.description))
                 prom_description = m.group(1)
-                files[m.group(0)+u".gb"] = prom.format("gb")
+                files[m.group(0)+".gb"] = prom.format("gb")
             else:
                 #print("Z"+str(files.has_key("pYPKa_ZE_{}.md".format(prom.id)))+prom.id)
-                if not files.has_key(u"pYPKa_ZE_{}.md".format(prom.id)):
-                    files[prom.id+u".gb"] = prom.format("gb")
+                if "pYPKa_ZE_{}.md".format(prom.id) not in files:
+                    files[prom.id+".gb"] = prom.format("gb")
                     nbtemp = read_data_file("nb_template_pYPKa_ZE_insert.md")
-                    files[u"pYPKa_ZE_{}.md".format(prom.id)] = nbtemp.format(tp=prom.id)
-                    pYPKa_clones+=u"[pYPKa_ZE_{n}](pYPKa_ZE_{n}.ipynb)  \n".format(n=prom.id)
+                    files["pYPKa_ZE_{}.md".format(prom.id)] = nbtemp.format(tp=prom.id)
+                    pYPKa_clones+="[pYPKa_ZE_{n}](pYPKa_ZE_{n}.ipynb)  \n".format(n=prom.id)
                 prom_description = prom.id
 
             if cloned(pYPKa, AjiI,  gene):
@@ -146,18 +150,18 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
                 if not m:
                     raise Exception( "{} is a pYPKa_A_gene sequence but was incorrectly named.".format(gene.description))
                 gene_description = m.group(1)
-                files[m.group(0)+u".gb"] = gene.format("gb")
+                files[m.group(0)+".gb"] = gene.format("gb")
                 if not pYPKa_A:
                     nbflag=True
 
             else:
-                n = u"pYPKa_A_{}".format(gene.locus)
-                files[gene.locus+u".gb"] = gene.format("gb")
+                n = "pYPKa_A_{}".format(gene.locus)
+                files[gene.locus+".gb"] = gene.format("gb")
                 if pYPKa_A:
                     nbtemp = read_data_file("nb_template_pYPKa_A_insert.md")
-                    files[n+u".md"] = nbtemp.format(insert=gene.locus)
+                    files[n+".md"] = nbtemp.format(insert=gene.locus)
                     gene_description = gene.locus
-                    pYPKa_clones+=u"[{}]({}.ipynb)  \n".format(n, n)
+                    pYPKa_clones+="[{}]({}.ipynb)  \n".format(n, n)
                 else:
                     gene_description = gene.locus
 
@@ -166,32 +170,32 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
                 if not m:
                     raise Exception( "{} is a pYPKa_A_gene sequence but was incorrectly named.".format(gene.description))
                 term_description = m.group(1)
-                files[m.group(0)+u".gb"] = term.format("gb")
+                files[m.group(0)+".gb"] = term.format("gb")
             else:
                 #print("E"+str(files.has_key("pYPKa_ZE_{}.md".format(term.id)))+term.id)
-                if not files.has_key(u"pYPKa_ZE_{}.md".format(term.id)):
-                    files[term.id+u".gb"] = term.format("gb")
+                if "pYPKa_ZE_{}.md".format(term.id) not in files:
+                    files[term.id+".gb"] = term.format("gb")
                     nbtemp = read_data_file("nb_template_pYPKa_ZE_insert.md")
-                    files[u"pYPKa_ZE_{}.md".format(term.id)] = nbtemp.format(tp=term.id)
-                    pYPKa_clones+=u"[pYPKa_ZE_{n}](pYPKa_ZE_{n}.ipynb)  \n".format(n=term.id)
+                    files["pYPKa_ZE_{}.md".format(term.id)] = nbtemp.format(tp=term.id)
+                    pYPKa_clones+="[pYPKa_ZE_{n}](pYPKa_ZE_{n}.ipynb)  \n".format(n=term.id)
                 term_description = term.id
 
             x = "pYPK0_{}_{}_{}".format(prom_description, gene_description, term_description)
 
             if pYPKa_A or nbflag:
                 nbtemp = read_data_file("nb_template_pYPK0_tp_gene_tp.md")
-                files[x+u".md"] = nbtemp.format(tpz=prom_description,
+                files[x+".md"] = nbtemp.format(tpz=prom_description,
                                                 gene=gene_description,
                                                 tpe=term_description)
             else:
                 nbtemp = read_data_file("nb_template_pYPK0_tp_gene_tp_gap_repair.md")
-                files[x+u".md"] = nbtemp.format(tpz=prom_description,
+                files[x+".md"] = nbtemp.format(tpz=prom_description,
                                                 gene=gene.locus,
                                                 tpe=term_description)
             nbflag=False
 
-            cas_vectors+=u"\n"+x+u".gb\n"
-            tp_gene_tp_links+=u"[{}]({}.ipynb)  \n".format(x, x)
+            cas_vectors+="\n"+x+".gb\n"
+            tp_gene_tp_links+="[{}]({}.ipynb)  \n".format(x, x)
 
 
 
@@ -208,37 +212,39 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
         os.makedirs(dir_)
     except OSError as exception:
         if exception.errno == errno.EEXIST:
-            print("The {} directory already exsists! Please delete or choose another name.".format(dir_))
+            print("The {} directory already exists! Please delete or choose another name.".format(dir_))
         else:
             print("The {} directory could not be created".format(dir_))
         return None, None
 
-    msg = u"created subdirectory {}\n".format(dir_)
+    msg = "created subdirectory {}\n".format(dir_)
     print(msg)
     log+=msg
 
     os.chdir(dir_)
 
-    msg = u"\nsaving files sequence files and images..\n"
+    msg = "\nsaving files sequence files and images..\n"
     print(msg)
     log+=msg
 
-    for name, content in sorted((n, c) for n, c in files.items() if not n.endswith(".md")):
-        msg = u"\nsaving: "+name
+    for name, content in sorted((n, c) for n, c in list(files.items()) if not n.endswith(".md")):
+        msg = "\nsaving: "+name
         print(msg)
         log+=msg
-        with open(name,"wb") as f: f.write(content)
+        mode = {True:"wb", False:"w"}[hasattr(content, "decode")]
+        with open(name, mode) as f:  #with open(name,"wb") as f: 
+            f.write(content) 
 
     print("\n")
     log+="\n"
 
-    msg = u"\nsaving notebook files ..\n"
+    msg = "\nsaving notebook files ..\n"
     print(msg)
     log+=msg
 
-    for name, content in sorted((n, c) for n, c in files.items() if n.endswith(".md")):
+    for name, content in sorted((n, c) for n, c in list(files.items()) if n.endswith(".md")):
         newname = os.path.splitext(name)[0]+".ipynb"
-        msg = u"\nsaving: "+newname
+        msg = "\nsaving: "+newname
         print(msg)
         log+=msg
         nb = nbformat.write(obj.to_notebook(content), newname)
@@ -250,7 +256,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
     print("\n")
     log+="\n"
 
-    msg = u"\nexecuting pYPKa notebooks..\n"
+    msg = "\nexecuting pYPKa notebooks..\n"
     print(msg)
     log+=msg
 
@@ -264,7 +270,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
 
     if pypkanbs:
         for name in pypkanbs:
-            msg = u"\nexecuting: "+name
+            msg = "\nexecuting: "+name
             print(msg)
             log+=msg
             with io.open(name, 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
@@ -272,18 +278,18 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
             for cell in nb.cells:
                 if cell.cell_type == 'code':
                     code = shell.input_transformer_manager.transform_cell(cell.source)
-                    exec code in g, l
+                    exec(code, g, l)
             #new_primers.extend( (l["fp"], l["rp"]) )
             nbformat.write(nb, name)
             g={}
             l={}
     else:
-        msg = u"\nNo pYPKa notebooks found.\n"
+        msg = "\nNo pYPKa notebooks found.\n"
         print(msg)
         log+=msg
     print("\n")
     log+="\n"
-    msg = u"\nexecuting pYPK0 notebooks..\n"
+    msg = "\nexecuting pYPK0 notebooks..\n"
     print(msg)
     log+=msg
 
@@ -295,7 +301,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
 
     if pypk0nbs:
         for name in pypk0nbs:
-            msg = u"\nexecuting: "+name
+            msg = "\nexecuting: "+name
             print(msg)
             log+=msg
             with io.open(name, 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
@@ -304,7 +310,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
             for cell in nb.cells:
                 if cell.cell_type == 'code':
                     code = shell.input_transformer_manager.transform_cell(cell.source)
-                    exec code in g, l
+                    exec(code, g, l)
             #try:
                 #new_primers.extend( (l["fp"], l["rp"]) )
             #except KeyError:
@@ -312,7 +318,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
             g={}
             l={}
     else:
-        msg = u"\nNo pYPK0 notebooks found.\n"
+        msg = "\nNo pYPK0 notebooks found.\n"
         print(msg)
         log+=msg
     nbtemp = read_data_file("nb_template_pYPK0_pw.md")
@@ -344,10 +350,10 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
     #nb = nbformat.writes("pw.ipynb", obj.to_notebook(pwnb))
     #with open("pw.ipynb", "w") as f: f.write(nb)
 
-    msg = u"\n\nexecuting final pathway notebook..\n"
+    msg = "\n\nexecuting final pathway notebook..\n"
     print(msg)
     log+=msg
-    msg = u"\nexecuting: pw.ipynb"
+    msg = "\nexecuting: pw.ipynb"
     print(msg)
     log+=msg
     with io.open("pw.ipynb", 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
@@ -359,7 +365,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
 
     os.chdir(cwd)
 
-    fl = FileLink(os.path.join(dir_, u"pw.ipynb"))
+    fl = FileLink(os.path.join(dir_, "pw.ipynb"))
 
     #   pp = None
 
@@ -373,10 +379,10 @@ def main():
         print(e.message)
         sys.exit(0)
 
-    dir_ = u"ypk_assembly"
+    dir_ = "ypk_assembly"
 
     if arguments["<dir>"]:
-        dir_= unicode(arguments["<dir>"])
+        dir_= str(arguments["<dir>"])
 
     if arguments["--no_pYPKa_A"]:
         pYPKa_A = False
@@ -384,16 +390,16 @@ def main():
         pYPKa_A = True
 
     if arguments["--version"]:
-        from _version import get_versions
+        from ._version import get_versions
         __version__ = get_versions()["version"][:5]
         del get_versions
-        print(u"ypkpathway version:",__version__)
-        print(u"     pydna version:",pydna.__version__)
+        print("ypkpathway version:",__version__)
+        print("     pydna version:",pydna.__version__)
 
     if arguments["<path>"]:
-        file_ = unicode(arguments["<path>"])
+        file_ = str(arguments["<path>"])
         try:
-            with codecs.open(file_, "rU", 'utf8') as f: text=f.read()
+            with open(file_, "r") as f: text=f.read()
         except IOError:
             print(arguments["<path>"], "could not be opened!")
             sys.exit(1)
@@ -401,7 +407,7 @@ def main():
         #dir_ = os.path.splitext(os.path.basename(file_))[0]
         dir_, ext = os.path.splitext(os.path.abspath(file_))
 
-        print(u"Assembly started! (This might take a while...)")
+        print("Assembly started! (This might take a while...)")
         #print(file_)
         #print(dir_)
         #print(os.path.abspath(file_))
@@ -410,15 +416,15 @@ def main():
         #print(os.path.basename(dir_))
         #import sys;sys.exit(42)
 
-        fl, log = pathway( pydna.parse(text), dir_, pYPKa_A=pYPKa_A )
+        fl, log = pathway( parse(text), dir_, pYPKa_A=pYPKa_A )
 
-        with codecs.open(os.path.join(dir_, u"log.txt"),"wU","utf8") as f: f.write(log)
+        with open(os.path.join(dir_, "log.txt"),"w") as f: f.write(log)
 
         filename = os.path.basename(file_)
 
-        shutil.copy2( filename, os.path.join(dir_, u"INDATA_"+os.path.basename((dir_)+u".txt")))
+        shutil.copy2( filename, os.path.join(dir_, "INDATA_"+os.path.basename((dir_)+".txt")))
 
-        print(u"opening IPython notebook {}".format(fl.path))
+        print("opening IPython notebook {}".format(fl.path))
 
         #subprocess.Popen(["ipython", "notebook", os.path.join(dir_, "pw.ipynb")])
 
@@ -442,14 +448,14 @@ def pYPKa_ZE_ipynb_generator(tp, dir_="pYPKa_ZE_vectors"):
 
     os.chdir(dir_)
 
-    with open("standard_primers.txt","wb") as f: f.write(read_data_file("standard_primers.txt"))
-    with open("pYPKa.gb","wb") as f: f.write(read_data_file("pYPKa.gb"))
-    with open("pYPK_ZE.png","wb") as f: f.write(read_bin_file("pYPK_ZE.png"))
-    with open(tp.id+u".gb","wb") as f: f.write(tp.format("gb"))
+    with open("standard_primers.txt","w") as f: f.write(read_data_file("standard_primers.txt"))
+    with open("pYPKa.gb","w") as f: f.write(read_data_file("pYPKa.gb"))
+    with open("pYPK_ZE.png","w") as f: f.write(read_bin_file("pYPK_ZE.png"))
+    with open(tp.id+".gb","w") as f: f.write(tp.format("gb"))
 
     nbtemp = read_data_file("nb_template_pYPKa_ZE_insert.md")
 
-    name = u"pYPKa_ZE_{}.ipynb".format(tp.id)
+    name = "pYPKa_ZE_{}.ipynb".format(tp.id)
 
     obj = notedown.MarkdownReader()
 
@@ -467,14 +473,14 @@ def pYPKa_ZE_ipynb_generator(tp, dir_="pYPKa_ZE_vectors"):
     l={}
 
 
-    from cStringIO import StringIO
+    from io import StringIO
     old_stdout = sys.stdout
     redirected_output = sys.stdout = StringIO()
 
     for cell in nb.cells:
         if cell.cell_type == 'code':
             code = shell.input_transformer_manager.transform_cell(cell.source)
-            exec code in g, l
+            exec(code, g, l)
 
     sys.stdout = old_stdout
 
@@ -491,7 +497,7 @@ if __name__ == "__main__":
 
     import pydna
 
-    tp = pydna.Dseqrecord("acgtatgtcgtcagtcagtcagtcagtcaattatcgtaagtcgtcaagtccagtacgt")
+    tp = Dseqrecord("acgtatgtcgtcagtcagtcagtcagtcaattatcgtaagtcgtcaagtccagtacgt")
     tp.id = "XYZ1"
     lnk = pYPKa_ZE_ipynb_generator(tp)
 

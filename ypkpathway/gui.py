@@ -1,22 +1,27 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from __future__ import print_function
+
 import sys
 import os
-import platform
+#import platform
 import subprocess
 import shutil
-import codecs
+#import codecs
 
-from PyQt4.QtCore import QRect, QMetaObject, QObject, QEvent
-from PyQt4.QtGui  import (QApplication, QMainWindow, QWidget,
-                           QGridLayout, QTabWidget, QPlainTextEdit, QCheckBox,
-                           QMenuBar, QMenu, QStatusBar, QAction,
-                           QIcon, QFileDialog, QMessageBox, QFont)
+from PyQt5.QtCore import QRect,  QEvent  # , QObject QMetaObject,
+from PyQt5.QtWidgets  import (QApplication, QMainWindow, QWidget,
+                              QGridLayout, QTabWidget, QPlainTextEdit, QCheckBox,
+                              QMenuBar, QMenu, QStatusBar, QAction,
+                              QFileDialog, QMessageBox)
+
+from PyQt5.QtGui import  QIcon, QFont
 
 import qrc
+
 import pydna
+from pydna.parsers import parse
+
 import ypkpathway
 
 from pkg_resources import resource_filename
@@ -243,19 +248,17 @@ class Assembler(QMainWindow):
             return
         if not self.okToContinue():
             return
-        dir_ = (os.path.dirname(unicode(self.filename)) if self.filename is not None else ".")
-        self.filename = unicode(QFileDialog.getOpenFileName(self,"Open File", dir_,))
-        #print(unicode(self.filename))
-        #self.filename = self.filetuple[0]
-        fname = self.filename
+        dir_ = (os.path.dirname(str(self.filename)) if self.filename is not None else ".")
+        filetuple = QFileDialog.getOpenFileName(self,"Open File", dir_,)
+        self.filename = filetuple[0]
         #  QFileDialog returns a tuple x with x[0] = file name and
         #  x[1] = type of filter.
-        if fname:
-            self.loadFile(fname)
+        if self.filename:
+            self.loadFile(self.filename)
             self.updateStatus('New file opened.')
 
     def loadFile(self, fname=None):
-        fl = codecs.open(fname, "U", "utf8")
+        fl = open(fname, "r")
         text = fl.read()
         self.plainTextEdit.setPlainText(text)
         self.dirty = False
@@ -271,7 +274,7 @@ class Assembler(QMainWindow):
             flname = self.filename
             if flname:
                 tempText = self.plainTextEdit.toPlainText()
-                with codecs.open(flname, 'w', 'utf8') as fl: fl.write(tempText)
+                with open(flname, 'w') as fl: fl.write(tempText)
                 self.dirty = False
                 self.updateStatus('File saved.')
                 return True
@@ -285,11 +288,11 @@ class Assembler(QMainWindow):
         '''Save file with a new name.'''
         qpr = self.qprintline
         fname = self.filename or "NoName.txt"
-        self.filename = unicode(QFileDialog.getSaveFileName(self,"ypkpathway - Save File", fname))
+        self.filename = str(QFileDialog.getSaveFileName(self,"ypkpathway - Save File", fname))
         flname = self.filename or "NoName.txt"
         self.filename = flname
-        fl = codecs.open(flname, 'wU', 'utf8')
-        tempText = unicode(self.plainTextEdit.toPlainText())
+        fl = open(flname, 'w')
+        tempText = str(self.plainTextEdit.toPlainText())
         fl.write(tempText)
         fl.close()
         self.dirty = False
@@ -300,7 +303,7 @@ class Assembler(QMainWindow):
         printline = self.qprintline
         self.plainTextEdit_2.clear()
         self.tabWidget.setCurrentIndex(1)
-        flbase = os.path.basename(unicode(self.filename))
+        flbase = os.path.basename(str(self.filename))
 
         title = 'Assembly log for ' + flbase
 
@@ -309,7 +312,8 @@ class Assembler(QMainWindow):
         printline('='*len(title))
 
 
-        qstringobj = self.plainTextEdit.toPlainText()
+        #print(type(self.plainTextEdit.toPlainText()))
+        #qstringobj = self.plainTextEdit.toPlainText().encode('utf-8')
         #print(type(qstringobj)) #<class 'PyQt4.QtCore.QString'>
         #print(qstringobj.toUtf8()[3268:3279])
         #print(str(qstringobj.toUtf8()[3268:3279]))
@@ -317,8 +321,14 @@ class Assembler(QMainWindow):
         #codec0 = .QTextCodec.codecForName("UTF-16");
         #rawtext = unicode(codec0.fromUnicode(tmp), 'UTF-16')
         #unicode(qstringobj.toUtf8(), encoding="UTF-8").decode()
+        
+        qstringobj = self.plainTextEdit.toPlainText()
 
-        pth = pydna.parse(str(qstringobj.toUtf8()))
+        #import sys;sys.exit(42)
+
+        pth = parse( qstringobj )
+        
+        #import sys;sys.exit(42)
 
         if len(pth)==0:
             printline("No of sequences found in Data window")
@@ -327,16 +337,16 @@ class Assembler(QMainWindow):
         if self.filename is None:
             self.fileSaveAs()
 
-        dir_, ext = os.path.splitext( unicode(self.filename))
+        dir_, ext = os.path.splitext( str(self.filename))
 
         fl, log = ypkpathway.pathway( pth, dir_, pYPKa_A = not self.checkbox.isChecked(), print = printline)
 
         if not fl:
             return
 
-        with codecs.open(os.path.join(dir_, u"log.txt"),"wU","utf8") as f: f.write(log)
+        with open(os.path.join(dir_, "log.txt"),"w") as f: f.write(log)
 
-        shutil.copy2( unicode(self.filename), os.path.join(dir_, u"INDATA_"+os.path.basename(unicode(self.filename))))
+        shutil.copy2( str(self.filename), os.path.join(dir_, "INDATA_"+os.path.basename(str(self.filename))))
 
         printline('')
         printline('\n\nAssembly finished.')
@@ -356,8 +366,8 @@ class Assembler(QMainWindow):
 
     def aboutBox(self):
 
-        from PyQt4.QtCore import QT_VERSION_STR
-        from PyQt4.Qt import PYQT_VERSION_STR
+        from PyQt5.QtCore import QT_VERSION_STR
+        from PyQt5.Qt import PYQT_VERSION_STR
         from sip import SIP_VERSION_STR
         from _version import get_versions
         __version__ = get_versions()["version"][:5]
@@ -365,20 +375,20 @@ class Assembler(QMainWindow):
         from IPython import __version__ as IPython_version
 
         QMessageBox.about(self, "About ypkpathway",
-                             u"""<b>Planning yeast pathway kit constructions.</b>
-                                 <p>Copyright 2015 Björn Johansson.
+                             """<b>Planning of yeast pathway kit constructions.</b>
+                                <p>version: {}<br>
+                                 Copyright 2015-2017 Björn Johansson.
                                  This software is released under a BSD style license.
                                  This software comes with no warranties
                                  expressed or implied.<br><br>
                                  Python version: {}<br><br>
-                                 ypkpathway version: {}<br>
                                  IPython version: {}<br>
                                  Qt version: {}<br>
                                  SIP version: {}<br>
                                  PyQt version: {}<br>
-                                 pydna version: {}<br>
-                                 """.format(sys.version,
-                                            __version__,
+                                 pydna version: {}<br></p>
+                                 """.format(__version__,
+                                            sys.version,
                                             IPython_version,
                                             QT_VERSION_STR,
                                             SIP_VERSION_STR,
@@ -427,25 +437,22 @@ class Assembler(QMainWindow):
 
     def qreadline(self, lineNo):
         '''Read one line from Data Page (lineNo starts with 0)'''
-        return unicode(self.plainTextEdit.document().\
+        return str(self.plainTextEdit.document().\
             findBlockByLineNumber(lineNo).text()).rstrip()
-
-
 
     def updateStatus(self, message):
         '''Keep status current.'''
         if self.filename is not None:
-            flbase = os.path.basename(unicode(self.filename))
-            self.setWindowTitle(unicode("ypkpathway - " +\
+            flbase = os.path.basename(str(self.filename))
+            self.setWindowTitle(str("ypkpathway - " +\
                                          flbase + "[*]") )
             self.statusBar().showMessage(message, 5000)
             self.setWindowModified(self.dirty)
 
-
 def main():
     app = QApplication(sys.argv)
     frame = Assembler()
-    frame.show()
+    frame.showMaximized() # show()
     sys.exit(app.exec_())
 
 if __name__ == "__main__":

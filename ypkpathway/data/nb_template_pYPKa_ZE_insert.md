@@ -16,11 +16,16 @@ There is a [publication](http://www.biomedcentral.com/1471-2105/16/142) describi
 [documentation](http://pydna.readthedocs.org/en/latest/) available online.
 Pydna is developed on [Github](https://github.com/BjornFJohansson/pydna).
 
-	import pydna
+    from pydna.readers import read
+    from pydna.parsers import parse
+    from pydna.parsers import parse_primers
+    from pydna.design import primer_design
+    from pydna.amplify import pcr
+    from pydna.amplify import Anneal
 
 The vector backbone [pYPKa](pYPKa.gb) is read from a local file.
 
-	pYPKa = pydna.read("pYPKa.gb")
+	pYPKa = read("pYPKa.gb")
 
 Both restriction enzymes are imported from [Biopython](http://biopython.org)
 
@@ -33,7 +38,7 @@ The vector is linearized with both enzymes.
 
 The insert sequence is read from a local file. This sequence was parsed from the ypkpathway data file.
 
-	ins = pydna.read("{tp}.gb")
+	ins = read("{tp}.gb")
 
 Primers for the terminator promoter need specific tails in order to produce
 a [SmiI](http://rebase.neb.com/rebase/enz/SmiI.html) and a [PacI](http://rebase.neb.com/rebase/enz/PacI.html) 
@@ -44,17 +49,21 @@ when cloned in pYPKa in the EcoRV cloning position.
 
 Primers with the tails above are designed in the code cell below.
 
-	fp, rp = pydna.cloning_primers(ins, fp_tail=fp_tail, rp_tail=rp_tail, path="new_primers.txt")
+    ins = primer_design(ins)
+    fp = fp_tail + ins.forward_primer
+    rp = rp_tail + ins.reverse_primer
 
 The primers are included in the [new_primer.txt](new_primers.txt) list and in the end of the [pathway notebook](pw.ipynb) file.
 
-	print(fp.format("fasta"))
-
-	print(rp.format("fasta"))
+    print(fp.format("fasta"))
+    print(rp.format("fasta"))
+    with open("new_primers.txt", "a+") as f:
+        f.write(fp.format("fasta"))
+        f.write(rp.format("fasta"))
 
 PCR to create the insert using the newly designed primers.
 
-	prd = pydna.pcr(fp, rp, ins)
+	prd = pcr(fp, rp, ins)
 
 The PCR product has this length in bp.
 
@@ -83,7 +92,7 @@ A combination of standard primers and the newly designed primers are
 used for the strategy to identify correct clones.
 Standard primers are listed [here](standard_primers.txt).
 
-	p = {{ x.id: x for x in pydna.parse("standard_primers.txt") }}
+	p = {{ x.id: x for x in parse_primers("standard_primers.txt") }}
 
 ## Diagnostic PCR confirmation
 
@@ -100,25 +109,25 @@ product is formed.
 
 pYPKa_Z_{tp} with insert in correct orientation.
 
-	pydna.Anneal( (p['577'], p['342'], fp), pYPKa_Z_{tp}).products
+	Anneal( (p['577'], p['342'], fp), pYPKa_Z_{tp}).products
 
 pYPKa_Z_{tp} with insert in reverse orientation.
 
-	pydna.Anneal( (p['577'], p['342'], fp), pYPKa_Z_{tp}b).products
+	Anneal( (p['577'], p['342'], fp), pYPKa_Z_{tp}b).products
 
 Empty pYPKa clone.
 
-pydna.Anneal( (p['577'], p['342'], fp), pYPKa).products
+    Anneal( (p['577'], p['342'], fp), pYPKa).products
 
 #### Expected PCR products sizes pYPKa_E_{tp}:
 
 pYPKa_E_{tp} with insert in correct orientation.
 
-	pydna.Anneal( (p['577'], p['342'], fp), pYPKa_E_{tp}).products
+	Anneal( (p['577'], p['342'], fp), pYPKa_E_{tp}).products
 
 pYPKa_E_{tp} with insert in reverse orientation.
 
-	pydna.Anneal( (p['577'], p['342'], fp), pYPKa_E_{tp}b).products
+	Anneal( (p['577'], p['342'], fp), pYPKa_E_{tp}b).products
 
 
 The cseguid checksum for the resulting plasmids are calculated for future reference.
@@ -147,12 +156,12 @@ Sequences are written to local files.
 # Download [pYPKa_Z_{tp}](pYPKa_Z_{tp}.gb)
 
 	import pydna
-	reloaded = pydna.read("pYPKa_Z_{tp}.gb")
+	reloaded = read("pYPKa_Z_{tp}.gb")
 	reloaded.verify_stamp()
 
 # Download [pYPKa_E_{tp}](pYPKa_E_{tp}.gb)
 
 	import pydna
-	reloaded = pydna.read("pYPKa_E_{tp}.gb")
+	reloaded = read("pYPKa_E_{tp}.gb")
 	reloaded.verify_stamp()
 

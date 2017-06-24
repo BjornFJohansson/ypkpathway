@@ -1,0 +1,30 @@
+LOCUS       SsXYL2                  1092 bp    DNA     linear   UNK 24-JUN-2017
+DEFINITION  SsXYL2
+ACCESSION   SsXYL2
+VERSION     SsXYL2
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+ORIGIN
+        1 atgactgcta acccttcctt ggtgttgaac aagatcgacg acatttcgtt cgaaacttac
+       61 gatgccccag aaatctctga acctaccgat gtcctcgtcc aggtcaagaa aaccggtatc
+      121 tgtggttccg acatccactt ctacgcccat ggtagaatcg gtaacttcgt tttgaccaag
+      181 ccaatggtct tgggtcacga atccgccggt actgttgtcc aggttggtaa gggtgtcacc
+      241 tctcttaagg ttggtgacaa cgtcgctatc gaaccaggta ttccatccag attctccgac
+      301 gaatacaaga gcggtcacta caacttgtgt cctcacatgg ccttcgccgc tactcctaac
+      361 tccaaggaag gcgaaccaaa cccaccaggt accttatgta agtacttcaa gtcgccagaa
+      421 gacttcttgg tcaagttgcc agaccacgtc agcttggaac tcggtgctct tgttgagcca
+      481 ttgtctgttg gtgtccacgc ctccaagttg ggttccgttg ctttcggcga ctacgttgcc
+      541 gtctttggtg ctggtcctgt tggtcttttg gctgctgctg tcgccaagac cttcggtgct
+      601 aagggtgtca tcgtcgttga cattttcgac aacaagttga agatggccaa ggacattggt
+      661 gctgctactc acaccttcaa ctccaagacc ggtggttctg aagaattgat caaggctttc
+      721 ggtggtaacg tgccaaacgt cgttttggaa tgtactggtg ctgaaccttg tatcaagttg
+      781 ggtgttgacg ccattgcccc aggtggtcgt ttcgttcaag ttggtaacgc tgctggtcca
+      841 gtcagcttcc caatcaccgt tttcgccatg aaggaattga ctttgttcgg ttctttcaga
+      901 tacggattca acgactacaa gactgctgtt ggaatctttg acactaacta ccaaaacggt
+      961 agagaaaatg ctccaattga ctttgaacaa ttgatcaccc acagatacaa gttcaaggac
+     1021 gctattgaag cctacgactt ggtcagagcc ggtaagggtg ctgtcaagtg tctcattgac
+     1081 ggccctgagt aa
+//

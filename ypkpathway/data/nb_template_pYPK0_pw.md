@@ -14,7 +14,10 @@ Pydna is developed on [Github](https://github.com/BjornFJohansson/pydna).
 The assembly performed here is based on content of the [INDATA_{filename}.txt](INDATA_{filename}.txt) text file.
 The assembly log can be viewed [here](log.txt).
 
-    import pydna
+    from pydna.parsers import parse_primers
+    from pydna.readers import read
+    from pydna.amplify import pcr
+    from pydna.assembly import Assembly
 
 Initiate the standard primers needed to amplify each cassette.
 The first cassette in the pathway is amplified with standard
@@ -22,13 +25,13 @@ primers 577 and 778, the last with
 775 and 578 and all others with 775 and 778.
 Standard primers are listed [here](standard_primers.txt).
 
-    p = {{ x.id: x for x in pydna.parse("standard_primers.txt") }}
+    p = {{ x.id: x for x in parse_primers("standard_primers.txt") }}
 
 The backbone vector is linearized with [EcoRV](http://rebase.neb.com/rebase/enz/EcoRV.html).
 
     from Bio.Restriction import EcoRV, NotI, PacI
 
-    pYPKpw = pydna.read("pYPKpw.gb")
+    pYPKpw = read("pYPKpw.gb")
 
 The cassette_products variable holds the list of expression cassette PCR products fragments to
 be assembled.
@@ -41,21 +44,21 @@ held in the template_vectors list.
     cassette_vectors ='''
 {cas_vectors}'''.splitlines()
 
-    template_vectors = [pydna.read(v.strip()) for v in cassette_vectors if v.strip()]
+    template_vectors = [read(v.strip()) for v in cassette_vectors if v.strip()]
 
     template_vectors
 
 The first cassette in the pathway is amplified with standard primers 577 and 778. Suggested PCR conditions can be found at the end of this document.
 
-    cassette_products.append( pydna.pcr( p['577'], p['778'],  template_vectors[0] ) )
+    cassette_products.append( pcr( p['577'], p['778'],  template_vectors[0] ) )
 
 Cassettes in the middle cassettes are amplified with standard primers 775 and 778. Suggested PCR conditions can be found at the end of this document.
 
-    cassette_products.extend( pydna.pcr( p['775'], p['778'], v) for v in template_vectors[1:-1] ) 
+    cassette_products.extend( pcr( p['775'], p['778'], v) for v in template_vectors[1:-1] ) 
 
 The last cassette in the pathway is amplified with standard primers 775 and 578. Suggested PCR conditions can be found at the end of this document.
 
-    cassette_products.append( pydna.pcr( p['775'], p['578'], template_vectors[-1] ) )
+    cassette_products.append( pcr( p['775'], p['578'], template_vectors[-1] ) )
 
 The cassettes are given names based on their order in the final construct in the code cell below.
 
@@ -66,7 +69,7 @@ The cassettes are given names based on their order in the final construct in the
 Cassettes and plasmid backbone are joined by homologous recombination in a Saccharomyces cerevisiae ura3 host
 which selects for the URA3 gene in pYPKpw.
 
-    asm = pydna.Assembly( [pYPKpw.linearize(EcoRV)] + cassette_products, limit=167-47-10)
+    asm = Assembly( [pYPKpw.linearize(EcoRV)] + cassette_products, limit=167-47-10)
     asm
 
 Normally, only one circular product should be formed since the 
@@ -114,7 +117,7 @@ The pathway can be extended by digestion with either NotI or PacI or both provid
 
     import pydna
 
-    reloaded = pydna.read("{name}.gb")
+    reloaded = read("{name}.gb")
 
     reloaded.verify_stamp()
 
@@ -123,10 +126,11 @@ The pathway can be extended by digestion with either NotI or PacI or both provid
 This list contains all needed primers that are not in the standard primer [list](standard_primers.txt) above.
 
     try:
-        with open("new_primers.txt") as f: text = f.read()
+        with open("new_primers.txt") as f: 
+            text = f.read()
     except IOError:
         text = "no new primers needed."
-    print text
+    print(text)
 
 ### New single gene expression vectors (pYPK0_prom_gene_term) needed for assembly.
 
@@ -143,13 +147,9 @@ Hyperlinks to notebook files describing the pYPKa plasmids needed for the assemb
 ### Suggested PCR conditions
 
     for prd in cassette_products:
-        print
-        print
-        print
-        print
-        print "product name:", prd.name
-        print "forward primer", prd.forward_primer.name
-        print "reverse primer", prd.reverse_primer.name
-        print prd.program()
-    
+        print("\n\n\n\n")
+        print("product name:", prd.name)
+        print("forward primer", prd.forward_primer.name)
+        print("reverse primer", prd.reverse_primer.name)
+        print(prd.program())
 

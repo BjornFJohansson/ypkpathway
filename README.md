@@ -1,4 +1,4 @@
-#[![icon](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/icon.resized.png)](https://pypi.python.org/pypi/ypkpathway/) ypkpathway 
+# [![icon](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/icon.resized.png)](https://pypi.python.org/pypi/ypkpathway/) ypkpathway 
 
 Ypkpathway is a simulator and documentation generator for _in-vivo_ pathway assembly using the Yeast Pathway Kit protocol. It takes as argument a series of
 sequences in a text file and produces a self contained folder containing assembled sequences of intermediary vectors, final assembly and PCR primers. 
@@ -26,8 +26,6 @@ There are five more example indata example files that are a part of the automati
 [![travis](https://travis-ci.org/BjornFJohansson/ypkpathway.svg)](https://travis-ci.org/BjornFJohansson/ypkpathway) Python wheel and source distributions on Pypi are built and tested on on travis-ci using a linux back end. 
 
 [![appveyor](https://ci.appveyor.com/api/projects/status/ol5ru8po7fx5cimj?svg=true)](https://ci.appveyor.com/project/BjornFJohansson/ypkpathway) 64 bit Windows binary executable and a Windows binary wheel are built on Appveyor-CI
-
-[![anaconda build](https://anaconda.org/bjornfjohansson/ypkpathway/badges/build.svg)](https://anaconda.org/bjornfjohansson/ypkpathway/builds) Anaconda packages for Windows, Linux and MacOSX are built at anaconda.org on a Linux back end.
 
 [![dependencies](https://www.versioneye.com/user/projects/55645b646361300021ae0200/badge.svg?style=flat(Dependency%20Status)!)](https://www.versioneye.com/user/projects/55645b646361300021ae0200) Dependencies are tracked at versioneye.
 
@@ -71,8 +69,9 @@ These do not install the dependencies either.
 
 ##Dependencies
 
-The ypkpathway dependencies are pure Python modules except for PyQt. Pydna depends on [biopython](https://pypi.python.org/pypi/biopython) which has 
-to be installed using a binary installer or a c-compiler has to be present. 
+The ypkpathway dependencies are pure Python modules except for PyQt. 
+Pydna depends on [biopython](https://pypi.python.org/pypi/biopython) which has 
+to be installed using a binary installer or else a C compiler has to be available. 
 
 [pydna](https://pypi.python.org/pypi/pydna)
 
@@ -84,11 +83,6 @@ to be installed using a binary installer or a c-compiler has to be present.
 
 [PyQt4](https://pypi.python.org/pypi/PyQt4)
 
-[tornado](https://pypi.python.org/pypi/tornado)
-
-[terminado](https://pypi.python.org/pypi/terminado)
-
-[pyzmq](https://pypi.python.org/pypi/pyzmq)
 
 There are binary Windows installers for IPython, Bioppython, docopt [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/) 
 
@@ -150,16 +144,9 @@ Github [![GitHub tag](https://img.shields.io/github/tag/BjornFJohansson/ypkpathw
 
 ##How it works
 
-Ypkpathway generates a series of text documents in [markdown](http://daringfireball.net/projects/markdown/) format that are formatted with 
-the given data. There is one document per vector generated in in the assembly process. These documents contain comments and links as 
-well as Python code. The python code describe the cloning and assembly steps using pydna. The markdown documents are turned into JSON format
-using the [notedown](https://github.com/aaren/notedown) package. The notebooks are then executed using the IPython functionality. All files and
+Ypkpathway generates a series of text documents in [markdown](http://daringfireball.net/projects/markdown/) format 
+that are formatted with the given data. There is one document per vector generated in in the assembly process. 
+These documents contain comments and links as well as Python code. The python code describe the cloning and assembly 
+steps using pydna. The markdown documents are turned into JSON format using the [notedown](https://github.com/aaren/notedown) package. 
+The notebooks are then executed using the IPython functionality. All files and
 raw data are saved in a self contained result folder.
-
-
-
-
- 
-
-
-

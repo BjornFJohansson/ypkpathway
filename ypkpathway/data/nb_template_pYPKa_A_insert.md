@@ -15,11 +15,17 @@ There is a [publication](http://www.biomedcentral.com/1471-2105/16/142) describi
 [documentation](http://pydna.readthedocs.org/en/latest/) available online. 
 Pydna is developed on [Github](https://github.com/BjornFJohansson/pydna). 
 
-	import pydna
+    from pydna.readers import read
+    from pydna.parsers import parse
+    from pydna.parsers import parse_primers
+    from pydna.design import primer_design
+    from pydna.amplify import pcr
+    from pydna.amplify import Anneal
+    
 
 The vector backbone [pYPKa](pYPKa.gb) is read from a local file.
 
-	pYPKa = pydna.read("pYPKa.gb")
+	pYPKa = read("pYPKa.gb")
 
 The restriction enzyme is imported from [Biopython](http://biopython.org)
 
@@ -31,7 +37,7 @@ The plasmid is linearized with the enzyme.
 
 The insert sequence is read from a [local file]({insert}.gb). This sequence was parsed from the ypkpathway data file.
 
-	ins = pydna.read("{insert}.gb")
+	ins = read("{insert}.gb")
 
 Primers are needed to PCR amplify the insert. The forward primer adds two adenines in front of the start codon
 which is a feature commonly found in highly expressed _S. cerevisiae_ genes.
@@ -40,16 +46,21 @@ which is a feature commonly found in highly expressed _S. cerevisiae_ genes.
 
 Primers are designed in the code cell below.
 
-	fp, rp = pydna.cloning_primers(ins, fp_tail=fp_tail, path="new_primers.txt")
+    ins = primer_design(ins)
+    fp = fp_tail + ins.forward_primer
+    rp = ins.reverse_primer
 
 The primers are included in the [new_primer.txt](new_primers.txt) list and in the end of the [pathway notebook](pw.ipynb) file.
 
-	print(fp.format("fasta"))
-	print(rp.format("fasta"))
+    print(fp.format("fasta"))
+    print(rp.format("fasta"))
+    with open("new_primers.txt", "a+") as f:
+        f.write(fp.format("fasta"))
+        f.write(rp.format("fasta"))
 
 The gene is amplifed using the newly designed primers.
 
-	ins = pydna.pcr(fp, rp, ins)
+	ins = pcr(fp, rp, ins)
 
 The PCR product has this length in bp.
 
@@ -77,7 +88,7 @@ used for the strategy to identify correct clones.
 Standard primers are listed [here](standard_primers.txt).
 The standard primers are read into a dictonary in the code cell below.
 
-	p = {{ x.id: x for x in pydna.parse("standard_primers.txt") }}
+	p = {{ x.id: x for x in parse_primers("standard_primers.txt") }}
 
 ## Diagnostic PCR confirmation of pYPKa_A_{insert}
 The correct structure of pYPKa_A_{insert} is confirmed by PCR using standard primers
@@ -92,15 +103,15 @@ If the vector is empty, only one short product is formed.
 
 pYPKa_A_{insert} with insert in correct orientation.
 
-	pydna.Anneal( (p['577'], p['342'], fp), pYPKa_A_{insert}).products
+	Anneal( (p['577'], p['342'], fp), pYPKa_A_{insert}).products
 
 pYPKa_A_{insert} with insert in reverse orientation.
 
-	pydna.Anneal( (p['577'], p['342'], fp), pYPKa_A_{insert}b).products
+	Anneal( (p['577'], p['342'], fp), pYPKa_A_{insert}b).products
 
 Empty clone
 
-	pydna.Anneal( (p['577'], p['342'], fp), pYPKa).products
+	Anneal( (p['577'], p['342'], fp), pYPKa).products
 
 The cseguid checksum for the resulting plasmid is calculated for future reference.
 The [cseguid checksum](http://pydna.readthedocs.org/en/latest/pydna.html#pydna.utils.cseguid) 
@@ -124,6 +135,6 @@ The sequence is written to a local file.
 # Download [pYPKa_A_{insert}](pYPKa_A_{insert}.gb)
 
 	import pydna
-	reloaded = pydna.read("pYPKa_A_{insert}.gb")
+	reloaded = read("pYPKa_A_{insert}.gb")
 	reloaded.verify_stamp()
  

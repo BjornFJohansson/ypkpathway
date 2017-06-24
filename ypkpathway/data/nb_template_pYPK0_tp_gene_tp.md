@@ -20,15 +20,18 @@ There is a [publication](http://www.biomedcentral.com/1471-2105/16/142) describi
 [documentation](http://pydna.readthedocs.org/en/latest/) available online. 
 Pydna is developed on [Github](https://github.com/BjornFJohansson/pydna). 
 
-	import pydna
+    from pydna.parsers import parse_primers
+    from pydna.readers import read
+    from pydna.amplify import pcr
+    from pydna.assembly import Assembly
 
 The YPK [standard primers](standard_primers.txt) are read into a dictionary in the code cell below.
 
-	p = {{ x.id: x for x in pydna.parse("standard_primers.txt") }}
+	p = {{ x.id: x for x in parse_primers("standard_primers.txt") }}
 
 The backbone vector [pYPKpw](pYPKpw.gb) is read from a local file in the code cell below.
 
-	pYPKpw = pydna.read("pYPKpw.gb")
+	pYPKpw = read("pYPKpw.gb")
 
 The backbone vector is linearized by digestion with [EcoRV](http://rebase.neb.com/rebase/enz/EcoRV.html).
 The restriction enzyme functionality is provided by [biopython](http://biopython.org).
@@ -40,30 +43,30 @@ The restriction enzyme functionality is provided by [biopython](http://biopython
 The pYPKa derived _E. coli_ plasmids containing [promoter](pYPKa_Z_{tpz}.gb), [gene](pYPKa_A_{gene}.gb) and [terminator](pYPKa_E_{tpe}.gb)
 are read into three variables below.
 
-	promoter_template   = pydna.read("pYPKa_Z_{tpz}.gb")
-	gene_template       = pydna.read("pYPKa_A_{gene}.gb")
-	terminator_template = pydna.read("pYPKa_E_{tpe}.gb")
+	promoter_template   = read("pYPKa_Z_{tpz}.gb")
+	gene_template       = read("pYPKa_A_{gene}.gb")
+	terminator_template = read("pYPKa_E_{tpe}.gb")
 
 The construction of the three vector above are described in the [pYPKa_ZE_{tpz}](pYPKa_ZE_{tpz}.ipynb) and [pYPKa_A_{gene}](pYPKa_A_{gene}.ipynb) notebooks.
 
 Three DNA fragments are PCR amplified using [standard primers](standard_primers.txt). Suggested PCR programs can be found at the end of this document.
 
-	prom = pydna.pcr( p['577'], p['567'], promoter_template)
-	gene = pydna.pcr( p['468'], p['467'], gene_template)
-	term = pydna.pcr( p['568'], p['578'], terminator_template)
+	prom = pcr( p['577'], p['567'], promoter_template)
+	gene = pcr( p['468'], p['467'], gene_template)
+	term = pcr( p['568'], p['578'], terminator_template)
 
 The four linear DNA fragments are mixed and transformed
 to a _Saccharomyces cerevisiae_ ura3 mutant.
 
 The fragments will be assembled by _in-vivo_ [homologous recombination](http://www.ncbi.nlm.nih.gov/pubmed/2828185):
 
-	asm = pydna.Assembly( (pYPK_EcoRV, prom, gene, term), limit=31 )
+	asm = Assembly( (pYPK_EcoRV, prom, gene, term), limit=31 )
 
 	asm
 
-The representation of the asm object above should normally indicate one circcular product only.  
+The representation of the asm object above should normally indicate one circcular product only.
 More than one circular products might indicate an incorrect assembly strategy or represent
-by-products that might arise in the assembly process.  
+by-products that might arise in the assembly process.
 The largest recombination product is chosen as candidate for the pYPK0_{tpz}_{gene}_{tpe} vector.
 
 	candidate = asm.circular_products[0]
@@ -83,7 +86,7 @@ one for the gene and terminator.
 
 PCR using standard primers 577 and 467 to amplify promoter and gene.
 
-	product = pydna.pcr( p['577'], p['467'], result)
+	product = pcr( p['577'], p['467'], result)
 
 A correct clone should give this size in base pairs:
 
@@ -99,7 +102,7 @@ If the gene is missing from the assembly, the PCR product will have this size in
 
 PCR using standard primers 468 and 578 to amplify gene and terminator.
 
-	product2 = pydna.pcr( p['468'], p['578'], result)
+	product2 = pcr( p['468'], p['578'], result)
 
 A correct clone should give this size:
 
@@ -150,5 +153,5 @@ Terminator
 ## Download [pYPK0_{tpz}_{gene}_{tpe}](pYPK0_{tpz}_{gene}_{tpe}.gb)
 
 	import pydna
-	reloaded = pydna.read("pYPK0_{tpz}_{gene}_{tpe}.gb")
+	reloaded = read("pYPK0_{tpz}_{gene}_{tpe}.gb")
 	reloaded.verify_stamp()

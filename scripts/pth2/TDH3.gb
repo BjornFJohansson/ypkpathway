@@ -1,0 +1,23 @@
+LOCUS       TDH3                     698 bp    DNA     linear   UNK 24-JUN-2017
+DEFINITION  TDH3
+ACCESSION   TDH3
+VERSION     TDH3
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+ORIGIN
+        1 ataaaaaaca cgctttttca gttcgagttt atcattatca atactgccat ttcaaagaat
+       61 acgtaaataa ttaatagtag tgattttcct aactttattt agtcaaaaaa ttagcctttt
+      121 aattctgctg taacccgtac atgcccaaaa tagggggcgg gttacacaga atatataaca
+      181 tcgtaggtgt ctgggtgaac agtttattcc tggcatccac taaatataat ggagcccgct
+      241 ttttaagctg gcatccagaa aaaaaaagaa tcccagcacc aaaatattgt tttcttcacc
+      301 aaccatcagt tcataggtcc attctcttag cgcaactaca gagaacaggg gcacaaacag
+      361 gcaaaaaacg ggcacaacct caatggagtg atgcaacctg cctggagtaa atgatgacac
+      421 aaggcaattg acccacgcat gtatctatct cattttctta caccttctat taccttctgc
+      481 tctctctgat ttggaaaaag ctgaaaaaaa aggttgaaac cagttccctg aaattattcc
+      541 cctacttgac taataagtat ataaagacgg taggtattga ttgtaattct gtaaatctat
+      601 ttcttaaact tcttaaattc tacttttata gttagtcttt tttttagttt taaaacacca
+      661 agaacttagt ttcgaataaa cacacataaa caaacaaa
+//
