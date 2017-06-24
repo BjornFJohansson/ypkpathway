@@ -5,6 +5,9 @@ package:
 build:
   number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
 
+source:
+  git_url: .
+
 entry_points:
 - ypkpathway = ypkpathway.gui:main
 - ypkpathway_cli = ypkpathway.ypkpathway:main
