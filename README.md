@@ -135,7 +135,7 @@ There are static versions of the notebook files that can be viewed with only a w
 
 ## Development
 
-Ypkpathway is open source software and developen on 
+Ypkpathway is open source software and developed on 
 Github [![GitHub tag](https://img.shields.io/github/tag/BjornFJohansson/ypkpathway.svg)](https://github.com/BjornFJohansson/ypkpathway).
 
 ## How it works

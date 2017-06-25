@@ -10,3 +10,7 @@ dependencies:
 
 - pydna
 - ipython
+- docopt
+- nbformat
+- nbconvert
+- notedown
