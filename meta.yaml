@@ -16,7 +16,15 @@ requirements:
   build:
     - python
     - versioneer
+
     - pypandoc
+    - ipython
+    - nbformat
+    - nbconvert
+    - pydna
+    - docopt
+    - notedown
+    - pyqt
   run:
     - python
     - ipython

@@ -34,7 +34,7 @@ def test_ypk():
             print("pYPKa_A  = ", pYPKa_A)
             print("############################")
 
-            with open(file_, "rU",) as f: text = f.read()
+            with open(file_, "r",) as f: text = f.read()
 
             try:
                 shutil.rmtree(tmp)

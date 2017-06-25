@@ -22,3 +22,5 @@ recursive-include .git *
 include run_test.py
 include versioneer.py
 include ypkpathway/_version.py
+
+prune dist*

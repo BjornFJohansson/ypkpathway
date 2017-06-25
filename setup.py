@@ -9,9 +9,10 @@ for line in open('ypkpathway/__init__.py'):
         exec(line.strip())
 
 from setuptools import setup
+
 import os
-with open("README.md") as f:
-    long_description = f.read()
+
+with open("README.md") as f: long_description = f.read()
     
 try:
     from pypandoc import convert_file
@@ -33,10 +34,13 @@ setup(  name='ypkpathway',
                          'console_scripts' : [ 'ypkpathway_cli = ypkpathway.ypkpathway:main']    },
         url='http://pypi.python.org/pypi/ypkpathway/',
         license='LICENSE.txt',
-        description='''Simulation and documentation of metabolic pathway assembly using the Yeast Pathway Kit.''',
+        description='''Simulation and documentation of metabolic pathway assemblies using the Yeast Pathway Kit.''',
         long_description=long_description,
-        install_requires =[ "pydna", "ipython", "docopt", "notedown"],
-        test_suite="run_tests.load_my_tests",
+        
+        setup_requires=['pytest-runner', 'versioneer', 'pypandoc'],
+        tests_require =['pytest', "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert", "pydna", "notedown", "pyqt"],
+        install_requires = [ "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert", "pydna", "notedown", "pyqt"],
+
         zip_safe = False,
         keywords = u"bioinformatics",
         classifiers = [u'Development Status :: 4 - Beta',

@@ -1,0 +1,28 @@
+LOCUS       PGI                     1000 bp    DNA     linear   UNK 25-JUN-2017
+DEFINITION  PGI
+ACCESSION   PGI
+VERSION     PGI
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+ORIGIN
+        1 aattcagttt tctgactgag ttaaaaacta atgtagcgac accacttcca ttggtgcctc
+       61 cgttattttt tttttgtatg ttaatgctaa ataatacacc gctatgtatt tcagggcact
+      121 acttctacac atcaacggta ctaaacattt cgctcaagat cggtccgctt tcacgtattt
+      181 ggatgctatg caatgttgac tattcttagt ggataacatg cggcatttcc tggcggctat
+      241 ttgcatcgct atgtaagtgg caatgttcgg atgtgggtag tactttcaaa agaaaaaata
+      301 ttactgaaga aggcatacta cgccaagact attttattct cagcacttgt cctacgtggg
+      361 gttagaggcg agtaagactt tggccccgct gcggaagcaa agagaatttt gccatcggac
+      421 atgctacctt acgcttatat ctctcattgg aatatcgttt tctgattaaa acacggaagt
+      481 aagaacttaa ttcgtttttc gttgaactat gttgtgccag cgtaacatta aaaaagagtg
+      541 tacaaggcca cgttctgtca ccgtcagaaa aatatgtcaa tgaggcaaga accgggatgg
+      601 taacaaaaat cacgatctgg gtgggtgtgg gtgtattgga ttataggaag ccacgcgctc
+      661 aacctggaat tacaggaagc tggtaatttt ttgggtttgc aatcatcacc atctgcacgt
+      721 tgttataatg tcccgtgtct atatatatcc attgacggta ttctattttt ttgctattga
+      781 aatgagcgtt ttttgttact acaattggtt ttacagacgg aattttccct atttgtttcg
+      841 tcccattttt ccttttctca ttgttctcat atcttaaaaa ggtcctttct tcataatcaa
+      901 tgctttcttt tacttaatat tttacttgca ttcagtgaat tttaatacat attcctctag
+      961 tcttgcaaaa tcgatttaga atcaagatac cagcctaaaa
+//

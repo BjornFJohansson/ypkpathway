@@ -14,7 +14,7 @@ before_script:
   - pip install coveralls
 script:
   - python setup.py version
-  - python run_tests.py
+  - python run_test.py
 
 deploy:
   provider: pypi

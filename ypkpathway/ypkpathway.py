@@ -472,7 +472,6 @@ def pYPKa_ZE_ipynb_generator(tp, dir_="pYPKa_ZE_vectors"):
     g={}
     l={}
 
-
     from io import StringIO
     old_stdout = sys.stdout
     redirected_output = sys.stdout = StringIO()
@@ -484,8 +483,6 @@ def pYPKa_ZE_ipynb_generator(tp, dir_="pYPKa_ZE_vectors"):
 
     sys.stdout = old_stdout
 
-    #print redirected_output.getvalue()
-
     nbformat.write(nb, name)
 
     os.chdir(cwd)
@@ -493,12 +490,6 @@ def pYPKa_ZE_ipynb_generator(tp, dir_="pYPKa_ZE_vectors"):
     return FileLinks(dir_)
 
 if __name__ == "__main__":
-    #main()
-
-    import pydna
-
-    tp = Dseqrecord("acgtatgtcgtcagtcagtcagtcagtcaattatcgtaagtcgtcaagtccagtacgt")
-    tp.id = "XYZ1"
-    lnk = pYPKa_ZE_ipynb_generator(tp)
+    main()
 
 
