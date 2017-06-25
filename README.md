@@ -29,8 +29,6 @@ There are five more example indata example files that are a part of the automati
 
 [![dependencies](https://www.versioneye.com/user/projects/55645b646361300021ae0200/badge.svg?style=flat(Dependency%20Status)!)](https://www.versioneye.com/user/projects/55645b646361300021ae0200) Dependencies are tracked at versioneye.
 
-[![pypi dl](https://img.shields.io/pypi/dm/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/) Pypi download count.
-
 [![anaconda](https://anaconda.org/bjornfjohansson/ypkpathway/badges/downloads.svg)](https://anaconda.org/bjornfjohansson/ypkpathway) Anaconda download count.
 
 [![GitHub tag](https://img.shields.io/github/tag/BjornFJohansson/ypkpathway.svg)](https://github.com/BjornFJohansson/ypkpathway) Github repository.
@@ -38,10 +36,8 @@ There are five more example indata example files that are a part of the automati
 The ypkpatwhay package provides a graphical point and click interface and a command line application for planning DNA assembly projects 
 using the Yeast Pathway Kit protocol.
 
-
 Please refer to the [manual](https://github.com/BjornFJohansson/ypkpathway/blob/master/docs/manual.pdf) for details on how to use the software.
 
- 
 ## Installation
 
 The best way of installing ypkpathway is by first installing the free [Anaconda Python distribution](https://store.continuum.io/cshop/anaconda/) which comes with
@@ -77,15 +73,15 @@ to be installed using a binary installer or else a C compiler has to be availabl
 
 [ipython](https://pypi.python.org/pypi/ipython)
 
-[docopt](https://pypi.python.org/pypi/docopt)
-
 [notedown](https://pypi.python.org/pypi/notedown)
 
-[PyQt4](https://pypi.python.org/pypi/PyQt4)
+[nbformat](https://pypi.python.org/pypi/nbformat/4.3.0)
 
+[PyQt5](https://pypi.python.org/pypi/PyQt5)
+
+[docopt](https://pypi.python.org/pypi/docopt)
 
 There are binary Windows installers for IPython, Bioppython, docopt [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/) 
-
 
 ## Graphical user interface
 
@@ -147,6 +143,9 @@ Github [![GitHub tag](https://img.shields.io/github/tag/BjornFJohansson/ypkpathw
 Ypkpathway generates a series of text documents in [markdown](http://daringfireball.net/projects/markdown/) format 
 that are formatted with the given data. There is one document per vector generated in in the assembly process. 
 These documents contain comments and links as well as Python code. The python code describe the cloning and assembly 
-steps using pydna. The markdown documents are turned into JSON format using the [notedown](https://github.com/aaren/notedown) package. 
-The notebooks are then executed using the IPython functionality. All files and
+steps using pydna. 
+
+The markdown documents are turned into JSON format using the [notedown](https://github.com/aaren/notedown) package. 
+
+The notebooks are executed using IPython. All files and
 raw data are saved in a self contained result folder.

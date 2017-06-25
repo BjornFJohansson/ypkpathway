@@ -1,0 +1,12 @@
+name: testenv35
+channels:
+- BjornFJohansson
+
+dependencies:
+- python=3.5
+- pytest
+- pytest-runner
+- setuptools
+
+- pydna
+- ipython

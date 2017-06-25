@@ -1,0 +1,6 @@
+pytest
+pydna
+setuptools
+docopt
+notedown
+ipython
