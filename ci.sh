@@ -2,12 +2,12 @@
 echo "=============================================================="
 echo "BASH_VERSION" $BASH_VERSION
 gitversion="$(git --version)"
-echo "Git version:" gitversion
+echo "Git version: $gitversion"
 tagname="$(git describe --abbrev=0 --tags)"
 tag="$(git rev-list $tagname | head -n 1)"
 com="$(git rev-parse HEAD)"
-dirty=$(git describe --tags --dirty --always)
-msg=$(git log -1 --pretty=%B)
+dirty="$(git describe --tags --dirty --always)"
+msg="$(git log -1 --pretty=%B)"
 echo "=============================================================="
 echo "Establish git variables:"
 echo "=============================================================="

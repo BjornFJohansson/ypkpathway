@@ -369,7 +369,7 @@ class Assembler(QMainWindow):
         from PyQt5.QtCore import QT_VERSION_STR
         from PyQt5.Qt import PYQT_VERSION_STR
         from sip import SIP_VERSION_STR
-        from _version import get_versions
+        from ._version import get_versions
         __version__ = get_versions()["version"][:5]
         del get_versions
         from IPython import __version__ as IPython_version

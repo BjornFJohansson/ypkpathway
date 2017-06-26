@@ -24,20 +24,23 @@ import re
 import sys
 import os
 import errno
-#import codecs
 import shutil
 import docopt
+import subprocess
+
 from pkg_resources import resource_filename
 
 import pydna
 from pydna.readers import read
 from pydna.parsers import parse
-from pydna.dseqrecord import Dseqrecord
+
 
 import nbformat
 from nbconvert.preprocessors.execute import ExecutePreprocessor
+
 from IPython.core.interactiveshell import InteractiveShell
 from IPython.display import FileLink, FileLinks
+
 import notedown
 
 re_cas  = re.compile("pYPK0_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})")
@@ -376,7 +379,7 @@ def main():
     try:
         arguments = docopt.docopt(__doc__)
     except docopt.DocoptExit as e:
-        print(e.message)
+        #print(e)
         sys.exit(0)
 
     dir_ = "ypk_assembly"
@@ -426,7 +429,7 @@ def main():
 
         print("opening IPython notebook {}".format(fl.path))
 
-        #subprocess.Popen(["ipython", "notebook", os.path.join(dir_, "pw.ipynb")])
+        subprocess.Popen(["jupyter", "notebook", os.path.join(dir_, "pw.ipynb")])
 
 def pathway_(x,y, print=print):
     print("abc")

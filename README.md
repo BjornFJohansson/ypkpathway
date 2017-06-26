@@ -4,10 +4,10 @@ Ypkpathway is a simulator and documentation generator for _in-vivo_ pathway asse
 It takes as argument a series of sequences in a text file and produces a self contained folder containing assembled sequences 
 of intermediary vectors, final assembly and PCR primers. Other useful information such as PCR conditions and PCR product sizes 
 for construction and confirmation are also included. The documantation of the assembly is given in the narrative 
-IPython notebook format which can be executed independently of ypkpathway.
+Jupyter notebook format which can be executed independently of ypkpathway.
 
 The assembly process is simulated using [pydna](https://github.com/BjornFJohansson/pydna) 
-in [IPython notebooks](http://ipython.org/notebook.html) which are automatically generated and executed. 
+in [Jupyter notebooks](http://ipython.org/notebook.html) which are automatically generated and executed. 
 
 See an example of a four gene assembly [here](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/docs/pth6/pw.ipynb). 
 The notebooks in the example are located in the docs folder in this repository and visualized through [nbviewer](http://nbviewer.ipython.org/).
@@ -105,7 +105,7 @@ Typical usage at the command line could look like this:
 
 Where pth6.txt is a text file containing DNA sequences in FASTA or Genbank format to be assembled as described in the [manual](https://github.com/BjornFJohansson/ypkpathway/blob/master/docs/manual.pdf).
 
-The ypkpathway_cli command above creates a folder with a series of IPython notebooks describing 
+The ypkpathway_cli command above creates a folder with a series of Jupyter notebooks describing 
 the assembly process simulated with pydna. Help is available by the -h option:
 
     bjorn@bjorn-UL30A:/$ ypkpathway -h
@@ -131,12 +131,12 @@ The ypkpathway and ypkpathway_cli both produce the same result, which is a resul
 The folder will contain:
 
 -   The sequence of the final pathway and all intermediate vectors in [Genbank](http://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html) format
--   IPython notebooks files describing the final assembly and intermediate assemblies.
+-   Jupyter notebooks files describing the final assembly and intermediate assemblies.
 -   All PCR primers needed for the amplification of pathway components.
 -   Expected diagnostic PCR product fragment lengths indicating correct and incorrect clonings.
 
-The IPython notebook files in the results folder can be viewed with a web browser with oly IPython is installed on the computer.
-There are static versions of the notebook files that can be viewed with only a web browser (not eve Python is required).
+The Jupyter notebook files in the results folder can be viewed with a web browser with only IPython/Jupyter installed.
+There are also static html versions of the notebook files that can be viewed on any computer with a web browser.
 
 ## Development
 
