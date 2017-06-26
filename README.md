@@ -34,8 +34,6 @@ There are five more example indata files that are a part of the automatic test s
 
 [![CircleCI](https://circleci.com/gh/BjornFJohansson/ypkpathway.svg?style=svg)](https://circleci.com/gh/BjornFJohansson/ypkpathway) Conda packages for Linux built on CircleCI. 
 
-[![dependencies](https://www.versioneye.com/user/projects/55645b646361300021ae0200/badge.svg?style=flat(Dependency%20Status)!)](https://www.versioneye.com/user/projects/55645b646361300021ae0200) Dependencies are tracked at versioneye.
-
 [![anaconda](https://anaconda.org/bjornfjohansson/ypkpathway/badges/downloads.svg)](https://anaconda.org/bjornfjohansson/ypkpathway) Anaconda download count.
 
 [![GitHub tag](https://img.shields.io/github/tag/BjornFJohansson/ypkpathway.svg)](https://github.com/BjornFJohansson/ypkpathway) Github repository.
