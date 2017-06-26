@@ -16,6 +16,8 @@ requirements:
   build:
     - python
     - versioneer
+    - pytest
+    - pytest-runner
 
     - pypandoc
     - ipython
@@ -38,6 +40,7 @@ test:
   requires:
     - pyqt
     - pytest
+    - pytest-runner
   commands:
     - echo test
     - echo $GIT_DESCRIBE_TAG
