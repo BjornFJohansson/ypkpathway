@@ -8,7 +8,7 @@ def main():
     cwd = os.getcwd()
     os.chdir("tests")
     args = [".", "-v", "-s"]
-    #pytest.cmdline.main(args)
+    pytest.cmdline.main(args)
     os.chdir(cwd)
     
 if __name__ == '__main__':

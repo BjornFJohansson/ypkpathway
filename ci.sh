@@ -225,14 +225,14 @@ else
     source activate testenv35
     which python
     python --version
-    python run_test.py
+    python run_tests.py
     echo
     echo "create test environment for python 3.6"
     conda env create -f test_environment36.yml
     source activate testenv36
     which python
     python --version
-    python run_test.py
+    python run_tests.py
     source activate root
     conda remove -n testenv35 --all -q
     conda remove -n testenv36 --all -q

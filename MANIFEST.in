@@ -20,6 +20,7 @@ recursive-include scripts *
 recursive-include .git *
 
 include run_test.py
+include run_tests.py
 include versioneer.py
 include ypkpathway/_version.py
 

@@ -41,6 +41,7 @@ test:
     - pyqt
     - pytest
     - pytest-runner
+
   commands:
     - echo test
     - echo $GIT_DESCRIBE_TAG
