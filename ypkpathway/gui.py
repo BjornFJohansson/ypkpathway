@@ -4,10 +4,10 @@
 
 import sys
 import os
-#import platform
+
 import subprocess
 import shutil
-#import codecs
+
 
 from PyQt5.QtCore import QRect,  QEvent  # , QObject QMetaObject,
 from PyQt5.QtWidgets  import (QApplication, QMainWindow, QWidget,
@@ -17,7 +17,7 @@ from PyQt5.QtWidgets  import (QApplication, QMainWindow, QWidget,
 
 from PyQt5.QtGui import  QIcon, QFont
 
-import qrc
+from . import qrc
 
 import pydna
 from pydna.parsers import parse
