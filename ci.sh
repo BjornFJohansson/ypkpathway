@@ -147,8 +147,8 @@ then
     conda build --python 3.6 .
     if [[ $CI = true ]]||[[ $CI = True ]]
     then
-        anaconda -t $TOKEN upload $pth1 --label $condalabel --force
-        anaconda -t $TOKEN upload $pth2 --label $condalabel --force
+        anaconda upload $pth1 -t $TOKEN --label $condalabel --force
+        anaconda upload $pth2 -t $TOKEN --label $condalabel --force
     else
         anaconda upload $pth1 --label $condalabel --force
         anaconda upload $pth2 --label $condalabel --force
@@ -218,7 +218,6 @@ then
         echo "CIRCLECI = $CIRCLECI"
         exit 1
     fi
-    ls dist
 else
     echo "create test environment for python 3.5"
     conda env create -f test_environment35.yml
