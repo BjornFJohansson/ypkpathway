@@ -1,0 +1,21 @@
+LOCUS       TEF1                     579 bp    DNA     linear   UNK 26-JUN-2017
+DEFINITION  TEF1
+ACCESSION   TEF1
+VERSION     TEF1
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+ORIGIN
+        1 acaatgcata ctttgtacgt tcaaaataca atgcagtaga tatatttatg catattacat
+       61 ataatacata tcacatagga agcaacaggc gcgttggact tttaattttc gaggaccgcg
+      121 aatccttaca tcacacccaa tcccccacaa gtgatccccc acacaccata gcttcaaaat
+      181 gtttctactc cttttttact cttccagatt ttctcggact ccgcgcatcg ccgtaccact
+      241 tcaaaacacc caagcacagc atactaaatt tcccctcttt cttcctctag ggtgtcgtta
+      301 attacccgta ctaaaggttt ggaaaagaaa aaagagaccg cctcgtttct ttttcttcgt
+      361 cgaaaaaggc aataaaaatt tttatcacgt ttctttttct tgaaaatttt tttttttgat
+      421 ttttttctct ttcgatgacc tcccattgat atttaagtta ataaacggtc ttcaatttct
+      481 caagtttcag tttcattttt cttgttctat tacaactttt tttacttctt gctcattaga
+      541 aagaaagcat agcaatctaa tctaagtttt aattacaaa
+//

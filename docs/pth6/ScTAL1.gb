@@ -1,0 +1,28 @@
+LOCUS       ScTAL1                  1008 bp    DNA     linear   UNK 26-JUN-2017
+DEFINITION  ScTAL1
+ACCESSION   ScTAL1
+VERSION     ScTAL1
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+ORIGIN
+        1 atgtctgaac cagctcaaaa gaaacaaaag gttgctaaca actctctaga acaattgaaa
+       61 gcctccggca ctgtcgttgt tgccgacact ggtgatttcg gctctattgc caagtttcaa
+      121 cctcaagact ccacaactaa cccatcattg atcttggctg ctgccaagca accaacttac
+      181 gccaagttga tcgatgttgc cgtggaatac ggtaagaagc atggtaagac caccgaagaa
+      241 caagtcgaaa atgctgtgga cagattgtta gtcgaattcg gtaaggagat cttaaagatt
+      301 gttccaggca gagtctccac cgaagttgat gctagattgt cttttgacac tcaagctacc
+      361 attgaaaagg ctagacatat cattaaattg tttgaacaag aaggtgtctc caaggaaaga
+      421 gtccttatta aaattgcttc cacttgggaa ggtattcaag ctgccaaaga attggaagaa
+      481 aaggacggta tccactgtaa tttgactcta ttattctcct tcgttcaagc agttgcctgt
+      541 gccgaggccc aagttacttt gatttcccca tttgttggta gaattctaga ctggtacaaa
+      601 tccagcactg gtaaagatta caagggtgaa gccgacccag gtgttatttc cgtcaagaaa
+      661 atctacaact actacaagaa gtacggttac aagactattg ttatgggtgc ttctttcaga
+      721 agcactgacg aaatcaaaaa cttggctggt gttgactatc taacaatttc tccagcttta
+      781 ttggacaagt tgatgaacag tactgaacct ttcccaagag ttttggaccc tgtctccgct
+      841 aagaaggaag ccggcgacaa gatttcttac atcagcgacg aatctaaatt cagattcgac
+      901 ttgaatgaag acgctatggc cactgaaaaa ttgtccgaag gtatcagaaa attctctgcc
+      961 gatattgtta ctctattcga cttgattgaa aagaaagtta ccgcttaa
+//

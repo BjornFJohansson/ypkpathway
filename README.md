@@ -25,9 +25,11 @@ There are five more example indata files that are a part of the automatic test s
 
 [![pypi](https://img.shields.io/pypi/v/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/) Python wheel and source distributions on Pypi.
 
-[![travis](https://travis-ci.org/BjornFJohansson/ypkpathway.svg)](https://travis-ci.org/BjornFJohansson/ypkpathway) Python wheel and source distributions on Pypi are built and tested on on travis-ci using a linux back end. 
+[![travis](https://travis-ci.org/BjornFJohansson/ypkpathway.svg)](https://travis-ci.org/BjornFJohansson/ypkpathway) Conda packages for MacOSX built on TravisCI.
 
-[![appveyor](https://ci.appveyor.com/api/projects/status/ol5ru8po7fx5cimj?svg=true)](https://ci.appveyor.com/project/BjornFJohansson/ypkpathway) 64 bit Windows binary executable and a Windows binary wheel are built on Appveyor-CI
+[![appveyor](https://ci.appveyor.com/api/projects/status/ol5ru8po7fx5cimj?svg=true)](https://ci.appveyor.com/project/BjornFJohansson/ypkpathway) Conda packages built on Appveyor-CI
+
+[![CircleCI](https://circleci.com/gh/BjornFJohansson/ypkpathway.svg?style=svg)](https://circleci.com/gh/BjornFJohansson/ypkpathway) Conda packages for Linux built on CircleCI. 
 
 [![dependencies](https://www.versioneye.com/user/projects/55645b646361300021ae0200/badge.svg?style=flat(Dependency%20Status)!)](https://www.versioneye.com/user/projects/55645b646361300021ae0200) Dependencies are tracked at versioneye.
 

@@ -1,0 +1,27 @@
+LOCUS       PDC1                     955 bp    DNA     linear   UNK 26-JUN-2017
+DEFINITION  PDC1
+ACCESSION   PDC1
+VERSION     PDC1
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+ORIGIN
+        1 agggtagcct ccccataaca taaactcaat aaaatatata gtcttcaact tgaaaaagga
+       61 acaagctcat gcaaagaggt ggtacccgca cgccgaaatg catgcaagta acctattcaa
+      121 agtaatatct catacatgtt tcatgagggt aacaacatgc gactgggtga gcatatgttc
+      181 cgctgatgtg atgtgcaaga taaacaagca aggcagaaac taacttcttc ttcatgtaat
+      241 aaacacaccc cgcgtttatt tacctatctc taaacttcaa caccttatat cataactaat
+      301 atttcttgag ataagcacac tgcacccata ccttccttaa aaacgtagct tccagttttt
+      361 ggtggttccg gcttccttcc cgattccgcc cgctaaacgc atatttttgt tgcctggtgg
+      421 catttgcaaa atgcataacc tatgcattta aaagattatg tatgctcttc tgacttttcg
+      481 tgtgatgagg ctcgtggaaa aaatgaataa tttatgaatt tgagaacaat tttgtgttgt
+      541 tacggtattt tactatggaa taatcaatca attgaggatt ttatgcaaat atcgtttgaa
+      601 tatttttccg accctttgag tacttttctt cataattgca taatattgtc cgctgcccct
+      661 ttttctgtta gacggtgtct tgatctactt gctatcgttc aacaccacct tattttctaa
+      721 ctattttttt tttagctcat ttgaatcagc ttatggtgat ggcacatttt tgcataaacc
+      781 tagctgtcct cgttgaacat aggaaaaaaa aatatataaa caaggctctt tcactctcct
+      841 tgcaatcaga tttgggtttg ttccctttat tttcatattt cttgtcatat tcctttctca
+      901 attattattt tctactcata acctcacgca aaataacaca gtcaaatcaa tcaaa
+//

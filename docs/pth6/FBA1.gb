@@ -1,0 +1,22 @@
+LOCUS       FBA1                     630 bp    DNA     linear   UNK 26-JUN-2017
+DEFINITION  FBA1
+ACCESSION   FBA1
+VERSION     FBA1
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+ORIGIN
+        1 ataacaatac tgacagtact aaataattgc ctacttggct tcacatacgt tgcatacgtc
+       61 gatatagata ataatgataa tgacagcagg attatcgtaa tacgtaatag ttgaaaatct
+      121 caaaaatgtg tgggtcatta cgtaaataat gataggaatg ggattcttct atttttcctt
+      181 tttccattct agcagccgtc gggaaaacgt ggcatcctct ctttcgggct caattggagt
+      241 cacgctgccg tgagcatcct ctctttccat atctaacaac tgagcacgta accaatggaa
+      301 aagcatgagc ttagcgttgc tccaaaaaag tattggatgg ttaataccat ttgtctgttc
+      361 tcttctgact ttgactcctc aaaaaaaaaa aatctacaat caacagatcg cttcaattac
+      421 gccctcacaa aaactttttt ccttcttctt cgcccacgtt aaattttatc cctcatgttg
+      481 tctaacggat ttctgcactt gatttattat aaaaagacaa agacataata cttctctatc
+      541 aatttcagtt attgttcttc cttgcgttat tcttctgttc ttctttttct tttgtcatat
+      601 ataaccataa ccaagtaata catattcaaa
+//

@@ -38,8 +38,8 @@ setup(  name='ypkpathway',
         long_description=long_description,
         
         setup_requires=['pytest-runner', 'versioneer', 'pypandoc'],
-        tests_require =['pytest', "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert", "pydna", "notedown", "pyqt"],
-        install_requires = [ "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert", "pydna", "notedown", "pyqt"],
+        tests_require =['pytest', "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert", "pydna", "notedown"],
+        install_requires = [ "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert", "pydna", "notedown"],
 
         zip_safe = False,
         keywords = u"bioinformatics",

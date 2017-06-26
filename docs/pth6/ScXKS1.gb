@@ -1,0 +1,42 @@
+LOCUS       ScXKS1                  1803 bp    DNA     linear   UNK 26-JUN-2017
+DEFINITION  ScXKS1
+ACCESSION   ScXKS1
+VERSION     ScXKS1
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+ORIGIN
+        1 atgttgtgtt cagtaattca gagacagaca agagaggttt ccaacacaat gtctttagac
+       61 tcatactatc ttgggtttga tctttcgacc caacaactga aatgtctcgc cattaaccag
+      121 gacctaaaaa ttgtccattc agaaacagtg gaatttgaaa aggatcttcc gcattatcac
+      181 acaaagaagg gtgtctatat acacggcgac actatcgaat gtcccgtagc catgtggtta
+      241 gaggctctag atctggttct ctcgaaatat cgcgaggcta aatttccatt gaacaaagtt
+      301 atggccgtct cagggtcctg ccagcagcac gggtctgtct actggtcctc ccaagccgaa
+      361 tctctgttag agcaattgaa taagaaaccg gaaaaagatt tattgcacta cgtgagctct
+      421 gtagcatttg caaggcaaac cgcccccaat tggcaagacc acagtactgc aaagcaatgt
+      481 caagagtttg aagagtgcat aggtgggcct gaaaaaatgg ctcaattaac agggtccaga
+      541 gcccatttta gatttactgg tcctcaaatt ctgaaaattg cacaattaga accagaagct
+      601 tacgaaaaaa caaagaccat ttctttagtg tctaattttt tgacttctat cttagtgggc
+      661 catcttgttg aattagagga ggcagatgcc tgtggtatga acctttatga tatacgtgaa
+      721 agaaaattca gtgatgagct actacatcta attgatagtt cttctaagga taaaactatc
+      781 agacaaaaat taatgagagc acccatgaaa aatttgatag cgggtaccat ctgtaaatat
+      841 tttattgaga agtacggttt caatacaaac tgcaaggtct ctcccatgac tggggataat
+      901 ttagccacta tatgttcttt acccctgcgg aagaatgacg ttctcgtttc cctaggaaca
+      961 agtactacag ttcttctggt caccgataag tatcacccct ctccgaacta tcatcttttc
+     1021 attcatccaa ctctgccaaa ccattatatg ggtatgattt gttattgtaa tggttctttg
+     1081 gcaagggaga ggataagaga cgagttaaac aaagaacggg aaaataatta tgagaagact
+     1141 aacgattgga ctctttttaa tcaagctgtg ctagatgact cagaaagtag tgaaaatgaa
+     1201 ttaggtgtat attttcctct gggggagatc gttcctagcg taaaagccat aaacaaaagg
+     1261 gttatcttca atccaaaaac gggtatgatt gaaagagagg tggccaagtt caaagacaag
+     1321 aggcacgatg ccaaaaatat tgtagaatca caggctttaa gttgcagggt aagaatatct
+     1381 cccctgcttt cggattcaaa cgcaagctca caacagagac tgaacgaaga tacaatcgtg
+     1441 aagtttgatt acgatgaatc tccgctgcgg gactacctaa ataaaaggcc agaaaggact
+     1501 ttttttgtag gtggggcttc taaaaacgat gctattgtga agaagtttgc tcaagtcatt
+     1561 ggtgctacaa agggtaattt taggctagaa acaccaaact catgtgccct tggtggttgt
+     1621 tataaggcca tgtggtcatt gttatatgac tctaataaaa ttgcagttcc ttttgataaa
+     1681 tttctgaatg acaattttcc atggcatgta atggaaagca tatccgatgt ggataatgaa
+     1741 aattgggatc gctataattc caagattgtc cccttaagcg aactggaaaa gactctcatc
+     1801 taa
+//

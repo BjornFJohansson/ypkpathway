@@ -1,0 +1,53 @@
+created subdirectory /home/bjorn/python_packages/ypkpathway/docs/pth6
+
+saving files sequence files and images..
+
+saving: FBA1.gb
+saving: PDC1.gb
+saving: PGI.gb
+saving: ScTAL1.gb
+saving: ScXKS1.gb
+saving: SsXYL1.gb
+saving: SsXYL2.gb
+saving: TDH3.gb
+saving: TEF1.gb
+saving: pYPK_A.png
+saving: pYPK_ZE.png
+saving: pYPKa.gb
+saving: pYPKpw.gb
+saving: pw.png
+saving: standard_primers.txt
+saving: start.bat
+saving: start.sh
+saving: tp_g_tp.png
+
+saving notebook files ..
+
+saving: pYPK0_FBA1_ScTAL1_PDC1.ipynb
+saving: pYPK0_PGI_ScXKS1_FBA1.ipynb
+saving: pYPK0_TDH3_SsXYL2_PGI.ipynb
+saving: pYPK0_TEF1_SsXYL1_TDH3.ipynb
+saving: pYPKa_ZE_FBA1.ipynb
+saving: pYPKa_ZE_PDC1.ipynb
+saving: pYPKa_ZE_PGI.ipynb
+saving: pYPKa_ZE_TDH3.ipynb
+saving: pYPKa_ZE_TEF1.ipynb
+
+executing pYPKa notebooks..
+
+executing: pYPKa_ZE_FBA1.ipynb
+executing: pYPKa_ZE_PDC1.ipynb
+executing: pYPKa_ZE_PGI.ipynb
+executing: pYPKa_ZE_TDH3.ipynb
+executing: pYPKa_ZE_TEF1.ipynb
+
+executing pYPK0 notebooks..
+
+executing: pYPK0_FBA1_ScTAL1_PDC1.ipynb
+executing: pYPK0_PGI_ScXKS1_FBA1.ipynb
+executing: pYPK0_TDH3_SsXYL2_PGI.ipynb
+executing: pYPK0_TEF1_SsXYL1_TDH3.ipynb
+
+executing final pathway notebook..
+
+executing: pw.ipynb
