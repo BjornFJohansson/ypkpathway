@@ -146,7 +146,7 @@ then
     anaconda -V
     if [[ $CI = true ]]||[[ $CI = True ]]
     then
-        anaconda upload $pth1 --label $condalabel --force -t $TOKEN
+        anaconda -t $TOKEN upload $pth1 --label $condalabel --force 
     else
         anaconda upload $pth1 --label $condalabel --force
     fi
@@ -157,7 +157,7 @@ then
     anaconda -V
     if [[ $CI = true ]]||[[ $CI = True ]]
     then
-        anaconda upload $pth2 --label $condalabel --force -t $TOKEN 
+        anaconda -t $TOKEN upload $pth2 --label $condalabel --force
     else
         anaconda upload $pth2 --label $condalabel --force
     fi
