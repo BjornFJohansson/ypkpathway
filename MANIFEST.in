@@ -17,10 +17,11 @@ recursive-include docs *
 recursive-include ypkpathway/data *
 recursive-include ypkpathway/icons *
 recursive-include scripts *
-recursive-include .git *
+
 
 include run_tests.py
 include versioneer.py
 include ypkpathway/_version.py
 
-prune dist*
+
+

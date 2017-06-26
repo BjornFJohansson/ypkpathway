@@ -135,7 +135,7 @@ then
     conda create -yq -n condabuild36 python=3.6 anaconda-client pypandoc pandoc pyqt
     conda create -yq -n pipbuild35   python=3.5 anaconda-client urllib3  pypandoc pandoc pyqt
     conda create -yq -n pipbuild36   python=3.6 anaconda-client pypandoc pandoc pyqt
-    conda create -yq -n twine             python=3.5 twine
+    conda create -yq -n twine        python=3.5 twine
     rm -rf dist
     rm -rf build
     rm -rf tests/htmlcov
