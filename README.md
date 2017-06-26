@@ -1,17 +1,19 @@
 # [![icon](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/icon.resized.png)](https://pypi.python.org/pypi/ypkpathway/) ypkpathway 
 
-Ypkpathway is a simulator and documentation generator for _in-vivo_ pathway assembly using the Yeast Pathway Kit protocol. It takes as argument a series of
-sequences in a text file and produces a self contained folder containing assembled sequences of intermediary vectors, final assembly and PCR primers. 
-Other useful information such as PCR conditions and PCR product sizes are also included. The documantation of the assembly is given in the narrative 
+Ypkpathway is a simulator and documentation generator for _in-vivo_ pathway assembly using the Yeast Pathway Kit protocol. 
+It takes as argument a series of sequences in a text file and produces a self contained folder containing assembled sequences 
+of intermediary vectors, final assembly and PCR primers. Other useful information such as PCR conditions and PCR product sizes 
+for construction and confirmation are also included. The documantation of the assembly is given in the narrative 
 IPython notebook format which can be executed independently of ypkpathway.
 
-The assembly process is simulated using [pydna](https://github.com/BjornFJohansson/pydna) in [IPython notebooks](http://ipython.org/notebook.html) which are automatically generated and executed. 
+The assembly process is simulated using [pydna](https://github.com/BjornFJohansson/pydna) 
+in [IPython notebooks](http://ipython.org/notebook.html) which are automatically generated and executed. 
 
-See an example of an four gene assembly [here](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/docs/pth6/pw.ipynb). 
+See an example of a four gene assembly [here](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/docs/pth6/pw.ipynb). 
 The notebooks in the example are located in the docs folder in this repository and visualized through [nbviewer](http://nbviewer.ipython.org/).
 The example above was made with the [pth6](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth6.txt) indata.
 
-There are five more example indata example files that are a part of the automatic test suit: 
+There are five more example indata files that are a part of the automatic test suit: 
 [pth1](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth1.txt)
 [pth2](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth2.txt)
 [pth3](http://nbviewer.ipython.org/github/BjornFJohansson/ypkpathway/blob/master/tests/pth3.txt)
