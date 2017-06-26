@@ -145,10 +145,11 @@ then
     conda build --python 3.5 .
     source activate condabuild36
     conda build --python 3.6 .
+        anaconda -V
     if [[ $CI = true ]]||[[ $CI = True ]]
     then
-        anaconda upload $pth1 -t $TOKEN --label $condalabel --force
-        anaconda upload $pth2 -t $TOKEN --label $condalabel --force
+        anaconda upload $pth1 --label $condalabel --force -t $TOKEN
+        anaconda upload $pth2 --label $condalabel --force -t $TOKEN 
     else
         anaconda upload $pth1 --label $condalabel --force
         anaconda upload $pth2 --label $condalabel --force
