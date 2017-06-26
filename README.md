@@ -27,7 +27,7 @@ There are five more example indata files that are a part of the automatic test s
 
 [![travis](https://travis-ci.org/BjornFJohansson/ypkpathway.svg)](https://travis-ci.org/BjornFJohansson/ypkpathway) Conda packages for MacOSX built on TravisCI.
 
-[![appveyor](https://ci.appveyor.com/api/projects/status/ol5ru8po7fx5cimj?svg=true)](https://ci.appveyor.com/project/BjornFJohansson/ypkpathway) Conda packages built on Appveyor-CI
+[![appveyor](https://ci.appveyor.com/api/projects/status/ol5ru8po7fx5cimj?svg=true)](https://ci.appveyor.com/project/BjornFJohansson/ypkpathway) Conda packages built on Appveyor-CI.
 
 [![CircleCI](https://circleci.com/gh/BjornFJohansson/ypkpathway.svg?style=svg)](https://circleci.com/gh/BjornFJohansson/ypkpathway) Conda packages for Linux built on CircleCI. 
 
