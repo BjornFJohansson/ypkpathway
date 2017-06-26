@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 echo "=============================================================="
 echo "BASH_VERSION" $BASH_VERSION
+gitversion="$(git --version)"
+echo "Git version:" gitversion
 tagname="$(git describe --abbrev=0 --tags)"
 tag="$(git rev-list $tagname | head -n 1)"
 com="$(git rev-parse HEAD)"
@@ -138,20 +140,25 @@ then
     rm -rf build
     rm -rf tests/htmlcov
     pth1="$(conda build . --output --py 3.5)"
-    pth2="$(conda build . --output --py 3.6)"
     echo $pth1
-    echo $pth2
     source activate condabuild35
     conda build --python 3.5 .
+    anaconda -V
+    if [[ $CI = true ]]||[[ $CI = True ]]
+    then
+        anaconda upload $pth1 --label $condalabel --force -t $TOKEN
+    else
+        anaconda upload $pth1 --label $condalabel --force
+    fi
+    pth2="$(conda build . --output --py 3.6)"
+    echo $pth2
     source activate condabuild36
     conda build --python 3.6 .
     anaconda -V
     if [[ $CI = true ]]||[[ $CI = True ]]
     then
-        anaconda upload $pth1 --label $condalabel --force -t $TOKEN
         anaconda upload $pth2 --label $condalabel --force -t $TOKEN 
     else
-        anaconda upload $pth1 --label $condalabel --force
         anaconda upload $pth2 --label $condalabel --force
     fi
 
