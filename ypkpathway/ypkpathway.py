@@ -55,7 +55,7 @@ def add_space(s, n):
 def cloned(vector, enzyme, candidate):
     if len(candidate) <= len(vector):
         return 0
-    candidate2 = str(candidate.seq.tolinear()*2).lower()
+    candidate2 = str(candidate.seq.todata*2).lower()
     linear_vector = vector.cut(enzyme).pop(0)
     if str(linear_vector.seq).lower() in candidate2:
         return len(candidate) - len(vector)
