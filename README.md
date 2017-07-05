@@ -26,7 +26,7 @@ There are five more example indata files that are a part of the automatic test s
 
 [![screenshot](https://raw.githubusercontent.com/BjornFJohansson/ypkpathway/master/screenshot.resized.png)](https://github.com/BjornFJohansson/ypkpathway) 
 
-[![pypi](https://img.shields.io/pypi/v/ypkpathway.png)](https://pypi.python.org/pypi/ypkpathway/) Python wheel and source distributions on Pypi.
+[![pypi](https://img.shields.io/pypi/pyversions/ypkpathway.svg)](https://pypi.python.org/pypi/ypkpathway/) Python wheel and source distributions on Pypi.
 
 [![travis](https://travis-ci.org/BjornFJohansson/ypkpathway.svg)](https://travis-ci.org/BjornFJohansson/ypkpathway) Conda packages for MacOSX built on TravisCI.
 
