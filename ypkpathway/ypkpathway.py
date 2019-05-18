@@ -36,9 +36,11 @@ from pydna.parsers import parse
 
 
 import nbformat
+
 from nbconvert.preprocessors.execute import ExecutePreprocessor
 
 from IPython.core.interactiveshell import InteractiveShell
+
 from IPython.display import FileLink, FileLinks
 
 import notedown
@@ -276,7 +278,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
             msg = "\nexecuting: "+name
             print(msg)
             log+=msg
-            with io.open(name, 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
+            with open(name, 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
             nb_executed, resources = pp.preprocess(nb, resources={})
             for cell in nb.cells:
                 if cell.cell_type == 'code':
@@ -307,7 +309,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
             msg = "\nexecuting: "+name
             print(msg)
             log+=msg
-            with io.open(name, 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
+            with open(name, 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
             nb_executed, resources = pp.preprocess(nb, resources={})
             nbformat.write(nb, name)
             for cell in nb.cells:
@@ -359,7 +361,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
     msg = "\nexecuting: pw.ipynb"
     print(msg)
     log+=msg
-    with io.open("pw.ipynb", 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
+    with open("pw.ipynb", 'r', encoding='utf-8') as f: nb = nbformat.read(f, 4)
     nb_executed, resources = pp.preprocess(nb, resources={})
     nbformat.write(nb, "pw.ipynb")
 
@@ -421,7 +423,8 @@ def main():
 
         fl, log = pathway( parse(text), dir_, pYPKa_A=pYPKa_A )
 
-        with open(os.path.join(dir_, "log.txt"),"w") as f: f.write(log)
+        with open(os.path.join(dir_, "log.txt"),"w") as f: 
+            f.write(log)
 
         filename = os.path.basename(file_)
 
@@ -475,9 +478,8 @@ def pYPKa_ZE_ipynb_generator(tp, dir_="pYPKa_ZE_vectors"):
     g={}
     l={}
 
-    from io import StringIO
     old_stdout = sys.stdout
-    redirected_output = sys.stdout = StringIO()
+    redirected_output = sys.stdout = io.StringIO()
 
     for cell in nb.cells:
         if cell.cell_type == 'code':
