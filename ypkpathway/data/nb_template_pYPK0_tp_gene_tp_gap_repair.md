@@ -96,7 +96,7 @@ More than one circular products might indicate an incorrect assembly strategy or
 by-products that might arise in the assembly process.  
 The largest recombination product is chosen as candidate for the pYPK0_{tpz}_{gene}_{tpe} vector.
 
-	candidate = asm.circular_products[0]
+	candidate = asm.assemble_circular()[0]
 
 	candidate.figure()
 

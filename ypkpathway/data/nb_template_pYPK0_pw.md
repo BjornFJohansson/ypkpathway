@@ -78,7 +78,7 @@ circular products might indicate an incorrect strategy.
 The largest recombination product is chosen as candidate for 
 the {name} pathway.
 
-    candidate = asm.circular_products[0]
+    candidate = asm.assemble_circular()[0]
 
 This assembly figure shows how the fragments came together.
             

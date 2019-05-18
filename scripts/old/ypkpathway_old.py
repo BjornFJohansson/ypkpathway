@@ -265,7 +265,7 @@ class pYPK0_tp_gene_tp(object):
             last   = pydna.pcr( p568, p578, self.pYPKa_clones[2].rec)
 
             self.assembly = pydna.Assembly([pYPK0_tp_gene_tp.pYPKpw_lin, first, middle, last], limit=31)
-            self.seq = self.assembly.circular_products[0]
+            self.seq = self.assembly.assemble_circular()[0]
 
             self.tp1_description  = self.pYPKa_clones[0].insert_description
             self.gene_description = self.pYPKa_clones[1].insert_description
@@ -402,7 +402,7 @@ class PathWay(object):
         pw.append(self.tp_gene_tp[-1].right_product())
 
         self.assembly = pydna.Assembly(pw, limit=167-47-10)
-        self.seq = self.assembly.circular_products[0]
+        self.seq = self.assembly.assemble_circular()[0]
         self.seq.id = "pYPK0_pathway"
         self.seq.description = self.seq.id
 
