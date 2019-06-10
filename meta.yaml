@@ -34,18 +34,18 @@ requirements:
     - docopt
     - notedown
     - pyqt
-#test:
-#  requires:
-#    - pyqt
-#    - pytest
-#    - pytest-runner
+test:
+  requires:
+    - pyqt
+    - pytest
+    - pytest-runner
 
-#  commands:
-#    - echo test
-#    - echo $GIT_DESCRIBE_TAG
-#    - echo $GIT_DESCRIBE_NUMBER
-#    #- ypkpathway_cli -h
-#    #- ypkpathway_cli -v
+  commands:
+    - echo test
+    - echo $GIT_DESCRIBE_TAG
+    - echo $GIT_DESCRIBE_NUMBER
+    #- ypkpathway_cli -h
+    #- ypkpathway_cli -v
 
 about:
   home: https://github.com/BjornFJohansson/ypkpathway
