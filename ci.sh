@@ -174,7 +174,6 @@ conda env create -f python37.yml
 
 
 
-
 if [[ $tagged_commit = true ]]
 then
     echo "========build conda package and setuptools package(s)========="
