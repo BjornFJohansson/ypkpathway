@@ -32,15 +32,15 @@ requirements:
         - docopt
         - notedown
         - pyqt
-test:
-  requires:
-    - pytest
-    - pytest-runner
-  imports:
-    - ypkpathway
-  source_files:
-    - tests
-    - ypkpathway
+#test:
+#  requires:
+#    - pytest
+#    - pytest-runner
+#  imports:
+#    - ypkpathway
+#  source_files:
+#    - tests
+#    - ypkpathway
 
 entry_points:
    - ypkpathway = ypkpathway.gui:main
