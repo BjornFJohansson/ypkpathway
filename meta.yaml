@@ -39,7 +39,11 @@ test:
     - pyqt
     - pytest
     - pytest-runner
-
+  imports:
+    - ypkpathway
+  source_files:
+    - tests
+    - ypkpathway
   commands:
     - echo test
     - echo $GIT_DESCRIBE_TAG
