@@ -32,7 +32,7 @@ setup(  name='ypkpathway',
         description='''Simulation and documentation of metabolic pathway assemblies using the Yeast Pathway Kit.''',
         long_description=long_description,
         long_description_content_type='text/markdown',
-        setup_requires=['pytest-runner', 'versioneer', 'pypandoc'],
+        setup_requires=['pytest-runner', 'versioneer'],
         tests_require =['pytest', "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert", "pydna", "notedown"],
         install_requires = [ "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert", "pydna", "notedown"],
 
