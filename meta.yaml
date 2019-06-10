@@ -36,7 +36,6 @@ requirements:
     - pyqt
 test:
   requires:
-    - pyqt
     - pytest
     - pytest-runner
   imports:
@@ -44,12 +43,6 @@ test:
   source_files:
     - tests
     - ypkpathway
-  commands:
-    - echo test
-    - echo $GIT_DESCRIBE_TAG
-    - echo $GIT_DESCRIBE_NUMBER
-    #- ypkpathway_cli -h
-    #- ypkpathway_cli -v
 
 about:
   home: https://github.com/BjornFJohansson/ypkpathway
