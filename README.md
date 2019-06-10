@@ -32,7 +32,7 @@ There are five more example indata files that are a part of the automatic test s
 
 [![appveyor](https://ci.appveyor.com/api/projects/status/ol5ru8po7fx5cimj?svg=true)](https://ci.appveyor.com/project/BjornFJohansson/ypkpathway) Conda packages built on Appveyor-CI.
 
-[![CircleCI](https://circleci.com/gh/BjornFJohansson/ypkpathway.svg?style=svg)](https://circleci.com/gh/BjornFJohansson/ypkpathway) Conda packages for Linux built on CircleCI. 
+[![Codeship Status for BjornFJohansson/ypkpathway](https://app.codeship.com/projects/04d50e80-6db3-0137-487e-62c5aa384427/status)](https://app.codeship.com/projects/347093)
 
 [![anaconda](https://anaconda.org/bjornfjohansson/ypkpathway/badges/downloads.svg)](https://anaconda.org/bjornfjohansson/ypkpathway) Anaconda download count.
 
