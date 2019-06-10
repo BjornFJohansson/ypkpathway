@@ -1,10 +1,10 @@
-name: testenv36
+name: python37
 channels:
 - defaults
 - conda-forge
 - BjornFJohansson
 dependencies:
-- python=3.6
+- python=3.7
 - pytest
 - pytest-runner
 - setuptools
@@ -15,3 +15,5 @@ dependencies:
 - nbformat
 - nbconvert
 - notedown
+
+- twine
