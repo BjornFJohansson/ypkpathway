@@ -1,9 +1,10 @@
-name: testenv35
+name: testenv37
 channels:
+- defaults
+- conda-forge
 - BjornFJohansson
-
 dependencies:
-- python=3.5
+- python=3.7
 - pytest
 - pytest-runner
 - setuptools

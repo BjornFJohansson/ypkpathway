@@ -119,8 +119,6 @@ The pathway can be extended by digestion with either NotI or PacI or both provid
 
     reloaded = read("{name}.gb")
 
-    reloaded.verify_stamp()
-
 ### New Primers needed for assembly.
 
 This list contains all needed primers that are not in the standard primer [list](standard_primers.txt) above.

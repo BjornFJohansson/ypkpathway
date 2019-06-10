@@ -24,6 +24,7 @@ def test_ypk():
                    pth7.txt|pYPK0_SsXYL1_SsXYL2_ScXKS1_ScTAL1.gb|K8z4ijkYa0hA0KEOhv7-6PNJgBM'''
 
     for pYPKa_A in (True, False):
+        
         for datafile in textwrap.dedent(datafiles).split():
 
             file_, name, code = datafile.split("|")
@@ -49,6 +50,7 @@ def test_ypk():
 
             assert "".join( x for x in c.lower() if not x.isspace()) == str(s.seq).lower()
 
+            
 if __name__ == '__main__':
     pytest.cmdline.main([__file__, "-v", "-s"])
 

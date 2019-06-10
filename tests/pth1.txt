@@ -1,4 +1,4 @@
-LOCUS       pYPK0_tp_gene_tp        8746 bp    DNA     circular UNK 28-MAR-2014
+LOCUS       pYPK0_tp_gene_tp1       8746 bp    DNA     circular UNK 28-MAR-2014
 DEFINITION  pYPK0_RPL12Btp_CiGXF1_TDH3tp
 ACCESSION   -
 VERSION     -
@@ -229,7 +229,7 @@ ORIGIN
 //
 
 
-LOCUS       pYPK0_tp_gene_tp        8570 bp    DNA     circular UNK 03-DEC-2013
+LOCUS       pYPK0_tp_gene_tp2       8570 bp    DNA     circular UNK 03-DEC-2013
 DEFINITION  pYPK0_TDH3tp_PsXYL2_PGI1tp
 ACCESSION   .
 VERSION     .

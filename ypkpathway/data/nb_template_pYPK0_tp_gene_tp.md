@@ -149,9 +149,3 @@ Gene
 Terminator
 
 	term.program()
-
-## Download [pYPK0_{tpz}_{gene}_{tpe}](pYPK0_{tpz}_{gene}_{tpe}.gb)
-
-	import pydna
-	reloaded = read("pYPK0_{tpz}_{gene}_{tpe}.gb")
-	reloaded.verify_stamp()

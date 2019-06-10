@@ -12,16 +12,11 @@ from setuptools import setup
 
 import os
 
-with open("README.md") as f: long_description = f.read()
-    
-try:
-    from pypandoc import convert_file
-except ImportError:
-    print("warning: pypandoc module not found, could not convert Markdown to RST")
-    with open("README.md", encoding="utf-8") as f:
-        long_description = f.read()
-else:
-    long_description = "\n"+convert_file("README.md", 'rst')   
+from os import path
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+
 
 setup(  name='ypkpathway',
         version=versioneer.get_version()[:5],
@@ -36,7 +31,7 @@ setup(  name='ypkpathway',
         license='LICENSE.txt',
         description='''Simulation and documentation of metabolic pathway assemblies using the Yeast Pathway Kit.''',
         long_description=long_description,
-        
+        long_description_content_type='text/markdown',
         setup_requires=['pytest-runner', 'versioneer', 'pypandoc'],
         tests_require =['pytest', "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert", "pydna", "notedown"],
         install_requires = [ "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert", "pydna", "notedown"],
@@ -48,7 +43,7 @@ setup(  name='ypkpathway',
                        'Intended Audience :: Education',
                        'Intended Audience :: Science/Research',
                        'License :: OSI Approved :: BSD License',
-                       'Programming Language :: Python :: 3.5',
                        'Programming Language :: Python :: 3.6',
+                       'Programming Language :: Python :: 3.7',
                        'Topic :: Education',
                        'Topic :: Scientific/Engineering :: Bio-Informatics',])

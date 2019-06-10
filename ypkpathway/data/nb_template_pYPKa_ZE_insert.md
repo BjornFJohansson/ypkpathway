@@ -152,16 +152,3 @@ Sequences are written to local files.
 
 	pYPKa_Z_{tp}.write("pYPKa_Z_{tp}.gb")
 	pYPKa_E_{tp}.write("pYPKa_E_{tp}.gb")
-
-# Download [pYPKa_Z_{tp}](pYPKa_Z_{tp}.gb)
-
-	import pydna
-	reloaded = read("pYPKa_Z_{tp}.gb")
-	reloaded.verify_stamp()
-
-# Download [pYPKa_E_{tp}](pYPKa_E_{tp}.gb)
-
-	import pydna
-	reloaded = read("pYPKa_E_{tp}.gb")
-	reloaded.verify_stamp()
-

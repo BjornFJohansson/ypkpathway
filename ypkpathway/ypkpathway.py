@@ -45,11 +45,11 @@ from IPython.display import FileLink, FileLinks
 
 import notedown
 
-re_cas  = re.compile("pYPK0_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})")
-re_cas  = re.compile("pYPK0_([^_]{2,15})_([^_]{2,15})_([^_]{2,15})")
-re_Z    = re.compile("pYPKa_Z_([^\d\W]\w{2,15})")
-re_A    = re.compile("pYPKa_A_([^\d\W]\w{2,15})")
-re_E    = re.compile("pYPKa_E_([^\d\W]\w{2,15})")
+re_cas  = re.compile(r"pYPK0_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})_([^\d\W]\w{2,15})")
+re_cas  = re.compile(r"pYPK0_([^_]{2,15})_([^_]{2,15})_([^_]{2,15})")
+re_Z    = re.compile(r"pYPKa_Z_([^\d\W]\w{2,15})")
+re_A    = re.compile(r"pYPKa_A_([^\d\W]\w{2,15})")
+re_E    = re.compile(r"pYPKa_E_([^\d\W]\w{2,15})")
 
 def add_space(s, n):
     return  "\n".join("{}{}".format(" "*n, line) for line in s.splitlines())
@@ -57,10 +57,10 @@ def add_space(s, n):
 def cloned(vector, enzyme, candidate):
     if len(candidate) <= len(vector):
         return 0
-    candidate2 = str(candidate.seq.todata*2).lower()
-    linear_vector = vector.cut(enzyme).pop(0)
-    if str(linear_vector.seq).lower() in candidate2:
-        return len(candidate) - len(vector)
+    candidate2 = str(candidate.seq).lower()*2
+    for linear_vector in vector.cut(enzyme):
+        if str(linear_vector.seq).lower() in candidate2:
+            return len(candidate) - len(vector)
     return 0
 
 def read_data_file(name):
@@ -73,18 +73,11 @@ def read_bin_file(name):
 
 def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
 
+
     if len(pth)==0: # pth has to contain some sequences
-        print("No of sequences found.")
+        print("No sequences in argument.")
         return None, None
 
-    names = [s.name for s in pth] # sequence names has to be unique
-
-    #if len(names)>len(set(names)):
-    #    print("Gene names are not unique. Please rename sequences so that each sequence has a unique name.\n")
-    #    print("Gene names parsed from Data page:\n\n")
-    #    for name in names:
-    #        print(name)
-    #    return None, None
 
     log=""
 
@@ -271,7 +264,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
     g={}
     l={}
 
-    pypkanbs = sorted([f for f in os.listdir(".") if re.match("pYPKa.+\.ipynb", f)])
+    pypkanbs = sorted([f for f in os.listdir(".") if re.match(r"pYPKa.+\.ipynb", f)])
 
     if pypkanbs:
         for name in pypkanbs:
@@ -302,7 +295,7 @@ def pathway(pth, dir_="ypkassembly", pYPKa_A=True, print=print):
     l={}
     resources={}
 
-    pypk0nbs = sorted([f for f in os.listdir(".") if re.match("pYPK0.+\.ipynb", f)])
+    pypk0nbs = sorted([f for f in os.listdir(".") if re.match(r"pYPK0.+\.ipynb", f)])
 
     if pypk0nbs:
         for name in pypk0nbs:

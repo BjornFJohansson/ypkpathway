@@ -24,6 +24,25 @@ echo "TRAVIS               = $TRAVIS"
 echo "=============================================================="
 echo "Build information:"
 echo "=============================================================="
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if [[ "$com" = "$tag" ]]&&[[ $dirty = $tagname ]]
 then
     echo "Tagged commit      : $tagname"
@@ -125,6 +144,23 @@ then
 else
     echo "Not running on CI server, probably running on local computer"
 fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if [[ $tagged_commit = true ]]
 then
     echo "build conda package and setuptools package(s)"

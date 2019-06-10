@@ -131,10 +131,3 @@ This can be used to verify the integrity of the sequence file.
 The sequence is written to a local file.
 
 	pYPKa_A_{insert}.write("pYPKa_A_{insert}.gb")
-
-# Download [pYPKa_A_{insert}](pYPKa_A_{insert}.gb)
-
-	import pydna
-	reloaded = read("pYPKa_A_{insert}.gb")
-	reloaded.verify_stamp()
- 
