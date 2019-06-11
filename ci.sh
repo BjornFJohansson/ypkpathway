@@ -56,7 +56,7 @@ echo "=============================================================="
 if [[ "$com" = "$tag" ]]&&[[ $dirty = $tagname ]]
 then
     echo "Tagged commit: $tagname"
-    PEP440="^([1-9]*!)?(0|[1-9]*)(\.(0|[1-9]*))*((a|b|rc)(0|[1-9]*))?(\.post(0|[1-9]*))?(\.dev(0|[1-9]*))?$"
+    PEP440="^([1-9]*!)?(0|[1-9]*)(\.(0|[1-9]*))*((a|b|rc)(0|[0-9]*))?(\.post(0|[1-9]*))?(\.dev(0|[1-9]*))?$"
     if [[ $tagname =~ $PEP440 ]]
     then
         echo "Git tag is a canonical PEP440 release version number"
@@ -105,22 +105,33 @@ then
     [[ ! -z "$TWINE_USERNAME" ]] && echo "TWINE_USERNAME is set" || echo "TWINE_USERNAME is empty"
     [[ ! -z "$TWINE_PASSWORD" ]] && echo "TWINE_PASSWORD is set" || echo "TWINE_PASSWORD is empty"
     [[ ! -z "$ANACONDATOKEN"  ]] && echo "ANACONDATOKEN is set"  || echo "ANACONDATOKEN is empty"
+    echo "=============================================================="
     if [[ $TRAVIS = true ]]
     then
         branch=$TRAVIS_BRANCH
-        echo "Running on TRAVIS, download Miniconda for MacOSX"
+        echo "=============================================================="
+        echo "Running on TRAVIS, download Miniconda3 for MacOSX"
+        echo "=============================================================="
         miniconda="wget -q http://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O Miniconda_latest.sh"
     elif [[ $APPVEYOR = true ]]||[[ $APPVEYOR = True ]]
     then
         branch=$APPVEYOR_REPO_BRANCH
-        echo "Running on APPVEYOR, use installed Miniconda for Windows"
+        echo "=============================================================="
+        echo "Running on APPVEYOR, use installed Miniconda3 for Windows"
+        echo "=============================================================="
         miniconda="source appveyor_source_file.sh"
     elif [[ $CIRCLECI = true ]]
     then
         branch=$CI_BRANCH
+        echo "=============================================================="
+        echo "Running on Circle CI, download Miniconda3 for Linux"
+        echo "=============================================================="
         miniconda="wget -q https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O Miniconda_latest.sh"
     elif [[ $CI_NAME = codeship ]]
     then
+        echo "=============================================================="
+        echo "Running on Codeship CI, download Miniconda3 for Linux"
+        echo "=============================================================="
         miniconda="wget -q https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O Miniconda_latest.sh"
     else
         echo "Running on CI server but none of the expected environment variables are set to true"
@@ -159,8 +170,9 @@ fi
 
 
 
-
-echo "====================create conda environments================="
+echo "=============================================================="
+echo "=               create conda environments                    ="
+echo "=============================================================="
 conda env create -f python36.yml
 conda env create -f python37.yml
 
@@ -176,19 +188,27 @@ conda env create -f python37.yml
 
 if [[ $tagged_commit = true ]]
 then
-    echo "========build conda package and setuptools package(s)========="
+    echo "=============================================================="
+    echo "=       build conda package and setuptools package(s)        ="
+    echo "=============================================================="
     conda install -yq -c anaconda conda-build
     conda install -yq -c anaconda conda-verify
-    echo "conda-build version used:"
+    echo "=============================================================="
+    echo "=       conda-build version used:                             "
+    echo "=============================================================="
     conda-build -V
+    echo "=============================================================="
     rm -rf dist
     rm -rf build
     rm -rf tests/htmlcov
     pth2="$(conda build . --output --py 3.6)"
     pth3="$(conda build . --output --py 3.7)"
-    echo "========build path(s)========================================="
+    echo "=============================================================="
+    echo "=       build path(s)                                        ="
+    echo "=============================================================="
     echo $pth2
     echo $pth3
+    echo "=============================================================="
     source activate python36
     conda build --python 3.6 --no-include-recipe --dirty .
     source activate python37
@@ -196,11 +216,15 @@ then
     echo "========conda upload(s)======================================="
     if [[ $CI = true ]]||[[ $CI = True ]]
     then
-        echo "========anaconda upload using ANACONDATOKEN====================="
+        echo "=============================================================="
+        echo "=          anaconda upload using ANACONDATOKEN               ="
+        echo "=============================================================="
         anaconda -t $ANACONDATOKEN upload $pth2 --label $condalabel --force
         anaconda -t $ANACONDATOKEN upload $pth3 --label $condalabel --force
     else
-        echo "========anaconda upload========================================="
+        echo "=============================================================="
+        echo "=                            anaconda upload                 ="
+        echo "=============================================================="
         anaconda upload $pth2 --label $condalabel --force
         anaconda upload $pth3 --label $condalabel --force
     fi
