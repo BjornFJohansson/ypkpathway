@@ -266,8 +266,8 @@ then
 else
     echo "====================tests================="
     source activate python36
-    python run_tests.py
+    python run_test__.py
     source activate python37
-    python run_tests.py
+    python run_test__.py
     #codecov
 fi
