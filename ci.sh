@@ -105,7 +105,6 @@ then
     [[ ! -z "$TWINE_USERNAME" ]] && echo "TWINE_USERNAME is set" || echo "TWINE_USERNAME is empty"
     [[ ! -z "$TWINE_PASSWORD" ]] && echo "TWINE_PASSWORD is set" || echo "TWINE_PASSWORD is empty"
     [[ ! -z "$ANACONDATOKEN"  ]] && echo "ANACONDATOKEN is set"  || echo "ANACONDATOKEN is empty"
-    echo "=============================================================="
     if [[ $TRAVIS = true ]]
     then
         branch=$TRAVIS_BRANCH
@@ -267,8 +266,8 @@ then
 else
     echo "====================tests================="
     source activate python36
-    python run_test.py
+    python run_tests.py
     source activate python37
-    python run_test.py
+    python run_tests.py
     #codecov
 fi
