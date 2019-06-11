@@ -246,4 +246,5 @@ else
     python run_test.py
     source activate python37
     python run_test.py
+    #codecov
 fi
