@@ -32,8 +32,8 @@ setup(  name='ypkpathway',
         description='''Simulation and documentation of metabolic pathway assemblies using the Yeast Pathway Kit.''',
         long_description=long_description,
         long_description_content_type='text/markdown',
-        tests_require =['pytest', "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert", "notedown"],
-        install_requires = [ "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert", "pydna", "notedown"],
+        
+        install_requires = [ "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert"],  # "PyQt5"
 
         zip_safe = False,
         keywords = u"bioinformatics",
