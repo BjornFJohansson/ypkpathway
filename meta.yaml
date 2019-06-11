@@ -27,6 +27,7 @@ requirements:
         - python
         - ipython
         - nbformat
+        - pytest-runner
         - nbconvert
         - pydna
         - docopt
