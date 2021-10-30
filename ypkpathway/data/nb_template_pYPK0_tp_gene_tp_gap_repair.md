@@ -15,10 +15,7 @@ The four linear DNA fragments are joined by homologous recombination in a
 
 ![pYPK0_promoter_gene_terminator](tp_g_tp.png "pYPK0_promoter_gene_terminator")
 
-The [pydna](https://pypi.python.org/pypi/pydna/) package is imported in the code cell below. 
-There is a [publication](http://www.biomedcentral.com/1471-2105/16/142) describing pydna as well as
-[documentation](http://pydna.readthedocs.org/en/latest/) available online. 
-Pydna is developed on [Github](https://github.com/BjornFJohansson/pydna). 
+A part of the [pydna](https://pypi.python.org/pypi/pydna/) package is imported in the code cell below. 
 
     from pydna.parsers import parse_primers
     from pydna.readers import read
@@ -164,6 +161,8 @@ Write sequence to a local file.
 	result.write("pYPK0_{tpz}_{gene}_{tpe}.gb")
 
 ## PCR programs for the amplification of Promoter, Gene and Terminator
+
+see cell # 6
 
 Promoter
 

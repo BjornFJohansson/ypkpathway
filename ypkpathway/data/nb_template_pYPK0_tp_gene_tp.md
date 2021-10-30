@@ -5,8 +5,8 @@ single gene expression vector pYPK0_{tpz}_{gene}_{tpe}.
 
 It is made by _in-vivo_ homologous recombination between three PCR products and one linear vector fragment.
 The PCR products are a promoter generated from a pYPK_Z vector, a gene from a pYPKa_A vector and 
-a terminator from a pYPKa_E vector. The three PCR products are joined to
-a linearized [pYPKpw](https://github.com/BjornFJohansson/ypk-xylose-pathways/blob/master/pYPKpw.gb) 
+a terminator from a pYPKa_E vector. The three PCR products are joined with
+a linearized [pYPKpw](https://github.com/BjornFJohansson/ypk-xylose-pathways/blob/master/notebooks/pYPKpw.ipynb) 
 backbone vector that has the [URA3](http://www.yeastgenome.org/locus/S000000747/overview) 
 marker and a _S. crevisiae_ [2 micron](http://blog.addgene.org/plasmids-101-yeast-vectors) origin of replication. 
 
@@ -15,17 +15,14 @@ The four linear DNA fragments are joined by homologous recombination in a
 
 ![pYPK0_promoter_gene_terminator](tp_g_tp.png "pYPK0_promoter_gene_terminator")
 
-The [pydna](https://pypi.python.org/pypi/pydna/) package is imported in the code cell below. 
-There is a [publication](http://www.biomedcentral.com/1471-2105/16/142) describing pydna as well as
-[documentation](http://pydna.readthedocs.org/en/latest/) available online. 
-Pydna is developed on [Github](https://github.com/BjornFJohansson/pydna). 
+A part of the [pydna](https://pypi.python.org/pypi/pydna/) package is imported in the code cell below.
 
     from pydna.parsers import parse_primers
     from pydna.readers import read
     from pydna.amplify import pcr
     from pydna.assembly import Assembly
 
-The YPK [standard primers](standard_primers.txt) are read into a dictionary in the code cell below.
+The Yeast Pathway Kit [standard primers](standard_primers.txt) are read into a dictionary in the code cell below.
 
 	p = {{ x.id: x for x in parse_primers("standard_primers.txt") }}
 
@@ -34,7 +31,7 @@ The backbone vector [pYPKpw](pYPKpw.gb) is read from a local file in the code ce
 	pYPKpw = read("pYPKpw.gb")
 
 The backbone vector is linearized by digestion with [EcoRV](http://rebase.neb.com/rebase/enz/EcoRV.html).
-The restriction enzyme functionality is provided by [biopython](http://biopython.org).
+The restriction enzyme functionality is provided by [biopython](http://biopython.org). 
 
 	from Bio.Restriction import EcoRV
 
@@ -43,9 +40,9 @@ The restriction enzyme functionality is provided by [biopython](http://biopython
 The pYPKa derived _E. coli_ plasmids containing [promoter](pYPKa_Z_{tpz}.gb), [gene](pYPKa_A_{gene}.gb) and [terminator](pYPKa_E_{tpe}.gb)
 are read into three variables below.
 
-	promoter_template   = read("pYPKa_Z_{tpz}.gb")
-	gene_template       = read("pYPKa_A_{gene}.gb")
-	terminator_template = read("pYPKa_E_{tpe}.gb")
+	promoter_template   = read("{promoter_vector}")
+	gene_template       = read("{gene_vector}")
+	terminator_template = read("{terminator_vector}")
 
 The construction of the three vector above are described in the [pYPKa_ZE_{tpz}](pYPKa_ZE_{tpz}.ipynb) and [pYPKa_A_{gene}](pYPKa_A_{gene}.ipynb) notebooks.
 
@@ -137,6 +134,8 @@ Write sequence to a local file.
 	result.write("pYPK0_{tpz}_{gene}_{tpe}.gb")
 
 ## PCR programs for the amplification of Promoter, Gene and Terminator
+
+see cell #6
 
 Promoter
 

@@ -5,3 +5,4 @@ tornado==4.1
 terminado==0.5
 pyzmq==14.6.0
 ipython==4.0.0
+appdirs

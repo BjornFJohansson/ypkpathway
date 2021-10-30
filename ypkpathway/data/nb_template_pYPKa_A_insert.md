@@ -1,33 +1,23 @@
 # Construction of pYPKa_A_{insert}
 
-This notebook describe the construction of the _E. coli_ vector [pYPKa_A_{insert}](pYPKa_A_{insert}.gb)
-with an insert for which PCR primers are also designed.
-
-The insert defined below is cloned in pYPKa using the blunt restriction 
-enzyme [AjiI](http://rebase.neb.com/rebase/enz/AjiI.html). The vector will be 
-used to PCR amplify a gene to be cloned between a promoter and a terminator 
-in a single gene expression construct.
+This notebook describe the construction of the _E. coli_ vector [pYPKa_A_{insert}](pYPKa_A_{insert}.gb).
 
 ![pYPKa_A plasmid](pYPK_A.png "pYPKa_A plasmid")
 
-The [pydna](https://pypi.python.org/pypi/pydna/) package is imported in the code cell below. 
-There is a [publication](http://www.biomedcentral.com/1471-2105/16/142) describing pydna as well as
-[documentation](http://pydna.readthedocs.org/en/latest/) available online. 
-Pydna is developed on [Github](https://github.com/BjornFJohansson/pydna). 
+A part of the [pydna](https://pypi.python.org/pypi/pydna/) package is imported in the code cell below.
 
     from pydna.readers import read
     from pydna.parsers import parse
     from pydna.parsers import parse_primers
-    from pydna.design import primer_design
+    from pydna.design  import primer_design
     from pydna.amplify import pcr
     from pydna.amplify import Anneal
-    
 
 The vector backbone [pYPKa](pYPKa.gb) is read from a local file.
 
 	pYPKa = read("pYPKa.gb")
 
-The restriction enzyme is imported from [Biopython](http://biopython.org)
+The restriction enzyme [AjiI](http://rebase.neb.com/rebase/enz/AjiI.html) is imported from [Biopython](http://biopython.org)
 
 	from Bio.Restriction import AjiI
 
@@ -35,7 +25,7 @@ The plasmid is linearized with the enzyme.
 
 	pYPKa_AjiI  = pYPKa.linearize(AjiI)
 
-The insert sequence is read from a [local file]({insert}.gb). This sequence was parsed from the ypkpathway data file.
+The insert sequence is read from a [local file]({insert}.gb).
 
 	ins = read("{insert}.gb")
 

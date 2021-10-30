@@ -4,10 +4,8 @@
 
 import sys
 import os
-
+import platform
 import subprocess
-import shutil
-
 
 from PyQt5.QtCore import QRect,  QEvent  # , QObject QMetaObject,
 from PyQt5.QtWidgets  import (QApplication, QMainWindow, QWidget,
@@ -17,17 +15,12 @@ from PyQt5.QtWidgets  import (QApplication, QMainWindow, QWidget,
 
 from PyQt5.QtGui import  QIcon, QFont
 
-from . import qrc
-
-import pydna
-from pydna.parsers import parse
 
 import ypkpathway
 
 from pkg_resources import resource_filename
 
-
-
+import pydna
 
 class Assembler(QMainWindow):
     def __init__(self, parent=None):
@@ -311,47 +304,29 @@ class Assembler(QMainWindow):
         printline(title)
         printline('='*len(title))
 
-
-        #print(type(self.plainTextEdit.toPlainText()))
-        #qstringobj = self.plainTextEdit.toPlainText().encode('utf-8')
-        #print(type(qstringobj)) #<class 'PyQt4.QtCore.QString'>
-        #print(qstringobj.toUtf8()[3268:3279])
-        #print(str(qstringobj.toUtf8()[3268:3279]))
-        #print(type(rawtext), "rawtext")
-        #codec0 = .QTextCodec.codecForName("UTF-16");
-        #rawtext = unicode(codec0.fromUnicode(tmp), 'UTF-16')
-        #unicode(qstringobj.toUtf8(), encoding="UTF-8").decode()
-        
-        qstringobj = self.plainTextEdit.toPlainText()
-
-        #import sys;sys.exit(42)
-
-        pth = parse( qstringobj )
-        
-        #import sys;sys.exit(42)
-
-        if len(pth)==0:
-            printline("No of sequences found in Data window")
-            return
+        text = self.plainTextEdit.toPlainText()
 
         if self.filename is None:
             self.fileSaveAs()
 
         dir_, ext = os.path.splitext( str(self.filename))
 
-        fl, log = ypkpathway.pathway( pth, dir_, pYPKa_A = not self.checkbox.isChecked(), print = printline)
+        nb, error = ypkpathway.pathway(text,
+                                       dir_,
+                                       pYPKa_A = not self.checkbox.isChecked(),
+                                       print = printline)
 
-        if not fl:
-            return
+        if error:
+            printline('Assembly was *not* completed.')
+        else:
+            printline('Assembly finished.')
+            printline('click on the "Open pathway" under "Assemble" above')
+            printline('to open the pathway in your default web browser')
+        self.nb =  nb
+        log = self.plainTextEdit_2.toPlainText()
+        with open(os.path.join(dir_, "log.txt"), "w") as f:
+            f.write(log)
 
-        with open(os.path.join(dir_, "log.txt"),"w") as f: f.write(log)
-
-        shutil.copy2( str(self.filename), os.path.join(dir_, "INDATA_"+os.path.basename(str(self.filename))))
-
-        printline('')
-        printline('\n\nAssembly finished.')
-        printline('click on the Open pathway button above to open the pathway in the default web browser')
-        self.nb =  fl.path
 
     def qprintline(self, line):
         '''Append one line to Solution Page.'''
@@ -360,7 +335,12 @@ class Assembler(QMainWindow):
 
     def openNB(self):
         if self.nb:
-            subprocess.Popen(["ipython", "notebook", self.nb])
+            if platform.system() == 'Darwin':       # macOS
+                subprocess.run(('open', self.nb))
+            elif platform.system() == 'Windows':    # Windows
+                os.startfile(self.nb)
+            else:                                   # linux variants
+                subprocess.run(('xdg-open', self.nb))
 
 
 
@@ -377,7 +357,7 @@ class Assembler(QMainWindow):
         QMessageBox.about(self, "About ypkpathway",
                              """<b>Planning of yeast pathway kit constructions.</b>
                                 <p>version: {}<br>
-                                 Copyright 2015-2017 Björn Johansson.
+                                 Copyright 2015-2019 Björn Johansson.
                                  This software is released under a BSD style license.
                                  This software comes with no warranties
                                  expressed or implied.<br><br>

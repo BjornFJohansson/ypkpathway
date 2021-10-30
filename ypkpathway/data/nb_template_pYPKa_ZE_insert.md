@@ -11,10 +11,7 @@ terminator.
 
 ![pYPKa_Z and pYPKa_E plasmids](pYPK_ZE.png "pYPKa_Z and pYPKa_E plasmids")
 
-The [pydna](https://pypi.python.org/pypi/pydna/) package is imported in the code cell below.
-There is a [publication](http://www.biomedcentral.com/1471-2105/16/142) describing pydna as well as
-[documentation](http://pydna.readthedocs.org/en/latest/) available online.
-Pydna is developed on [Github](https://github.com/BjornFJohansson/pydna).
+A part of the [pydna](https://pypi.python.org/pypi/pydna/) package is imported in the code cell below.
 
     from pydna.readers import read
     from pydna.parsers import parse
@@ -140,7 +137,7 @@ uniquely identifies a circular double stranded sequence.
 The sequences are named based on the name of the cloned insert.
 
 	pYPKa_Z_{tp}.locus = "pYPKa_Z_{tp}"[:16]
-	pYPKa_E_{tp}.locus = "pYPKa_Z_{tp}"[:16]
+	pYPKa_E_{tp}.locus = "pYPKa_E_{tp}"[:16]
 
 Sequences are stamped with the cseguid checksum.
 This can be used to verify the integrity of the sequence file.

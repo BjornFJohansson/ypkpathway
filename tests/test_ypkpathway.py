@@ -5,7 +5,6 @@ import shutil
 import pytest
 import textwrap
 
-from pydna.parsers import parse
 from pydna.readers import read
 
 import tempfile
@@ -15,13 +14,13 @@ tmp = os.path.join( tempfile.gettempdir(), "ypkpathway_test_dir" )
 
 def test_ypk():
 
-    datafiles = '''pth1.txt|pYPK0_CiGXF1_PsXYL2.gb|iM8oDuvJPMPO995IdW3B0oo0Hkc
-                   pth2.txt|pYPK0_SsXYL1_SsXYL2.gb|CB_qLhPgemW0XNLQOQEAdJKFujU
-                   pth3.txt|pYPK0_NC_006038_CiGXF1_PsXYL2.gb|48_Bek9U1wxXlq1otmE7YHjYpnk
-                   pth4.txt|pYPK0_SsXYL1_SsXYL2_ScXKS1.gb|5OxynmwQA3br0cKAG8It7VVNGrg
-                   pth5.txt|pYPK0_SsXYL1_SsXYL2_ScXKS1_ScTAL1.gb|K8z4ijkYa0hA0KEOhv7-6PNJgBM
-                   pth6.txt|pYPK0_SsXYL1_SsXYL2_ScXKS1_ScTAL1.gb|K8z4ijkYa0hA0KEOhv7-6PNJgBM
-                   pth7.txt|pYPK0_SsXYL1_SsXYL2_ScXKS1_ScTAL1.gb|K8z4ijkYa0hA0KEOhv7-6PNJgBM'''
+    datafiles = '''pth1.txt|pYPK0_RPL12B_CiGXF1_TDH3_PsXYL2_PGI1.gb|iM8oDuvJPMPO995IdW3B0oo0Hkc
+                   pth2.txt|pYPK0_TEF1_SsXYL1_TDH3_SsXYL2_PGI.gb|CB_qLhPgemW0XNLQOQEAdJKFujU
+                   pth3.txt|pYPK0_RPL12A_NC_006038_RPL12B_CiGXF1_TDH3_PsXYL2_PGI1.gb|48_Bek9U1wxXlq1otmE7YHjYpnk
+                   pth4.txt|pYPK0_TEF1_SsXYL1_TDH3_SsXYL2_PGI_ScXKS1_FBA1.gb|5OxynmwQA3br0cKAG8It7VVNGrg
+                   pth5.txt|pYPK0_TEF1_SsXYL1_TDH3_SsXYL2_PGI_ScXKS1_FBA1_ScTAL1_PDC1.gb|K8z4ijkYa0hA0KEOhv7-6PNJgBM
+                   pth6.txt|pYPK0_TEF1_SsXYL1_TDH3_SsXYL2_PGI_ScXKS1_FBA1_ScTAL1_PDC1.gb|K8z4ijkYa0hA0KEOhv7-6PNJgBM
+                   pth7.txt|pYPK0_TEF1_SsXYL1_TDH3_SsXYL2_PGI_ScXKS1_FBA1_ScTAL1_PDC1.gb|K8z4ijkYa0hA0KEOhv7-6PNJgBM'''
 
     for pYPKa_A in (True, False):
         
@@ -42,7 +41,7 @@ def test_ypk():
             except OSError:
                 pass
 
-            pw = pathway( parse(text), tmp, pYPKa_A=pYPKa_A)
+            pathway( text, tmp, pYPKa_A=pYPKa_A)
 
             s = read( os.path.join(tmp, name) )
 
@@ -50,7 +49,8 @@ def test_ypk():
 
             assert "".join( x for x in c.lower() if not x.isspace()) == str(s.seq).lower()
 
-            
+
+
 if __name__ == '__main__':
     pytest.cmdline.main([__file__, "-v", "-s"])
 

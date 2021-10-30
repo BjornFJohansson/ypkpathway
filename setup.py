@@ -3,6 +3,8 @@
 
 import versioneer
 
+__author__ = "__author__"
+__email__ = "__email__"
 # Read author etc. from __init__.py
 for line in open('ypkpathway/__init__.py'):
     if line.startswith('__') and not line.startswith('__version') and not line.startswith('__long'):
@@ -21,19 +23,25 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(  name='ypkpathway',
         version=versioneer.get_version()[:5],
         cmdclass=versioneer.get_cmdclass(),
-        author          =__author__,
-        author_email    =__email__,
+        author          = __author__,
+        author_email    = __email__,
         packages=['ypkpathway'],
         package_data={'ypkpathway': [os.path.join('data','*'), os.path.join('icons','*')]},
-        entry_points = { 'gui_scripts'     : [ 'ypkpathway = ypkpathway.gui:main',   ], 
-                         'console_scripts' : [ 'ypkpathway_cli = ypkpathway.ypkpathway:main']    },
+        entry_points = { 'gui_scripts'     : ['ypkpathwaygui = ypkpathway.gui:main',],
+                         'console_scripts' : ['ypkpathway    = ypkpathway.ypkpathway:main']},
         url='https://github.com/BjornFJohansson/ypkpathway',
         license='LICENSE.txt',
         description='''Simulation and documentation of metabolic pathway assemblies using the Yeast Pathway Kit.''',
         long_description=long_description,
         long_description_content_type='text/markdown',
-        
-        install_requires = [ "pydna", "ipython", "docopt", "notedown", "nbformat", "nbconvert"],  # "PyQt5"
+
+        install_requires = [ "pydna",
+                            "ipython",
+                            "docopt",
+                            "notedown",
+                            "nbformat",
+                            "nbconvert",
+                            "appdirs"],  # "PyQt5"
 
         zip_safe = False,
         keywords = u"bioinformatics",
