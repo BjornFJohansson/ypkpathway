@@ -30,7 +30,7 @@ import sys
 import os
 import errno
 import docopt
-#import itertools
+
 import appdirs
 import pathlib
 import csv
