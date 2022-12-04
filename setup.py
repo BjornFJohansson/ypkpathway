@@ -12,13 +12,15 @@ import re
 __author__ = "__author__"
 __email__ = "__email__"
 for line in open('src/ypkpathway/__init__.py'):
-    if line.startswith('__') and not line.startswith('__version') and not line.startswith('__long'):
+    if line.startswith(
+            '__') and not line.startswith(
+                '__version') and not line.startswith('__long'):
         exec(line.strip())
 
 this_directory = path.abspath(path.dirname(__file__))
+
 with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
-
 
 install_requires = []
 with open("requirements.txt", encoding="utf-8") as f:
@@ -65,9 +67,9 @@ setup(  name='ypkpathway',
 		use_scm_version={"write_to": "src/ypkpathway/_version.py"},
 		install_requires=install_requires,
 		keywords="bioinformatics",
-        package_data={'ypkpathway': [path.join('data','*'), path.join('icons','*')]},
-        entry_points = { 'gui_scripts'     : ['ypkpathwaygui = ypkpathway.gui:main',],
-                         'console_scripts' : ['ypkpathway    = ypkpathway.ypkpathway:main']},
+        # package_data={'ypkpathway': [path.join('data','*')]},
+        # entry_points = { 'gui_scripts'     : ['ypkpathwaygui = ypkpathway.gui:main',],
+        #                  'console_scripts' : ['ypkpathway    = ypkpathway.ypkpathway:main']},
         classifiers = ['Development Status :: 4 - Beta',
                        'Environment :: Console',
                        'Intended Audience :: Education',
@@ -76,5 +78,6 @@ setup(  name='ypkpathway',
                        'Programming Language :: Python :: 3.7',
                        'Programming Language :: Python :: 3.8',
                        'Programming Language :: Python :: 3.9',
+                       'Programming Language :: Python :: 3.10',
                        'Topic :: Education',
                        'Topic :: Scientific/Engineering :: Bio-Informatics',])

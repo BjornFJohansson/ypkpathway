@@ -11,5 +11,3 @@ __maintainer__ = "Björn Johansson"
 __email__ = "bjorn_johansson@bio.uminho.pt"
 
 from ._version import version as __version__
-
-from ypkpathway.ypkpathway import pathway
