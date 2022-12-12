@@ -1,16 +1,18 @@
 LOCUS       pTA1                    6175 bp    DNA     circular SYN 01-JAN-1980
-DEFINITION  pTA1 ampR pBR 2µ LEU2 ΔCRP µ828.
+DEFINITION  pTA1 = ampR pBR 2µ LEU2 CRPΔ µ828.
 ACCESSION   .
 VERSION     .
 KEYWORDS    .
 SOURCE      
   ORGANISM  .
             .
-COMMENT     Annotated with pLannotate v1.2.0. cSEGUID
-            T61GO_ZENT_hjleUKIMiK8XTlUM 2022-03-17T16:33:02
-            π4 bit.ly/MecPlasmidNames
-            Linearize with AatII, ZraI or FspAI.
+COMMENT     Annotated with pLannotate v1.2.0. pydna cSEGUID
+            _E-9A37sZOIs9RFYPb3ENzud6FI 2022-11-08T18:16:15
 FEATURES             Location/Qualifiers
+     primer_bind     1..29
+                     /label="577_crp585-557"
+                     /ApEinfo_fwdcolor="#baffa3"
+                     /ApEinfo_revcolor="#ffbaba"
      primer_bind     1..16
                      /label="978_Crp.FW"
                      /ApEinfo_fwdcolor="#baffa3"
@@ -23,6 +25,10 @@ FEATURES             Location/Qualifiers
                      /label="866_pYPKpwF"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
+     primer_bind     complement(357..385)
+                     /label="578_crp42-70"
+                     /ApEinfo_fwdcolor="#baffa3"
+                     /ApEinfo_revcolor="#ffbaba"
      primer_bind     complement(369..385)
                      /label="977_Crp.REV"
                      /ApEinfo_fwdcolor="#baffa3"
@@ -31,32 +37,22 @@ FEATURES             Location/Qualifiers
                      /label="1113_Amp.fw.nw"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
-     regulatory      506..512
-                     /regulatory_class="promoter"
-                     /note="promoter P3 (6)"
-     regulatory      535..539
-                     /regulatory_class="ribosome_binding_site"
-                     /note="Shine-Dalgarno sequence"
      gene            547..1407
-                     /gene="bla"
+                     /gene="AmpR"
      CDS             547..1407
-                     /gene="bla"
-                     /note="E-286"
+                     /gene="AmpR"
                      /codon_start=1
                      /transl_table=11
-                     /product="beta-lactamase"
-                     /protein_id="AAB59737.1"
+                     /product="Protocol for ampicillin stock solution resistance
+                     protein"
+                     /protein_id="AAG34530.1"
+                     /db_xref="GI:11344891"
                      /translation="MSIQHFRVALIPFFAAFCLPVFAHPETLVKVKDAEDQLGARVGYI
-                     ELDLNSGKILESFRPEERFPMMSTFKVLLCGAVLSRVDAGQEQLGRRIHYSQNDLVEYS
+                     ELDLNSGKILESFRPEERFPMMSTFKVLLCGAVLSRIDAGQEQLGRRIHYSQNDLVEYS
                      PVTEKHLTDGMTVRELCSAAITMSDNTAANLLLTTIGGPKELTAFLHNMGDHVTRLDRW
-                     EPELNEAIPNDERDTTMPAAMATTLRKLLTGELLTLASRQQLIDWMEADKVAGPLLRSA
+                     EPELNEAIPNDERDTTMPVAMATTLRKLLTGELLTLASRQQLIDWMEADKVAGPLLRSA
                      LPAGWFIADKSGAGERGSRGIIAALGPDGKPSRIVVIYTTGSQATMDERNRQIAEIGAS
                      LIKHW"
-     sig_peptide     547..615
-                     /gene="bla"
-     mat_peptide     616..1404
-                     /gene="bla"
-                     /product="beta-lactamase"
      primer_bind     complement(1436..1457)
                      /label="987_Amp.REV"
                      /ApEinfo_fwdcolor="#baffa3"
@@ -119,7 +115,7 @@ FEATURES             Location/Qualifiers
                      /label="1196_Pbr.FW"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
-     primer_bind     complement(2881..2895)
+     primer_bind     complement(2881..2894)
                      /label="1195_Pbr.REV"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
@@ -131,44 +127,79 @@ FEATURES             Location/Qualifiers
                      /label="983_Micron.REV"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
-     misc_feature    4539..4948
-                     /label="leu2prom"
-                     /ApEinfo_fwdcolor="#a966ff"
-                     /ApEinfo_revcolor="green"
-                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0"
-     misc_feature    4539..4556
-                     /label="fp"
-                     /ApEinfo_fwdcolor="cyan"
-                     /ApEinfo_revcolor="green"
-                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0"
      primer_bind     4539..4556
                      /label="980_Leu2.FW"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
-     misc_feature    4920..4945
-                     /label="dleu2f"
+     promoter        4541..4948
+                     /gene="S. cerevisiae LEU2"
+                     /locus_tag="LEU2 promoter"
+                     /label="LEU2 promoter"
+                     /ApEinfo_label="LEU2 promoter"
+                     /ApEinfo_fwdcolor="#00D0FA"
+                     /ApEinfo_revcolor="#00D0FA"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     promoter        4541..4948
+                     /note="pLannotate"
+                     /database="snapgene"
+                     /identity="99.5"
+                     /match_length="100.0"
+                     /fragment="False"
+                     /other="promoter"
+                     /locus_tag="LEU2 promoter(1)"
+                     /label="LEU2 promoter(1)"
+                     /ApEinfo_label="LEU2 promoter"
+                     /ApEinfo_fwdcolor="#7160FE"
+                     /ApEinfo_revcolor="#7160FE"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     variation       complement(4750..4751)
+                     /locus_tag="New Feature"
+                     /label="New Feature"
+                     /ApEinfo_label="New Feature"
                      /ApEinfo_fwdcolor="cyan"
                      /ApEinfo_revcolor="green"
-                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0"
-     misc_feature    4949..6043
-                     /label="leu2"
-                     /ApEinfo_fwdcolor="cyan"
-                     /ApEinfo_revcolor="green"
-                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     CDS             4949..6043
+                     /codon_start=1
+                     /gene="S. cerevisiae LEU2"
+                     /product="3-isopropylmalate dehydrogenase, required for
+                     leucine biosynthesis"
+                     /note="yeast auxotrophic marker"
+                     /translation="MSAPKKIVVLPGDHVGQEITAEAIKVLKAISDVRSNVKFDFENHL
+                     IGGAAIDATGVPLPDEALEASKKVDAVLLGAVGGPKWGTGSVRPEQGLLKIRKELQLYA
+                     NLRPCNFASDSLLDLSPIKPQFAKGTDFVVVRELVGGIYFGKRKEDDGDGVAWDSEQYT
+                     VPEVQRITRMAAFMALQHEPPLPIWSLDKANVLASSRLWRKTVEETIKNEFPTLKVQHQ
+                     LIDSAAMILVKNPTHLNGIIITSNMFGDIISDEASVIPGSLGLLPSASLASLPDKNTAF
+                     GLYEPCHGSAPDLPKNKVNPIATILSAAMMLKLSLNLPEEGKAIEDAVKKVLDAGIRTG
+                     DLGGSNSTTEVGDAVAEEVKKILA"
+                     /locus_tag="LEU2"
+                     /label="LEU2"
+                     /ApEinfo_label="LEU2"
+                     /ApEinfo_fwdcolor="#00C6C3"
+                     /ApEinfo_revcolor="#00C6C3"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     CDS             4949..6043
+                     /note="pLannotate"
+                     /database="snapgene"
+                     /identity="99.5"
+                     /match_length="100.0"
+                     /fragment="False"
+                     /other="CDS"
+                     /locus_tag="LEU2(1)"
+                     /label="LEU2(1)"
+                     /ApEinfo_label="LEU2"
+                     /ApEinfo_fwdcolor="#4856FE"
+                     /ApEinfo_revcolor="#4856FE"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
      primer_bind     complement(6126..6146)
                      /label="979_Leu2.REV"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
-     misc_feature    6126..6145
-                     /label="revprimer"
-                     /ApEinfo_fwdcolor="cyan"
-                     /ApEinfo_revcolor="green"
-                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0"
      rep_origin      complement(3162..4508)
                      /note="pLannotate"
                      /label="2μ ori"
@@ -177,14 +208,6 @@ FEATURES             Location/Qualifiers
                      /match_length="100.0"
                      /fragment="False"
                      /other="rep_origin"
-     CDS             517..1377
-                     /note="pLannotate"
-                     /label="AmpR"
-                     /database="snapgene"
-                     /identity="100.0"
-                     /match_length="100.0"
-                     /fragment="False"
-                     /other="CDS"
      rep_origin      1628..2216
                      /note="pLannotate"
                      /label="ori"
@@ -225,6 +248,14 @@ FEATURES             Location/Qualifiers
                      /match_length="100.0"
                      /fragment="False"
                      /other="promoter"
+     CDS             517..1377
+                     /note="pLannotate"
+                     /label="AmpR"
+                     /database="snapgene"
+                     /identity="99.8"
+                     /match_length="100.0"
+                     /fragment="False"
+                     /other="CDS"
      promoter        4541..4948
                      /note="pLannotate"
                      /label="LEU2 promoter"
@@ -286,12 +317,12 @@ ORIGIN
       541 gcccttattc ccttttttgc ggcattttgc cttcctgttt ttgctcaccc agaaacgctg
       601 gtgaaagtaa aagatgctga agatcagttg ggtgcacgag tgggttacat cgaactggat
       661 ctcaacagcg gtaagatcct tgagagtttt cgccccgaag aacgttttcc aatgatgagc
-      721 acttttaaag ttctgctatg tggcgcggta ttatcccgtg ttgacgccgg gcaagagcaa
+      721 acttttaaag ttctgctatg tggcgcggta ttatcccgta ttgacgccgg gcaagagcaa
       781 ctcggtcgcc gcatacacta ttctcagaat gacttggttg agtactcacc agtcacagaa
       841 aagcatctta cggatggcat gacagtaaga gaattatgca gtgctgccat aaccatgagt
       901 gataacactg cggccaactt acttctgaca acgatcggag gaccgaagga gctaaccgct
       961 tttttgcaca acatggggga tcatgtaact cgccttgatc gttgggaacc ggagctgaat
-     1021 gaagccatac caaacgacga gcgtgacacc acgatgcctg cagcaatggc aacaacgttg
+     1021 gaagccatac caaacgacga gcgtgacacc acgatgcctg tagcaatggc aacaacgttg
      1081 cgcaaactat taactggcga actacttact ctagcttccc ggcaacaatt aatagactgg
      1141 atggaggcgg ataaagttgc aggaccactt ctgcgctcgg cccttccggc tggctggttt
      1201 attgctgata aatctggagc cggtgagcgt gggtctcgcg gtatcattgc agcactgggg

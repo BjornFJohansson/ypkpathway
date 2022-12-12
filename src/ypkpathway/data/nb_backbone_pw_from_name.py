@@ -35,7 +35,7 @@ from pathlib import Path
 # Standard primers are listed [here](standard_primers.fasta).
 
 # %%
-p = {{x.id: x for x in parse_primers("standard_primers.fasta")}}
+p = {{x.name: x for x in parse_primers("standard_primers.fasta")}}
 
 # %% [markdown]
 # Restriction enzymes are imported from the Biopython package.
@@ -77,20 +77,27 @@ for tv in template_vectors:
 # Suggested PCR conditions can be found at the end of this document.
 
 # %%
-cassette_pcr_products.append(pcr(p['577'], p['778'], template_vectors[0]))
+
+fp_first = p['{fp_first}']
+fp = p['{fp}']
+rp = p['{rp}']
+rp_last = p['{rp_last}']
+
+# %%
+cassette_pcr_products.append(pcr(fp_first, rp, template_vectors[0]))
 
 # %% [markdown]
 # Intermediary cassettes
 
 # %%
-cassette_pcr_products.extend(pcr(p['1123'], p['778'], v)
+cassette_pcr_products.extend(pcr(fp, rp, v)
                              for v in template_vectors[1:-1])
 
 # %% [markdown]
 # The last cassette in the pathway.
 
 # %%
-cassette_pcr_products.append(pcr(p['1123'], p['578'], template_vectors[-1]))
+cassette_pcr_products.append(pcr(fp, rp_last, template_vectors[-1]))
 
 # %% [markdown]
 # The cassettes are given names based on the tu cassette
@@ -130,7 +137,7 @@ candidate.figure()
 # the plasmid origin is shifted so that it matches the backbone vector.
 
 # %%
-pw = candidate.synced(p['577'])
+pw = candidate.synced(fp_first)
 
 # %% [markdown]
 # The cseguid checksum for the resulting plasmid is calculated for future

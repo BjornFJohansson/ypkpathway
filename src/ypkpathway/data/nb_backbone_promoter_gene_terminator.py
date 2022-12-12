@@ -39,7 +39,7 @@ from pydna.assembly import Assembly
 # The Yeast Pathway Kit [standard primers](standard_primers.fasta) are read into a dictionary in the code cell below.
 
 # %%
-p = {{x.id: x for x in parse_primers("standard_primers.fasta")}}
+p = {{x.name: x for x in parse_primers("standard_primers.fasta")}}
 
 # %% [markdown]
 # The backbone vector [{backbone}]({backbone}.gb) is read from a local file in the code cell below.
@@ -75,9 +75,18 @@ terminator_template = read("pYPKa_E_{terminator}.gb")
 #
 # [Suggested PCR programs](#Suggested-PCR-programs) can be found at the end of this document.
 # %%
-prom = pcr(p['577'], p['567'], promoter_template)
-gene = pcr(p['468'], p['467'], gene_template)
-term = pcr(p['568'], p['578'], terminator_template)
+
+fp_prom = p['{fp_prom}']
+rp_prom = p['{rp_prom}']
+fp_gene = p['{fp_gene}']
+rp_gene = p['{rp_gene}']
+fp_term = p['{fp_term}']
+rp_term = p['{rp_term}']
+
+# %%
+prom = pcr(fp_prom, rp_prom, promoter_template)
+gene = pcr(fp_gene, rp_gene, gene_template)
+term = pcr(fp_term, rp_term, terminator_template)
 
 # %%
 prom.name = "{promoter}"
@@ -112,7 +121,7 @@ candidate.figure()
 # the plasmid origin is shifted so that it matches the backbone vector.
 
 # %%
-result = candidate.synced(p['577'])
+result = candidate.synced(fp_prom)
 
 # %% [markdown]
 # ### Diagnostic PCR confirmation
@@ -124,7 +133,7 @@ result = candidate.synced(p['577'])
 # PCR using standard primers 577 and 467 to amplify promoter and gene.
 
 # %%
-product = pcr( p['577'], p['467'], result)
+product = pcr( fp_prom, rp_gene, result)
 
 # %% [markdown]
 # A correct clone should give this size in base pairs:
@@ -148,7 +157,7 @@ print(len(product) - len(gene))
 # PCR using standard primers 468 and 578 to amplify gene and terminator.
 
 # %%
-product2 = pcr( p['468'], p['578'], result)
+product2 = pcr( fp_gene, rp_term, result)
 
 # %% [markdown]
 # A correct clone should give this size:

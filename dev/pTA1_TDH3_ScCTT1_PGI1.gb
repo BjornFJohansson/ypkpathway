@@ -1,25 +1,70 @@
 LOCUS       TU:ScCTT1               9760 bp    DNA     circular UNK 01-JAN-1980
-DEFINITION  pYPK0_TDH3_ScCTT1_PGI1.
+DEFINITION  pTA1_TDH3_ScCTT1_PGI1.
 ACCESSION   id
 VERSION     id
 KEYWORDS    .
 SOURCE      .
   ORGANISM  .
             .
-COMMENT     pydna cSEGUID zaY85FDrm6zqHlFarxifz-S3DEU 2022-11-25T11:41:31
+COMMENT     pydna cSEGUID zUoXE3cH8ra6I2oFgwwR8BxoTlw 2022-12-05T17:32:29
 FEATURES             Location/Qualifiers
+     primer_bind     1..29
+                     /label="577_crp585-557"
+                     /ApEinfo_fwdcolor="#baffa3"
+                     /ApEinfo_revcolor="#ffbaba"
      primer_bind     1..16
                      /label="978_Crp.FW"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
+     misc_feature    1..124
+                     /locus_tag="gray"
+                     /label="gray"
+                     /ApEinfo_label="gray"
+                     /ApEinfo_fwdcolor="#828282"
+                     /ApEinfo_revcolor="#828282"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
      primer_bind     1..29
+                     /locus_tag="577"
                      /label="577"
+                     /ApEinfo_label="577"
+                     /ApEinfo_fwdcolor="cyan"
+                     /ApEinfo_revcolor="green"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     primer_bind     1..29
+                     /label="577_crp585-557"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
      primer_bind     complement(96..124)
                      /label="865_pYPKpwR"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
+     misc_feature    125..165
+                     /locus_tag="blue"
+                     /label="blue"
+                     /ApEinfo_label="blue"
+                     /ApEinfo_fwdcolor="#0024ff"
+                     /ApEinfo_revcolor="#0024ff"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     protein_bind    join(166..168,881..883)
+                     /locus_tag="ZraI"
+                     /label="ZraI"
+                     /ApEinfo_label="ZraI"
+                     /ApEinfo_fwdcolor="#00ffff"
+                     /ApEinfo_revcolor="green"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     promoter        169..880
+                     /name="TDH3_promoter"
+                     /ApEinfo_label="TDH3_promoter"
+                     /ApEinfo_fwdcolor="#FC6600"
+                     /ApEinfo_revcolor="#7C4700"
+                     /fp="415_ScTDH3tpf	TTAAATAATAAAAAACACGCTTTTTCAGT"
+                     /rp="623_ScTDH3tpr_PacI	taattaaTTTGTTTGTTTATGTGTGTTTATTCG"
+                     /reference="BK006941.2 REGION: complement(883811..884508)"
+                     /label="ft712"
      source          176..873
                      /organism="Saccharomyces cerevisiae S288C"
                      /mol_type="genomic DNA"
@@ -42,6 +87,14 @@ FEATURES             Location/Qualifiers
                      /ApEinfo_revcolor="green"
                      /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
                      -0.5} {} 0} width 5 offset 0"
+     primer_bind     881..905
+                     /locus_tag="468"
+                     /label="468"
+                     /ApEinfo_label="468"
+                     /ApEinfo_fwdcolor="cyan"
+                     /ApEinfo_revcolor="green"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
      misc_feature    881..930
                      /locus_tag="RED"
                      /label="RED"
@@ -51,17 +104,28 @@ FEATURES             Location/Qualifiers
                      /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
                      -0.5} {} 0} width 5 offset 0"
      primer_bind     881..905
-                     /label="468"
+                     /label="468_pCAPs_release_fw"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
+     misc_feature    884..927
+                     /locus_tag="red"
+                     /label="red"
+                     /ApEinfo_label="red"
+                     /ApEinfo_fwdcolor="#d30000"
+                     /ApEinfo_revcolor="#d30000"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
      primer_bind     complement(908..928)
-                     /note="567_pCAPsAjiIF"
+                     /note=""
+                     /locus_tag="567"
+                     /label="567"
+                     /ApEinfo_label="567"
                      /ApEinfo_fwdcolor="green"
                      /ApEinfo_revcolor="red"
-     misc            complement(908..930)
-                     /label="567_pCAPsAjiIF"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
      primer_bind     complement(908..930)
-                     /label="567"
+                     /label="567_pCAPsAjiIF"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
      primer_bind     complement(908..928)
@@ -99,7 +163,7 @@ FEATURES             Location/Qualifiers
                      /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
                      -0.5} {} 0} width 5 offset 0"
      primer_bind     2632..2653
-                     /label="568"
+                     /label="568_pCAPsAjiIR"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
      primer_bind     2634..2653
@@ -111,7 +175,32 @@ FEATURES             Location/Qualifiers
                      /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
                      -0.5} {} 0} width 5 offset 0"
      primer_bind     2634..2653
-                     /label="568_pCAPsAjiIR"
+                     /note=""
+                     /locus_tag="568"
+                     /label="568"
+                     /ApEinfo_label="568"
+                     /ApEinfo_fwdcolor="green"
+                     /ApEinfo_revcolor="red"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     misc_feature    2635..2659
+                     /locus_tag="green"
+                     /label="green"
+                     /ApEinfo_label="green"
+                     /ApEinfo_fwdcolor="#4cbb17"
+                     /ApEinfo_revcolor="#00ff06"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     primer_bind     complement(2638..2662)
+                     /locus_tag="468(1)"
+                     /label="468(1)"
+                     /ApEinfo_label="468"
+                     /ApEinfo_fwdcolor="cyan"
+                     /ApEinfo_revcolor="green"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     primer_bind     complement(2638..2662)
+                     /label="467_pCAPs_release_re"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
      primer_bind     complement(2638..2662)
@@ -122,12 +211,23 @@ FEATURES             Location/Qualifiers
                      /ApEinfo_revcolor="green"
                      /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
                      -0.5} {} 0} width 5 offset 0"
-     primer_bind     complement(2638..2662)
-                     /label="467"
-                     /ApEinfo_fwdcolor="#baffa3"
-                     /ApEinfo_revcolor="#ffbaba"
      protein_bind    join(2660..2662,3676..3678)
+                     /locus_tag="EcoRV"
                      /label="EcoRV"
+                     /ApEinfo_label="EcoRV"
+                     /ApEinfo_fwdcolor="cyan"
+                     /ApEinfo_revcolor="green"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     terminator      2663..3675
+                     /name="PGI1_promoter"
+                     /ApEinfo_label="PGI1_promoter"
+                     /ApEinfo_fwdcolor="#7C4700"
+                     /ApEinfo_revcolor="#FC6600"
+                     /fp="549_ScPGI1tpf	ttaaatAATTCAGTTTTCTGACTGAGT"
+                     /rp="622_ScPGI1tpr_PacI	taattaaTTTTAGGCTGGTATCTTGATT"
+                     /reference="BK006936.2 REGION: complement(613901..615202)"
+                     /label="ft1013"
      primer_bind     2669..2689
                      /label="549_ScPGI1tpf"
                      /ApEinfo_fwdcolor="#baffa3"
@@ -172,12 +272,48 @@ FEATURES             Location/Qualifiers
                      /label="622_ScPGI1tpr_PacI"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
+     misc_feature    complement(3676..3704)
+                     /locus_tag="494"
+                     /label="494"
+                     /ApEinfo_label="494"
+                     /ApEinfo_fwdcolor="cyan"
+                     /ApEinfo_revcolor="green"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     misc_feature    3679..3729
+                     /locus_tag="yellow"
+                     /label="yellow"
+                     /ApEinfo_label="yellow"
+                     /ApEinfo_fwdcolor="#ffff00"
+                     /ApEinfo_revcolor="green"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
      primer_bind     3729..3758
                      /label="866_pYPKpwF"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
+     misc_feature    3730..3970
+                     /locus_tag="pink"
+                     /label="pink"
+                     /ApEinfo_label="pink"
+                     /ApEinfo_fwdcolor="#fc0fc0"
+                     /ApEinfo_revcolor="#db4cd1"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
      primer_bind     complement(3942..3970)
+                     /label="578_crp42-70"
+                     /ApEinfo_fwdcolor="#baffa3"
+                     /ApEinfo_revcolor="#ffbaba"
+     primer_bind     complement(3942..3970)
+                     /locus_tag="578"
                      /label="578"
+                     /ApEinfo_label="578"
+                     /ApEinfo_fwdcolor="cyan"
+                     /ApEinfo_revcolor="green"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     primer_bind     complement(3942..3970)
+                     /label="578_crp42-70"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
      primer_bind     complement(3954..3970)
@@ -196,40 +332,30 @@ FEATURES             Location/Qualifiers
                      /label="1113_Amp.fw.nw"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
-     regulatory      4091..4097
-                     /regulatory_class="promoter"
-                     /note="promoter P3 (6)"
      CDS             4102..4962
                      /note="pLannotate"
                      /label="AmpR"
                      /database="snapgene"
-                     /identity="100.0"
+                     /identity="99.8"
                      /match_length="100.0"
                      /fragment="False"
                      /other="CDS"
-     regulatory      4120..4124
-                     /regulatory_class="ribosome_binding_site"
-                     /note="Shine-Dalgarno sequence"
      gene            4132..4992
-                     /gene="bla"
+                     /gene="AmpR"
      CDS             4132..4992
-                     /gene="bla"
-                     /note="E-286"
+                     /gene="AmpR"
                      /codon_start=1
                      /transl_table=11
-                     /product="beta-lactamase"
-                     /protein_id="AAB59737.1"
+                     /product="Protocol for ampicillin stock solution resistance
+                     protein"
+                     /protein_id="AAG34530.1"
+                     /db_xref="GI:11344891"
                      /translation="MSIQHFRVALIPFFAAFCLPVFAHPETLVKVKDAEDQLGARVGYI
-                     ELDLNSGKILESFRPEERFPMMSTFKVLLCGAVLSRVDAGQEQLGRRIHYSQNDLVEYS
+                     ELDLNSGKILESFRPEERFPMMSTFKVLLCGAVLSRIDAGQEQLGRRIHYSQNDLVEYS
                      PVTEKHLTDGMTVRELCSAAITMSDNTAANLLLTTIGGPKELTAFLHNMGDHVTRLDRW
-                     EPELNEAIPNDERDTTMPAAMATTLRKLLTGELLTLASRQQLIDWMEADKVAGPLLRSA
+                     EPELNEAIPNDERDTTMPVAMATTLRKLLTGELLTLASRQQLIDWMEADKVAGPLLRSA
                      LPAGWFIADKSGAGERGSRGIIAALGPDGKPSRIVVIYTTGSQATMDERNRQIAEIGAS
                      LIKHW"
-     sig_peptide     4132..4200
-                     /gene="bla"
-     mat_peptide     4201..4989
-                     /gene="bla"
-                     /product="beta-lactamase"
      primer_bind     complement(5021..5042)
                      /label="987_Amp.REV"
                      /ApEinfo_fwdcolor="#baffa3"
@@ -324,7 +450,7 @@ FEATURES             Location/Qualifiers
                      /label="1196_Pbr.FW"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
-     primer_bind     complement(6466..6480)
+     primer_bind     complement(6466..6479)
                      /label="1195_Pbr.REV"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
@@ -368,22 +494,33 @@ FEATURES             Location/Qualifiers
                      /label="983_Micron.REV"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
-     misc_feature    8124..8533
-                     /label="leu2prom"
-                     /ApEinfo_fwdcolor="#a966ff"
-                     /ApEinfo_revcolor="green"
-                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0"
-     misc_feature    8124..8141
-                     /label="fp"
-                     /ApEinfo_fwdcolor="cyan"
-                     /ApEinfo_revcolor="green"
-                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0"
      primer_bind     8124..8141
                      /label="980_Leu2.FW"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
+     promoter        8126..8533
+                     /gene="S. cerevisiae LEU2"
+                     /locus_tag="LEU2 promoter"
+                     /label="LEU2 promoter"
+                     /ApEinfo_label="LEU2 promoter"
+                     /ApEinfo_fwdcolor="#00D0FA"
+                     /ApEinfo_revcolor="#00D0FA"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     promoter        8126..8533
+                     /note="pLannotate"
+                     /database="snapgene"
+                     /identity="99.5"
+                     /match_length="100.0"
+                     /fragment="False"
+                     /other="promoter"
+                     /locus_tag="LEU2 promoter(1)"
+                     /label="LEU2 promoter(1)"
+                     /ApEinfo_label="LEU2 promoter"
+                     /ApEinfo_fwdcolor="#7160FE"
+                     /ApEinfo_revcolor="#7160FE"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
      promoter        8126..8533
                      /note="pLannotate"
                      /label="LEU2 promoter"
@@ -392,18 +529,48 @@ FEATURES             Location/Qualifiers
                      /match_length="100.0"
                      /fragment="False"
                      /other="promoter"
-     misc_feature    8505..8530
-                     /label="dleu2f"
+     variation       complement(8335..8336)
+                     /locus_tag="New Feature"
+                     /label="New Feature"
+                     /ApEinfo_label="New Feature"
                      /ApEinfo_fwdcolor="cyan"
                      /ApEinfo_revcolor="green"
-                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0"
-     misc_feature    8534..9628
-                     /label="leu2"
-                     /ApEinfo_fwdcolor="cyan"
-                     /ApEinfo_revcolor="green"
-                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     CDS             8534..9628
+                     /codon_start=1
+                     /gene="S. cerevisiae LEU2"
+                     /product="3-isopropylmalate dehydrogenase, required for
+                     leucine biosynthesis"
+                     /note="yeast auxotrophic marker"
+                     /translation="MSAPKKIVVLPGDHVGQEITAEAIKVLKAISDVRSNVKFDFENHL
+                     IGGAAIDATGVPLPDEALEASKKVDAVLLGAVGGPKWGTGSVRPEQGLLKIRKELQLYA
+                     NLRPCNFASDSLLDLSPIKPQFAKGTDFVVVRELVGGIYFGKRKEDDGDGVAWDSEQYT
+                     VPEVQRITRMAAFMALQHEPPLPIWSLDKANVLASSRLWRKTVEETIKNEFPTLKVQHQ
+                     LIDSAAMILVKNPTHLNGIIITSNMFGDIISDEASVIPGSLGLLPSASLASLPDKNTAF
+                     GLYEPCHGSAPDLPKNKVNPIATILSAAMMLKLSLNLPEEGKAIEDAVKKVLDAGIRTG
+                     DLGGSNSTTEVGDAVAEEVKKILA"
+                     /locus_tag="LEU2"
+                     /label="LEU2"
+                     /ApEinfo_label="LEU2"
+                     /ApEinfo_fwdcolor="#00C6C3"
+                     /ApEinfo_revcolor="#00C6C3"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
+     CDS             8534..9628
+                     /note="pLannotate"
+                     /database="snapgene"
+                     /identity="99.5"
+                     /match_length="100.0"
+                     /fragment="False"
+                     /other="CDS"
+                     /locus_tag="LEU2(1)"
+                     /label="LEU2(1)"
+                     /ApEinfo_label="LEU2"
+                     /ApEinfo_fwdcolor="#4856FE"
+                     /ApEinfo_revcolor="#4856FE"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {} 0} width 5 offset 0"
      CDS             8534..9628
                      /note="pLannotate"
                      /label="LEU2"
@@ -416,12 +583,6 @@ FEATURES             Location/Qualifiers
                      /label="979_Leu2.REV"
                      /ApEinfo_fwdcolor="#baffa3"
                      /ApEinfo_revcolor="#ffbaba"
-     misc_feature    9711..9730
-                     /label="revprimer"
-                     /ApEinfo_fwdcolor="cyan"
-                     /ApEinfo_revcolor="green"
-                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0"
 ORIGIN
         1 gttctgatcc tcgagcatct taagaattcg tcccacggtt tgtctagagc agccgacaat
        61 ctggccaatt tcctgacggg taattttgat ttgcatgccg tccgggtgag tcatagcgtc
@@ -495,12 +656,12 @@ ORIGIN
      4141 tttgcggcat tttgccttcc tgtttttgct cacccagaaa cgctggtgaa agtaaaagat
      4201 gctgaagatc agttgggtgc acgagtgggt tacatcgaac tggatctcaa cagcggtaag
      4261 atccttgaga gttttcgccc cgaagaacgt tttccaatga tgagcacttt taaagttctg
-     4321 ctatgtggcg cggtattatc ccgtgttgac gccgggcaag agcaactcgg tcgccgcata
+     4321 ctatgtggcg cggtattatc ccgtattgac gccgggcaag agcaactcgg tcgccgcata
      4381 cactattctc agaatgactt ggttgagtac tcaccagtca cagaaaagca tcttacggat
      4441 ggcatgacag taagagaatt atgcagtgct gccataacca tgagtgataa cactgcggcc
      4501 aacttacttc tgacaacgat cggaggaccg aaggagctaa ccgctttttt gcacaacatg
      4561 ggggatcatg taactcgcct tgatcgttgg gaaccggagc tgaatgaagc cataccaaac
-     4621 gacgagcgtg acaccacgat gcctgcagca atggcaacaa cgttgcgcaa actattaact
+     4621 gacgagcgtg acaccacgat gcctgtagca atggcaacaa cgttgcgcaa actattaact
      4681 ggcgaactac ttactctagc ttcccggcaa caattaatag actggatgga ggcggataaa
      4741 gttgcaggac cacttctgcg ctcggccctt ccggctggct ggtttattgc tgataaatct
      4801 ggagccggtg agcgtgggtc tcgcggtatc attgcagcac tggggccaga tggtaagccc
