@@ -1,3 +1,5 @@
+src/ypkpathway/_version.py*
+
 .pytest_cache
 
 # Backup files
