@@ -14,16 +14,6 @@ source:
 requirements:
     build:
         - python
-        - versioneer
-        - pytest
-        - pytest-runner
-        - ipython
-        - nbformat
-        - nbconvert
-        - pydna
-        - docopt
-        - notedown
-        - pyqt
     run:
         - python
         - ipython

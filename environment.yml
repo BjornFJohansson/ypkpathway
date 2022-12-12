@@ -1,22 +1,17 @@
-name: python37
+name: environment
 channels:
 - defaults
 - conda-forge
 - BjornFJohansson
 dependencies:
-- python=3.7
+- python
 - pytest
 - pytest-runner
 - setuptools
-- appdirs
 
 - pydna
 - ipython
-- docopt
-- nbformat
 - nbconvert
-- notedown
 
 - twine
 - anaconda-client
-- setuptools
