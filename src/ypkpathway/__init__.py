@@ -10,3 +10,7 @@ __maintainer__ = "Björn Johansson"
 __email__ = "bjornjobb@gmail.com"
 
 from ._version import version as __version__
+
+from .code import element_cloning, TranscriptionalUnit, PathWay
+
+__all__ = ["element_cloning", "TranscriptionalUnit", "PathWay"]

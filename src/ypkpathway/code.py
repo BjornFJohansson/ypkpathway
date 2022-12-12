@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """docstring."""
-from importlib.resources import files
 import shutil
 from pathlib import Path
 from typing import Iterable
@@ -19,6 +18,11 @@ from pydna.amplify import pcr
 from pydna.readers import read
 from pydna.parsers import parse_primers
 from pydna.genbank import genbank
+
+try:
+    from importlib.resources import files
+except ImportError:  # for Python 3.8
+    from importlib_resources import files
 
 
 def copy2(src, dst, *, follow_symlinks=True):
