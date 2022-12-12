@@ -51,7 +51,7 @@ def _find_path_to_file(folders: Iterable[Path], fn: str):
 
 
 def element_cloning(csv: Path,
-                    primerlist: list | Path,
+                    primerlist: "list | Path",
                     cloning_vector: str = "pYPKa",
                     *folders: Iterable[Path],
                     enzymedict={"A": AjiI, "Z": ZraI, "E": EcoRV}):
