@@ -148,3 +148,15 @@ The markdown documents are turned into JSON format using the [notedown](https://
 
 The notebooks are executed using IPython. All files and
 raw data are saved in a self contained result folder.
+
+
+
+
+##
+
+mamba install build # conda-forge channel
+conda install build
+pip install build # https://pypi.org/project/build
+
+
+python build .

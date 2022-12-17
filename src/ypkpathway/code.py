@@ -137,7 +137,7 @@ class TranscriptionalUnit:
                  fp_term="568_pCAPsAjiIR",
                  rp_term="578_crp42-70"):
 
-        self.name = name.removesuffix(".gb")
+        self.name = str(Path(name).stem)
 
         wd = workdir or Path.cwd()/f"{self.name}_{datetime.now().isoformat()}"
         self.workdir = Path(wd)
@@ -318,7 +318,7 @@ class PathWay:
         if not name:
             raise ValueError("name is mandatory.")
 
-        self.name = name.removesuffix(".gb")
+        self.name = str(Path(name).stem)
 
         self.backbone_name, *elements = name.split("_")
 
@@ -380,11 +380,13 @@ class PathWay:
             p, g, t = elements[i:i+3]
             self.transcriptional_units.append(
                 TranscriptionalUnit(f"{tu_backbone_name}_{p}_{g}_{t}.gb",
+                                    self.workdir,
                                     *self.datafolders))
 
         assert (len(self.transcriptional_units) ==
                 len([tu.name for tu in self.transcriptional_units]))
 
+        
     def __repr__(self):
         """docstring."""
         return f"pw:{self.name}"
@@ -501,10 +503,10 @@ if __name__ == "__main__":
     # p = PrimerList()
     # pYPKa_cloning(fn, p)
 
-    folders = ("/home/bjorn/Desktop/ypkpathway/dev/xpr",
-               "/home/bjorn/Desktop/YeastPathwayKit/sequences")
+    workdir = "/home/bjorn/Desktop/ypkpathway/dev/xpr"
+    folders = ("/home/bjorn/Desktop/YeastPathwayKit/sequences",)
     
-    element_cloning()
+    # element_cloning()
     
     #            "/home/bjorn/Desktop/mec@githb/YeastPathwayKit/sequences")
 
@@ -512,9 +514,9 @@ if __name__ == "__main__":
 
     #xx = TranscriptionalUnit(name, *folders)
 
-    # name = "pTA1_TDH3_ScATF1_PGI1_ScCTT1_TEF1"
+    name = "pTA1_TDH3_ScATF1_PGI1_ScCTT1_TEF1"
 
-    # pw = PathWay(name, *folders)
+    pw = PathWay(name, workdir, *folders)
 
     #pw.execute()
 
