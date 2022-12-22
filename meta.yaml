@@ -19,12 +19,10 @@ requirements:
         - python
         - ipython
         - nbformat
-        - pytest-runner
         - nbconvert
         - pydna
-        - docopt
-        - notedown
-        - pyqt
+        - pathvalidate
+
 #test:
 #  requires:
 #    - pytest
