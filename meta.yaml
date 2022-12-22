@@ -3,6 +3,7 @@ package:
     version: {{ environ.get('GIT_DESCRIBE_TAG', 'default') }}
 
 build:
+  noarch: python
   number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
   include_recipe: False
   osx_is_app: true
@@ -49,4 +50,3 @@ app:
   summary: Planning of metabolic pathway assembly using the ypkpathway protocol.
   type: desk
   #own_environment: true
-

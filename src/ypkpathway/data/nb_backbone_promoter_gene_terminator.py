@@ -9,7 +9,7 @@
 # ---
 
 # %% [markdown]
-# # {backbone}_{promoter}_{gene}_{terminator}
+# # {name}
 #
 # This notebook describes the assembly of the
 # [_Saccharomyces cerevisiae_](http://www.yeastgenome.org)
@@ -18,9 +18,9 @@
 # It is made from a linear vector fragment and three PCR products:
 #
 # - a linearized {backbone} vector for maintenance in _S. cerevisiae_ or _E. coli_ (red dashed line in figure below)
-# - a promoter PCR product from the pYPKa_Z_{promoter} vector
-# - a gene PCR product from the pYPKa_A_{gene}
-# - a terminator PCR product from the pYPKa_E_{terminator} vector
+# - a promoter PCR product from the `{promoter}` vector
+# - a gene PCR product from the `{gene}` vector
+# - a terminator PCR product from the `{terminator}` vector
 #
 # The four linear DNA fragments are joined by _in-vivo_ homologous recombination in a
 # [_Saccharomyces cerevisiae_](http://wiki.yeastgenome.org/index.php/Commonly_used_strains) strain.
@@ -58,16 +58,16 @@ linear_backbone = backbone.linearize({enz})
 
 # %% [markdown]
 # The pYPKa derived _E. coli_ plasmids containing 
-# - [promoter](pYPKa_Z_{promoter}.gb)
-# - [gene](pYPKa_A_{gene}.gb)
-# - [terminator](pYPKa_E_{terminator}.gb)
+# - [promoter]({promoter}.gb)
+# - [gene]({gene}.gb)
+# - [terminator]({terminator}.gb)
 #
 # are read into three variables below.
 
 # %%
-promoter_template   = read("pYPKa_Z_{promoter}.gb")
-gene_template       = read("pYPKa_A_{gene}.gb")
-terminator_template = read("pYPKa_E_{terminator}.gb")
+promoter_template   = read("{promoter}.gb")
+gene_template       = read("{gene}.gb")
+terminator_template = read("{terminator}.gb")
 
 # %% [markdown]
 # ### PCR
@@ -89,9 +89,9 @@ gene = pcr(fp_gene, rp_gene, gene_template)
 term = pcr(fp_term, rp_term, terminator_template)
 
 # %%
-prom.name = "{promoter}"
-gene.name = "{gene}"
-term.name = "{terminator}"
+prom.name = "{promoter}"[8:]
+gene.name = "{gene}"[8:]
+term.name = "{terminator}"[8:]
 
 # %% [markdown]
 #
@@ -189,8 +189,8 @@ print(result.cseguid())
 # The file name is based on the promoter, gene and terminator designations.
 
 # %%
-result.locus = "TU:{gene}"[:16]
-result.definition = "{backbone}_{promoter}_{gene}_{terminator}"
+result.locus = f"tu:{{gene.name}}"[:16]
+result.definition = "{name}"
 
 # %% [markdown]
 # Sequence is stamped with cseguid checksum. This can be used to verify the

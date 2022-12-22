@@ -1,4 +1,4 @@
->577_crp585-557__ (29-mer)
+>577_crp585-557 (29-mer)
 gttctgatcctcgagcatcttaagaattc
 >578_crp42-70 (29-mer)
 gttcttgtctcattgccacattcataagt
@@ -21,5 +21,5 @@ ggtaaatccggatTAATTAA
 ttcgccaattgattcaggtaaatccggat
 >342_ORIR-1 (21-mer)
 CCTTTTTACGGTTCCTGGCCT
->775_tp_ZraI_fwd (18-mer)   <--- is this primer good? Probably NOT ok!
+>775_tp_ZraI_fwd (18-mer) we have found that primer 1123 works better.
 gcggccgctgacTTAAAT

@@ -11,6 +11,9 @@ __email__ = "bjornjobb@gmail.com"
 
 from ._version import version as __version__
 
-from .code import element_cloning, TranscriptionalUnit, PathWay
+from .pathway import PathWay
+from .element import element_cloning
+from .transcriptional_unit import TranscriptionalUnit
+
 
 __all__ = ["element_cloning", "TranscriptionalUnit", "PathWay"]

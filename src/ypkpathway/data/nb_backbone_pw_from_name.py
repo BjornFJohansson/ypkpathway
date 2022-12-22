@@ -104,7 +104,7 @@ cassette_pcr_products.append(pcr(fp, rp_last, template_vectors[-1]))
 
 # %%
 for cp, ve in zip(cassette_pcr_products, cassette_vectors):
-    cp.name = ve.removesuffix(".gb").split("_", maxsplit=1)[1]
+    cp.name = ve[:-3].split("_", maxsplit=1)[1]
     print(cp.name)
 
 # %% [markdown]

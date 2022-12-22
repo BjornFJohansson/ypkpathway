@@ -160,3 +160,9 @@ pip install build # https://pypi.org/project/build
 
 
 python build .
+
+
+twine upload ypkpathway-4.0.0a5-py3-none-any.whl
+
+
+

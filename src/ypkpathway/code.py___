@@ -127,8 +127,8 @@ class TranscriptionalUnit:
 
     def __init__(self,
                  name: str = "",
-                 workdir: Path = None,
-                 *datafolders: Iterable[Path],
+                 workdir: Path = Path("."),
+                 datafolders: Iterable[Path] = (Path("."),),
                  primersfn="standard_primers.fasta",
                  fp_prom="577_crp585-557",
                  rp_prom="567_pCAPsAjiIF",
@@ -138,11 +138,8 @@ class TranscriptionalUnit:
                  rp_term="578_crp42-70"):
 
         self.name = str(Path(name).stem)
-
-        wd = workdir or Path.cwd()/f"{self.name}_{datetime.now().isoformat()}"
-        self.workdir = Path(wd)
-        self.workdir.mkdir(parents=True, exist_ok=True)
-
+        self.workdir = Path(workdir)
+        # self.workdir.mkdir(parents=True, exist_ok=True)
         self.datafolders = [Path(f) for f in datafolders]
         self.primersfn = primersfn
         self.fp_prom = fp_prom
@@ -152,14 +149,15 @@ class TranscriptionalUnit:
         self.fp_term = fp_term
         self.rp_term = rp_term
         self.path = None
-        self.find_path_to_gb_file()
+        # self.find_path_to_gb_file()
         self.elements = None
         self.enzymes = None
 
         self.backbone_name, *elements = self.name.split("_")
 
         if len(elements) != 3:
-            raise ValueError("promoter, gene and terminator needed")
+            raise ValueError("Name has to indicate a promoter"
+                             f", gene and terminator, not {elements}")
 
         (self.promoter_name,
          self.gene_name,
@@ -172,8 +170,7 @@ class TranscriptionalUnit:
 
         self.primers_path = _find_path_to_file(self.datafolders, primersfn)
 
-        # breakpoint()
-        assert self.primers_path
+        # assert self.primers_path
 
         self.pdict = {x.name: x for x in parse_primers(self.primers_path)}
 
@@ -428,7 +425,7 @@ class PathWay:
 
         class self():pass
         import string
-        set(t[1] for t in string.Formatter().parse(py) if t[1] is not None)
+        set(t[1] fo"/home/bjorn/Desktop/python_packages/ypkpathway/tests/test/new"r t in string.Formatter().parse(py) if t[1] is not None)
         """
         cas_vectors = "\n".join(f"{tu.name}.gb" for tu in
                                 self.transcriptional_units)
@@ -503,8 +500,17 @@ if __name__ == "__main__":
     # p = PrimerList()
     # pYPKa_cloning(fn, p)
 
-    workdir = "/home/bjorn/Desktop/ypkpathway/dev/xpr"
-    folders = ("/home/bjorn/Desktop/YeastPathwayKit/sequences",)
+    workdir = "/home/bjorn/Desktop/python_packages/ypkpathway/tests/test/new"
+
+    folders = (
+        "/home/bjorn/Desktop/python_packages/ypkpathway/tests/test",
+        "/home/bjorn/Desktop/YeastPathwayKit/sequences",)
+
+    name = "pTA1_TDH3_ScATF1_PGI1_ScCTT1_TEF1"
+
+    pw = PathWay(name, workdir, *folders)
+
+    # pw.execute()
     
     # element_cloning()
     
@@ -514,11 +520,7 @@ if __name__ == "__main__":
 
     #xx = TranscriptionalUnit(name, *folders)
 
-    name = "pTA1_TDH3_ScATF1_PGI1_ScCTT1_TEF1"
 
-    pw = PathWay(name, workdir, *folders)
-
-    #pw.execute()
 
     # a,b = pw.inspect_project()
     # NOTE: This is here because sometimes an intermittent issue appears.
@@ -615,43 +617,6 @@ def inspect_project(self):
     return found, missing
 
 """
-
-
-
-
-pwlist = """\
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_EcfabI_RPL5_EctesA_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_EcfabI_RPL5_EctesB_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_EcfabI_RPL5_EctesA_RPL16A_EctesB_RPL17A_EcacpH_RPL16B_EcacpS_TMA19
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_EctesA_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_EctesB_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_EctesA_RPL16A_EctesB_RPL17A_EcacpH_RPL16B_EcacpS_TMA19
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_EcfabI_RPL5_AthfatA1_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_EcfabI_RPL5_AthfatB_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_EcfabI_RPL5_AthfatA1_RPL16A_AthfatB_RPL17A_EcacpH_RPL16B_EcacpS_TMA19
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_AthfatA1_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_AthfatB_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_AthfatA1_RPL16A_AthfatB_RPL17A_EcacpH_RPL16B_EcacpS_TMA19
-pYPK0_PDC1_AthkasIII_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_AthkasII_UTR2_AthkasI_TPI1_EcfabA_PMP3_EcfabZ_ENO2_EcfabI_RPL5_AthfatA1_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_AthkasIII_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_AthkasII_UTR2_AthkasI_TPI1_EcfabA_PMP3_EcfabZ_ENO2_EcfabI_RPL5_AthfatB_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_AthkasIII_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_AthkasII_UTR2_AthkasI_TPI1_EcfabA_PMP3_EcfabZ_ENO2_EcfabI_RPL5_AthfatA1_RPL16A_AthfatB_RPL17A_EcacpH_RPL16B_EcacpS_TMA19
-pYPK0_PDC1_AthkasIII_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_AthkasII_UTR2_AthkasI_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_AthfatA1_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_AthkasIII_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_AthkasII_UTR2_AthkasI_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_AthfatB_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_AthkasIII_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_AthkasII_UTR2_AthkasI_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_AthfatA1_RPL16A_AthfatB_RPL17A_EcacpH_RPL16B_EcacpS_TMA19
-pYPK0_PDC1_AthkasIII_TEF1_AthfabD_FBA1_AthfabG_RPL22A_EcAthacp1_TDH3_AthkasII_UTR2_AthkasI_TPI1_Athfabz1_PMP3_Athfabz2_ENO2_Athmod1_RPL5_AthfatA1_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_AthkasIII_TEF1_AthfabD_FBA1_AthfabG_RPL22A_EcAthacp1_TDH3_AthkasII_UTR2_AthkasI_TPI1_Athfabz1_PMP3_Athfabz2_ENO2_Athmod1_RPL5_AthfatB_RPL16A_EcacpS_RPL17A_EcacpH_RPL16B
-pYPK0_PDC1_AthkasIII_TEF1_AthfabD_FBA1_AthfabG_RPL22A_EcAthacp1_TDH3_AthkasII_UTR2_AthkasI_TPI1_Athfabz1_PMP3_Athfabz2_ENO2_Athmod1_RPL5_AthfatA1_RPL16A_AthfatB_RPL17A_EcacpH_RPL16B_EcacpS_TMA19
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_AthfatA1_RPL16A_AthfatA2_RPL17A_EcacpH_RPL16B_EcacpS_TMA19
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_AthfatA1_RPL16A_AthfatB_RPL17A_AthfatA2_RPL16B_EcacpS_TMA19_EcacpH_TSA1
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_AthfatA1_RPL16A_Lbrethio_RPL17A_EcacpH_RPL16B_EcacpS_TMA19
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_AthfatB_RPL16A_Lbrethio_RPL17A_EcacpH_RPL16B_EcacpS_TMA19
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_AthfatA1_RPL16A_Lbrethio_RPL17A_AthfatA2_RPL16B_EcacpS_TMA19_EcacpH_TSA1
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_Lbrethio_RPL16A_AthfatB_RPL17A_AthfatA2_RPL16B_EcacpS_TMA19_EcacpH_TSA1
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_EctesA_RPL16A_Lbrethio_RPL17A_EcacpH_RPL16B_EcacpS_TMA19
-pYPK0_PDC1_EcfabH_TEF1_EcfabD_FBA1_EcfabG_RPL22A_EcacpP_TDH3_EcfabF_UTR2_EcfabB_TPI1_EcfabA_PMP3_EcfabZ_ENO2_Athmod1_RPL5_EctesB_RPL16A_Lbrethio_RPL17A_EcacpH_RPL16B_EcacpS_TMA19
-""".split()
-
-
 
 
 
