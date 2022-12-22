@@ -152,17 +152,18 @@ raw data are saved in a self contained result folder.
 
 
 
-##
+## Building and uploading a pypi package for ypkpathway
 
-mamba install build # conda-forge channel
-conda install build
-pip install build # https://pypi.org/project/build
+1. install [build](https://pypi.org/project/build) with one of the methods below:
 
+		mamba install -c conda-forge conda-build   # https://anaconda.org/conda-forge/conda-build
+		conda install -c conda-forge conda-build   # -"-
+		pip install build                          # https://pypi.org/project/build
 
-python build .
+2. Use [build](https://pypi.org/project/build) to build the [pypi](https://pypi.python.org/pypi/ypkpathway) package.
 
+		python -m build .
 
-twine upload ypkpathway-4.0.0a5-py3-none-any.whl
+3. use twine to upload the package.
 
-
-
+		twine upload ypkpathway-4.0.0a5-py3-none-any.whl
