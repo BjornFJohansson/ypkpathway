@@ -12,7 +12,7 @@ __email__ = "bjornjobb@gmail.com"
 from ._version import version as __version__
 
 from .pathway import PathWay
-from .element import element_cloning
+from .genetic_element import element_cloning
 from .transcriptional_unit import TranscriptionalUnit
 
 

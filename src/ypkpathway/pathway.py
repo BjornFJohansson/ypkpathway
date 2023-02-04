@@ -28,6 +28,8 @@ except ImportError:  # for Python 3.8
 from ypkpathway.transcriptional_unit import TranscriptionalUnit
 from ypkpathway.utils import _copy2, _find_path_to_file
 
+import os
+os.environ["PYDEVD_DISABLE_FILE_VALIDATION"] = "1"
 
 class PathWay:
     """docstring."""
@@ -164,7 +166,7 @@ class PathWay:
         path = _find_path_to_file(self.datafolders, self.primers["fn"])
         if path:
             self.primers["fn"] = path
-            path = None
+            # path = None
         return path
 
     def copy_primers(self):
@@ -192,11 +194,14 @@ class PathWay:
         for name in self.primers["names"].values():
             self.primers[name] = primerdict.get(name, None)
 
+        return self.primers
+
     def find_enzymes(self):
         """docstring."""
         bb = self.files["backbone"]
         f = self.primers[self.primers["names"]["fp_first"]]
         r = self.primers[self.primers["names"]["rp_last"]]
+
         mcs = pcr(f, r, bb)[len(f):-len(r)]
         eb = mcs.unique_cutters(Co) & bb.unique_cutters(Co)
         enzymes = [b for a, b in sorted(

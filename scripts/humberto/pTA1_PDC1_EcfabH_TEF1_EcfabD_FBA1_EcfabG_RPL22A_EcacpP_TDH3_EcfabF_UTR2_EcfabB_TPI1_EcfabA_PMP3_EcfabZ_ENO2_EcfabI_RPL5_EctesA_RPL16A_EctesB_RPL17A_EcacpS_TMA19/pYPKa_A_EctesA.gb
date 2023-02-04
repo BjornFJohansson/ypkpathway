@@ -1,0 +1,177 @@
+LOCUS       .                       3757 bp    DNA     circular UNK 18-AUG-2014
+DEFINITION  .
+ACCESSION   <unknown id>
+VERSION     <unknown id>
+DBLINK      BioProject:PRJNA57779 BioSample:SAMN02604091
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     source          583..1209
+                     /sub_strain="MG1655"
+                     /strain="K-12"
+                     /mol_type="genomic DNA"
+                     /organism="Escherichia coli str. K-12 substr. MG1655"
+                     /db_xref="taxon:511145"
+     gene            complement(583..>615)
+                     /db_xref="EcoGene:EG11657"
+                     /db_xref="GeneID:945122"
+                     /locus_tag="b0495"
+                     /gene="ybbA"
+                     /gene_synonym="ECK0489; JW0484"
+     CDS             complement(583..>615)
+                     /function="putative transport; Not classified"
+                     /locus_tag="b0495"
+                     /GO_component="GO:0005737 - cytoplasm"
+                     /codon_start=1
+                     /gene_synonym="ECK0489; JW0484"
+                     /transl_table=11
+                     /note="putative ATP-binding component of a transport
+                     system"
+                     /db_xref="GI:16128479"
+                     /db_xref="ASAP:ABE-0001717"
+                     /db_xref="UniProtKB/Swiss-Prot:P0A9T8"
+                     /db_xref="EcoGene:EG11657"
+                     /db_xref="GeneID:945122"
+                     /translation="MPAENIVEVHHLKKSVGQGEHELSILTGVELVVKRGETIALVGES
+                     GSGKSTLLAILAGLDDGSSGEVSLVGQPLHNMDEEARAKLRAKHVGFVFQSFMLIPTLN
+                     ALENVELPALLRGESSAESRNGAKALLEQLGLGKRLDHLPAQLSGGEQQRVALARAFNG
+                     RPDVLFADEPTGNLDRQTGDKIADLLFSLNREHGTTLIMVTHDLQLAARCDRCLRLVNG
+                     QLQEEA"
+                     /gene="ybbA"
+                     /product="putative ABC superfamily transporter ATP-binding
+                     subunit"
+                     /protein_id="NP_415028.1"
+     gene            583..1209
+                     /db_xref="EcoGene:EG11542"
+                     /db_xref="GeneID:945127"
+                     /locus_tag="b0494"
+                     /gene="tesA"
+                     /gene_synonym="apeA; ECK0488; JW0483; pldC"
+     CDS             583..1209
+                     /function="enzyme; Fatty acid and phosphatidic acid
+                     biosynthesis"
+                     /locus_tag="b0494"
+                     /gene="tesA"
+                     /GO_component="GO:0042597 - periplasmic space"
+                     /codon_start=1
+                     /gene_synonym="apeA; ECK0488; JW0483; pldC"
+                     /EC_number="3.1.1.5"
+                     /EC_number="3.1.2.-"
+                     /note="acyl-CoA thioesterase I; also functions as protease
+                     I"
+                     /db_xref="GI:16128478"
+                     /db_xref="ASAP:ABE-0001713"
+                     /db_xref="UniProtKB/Swiss-Prot:P0ADA1"
+                     /db_xref="EcoGene:EG11542"
+                     /db_xref="GeneID:945127"
+                     /translation="MMNFNNVFRWHLPFLFLVLLTFRAAAADTLLILGDSLSAGYRMSA
+                     SAAWPALLNDKWQSKTSVVNASISGDTSQQGLARLPALLKQHQPRWVLVELGGNDGLRG
+                     FQPQQTEQTLRQILQDVKAANAEPLLMQIRLPANYGRRYNEAFSAIYPKLAKEFDVPLL
+                     PFFMEEVYLKPQWMQDDGIHPNRDAQPFIADWMAKQLQPLVNHDS"
+                     /transl_table=11
+                     /product="multifunctional acyl-CoA thioesterase 1; protease
+                     I; lysophospholipase L1"
+                     /protein_id="NP_415027.1"
+     primer_bind     583..604
+                     /note="722_EctesA_fw"
+                     /ApEinfo_revcolor="red"
+                     /ApEinfo_fwdcolor="green"
+     STS             complement(897..1122)
+                     /db_xref="UniSTS:47999"
+                     /standard_name="D9S290"
+     primer_bind     complement(1186..1209)
+                     /note="723_EctesA_rv"
+                     /ApEinfo_revcolor="red"
+                     /ApEinfo_fwdcolor="green"
+     gene            <1199..1209
+                     /db_xref="EcoGene:EG13262"
+                     /db_xref="GeneID:945337"
+                     /locus_tag="b0493"
+                     /gene="ybbO"
+                     /gene_synonym="ECK0487; JW0482"
+     CDS             <1199..1209
+                     /function="putative enzyme; Not classified"
+                     /locus_tag="b0493"
+                     /gene="ybbO"
+                     /codon_start=1
+                     /product="putative oxidoreductase"
+                     /gene_synonym="ECK0487; JW0482"
+                     /db_xref="GI:16128477"
+                     /db_xref="ASAP:ABE-0001709"
+                     /db_xref="UniProtKB/Swiss-Prot:P0AFP4"
+                     /db_xref="EcoGene:EG13262"
+                     /db_xref="GeneID:945337"
+                     /translation="MTHKATEILTGKVMQKSVLITGCSSGIGLESALELKRQGFHVLAG
+                     CRKPDDVERMNSMGFTGVLIDLDSPESVDRAADEVIALTDNCLYGIFNNAGFGMYGPLS
+                     TISRAQMEQQFSANFFGAHQLTMRLLPAMLPHGEGRIVMTSSVMGLISTPGRGAYAASK
+                     YALEAWSDALRMELRHSGIKVSLIEPGPIRTRFTDNVNQTQSDKPVENPGIAARFTLGP
+                     EAVVDKVRHAFISEKPKMRYPVTLVTWAVMVLKRLLPGRVMDKILQG"
+                     /transl_table=11
+                     /protein_id="NP_415026.1"
+ORIGIN
+        1 tcgcgcgttt cggtgatgac ggtgaaaacc tctgacacat gcagctcccg gagacggtca
+       61 cagcttgtct gtaagcggat gccgggagca gacaagcccg tcagggcgcg tcagcgggtg
+      121 ttggcgggtg tcggggctgg cttaactatg cggcatcaga gcagattgta ctgagagtgc
+      181 accatagatc ctgaggatcg gggtgataaa tcagtctgcg ccacatcggg ggaaacaaaa
+      241 tggcgcgaga tctaaaaaaa aaggctccaa aaggagcctt tcgcgctacc aggtaacgcg
+      301 ccactccgac gggattaacg agtgccgtaa acgacgatgg ttttaccgtg tgcggagatc
+      361 aggttctgat cctcgagcat cttaagaatt cgtcccacgg tttgtctaga gcagccgaca
+      421 atctggccaa tttcctgacg ggtaattttg atttgcatgc cgtccgggtg agtcatagcg
+      481 tctggttgtt ttgccagatt cagcagagtc tgtgcaatgc ggccgctgac gtcgaggaac
+      541 gccaggttgc ccactttctc actagtgacc tgcagccgac aaatgatgaa cttcaacaat
+      601 gttttccgct ggcatttgcc cttcctgttc ctggtcctgt taaccttccg tgccgccgca
+      661 gcggacacgt tattgattct gggtgatagc ctgagcgccg ggtatcgaat gtctgccagc
+      721 gcggcctggc ctgccttgtt gaatgataag tggcagagta aaacgtcggt agttaatgcc
+      781 agcatcagcg gcgacacctc gcaacaagga ctggcgcgcc ttccggctct gctgaaacag
+      841 catcagccgc gttgggtgct ggttgaactg ggcggcaatg acggtttgcg tggttttcag
+      901 ccacagcaaa ccgagcaaac gctgcgccag attttgcagg atgtcaaagc cgccaacgct
+      961 gaaccattgt taatgcaaat acgtctgcct gcaaactatg gtcgccgtta taatgaagcc
+     1021 tttagcgcca tttaccccaa actcgccaaa gagtttgatg ttccgctgct gccctttttt
+     1081 atggaagagg tctacctcaa gccacaatgg atgcaggatg acggtattca tcccaaccgc
+     1141 gacgcccagc cgtttattgc cgactggatg gcgaagcagt tgcagccttt agtaaatcat
+     1201 gactcataag tgccatctgt gcagacaaac gcatcaggat atccggattt acctgaatca
+     1261 attggcgaaa ttttttgtac gaaatttcag ccacttcaca ggcggttttc gcacgtaccc
+     1321 atgcgctacg ttcctggccc tcttcaaaca ggcccagttc gccaataaaa tcaccctgat
+     1381 tcagatagga gaggatcatt tctttaccct cttcgtcttt gatcagcact gccacagagc
+     1441 ctttaacgat gtagtacagc gtttccgctt tttcaccctg gtgaataagc gtgctcttgg
+     1501 atgggtactt atgaatgtgg caatgagaca agaaccattc gagagtagga tccgtttgag
+     1561 gtttaccaag taccataaga tccttaaatt tttattatct agctagatga taatattata
+     1621 tcaagaattg tacctgaaag caaataaatt ttttatctgg cttaactatg cggcatcaga
+     1681 gcagattgta ctgagagtgc accatatgcg gtgtgaaata ccgcacagat gcgtaaggag
+     1741 aaaataccgc atcaggcgct cttccgcttc ctcgctcact gactcgctgc gctcggtcgt
+     1801 tcggctgcgg cgagcggtat cagctcactc aaaggcggta atacggttat ccacagaatc
+     1861 aggggataac gcaggaaaga acatgtgagc aaaaggccag caaaaggcca ggaaccgtaa
+     1921 aaaggccgcg ttgctggcgt ttttccatag gctccgcccc cctgacgagc atcacaaaaa
+     1981 tcgacgctca agtcagaggt ggcgaaaccc gacaggacta taaagatacc aggcgtttcc
+     2041 ccctggaagc tccctcgtgc gctctcctgt tccgaccctg ccgcttaccg gatacctgtc
+     2101 cgcctttctc ccttcgggaa gcgtggcgct ttctcatagc tcacgctgta ggtatctcag
+     2161 ttcggtgtag gtcgttcgct ccaagctggg ctgtgtgcac gaaccccccg ttcagcccga
+     2221 ccgctgcgcc ttatccggta actatcgtct tgagtccaac ccggtaagac acgacttatc
+     2281 gccactggca gcagccactg gtaacaggat tagcagagcg aggtatgtag gcggtgctac
+     2341 agagttcttg aagtggtggc ctaactacgg ctacactaga aggacagtat ttggtatctg
+     2401 cgctctgctg aagccagtta ccttcggaaa aagagttggt agctcttgat ccggcaaaca
+     2461 aaccaccgct ggtagcggtg gtttttttgt ttgcaagcag cagattacgc gcagaaaaaa
+     2521 aggatctcaa gaagatcctt tgatcttttc tacggggtct gacgctcagt ggaacgaaaa
+     2581 ctcacgttaa gggattttgg tcatgagatt atcaaaaagg atcttcacct agatcctttt
+     2641 aaattaaaaa tgaagtttta aatcaatcta aagtatatat gagtaaactt ggtctgacag
+     2701 ttaccaatgc ttaatcagtg aggcacctat ctcagcgatc tgtctatttc gttcatccat
+     2761 agttgcctga ctccccgtcg tgtagataac tacgatacgg gagggcttac catctggccc
+     2821 cagtgctgca atgataccgc gagacccacg ctcaccggct ccagatttat cagcaataaa
+     2881 ccagccagcc ggaagggccg agcgcagaag tggtcctgca actttatccg cctccatcca
+     2941 gtctattaat tgttgccggg aagctagagt aagtagttcg ccagttaata gtttgcgcaa
+     3001 cgttgttgcc attgctacag gcatcgtggt gtcacgctcg tcgtttggta tggcttcatt
+     3061 cagctccggt tcccaacgat caaggcgagt tacatgatcc cccatgttgt gcaaaaaagc
+     3121 ggttagctcc ttcggtcctc cgatcgttgt cagaagtaag ttggccgcag tgttatcact
+     3181 catggttatg gcagcactgc ataattctct tactgtcatg ccatccgtaa gatgcttttc
+     3241 tgtgactggt gagtactcaa ccaagtcatt ctgagaatag tgtatgcggc gaccgagttg
+     3301 ctcttgcccg gcgtcaatac gggataatac cgcgccacat agcagaactt taaaagtgct
+     3361 catcattgga aaacgttctt cggggcgaaa actctcaagg atcttaccgc tgttgagatc
+     3421 cagttcgatg taacccactc gtgcacccaa ctgatcttca gcatctttta ctttcaccag
+     3481 cgtttctggg tgagcaaaaa caggaaggca aaatgccgca aaaaagggaa taagggcgac
+     3541 acggaaatgt tgaatactca tactcttcct ttttcaatat tattgaagca tttatcaggg
+     3601 ttattgtctc atgagcggat acatatttga atgtatttag aaaaataaac aaataggggt
+     3661 tccgcgcaca tttccccgaa aagtgccacc tgctaagaaa ccattattat catgacatta
+     3721 acctataaaa ataggcgtat cacgaggccc tttcgtc
+//

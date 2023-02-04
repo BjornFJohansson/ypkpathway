@@ -9,9 +9,9 @@
 # ---
 
 # %% [markdown]
-# # {name}
+# # [![logo](logo.png)](https://github.com/BjornFJohansson/ypkpathway#-ypkpathway) {name}
 #
-# This notebook describes the assembly of {length} transcriptional units
+# Assembly of {length} transcriptional units
 # (single gene expression) vectors into a pathway.
 #
 # Jupyter notebooks describing the single gene expression vectors are linked

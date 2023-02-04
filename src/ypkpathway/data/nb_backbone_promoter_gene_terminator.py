@@ -9,13 +9,11 @@
 # ---
 
 # %% [markdown]
-# # {name}
+# # [![logo](logo.png)](https://github.com/BjornFJohansson/ypkpathway#-ypkpathway) {name}
 #
-# This notebook describes the assembly of the
-# [_Saccharomyces cerevisiae_](http://www.yeastgenome.org)
-# transcriptional unit vector.
+# Assembly of a [_Saccharomyces cerevisiae_](http://www.yeastgenome.org) transcriptional unit vector.
 #
-# It is made from a linear vector fragment and three PCR products:
+# Made from a linear vector fragment and three PCR products:
 #
 # - a linearized {backbone} vector for maintenance in _S. cerevisiae_ or _E. coli_ (red dashed line in figure below)
 # - a promoter PCR product from the `{promoter}` vector
@@ -57,7 +55,7 @@ from Bio.Restriction import {enz}
 linear_backbone = backbone.linearize({enz})
 
 # %% [markdown]
-# The pYPKa derived _E. coli_ plasmids containing 
+# The pYPKa derived _E. coli_ plasmids containing
 # - [promoter]({promoter}.gb)
 # - [gene]({gene}.gb)
 # - [terminator]({terminator}.gb)
