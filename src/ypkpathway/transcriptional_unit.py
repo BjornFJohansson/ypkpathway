@@ -3,308 +3,365 @@
 """docstring."""
 
 from pathlib import Path
-from typing import Iterable
 from pprint import pprint
-import os
-from io import StringIO
-from contextlib import redirect_stdout
+import re
+from pathvalidate import ValidationError, validate_filename
+# from copy import deepcopy
 
 import jupytext
 from nbconvert.preprocessors.execute import ExecutePreprocessor
 import nbformat
-
 from Bio.Restriction import CommOnly as Co
-
 from pydna.amplify import pcr
 from pydna.readers import read
 from pydna.parsers import parse_primers
 from pydna.assembly import Assembly
 
-from pathvalidate import ValidationError, validate_filename
+from ypkpathway.pth import Pth
+
+from pydna.dseqrecord import Dseqrecord
+from pydna.amplicon import Amplicon
+from pydna.primer import Primer
 
 try:
     from importlib.resources import files
 except ImportError:  # for Python 3.8
     from importlib_resources import files
 
-from ypkpathway.utils import _copy2, _find_path_to_file
+ypkfiles = files("ypkpathway.data")
+
+tu_backbone = "pTA9"
 
 
 class TranscriptionalUnit:
-    """docstring.
-
-    Single-Gene Expression Vector
-
-    """
+    """docstring."""
 
     def __init__(self,
-                 name: str = "",
+                 name: str,
                  workdir: Path = Path("."),
-                 datafolders: Iterable[Path] = (Path("."),),
-                 primernames={"fp_prom": "577_crp585-557",
-                              "rp_prom": "567_pCAPsAjiIF",
-                              "fp_gene": "468_pCAPs_release_fw",
-                              "rp_gene": "467_pCAPs_release_re",
-                              "fp_term": "568_pCAPsAjiIR",
-                              "rp_term": "578_crp42-70", },
-                 primersfn="standard_primers.fasta"):
+                 datadirs: list[Path] = None,
+                 structure: dict = None,
+                 *args,
+                 **kwargs):
 
+        tu = {"path": Pth("name"),
+              "backbone": Dseqrecord("", id="na", name="backbone"),
+              "parts": [Amplicon("",
+                                 id="pYPKa_Z_",
+                                 name="promoter",
+                                 forward_primer=Primer("",
+                                                       name="577_crp585-557"),
+                                 reverse_primer=Primer("",
+                                                       name="567_pCAPsAjiIF")),
+                        Amplicon("",
+                                 id="pYPKa_A_",
+                                 name="gene",
+                                 forward_primer=Primer("",
+                                                       name="468_pCAPs_release_fw"),
+                                 reverse_primer=Primer("",
+                                                       name="467_pCAPs_release_re")),
+                        Amplicon("",
+                                 id="pYPKa_E_",
+                                 name="terminator",
+                                 forward_primer=Primer("",
+                                                       name="568_pCAPsAjiIR"),
+                                 reverse_primer=Primer("",
+                                                       name="578_crp42-70")), ],
+              "primer_file_path": Pth("standard_primers.fasta", "."),
+              "template_file_path": ypkfiles/"nb_tu.py",
+              "accessory_file_paths": [Pth(p, (ypkfiles,)) for p in ("tu.png",
+                                                                     "logo.png")]}
+
+        structure = structure or tu
+        backbone, elements = self._generate_elements(name)
+        self.__dict__.update(structure)
+        datadirs = datadirs or [Path("."), ]
+        datadirs.insert(0, workdir)
+        datadirs = [Path(d) for d in datadirs]
+        workdir = Pth(workdir, datadirs)/name
+        self.path = (workdir/name).with_suffix(".gb")
+        self.backbone.id = backbone
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        if list(self.path.parent.glob("*")):
+            raise Exception(f"{workdir} exists and is not empty.")
+        assert all(d.is_dir() for d in self.path.datadirs)
+        self.primer_file_path = workdir/self.primer_file_path
+        # self.template_file_path = str(workdir)/self.template_file_path
+        for i, p in enumerate(self.accessory_file_paths):
+            self.accessory_file_paths[i] = str(workdir)/p
+        # self.parts = deepcopy(self.parts)
+        # self.accessory_file_paths = deepcopy(self.accessory_file_paths)
+        for elementname, element in zip(elements, self.parts):
+            # self.parts[i] = deepcopy(element)
+            # self.parts[i].id += elementname
+            element.id += elementname
+
+    def _generate_elements(self, name):
         try:
-            validate_filename(name)
+            # The name has to be a valid filename
+            validate_filename(name, check_reserved=True)
         except ValidationError as e:
             raise e
-
+        if "." in name:
+            raise Exception("dot (.) not permitted in name")
         backbone, *elements = name.split("_")
-
         if len(elements) != 3:
             raise ValueError("Name has to indicate a backbone, a promoter "
                              "a gene and a terminator; four elements "
                              "separated by underscore (_). "
                              f"Not: {name}")
+        return backbone, elements
 
-        self.paths = {"fn": Path(name).with_suffix(".gb")}
-        self.paths["backbone"] = Path(backbone).with_suffix(".gb")
-        self.paths["promoter"] = Path(f"pYPKa_Z_{elements[0]}").with_suffix(".gb")
-        self.paths["gene"] = Path(f"pYPKa_A_{elements[1]}").with_suffix(".gb")
-        self.paths["terminator"] = Path(f"pYPKa_E_{elements[2]}").with_suffix(".gb")
+    def collect(self):
+        """docstring."""
+        primer_path = self.primer_file_path
+        primer_path.copy_to_dir()
+        pd = {x.name: x for x in parse_primers(primer_path)}
 
-        self.files = {key: None for key in list(self.paths.keys())}
+        for i, element in enumerate(self.parts):
+            name = element.id
+            p = Pth((self.path.parent/name).with_suffix(".gb"),
+                    self.path.datadirs)
+            p.copy_to_dir()
+            try:
+                element.template = read(p)
+            except ValueError:
+                print(f"no {p} found or no sequence")
+            else:
+                element.forward_primer = pd.get(element.forward_primer.name)
+                element.reverse_primer = pd.get(element.reverse_primer.name)
+                self.parts[i] = element
 
-        self.pcr_products = dict(list(self.files.items())[2:])
+        p = (self.path.parent/self.backbone.id).with_suffix(".gb")
+        p.copy_to_dir()
+        bbs = read(p)
+        f = self.parts[0].forward_primer
+        r = self.parts[-1].reverse_primer
+        mcs = pcr(f, r, bbs)[len(f):-len(r)]
+        eb = mcs.unique_cutters(Co) & bbs.unique_cutters(Co)
+        enzymes = [b for a, b in sorted(
+              [(abs(len(f1)-len(f2)), e) for ((f1, f2), e) in
+               [(mcs.cut(e), e) for e in eb]])]
+        bbs.annotations["comment"] = f"{bbs.annotations.get('comment', '')}\nLinearized with {enzymes[0]}"
+        bbs.id = self.backbone.id
+        self.backbone = bbs
 
-        self.primers = {}
-        self.primers["names"] = primernames
-        self.primers["fn"] = Path(primersfn)
+        for obj in self.__dict__.values():
+            if hasattr(obj, "copy_to_dir"):
+                obj.copy_to_dir()
+            elif isinstance(obj, list):
+                for elm in obj:
+                    if hasattr(elm, "copy_to_dir"):
+                        elm.copy_to_dir()
 
-        self.workdir = Path(workdir)
-        self.datafolders = [Path(f) for f in datafolders]
+    def _format_code(self):
+        """docstring."""
+        py = self.template_file_path.read_text()
+        *rest, last = self.backbone.annotations["comment"].splitlines()
+        *rest, enz = last.split()
 
-        self.enzyme = None
-        self.workdir.mkdir(parents=True, exist_ok=True)
-
-        dp = files("ypkpathway.data")
-        self.template_path = dp.joinpath(
-                'nb_backbone_promoter_gene_terminator.py')
-        assert self.template_path.exists()
-        self.accessory_file_paths = [dp.joinpath(p) for p in ("tu.png",
-                                                              "logo.png")]
+        pycode = py.format(name=repr(self),
+                           backbone=self.backbone.id,
+                           enz=enz,
+                           promoter=self.parts[0].id,
+                           gene=self.parts[1].id,
+                           terminator=self.parts[2].id,
+                           fp_prom=self.parts[0].forward_primer.name,
+                           rp_prom=self.parts[0].reverse_primer.name,
+                           fp_gene=self.parts[1].forward_primer.name,
+                           rp_gene=self.parts[1].reverse_primer.name,
+                           fp_term=self.parts[2].forward_primer.name,
+                           rp_term=self.parts[2].reverse_primer.name)
+        
+        return pycode
+    
+    def generate_notebook(self):
+        py = self._format_code()
+        nb = jupytext.reads(py, fmt='py:percent')
+        assert nbformat.validate(nb) is None
+        ep = ExecutePreprocessor()
+        ep.timeout = 60  # seconds
+        ep.interrupt_on_timeout = True
+        output = ""
+        resources = {'metadata': {'path': self.path.parent, 
+                                  "stdout": output}}
+        nb_executed, resources = ep.preprocess(nb, 
+                                               resources=resources)
+        nbformat.write(nb, self.path.with_suffix(".ipynb"))
+        return resources
 
     def __repr__(self):
         """docstring."""
-        return str(self.paths["fn"].stem)
+        return str(self.path.stem)
 
     @property
     def status(self):
         """docstring."""
         pprint(self.__dict__, sort_dicts=False)
 
-    def find_sequence_files(self):
-        """docstring."""
-        notfound = {}
-        for key, fn in self.paths.items():
-            path = _find_path_to_file(self.datafolders, fn)
-            if path:
-                self.paths[key] = path
-            else:
-                notfound[key] = fn
-        return notfound
-
-    def copy_sequence_files(self):
-        """docstring."""
-        not_copied = {}
-        for key, path in self.paths.items():
-            if path.is_file():
-                p = _copy2(path, self.workdir)
-                assert p.is_file()
-            else:
-                not_copied[key] = path
-        return not_copied
-
-    def read_sequence_files(self):
-        """docstring."""
-        for element, path in self.paths.items():
-            try:
-                self.files[element] = read(path)
-            except ValueError as err:
-                if err.args[0].startswith("No sequences found in data:"):
-                    pass
-            except Exception as err:
-                print(f"Unexpected {err=}, {type(err)=}")
-                raise
-
-    def find_primers(self):
-        """docstring."""
-        path = _find_path_to_file(self.datafolders, self.primers["fn"])
-        if path:
-            self.primers["fn"] = path
-            path = None
-        return path
-
-    def copy_primers(self):
-        """docstring."""
-        path = _copy2(self.primers["fn"], self.workdir)
-        if path.is_file():
-            self.primers["fn"] = path
-            msg = None
-        else:
-            msg = path
-        return msg
-
-    def read_primers(self):
-        """docstring."""
-        self.primers["fn"] = _find_path_to_file(self.datafolders,
-                                                self.primers["fn"])
-        try:
-            primerdict = {x.name: x
-                          for x in
-                          parse_primers(self.primers["fn"])}
-        except Exception as err:
-            print(f"Unexpected {err=}, {type(err)=}")
-            raise
-
-        for name in self.primers["names"].values():
-            self.primers[name] = primerdict.get(name, None)
-
-    def find_enzymes(self):
-        """docstring."""
-        bb = self.files["backbone"]
-        f = self.primers[self.primers["names"]["fp_prom"]]
-        r = self.primers[self.primers["names"]["rp_term"]]
-        mcs = pcr(f, r, bb)[len(f):-len(r)]
-        eb = mcs.unique_cutters(Co) & bb.unique_cutters(Co)
-        enzymes = [b for a, b in sorted(
-            [(abs(len(f1)-len(f2)), e) for ((f1, f2), e) in
-             [(mcs.cut(e), e) for e in eb]])]
-        self.enzyme = enzymes[0]
-        return enzymes
-
-    def pcr(self):
-        """docstring."""
-        
-        fp_prom = self.primers[self.primers["names"]["fp_prom"]]
-        rp_prom = self.primers[self.primers["names"]["rp_prom"]]
-        
-        self.pcr_products["promoter"] = pcr(fp_prom,
-                                            rp_prom,
-                                            self.files['promoter'])
-        
-        fp_gene = self.primers[self.primers["names"]["fp_gene"]]
-        rp_gene = self.primers[self.primers["names"]["rp_gene"]]
-        
-        self.pcr_products["gene"] = pcr(fp_gene,
-                                        rp_gene,
-                                        self.files['gene'])
-        
-        fp_term = self.primers[self.primers["names"]["fp_term"]]
-        rp_term = self.primers[self.primers["names"]["rp_term"]]    
-
-        self.pcr_products["terminator"] = pcr(fp_term,
-                                              rp_term,
-                                              self.files['terminator'])
-
-    def format_code(self):
-        """docstring."""
-        py = self.template_path.read_text().format(
-                                            name=repr(self),
-                                            backbone=self.paths["backbone"].stem,
-                                            enz=self.enzyme,
-                                            promoter=self.paths["promoter"].stem,
-                                            gene=self.paths["gene"].stem,
-                                            terminator=self.paths["terminator"].stem,
-                                            **self.primers["names"])
-
-        nb = jupytext.reads(py, fmt='py:percent')
-
-        assert nbformat.validate(nb) is None
-        
-        return nb, py
-    
-    def execute_py(self):
-        """docstring."""
-        for p in self.accessory_file_paths:
-            _copy2(p, self.workdir)
-        self.copy_primers()
-        self.copy_sequence_files()
-        globs = {}
-        nb, py = self.format_code()
-        cwd = Path.cwd()
-        os.chdir(self.workdir)
-        f = StringIO()
-        with redirect_stdout(f):
-            exec(py, globs)
-        s = f.getvalue()        
-        os.chdir(cwd)
-        name = Path(self.workdir/self.paths["fn"]).with_suffix(".py").write_text(py)
-        return s
-
-    def execute_nb(self):
-        """docstring."""
-        for p in self.accessory_file_paths:
-            _copy2(p, self.workdir)
-        self.copy_primers()
-        self.copy_sequence_files()
-        nb, py = self.format_code()
-        ep = ExecutePreprocessor()
-        ep.timeout = 60  # seconds
-        ep.interrupt_on_timeout = True
-        output = ""
-        resources = {'metadata': {'path': self.workdir, 
-                                  "stdout": output}}
-        nb_executed, resources = ep.preprocess(nb, 
-                                               resources=resources)
-        
-        nbformat.write(nb, (self.workdir/self.paths["fn"]).with_suffix(".ipynb"))
-        
-        return resources
-
     def assemble(self):
-        prom = self.pcr_products["promoter"]
-        gene = self.pcr_products["gene"]
-        term = self.pcr_products["terminator"]
-
-        prom.name = self.paths["promoter"].stem[-4:]
-        gene.name = self.paths["gene"].stem[-4:]
-        term.name = self.paths["terminator"].stem[-4:]
-
-        linear_backbone = self.files["backbone"].linearize(self.enzyme)
-
+        """docstring."""
+        prom = pcr(self.parts[0])
+        gene = pcr(self.parts[1])
+        term = pcr(self.parts[2])
+        *rest, last = self.backbone.annotations["comment"].splitlines()
+        *rest, enz = last.split()
+        from Bio.Restriction import RestrictionBatch
+        linear_backbone = self.backbone.linearize(RestrictionBatch([enz]))
         asm = Assembly((linear_backbone, prom, gene, term), limit=31)
-
         candidates = asm.assemble_circular()
-
         candidate, *rest = candidates
+        return candidate, rest
 
-        candidate.cseguid() == rest[0].cseguid()
 
-        fp_prom = self.primers[self.primernames["fp_prom"]]
+class PathWay(TranscriptionalUnit):
+    """docstring."""
 
-        return candidate.synced(fp_prom), candidate.figure()
+    def __init__(self,
+                 name: str,
+                 workdir: Path = Path("."),
+                 datadirs: list[Path] = None,
+                 structure: dict = None,
+                 *args,
+                 **kwargs):
+        
+        pw = {"path": Pth("name"),
+              "backbone": Dseqrecord("", id="na", name="backbone"),
+              "parts": [Amplicon("",
+                                 id=f"{tu_backbone}_",
+                                 name="first_cassette",
+                                 forward_primer=Primer("",
+                                                       name="577_crp585-557"),
+                                 reverse_primer=Primer("",
+                                                       name="778_tp_Eco32I_rev")),
+                        Amplicon("",
+                           id=f"{tu_backbone}_",
+                           name="middle_cassette",
+                           forward_primer=Primer("",
+                                                 name="1123_New775"),
+                           reverse_primer=Primer("",
+                                                 name="778_tp_Eco32I_rev")),
+                        Amplicon("",
+                                 id=f"{tu_backbone}_",
+                                 name="last_cassette",
+                                 forward_primer=Primer("",
+                                                       name="1123_New775"),
+                                 reverse_primer=Primer("",
+                                                       name="578_crp42-70")), ],
+              "primer_file_path": Pth("standard_primers.fasta", "."),
+              "template_file_path": ypkfiles/"nb_pw.py",
+              "accessory_file_paths": [Pth(p, (ypkfiles,)) for p in ("pw.png",
+                                                                     "logo.png")]}
+        structure = structure or pw
+        super().__init__(name,
+                         workdir,
+                         datadirs,
+                         structure,
+                         *args, 
+                         **kwargs)
+        
+    def collect(self):
+        """docstring."""
+        tunits = []
+        for part in self.parts:
+            p = (self.path.parent/part.id).with_suffix(".gb")
+            if p.find_in_dirs():
+                p.copy_to_dir()
+            else:
+                tunits.append(TranscriptionalUnit(part.id,
+                                                  self.path.parent,
+                                                  self.path.datadirs))
+        for tu in tunits:
+            tu.collect()
+            tu.generate_notebook()
 
+        super().collect()
+            
+
+
+    def _generate_elements(self, name):
+        try:
+            # The name has to be a valid filename
+            validate_filename(name, check_reserved=True)
+        except ValidationError as e:
+            raise e
+        if "." in name:
+            raise Exception("dot (.) not permitted in name")
+
+        backbone, *elements = name.split("_")
+
+        if len(elements) < 5 or len(elements) % 2 != 1:
+            raise ValueError("At least five uneven number of elements "
+                             "(two TU casettes) separated by underscore (_). "
+                             f"Not {name}")
+
+        if len(elements) != len(set(e.lower() for e in elements)):
+            elms = [e.lower() for e in elements]
+            seen = set()
+            dupl = []
+            for i, e in enumerate(elms):
+                if e.lower() in seen:
+                    dupl.append(elms.index(e.lower()))
+                    dupl.append(i)
+                seen.add(e.lower())
+            pattern = name
+            for elm in set(elements[i] for i in dupl):
+                pattern = pattern.replace(elm, len(elm)*"*")
+            pattern = re.sub("[^*]", " ", pattern)
+            raise ValueError(f"Duplicated elements: "
+                             f"{' '.join(set(elements[i] for i in dupl))}\n"
+                             f"{name}\n"
+                             f"{pattern}\n")
+        newelements = []
+        for i in range(0, len(elements) - 1, 2):
+            n = "{}_{}_{}".format(*elements[i:i+3])
+            newelements.append(n)
+        return backbone, newelements
+
+    def _format_code(self):
+        """docstring."""
+        py = self.template_file_path.read_text()
+        *rest, last = self.backbone.annotations["comment"].splitlines()
+        *rest, enz = last.split()
+        pycode = py.format(name=repr(self),
+                           backbone=self.backbone.id,
+                           cas_vectors="\n".join(f"{p.id}.gb" for p in self.parts),
+                           enz=enz,
+                           length=len(self.parts),
+                           fp_first=self.parts[0].forward_primer.name,
+                           fp=self.parts[-1].forward_primer.name,
+                           rp=self.parts[0].reverse_primer.name,
+                           rp_last=self.parts[-1].reverse_primer.name)        
+        return pycode
 
 if __name__ == "__main__":
+    
+    import shutil
 
-    workdir = "/home/bjorn/Desktop/python_packages/ypkpathway/tests/test/new"
+    shutil.rmtree("/home/bjorn/python_packages/ypkpathway/src/ypkpathway/pYPK0_PDC1_KlLAC4_PGI1_KlLAC12_TPI1_ScELO1_TDH3", ignore_errors=True)
 
-    datafolders = (
-        "/home/bjorn/Desktop/python_packages/ypkpathway/tests/test",
-        "/home/bjorn/Desktop/YeastPathwayKit/sequences",)
+    workdir = "/home/bjorn/Desktop/python_packages/ypkpathway/src/ypkpathway"
 
-    name = "pTA1_TDH3_ScCTT1_PGI1"
+    datadirs = [
+        "/home/bjorn/Desktop/mec@githb/YeastPathwayKit/sequences",
+        "/home/bjorn/Desktop/mec@githb/YeastPathwayKitPrivate/sequences",]
 
-    self = TranscriptionalUnit(name, workdir, datafolders)
-
-    self.find_primers()
-    self.copy_primers()
-    self.read_primers()
-
-    self.find_sequence_files()
-    self.copy_sequence_files()
-    self.read_sequence_files()
-
-    self.find_enzymes()
-
-    self.pcr()
-
-    self.format_code()
-
-    self.execute_nb()
+    name = "pYPK0_PDC1_KlLAC4_PGI1"
+    name = "pYPK0_PDC1_KlLAC4_PGI1_KlLAC12_TPI1"
+    name = "pYPK0_PDC1_KlLAC4_PGI1_KlLAC12_TPI1_ScELO1_TDH3"
+    
+    self = PathWay(name, workdir, datadirs)
+    self.collect()
+    self.collect()
+    self.generate_notebook()
+    
+    
+    # t = TranscriptionalUnit("pTA9_PDC1_KlLAC4_PGI1", workdir, datadirs)
+    
+    # [x.id for x in t.parts]
+    
+    
+    
+    # self.collect()
+    # self.assemble()
+    # self.generate_notebook()

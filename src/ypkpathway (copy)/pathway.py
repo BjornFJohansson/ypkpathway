@@ -26,6 +26,7 @@ except ImportError:  # for Python 3.8
     from importlib_resources import files
 
 from ypkpathway.transcriptional_unit import TranscriptionalUnit
+from ypkpathway.utils import _copy2, _find_path_to_file
 
 import os
 os.environ["PYDEVD_DISABLE_FILE_VALIDATION"] = "1"
@@ -280,7 +281,7 @@ class PathWay:
         f = StringIO()
         with redirect_stdout(f):
             exec(py, globs)
-        s = f.getvalue()
+        s = f.getvalue()        
         os.chdir(cwd)
         name = Path(self.workdir/self.paths["fn"]).with_suffix(".py").write_text(py)
         return s
@@ -296,13 +297,13 @@ class PathWay:
         ep.timeout = 60  # seconds
         ep.interrupt_on_timeout = True
         output = ""
-        resources = {'metadata': {'path': self.workdir,
+        resources = {'metadata': {'path': self.workdir, 
                                   "stdout": output}}
-        nb_executed, resources = ep.preprocess(nb,
+        nb_executed, resources = ep.preprocess(nb, 
                                                resources=resources)
-
+        
         nbformat.write(nb, (self.workdir/self.paths["fn"]).with_suffix(".ipynb"))
-
+        
         return resources
 
     def assemble(self):
@@ -341,25 +342,25 @@ if __name__ == "__main__":
         "/home/bjorn/Desktop/YeastPathwayKit/sequences",)
 
     name = "pTA1_TDH3_ScATF1_PGI1_ScCTT1_TEF1"
-
+    
     # name = "pTA1_TDH3_ScATF1_PGI1_ScCTT1_TEF1_TDH3_pgi1"
 
-    self = PathWay(name,
-                   workdir,
+    self = PathWay(name, 
+                   workdir, 
                    datafolders)
 
-    self.find_sequence_files()
-    self.copy_sequence_files()
-    self.read_sequence_files()
+    self.find_sequence_files()    
+    self.copy_sequence_files()    
+    self.read_sequence_files()    
     self.find_primers()
     self.copy_primers()
-    self.read_primers()
-    self.find_enzymes()
-    # self.execute_transcriptional_unit_notebooks()
-    self.find_sequence_files()
-    self.read_sequence_files()
+    self.read_primers()    
+    self.find_enzymes()    
+    # self.execute_transcriptional_unit_notebooks()    
+    self.find_sequence_files()    
+    self.read_sequence_files()    
     self.pcr()
     nb, py = self.format_code()
     print(py)
-
+    
     self.execute_nb()

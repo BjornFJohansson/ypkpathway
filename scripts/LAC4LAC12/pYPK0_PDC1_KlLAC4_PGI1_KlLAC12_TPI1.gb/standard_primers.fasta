@@ -1,0 +1,25 @@
+>577_crp585-557 (29-mer)
+gttctgatcctcgagcatcttaagaattc
+>578_crp42-70 (29-mer)
+gttcttgtctcattgccacattcataagt
+
+>468_pCAPs_release_fw (25-mer) 79.66 same as 560
+gtcgaggaacgccaggttgcccact
+>467_pCAPs_release_re (31-mer)
+ATTTAAatcctgatgcgtttgtctgcacaga
+
+>567_pCAPsAjiIF (23-mer)
+GTCggctgcaggtcactagtgag
+>568_pCAPsAjiIR (22-mer)
+GTGCcatctgtgcagacaaacg
+
+>1123_New775
+gtgcaatgcggccgctGAC
+>778_tp_Eco32I_rev (20-mer)
+ggtaaatccggatTAATTAA
+>494_tp_Eco32I_rev2 (29-mer)
+ttcgccaattgattcaggtaaatccggat
+>342_ORIR-1 (21-mer)
+CCTTTTTACGGTTCCTGGCCT
+>775_tp_ZraI_fwd (18-mer) we have found that primer 1123 works better.
+gcggccgctgacTTAAAT
