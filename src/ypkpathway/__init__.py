@@ -10,8 +10,8 @@ __maintainer__ = "Björn Johansson"
 __email__ = "bjornjobb@gmail.com"
 __version__ = "0.0.0"
 
-from .pathway import PathWay
-from .genetic_element import element_cloning
-from .transcriptional_unit import TranscriptionalUnit
+from ypkpathway.tu import TranscriptionalUnit
+from ypkpathway.pw import PathWay
+from ypkpathway.genetic_element import element_cloning
 
 __all__ = ["element_cloning", "TranscriptionalUnit", "PathWay"]
